@@ -6,8 +6,7 @@ KlingelballUI::KlingelballUI(QWidget *parent)
     , ui(new Ui::KlingelballUI)
 {
     ui->setupUi(this);
-    //Hello
-    ui->label_2->setText("Test");
+
 }
 
 KlingelballUI::~KlingelballUI()
