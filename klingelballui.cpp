@@ -8,6 +8,8 @@ KlingelballUI::KlingelballUI(QWidget *parent)
 {
     ui->setupUi(this);
 
+    SetupUI();
+
 
 }
 
@@ -19,6 +21,7 @@ KlingelballUI::~KlingelballUI()
 
 void KlingelballUI::on_Bis_Frequ_valueChanged(int arg1)
 {
+
 
 }
 

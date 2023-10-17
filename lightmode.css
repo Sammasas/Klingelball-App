@@ -1,0 +1,39 @@
+QPushButton{
+    Background: transparent;
+    border: 3px solid black;
+    border-radius: 10px;
+}
+
+QPushButton::pressed{
+    border: 2px solid black;
+    border-radius: 7px;
+
+}
+
+QLabel{
+    Background: transparent;
+}
+
+QTabWidget{
+    text-decoration: underline;
+}
+
+QTabWidget::pane {
+    border-style: none;
+    background: transparent;
+}
+
+
+QTabWidget::tab-bar {
+     alignment: center;
+}
+
+QTabBar::tab:selected {
+    background: transparent;
+    color: blue;
+}
+
+QTabBar::tab:!selected {
+    background: transparent;
+
+}

@@ -4,8 +4,14 @@
 
 void KlingelballUI::SetupUI(){
     /******Buttons*********/
-    ui->Volume_UP->setIconSize(QSize(ui->Volume_UP->height()*3, ui->Volume_UP->height()));
-    ui->Volume_Down->setIconSize(QSize(ui->Volume_UP->height()*3, ui->Volume_UP->height()));
+    ui->Volume_UP->setIconSize(QSize(ui->Volume_UP->height(), ui->Volume_UP->height()));
+    ui->Volume_Down->setIconSize(QSize(ui->Volume_UP->height(), ui->Volume_UP->height()));
+
+    ui->Bis_Frequ_Up->setIconSize(QSize(ui->Volume_UP->height(), ui->Volume_UP->height()));
+    ui->Bis_Frequ_Down->setIconSize(QSize(ui->Volume_UP->height(), ui->Volume_UP->height()));
+
+    ui->Von_Frequ_Up->setIconSize(QSize(ui->Volume_UP->height(), ui->Volume_UP->height()));
+    ui->Von_Frequ_Down->setIconSize(QSize(ui->Volume_UP->height(), ui->Volume_UP->height()));
 
     /*****Font************/
     qreal refDpi = 444.;
@@ -30,5 +36,9 @@ void KlingelballUI::SetupUI(){
 
 
     //**********Layout*****************//
+
+
+    /***********SpinBox*****************/
+    ui->Bis_Frequ->setFocusPolicy(Qt::NoFocus);
 
 }

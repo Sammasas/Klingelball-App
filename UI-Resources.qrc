@@ -4,6 +4,6 @@
         <file>Chevron_down.png</file>
     </qresource>
     <qresource prefix="/new/prefix2">
-        <file>lightmode.qss</file>
+        <file>lightmode.css</file>
     </qresource>
 </RCC>

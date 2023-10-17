@@ -9,7 +9,7 @@ int main(int argc, char *argv[])
     KlingelballUI w;
     w.show();
 
-    QFile styleSheetFile(":/new/prefix2/lightmode.qss");
+    QFile styleSheetFile(":/new/prefix2/lightmode.css");
     styleSheetFile.open(QFile::ReadOnly);
     QString styleSheet = QLatin1String(styleSheetFile.readAll());
     w.setStyleSheet(styleSheet);
