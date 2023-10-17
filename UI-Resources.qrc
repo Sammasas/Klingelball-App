@@ -1,5 +1,9 @@
 <RCC>
     <qresource prefix="/new/prefix1">
-        <file>ButtonUp.png</file>
+        <file>Chevron_Up.png</file>
+        <file>Chevron_down.png</file>
+    </qresource>
+    <qresource prefix="/new/prefix2">
+        <file>lightmode.qss</file>
     </qresource>
 </RCC>
