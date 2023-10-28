@@ -6,4 +6,7 @@
     <qresource prefix="/new/prefix2">
         <file>lightmode.css</file>
     </qresource>
+    <qresource prefix="/SoundFiles">
+        <file>testSine.wav</file>
+    </qresource>
 </RCC>

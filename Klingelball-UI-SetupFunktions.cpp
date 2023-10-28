@@ -4,14 +4,14 @@
 
 void KlingelballUI::SetupUI(){
     /******Buttons*********/
-    ui->Volume_UP->setIconSize(QSize(ui->Volume_UP->height(), ui->Volume_UP->height()));
-    ui->Volume_Down->setIconSize(QSize(ui->Volume_UP->height(), ui->Volume_UP->height()));
+    ui->Volume_UP->setIconSize(QSize(ui->Volume_UP->height()*0.7, ui->Volume_UP->height()));
+    ui->Volume_Down->setIconSize(QSize(ui->Volume_UP->height()*0.7, ui->Volume_UP->height()));
 
-    ui->Bis_Frequ_Up->setIconSize(QSize(ui->Volume_UP->height(), ui->Volume_UP->height()));
-    ui->Bis_Frequ_Down->setIconSize(QSize(ui->Volume_UP->height(), ui->Volume_UP->height()));
+    ui->Bis_Frequ_Up->setIconSize(QSize(ui->Volume_UP->height()*0.7, ui->Volume_UP->height()));
+    ui->Bis_Frequ_Down->setIconSize(QSize(ui->Volume_UP->height()*0.7, ui->Volume_UP->height()));
 
-    ui->Von_Frequ_Up->setIconSize(QSize(ui->Volume_UP->height(), ui->Volume_UP->height()));
-    ui->Von_Frequ_Down->setIconSize(QSize(ui->Volume_UP->height(), ui->Volume_UP->height()));
+    ui->Von_Frequ_Up->setIconSize(QSize(ui->Volume_UP->height()*0.7, ui->Volume_UP->height()));
+    ui->Von_Frequ_Down->setIconSize(QSize(ui->Volume_UP->height()*0.7, ui->Volume_UP->height()));
 
     /*****Font************/
     qreal refDpi = 444.;
@@ -29,16 +29,38 @@ void KlingelballUI::SetupUI(){
 
     QFont serifFont("Times", 16*m_ratioFont, QFont::Bold);
     /*
-    ui->Bis_Frequenz_Label->setFont(serifFont);
     ui->Frequenz_Label->setFont(serifFont);
+    ui->Bis_Frequenz_Label->setFont(serifFont);
     ui->Von_Frequenz_Label->setFont(serifFont);
-    ui->Volume_Label->setFont(serifFont);*/
+    */
+
+    QFont dynamicSizeFont("Segoe UI", ui->Volume_UP->height()*0.5, QFont::Bold);
+
+
 
 
     //**********Layout*****************//
 
 
     /***********SpinBox*****************/
-    ui->Bis_Frequ->setFocusPolicy(Qt::NoFocus);
 
+    ui->Volume->setFont(dynamicSizeFont);
+    ui->Bis_Frequ->setFont(dynamicSizeFont);
+    ui->Von_Frequ->setFont(dynamicSizeFont);
+
+
+
+    /***********Label******************/
+    ui->Volume_Label->setFont(dynamicSizeFont);
+    ui->Frequenz_Label->setFont(dynamicSizeFont);
+    ui->Bis_Frequenz_Label->setFont(dynamicSizeFont);
+    ui->Von_Frequenz_Label->setFont(dynamicSizeFont);
+
+    ui->Volume_Label->setTextInteractionFlags(Qt::TextSelectableByMouse );
+    ui->Frequenz_Label->setTextInteractionFlags(Qt::TextSelectableByMouse );
+    ui->Von_Frequenz_Label->setTextInteractionFlags(Qt::TextSelectableByMouse );
+    ui->Bis_Frequenz_Label->setTextInteractionFlags(Qt::TextSelectableByMouse );
+
+    /************TabWidget************/
+    ui->tabWidget->setFont(dynamicSizeFont);
 }

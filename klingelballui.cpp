@@ -2,6 +2,7 @@
 #include "ui_klingelballui.h"
 #include "QSize"
 
+
 KlingelballUI::KlingelballUI(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::KlingelballUI)

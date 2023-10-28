@@ -37,3 +37,8 @@ QTabBar::tab:!selected {
     background: transparent;
 
 }
+
+QSpinBox{
+    Background: transparent;
+
+}
