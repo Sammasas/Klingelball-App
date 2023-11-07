@@ -17,6 +17,7 @@ SOURCES += \
     klingelballui.cpp
 
 HEADERS += \
+    EinstellungsProfil.h \
     klingelballui.h
 
 FORMS += \
