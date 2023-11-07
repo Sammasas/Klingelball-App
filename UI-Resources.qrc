@@ -1,10 +1,12 @@
 <RCC>
-    <qresource prefix="/new/prefix1">
+    <qresource prefix="/Icons">
         <file>Chevron_Up.png</file>
         <file>Chevron_down.png</file>
+        <file>settings_icon_176440.png</file>
     </qresource>
-    <qresource prefix="/new/prefix2">
+    <qresource prefix="/stylesheet">
         <file>lightmode.css</file>
+        <file>darkmode.css</file>
     </qresource>
     <qresource prefix="/SoundFiles">
         <file>testSine.wav</file>

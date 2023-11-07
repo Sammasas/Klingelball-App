@@ -1,0 +1,53 @@
+QWidget
+{
+   background-color: #3f3f3f;
+}
+
+QPushButton{
+    Background: #7c7c7c;
+    border: 3px solid black;
+    border-radius: 10px;
+}
+
+QPushButton::pressed{
+    border: 2px solid black;
+    border-radius: 7px;
+
+}
+
+QLabel{
+    color: #b5b5b5;
+    Background: transparent;
+}
+
+QTabWidget{
+
+    text-decoration: underline;
+}
+
+QTabWidget::pane {
+    border-style: none;
+    background: transparent;
+}
+
+
+QTabWidget::tab-bar {
+    color: white;
+     alignment: center;
+}
+
+QTabBar::tab:selected {
+    background: transparent;
+    color: #b5b5b5;
+}
+
+QTabBar::tab:!selected {
+    color: #828181;
+    background: transparent;
+
+}
+
+QSpinBox{
+    Background: transparent;
+    color: #b5b5b5;
+}

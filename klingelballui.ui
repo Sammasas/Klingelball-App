@@ -17,13 +17,16 @@
    <string notr="true">QPushButton{border-image: url(:/new/prefix1/ButtonUp.png);}</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QVBoxLayout" name="verticalLayout_2" stretch="20,3">
+   <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0,1">
     <item>
      <widget class="QTabWidget" name="tabWidget">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
       <property name="font">
        <font>
-        <family>SansSerif</family>
-        <pointsize>22</pointsize>
+        <family>Segoe UI</family>
+        <pointsize>26</pointsize>
         <bold>true</bold>
        </font>
       </property>
@@ -86,9 +89,8 @@
              <string/>
             </property>
             <property name="icon">
-             <iconset>
-              <selectedoff>:/new/prefix1/Chevron_Up.png</selectedoff>
-             </iconset>
+             <iconset resource="UI-Resources.qrc">
+              <normaloff>:/Icons/Chevron_Up.png</normaloff>:/Icons/Chevron_Up.png</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -162,9 +164,8 @@
              <string/>
             </property>
             <property name="icon">
-             <iconset>
-              <selectedoff>:/new/prefix1/Chevron_down.png</selectedoff>
-             </iconset>
+             <iconset resource="UI-Resources.qrc">
+              <normaloff>:/Icons/Chevron_down.png</normaloff>:/Icons/Chevron_down.png</iconset>
             </property>
            </widget>
           </item>
@@ -196,9 +197,8 @@
              <string/>
             </property>
             <property name="icon">
-             <iconset>
-              <selectedoff>:/new/prefix1/Chevron_down.png</selectedoff>
-             </iconset>
+             <iconset resource="UI-Resources.qrc">
+              <normaloff>:/Icons/Chevron_down.png</normaloff>:/Icons/Chevron_down.png</iconset>
             </property>
            </widget>
           </item>
@@ -217,9 +217,8 @@
              <string/>
             </property>
             <property name="icon">
-             <iconset>
-              <selectedoff>:/new/prefix1/Chevron_Up.png</selectedoff>
-             </iconset>
+             <iconset resource="UI-Resources.qrc">
+              <normaloff>:/Icons/Chevron_Up.png</normaloff>:/Icons/Chevron_Up.png</iconset>
             </property>
            </widget>
           </item>
@@ -284,7 +283,7 @@
              </font>
             </property>
             <property name="text">
-             <string>Bis:</string>
+             <string>Bewegend:</string>
             </property>
            </widget>
           </item>
@@ -303,9 +302,8 @@
              <string/>
             </property>
             <property name="icon">
-             <iconset>
-              <selectedoff>:/new/prefix1/Chevron_down.png</selectedoff>
-             </iconset>
+             <iconset resource="UI-Resources.qrc">
+              <normaloff>:/Icons/Chevron_down.png</normaloff>:/Icons/Chevron_down.png</iconset>
             </property>
            </widget>
           </item>
@@ -324,9 +322,8 @@
              <string/>
             </property>
             <property name="icon">
-             <iconset>
-              <selectedoff>:/new/prefix1/Chevron_Up.png</selectedoff>
-             </iconset>
+             <iconset resource="UI-Resources.qrc">
+              <normaloff>:/Icons/Chevron_Up.png</normaloff>:/Icons/Chevron_Up.png</iconset>
             </property>
            </widget>
           </item>
@@ -339,7 +336,7 @@
              </font>
             </property>
             <property name="text">
-             <string>Von:</string>
+             <string>Stillstehend:</string>
             </property>
            </widget>
           </item>
@@ -413,15 +410,109 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="Light_Tab">
+      <widget class="QWidget" name="Profile_Tab">
        <attribute name="title">
-        <string>Light</string>
+        <string>Profile</string>
        </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_4">
+        <item>
+         <widget class="QLabel" name="label_2">
+          <property name="text">
+           <string>TextLabel</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </widget>
-      <widget class="QWidget" name="tab">
-       <attribute name="title">
-        <string>Seite</string>
+      <widget class="QWidget" name="Settings_Tab">
+       <property name="accessibleName">
+        <string>Einstellungen</string>
+       </property>
+       <attribute name="icon">
+        <iconset resource="UI-Resources.qrc">
+         <normaloff>:/Icons/settings_icon_176440.png</normaloff>:/Icons/settings_icon_176440.png</iconset>
        </attribute>
+       <attribute name="title">
+        <string/>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_6">
+        <item>
+         <widget class="QLabel" name="Aussehen_label">
+          <property name="font">
+           <font>
+            <pointsize>28</pointsize>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string>Aussehen:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="Lightmode_checkBox">
+          <property name="font">
+           <font>
+            <pointsize>22</pointsize>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string>Lightmode</string>
+          </property>
+          <property name="icon">
+           <iconset theme="applications-engineering"/>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>50</width>
+            <height>50</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="Darkmode_checkBox">
+          <property name="font">
+           <font>
+            <pointsize>22</pointsize>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string>Darkmode</string>
+          </property>
+          <property name="icon">
+           <iconset theme="applications-engineering"/>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>50</width>
+            <height>50</height>
+           </size>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+          <property name="tristate">
+           <bool>false</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="verticalSpacer">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
       </widget>
      </widget>
     </item>
@@ -434,11 +525,11 @@
        <enum>QLayout::SetDefaultConstraint</enum>
       </property>
       <item>
-       <widget class="QPushButton" name="pushButton_7">
+       <widget class="QPushButton" name="uebertragen_button">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
           <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
+          <verstretch>2</verstretch>
          </sizepolicy>
         </property>
         <property name="minimumSize">
@@ -463,8 +554,42 @@
    </layout>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="UI-Resources.qrc"/>
+ </resources>
  <connections>
+  <connection>
+   <sender>Von_Frequ_Down</sender>
+   <signal>clicked()</signal>
+   <receiver>Von_Frequ</receiver>
+   <slot>stepDown()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>90</x>
+     <y>384</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>84</x>
+     <y>349</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Bis_Frequ_Down</sender>
+   <signal>clicked()</signal>
+   <receiver>Bis_Frequ</receiver>
+   <slot>stepDown()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>391</x>
+     <y>403</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>386</x>
+     <y>375</y>
+    </hint>
+   </hints>
+  </connection>
   <connection>
    <sender>Volume_UP</sender>
    <signal>clicked()</signal>
@@ -478,6 +603,22 @@
     <hint type="destinationlabel">
      <x>132</x>
      <y>155</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Bis_Frequ_Up</sender>
+   <signal>clicked()</signal>
+   <receiver>Bis_Frequ</receiver>
+   <slot>stepUp()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>246</x>
+     <y>322</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>426</x>
+     <y>375</y>
     </hint>
    </hints>
   </connection>
@@ -498,22 +639,6 @@
    </hints>
   </connection>
   <connection>
-   <sender>Von_Frequ_Down</sender>
-   <signal>clicked()</signal>
-   <receiver>Von_Frequ</receiver>
-   <slot>stepDown()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>90</x>
-     <y>384</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>84</x>
-     <y>349</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>Von_Frequ_Up</sender>
    <signal>clicked()</signal>
    <receiver>Von_Frequ</receiver>
@@ -526,38 +651,6 @@
     <hint type="destinationlabel">
      <x>101</x>
      <y>342</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>Bis_Frequ_Up</sender>
-   <signal>clicked()</signal>
-   <receiver>Bis_Frequ</receiver>
-   <slot>stepUp()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>246</x>
-     <y>322</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>219</x>
-     <y>344</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>Bis_Frequ_Down</sender>
-   <signal>clicked()</signal>
-   <receiver>Bis_Frequ</receiver>
-   <slot>stepDown()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>171</x>
-     <y>390</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>166</x>
-     <y>356</y>
     </hint>
    </hints>
   </connection>

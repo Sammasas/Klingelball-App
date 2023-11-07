@@ -1,6 +1,5 @@
 #include "klingelballui.h"
 #include "ui_klingelballui.h"
-#include "QSize"
 
 
 KlingelballUI::KlingelballUI(QWidget *parent)
@@ -9,7 +8,9 @@ KlingelballUI::KlingelballUI(QWidget *parent)
 {
     ui->setupUi(this);
 
+    ui->tabWidget->setCurrentIndex(0);
     SetupUI();
+
 
 
 }
@@ -20,9 +21,4 @@ KlingelballUI::~KlingelballUI()
 }
 
 
-void KlingelballUI::on_Bis_Frequ_valueChanged(int arg1)
-{
-
-
-}
 

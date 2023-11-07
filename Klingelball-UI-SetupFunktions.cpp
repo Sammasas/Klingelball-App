@@ -13,6 +13,11 @@ void KlingelballUI::SetupUI(){
     ui->Von_Frequ_Up->setIconSize(QSize(ui->Volume_UP->height()*0.7, ui->Volume_UP->height()));
     ui->Von_Frequ_Down->setIconSize(QSize(ui->Volume_UP->height()*0.7, ui->Volume_UP->height()));
 
+    /*ui->Helligkeit_Up->setIconSize(QSize(ui->Volume_UP->height()*0.7, ui->Volume_UP->height()));
+    ui->Helligkeit_Down->setIconSize(QSize(ui->Volume_UP->height()*0.7, ui->Volume_UP->height()));
+*/
+    ui->tabWidget->setIconSize(QSize(ui->Volume_UP->height()*0.5, ui->Volume_UP->height()*0.5));
+
     /*****Font************/
     qreal refDpi = 444.;
     qreal refHeight = 2340.;
@@ -48,6 +53,9 @@ void KlingelballUI::SetupUI(){
     ui->Bis_Frequ->setFont(dynamicSizeFont);
     ui->Von_Frequ->setFont(dynamicSizeFont);
 
+    /*ui->Helligkeit_Label->setFont(dynamicSizeFont);
+    ui->Helligkeit->setFont(dynamicSizeFont);*/
+
 
 
     /***********Label******************/
@@ -62,5 +70,5 @@ void KlingelballUI::SetupUI(){
     ui->Bis_Frequenz_Label->setTextInteractionFlags(Qt::TextSelectableByMouse );
 
     /************TabWidget************/
-    ui->tabWidget->setFont(dynamicSizeFont);
+    //ui->tabWidget->setFont(dynamicSizeFont);
 }
