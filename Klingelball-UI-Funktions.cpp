@@ -57,3 +57,8 @@ void KlingelballUI::on_Darkmode_checkBox_clicked()
         setStyleSheet(styleSheet);
     }
 }
+
+void KlingelballUI::createUIProfile(EinstellungsProfil *profil){
+
+    ui->scrollAreaWidgetContents->layout()->addWidget(profil);
+}

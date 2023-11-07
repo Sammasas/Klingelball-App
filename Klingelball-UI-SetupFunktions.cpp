@@ -68,7 +68,7 @@ void KlingelballUI::SetupUI(){
     ui->Frequenz_Label->setTextInteractionFlags(Qt::TextSelectableByMouse );
     ui->Von_Frequenz_Label->setTextInteractionFlags(Qt::TextSelectableByMouse );
     ui->Bis_Frequenz_Label->setTextInteractionFlags(Qt::TextSelectableByMouse );
-
+    ui->Aussehen_label->setTextInteractionFlags(Qt::TextSelectableByMouse);
     /************TabWidget************/
     //ui->tabWidget->setFont(dynamicSizeFont);
 }

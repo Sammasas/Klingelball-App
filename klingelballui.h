@@ -9,6 +9,8 @@
 #include <QAudioOutput>
 #include <QAudioFormat>
 #include <QFile>
+#include "EinstellungsProfil.h"
+#include <QScroller>
 
 
 
@@ -40,5 +42,7 @@ private:
     void playSoundEffect(int Volume);
 
     void SetupUI();
+
+    void createUIProfile(EinstellungsProfil *profil);
 };
 #endif // KLINGELBALLUI_H

@@ -40,5 +40,19 @@ QTabBar::tab:!selected {
 
 QSpinBox{
     Background: transparent;
-
 }
+
+QGroupBox{
+    color: black;
+    border: 3px solid black;
+    background-color: transparent;
+}
+QCheckBox{
+    color: black;
+}
+
+QCheckBox::indicator {
+     width: 27px;
+     height: 27px;
+}
+

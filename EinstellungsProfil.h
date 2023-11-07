@@ -1,9 +1,14 @@
 #ifndef EINSTELLUNGSPROFIL_H
 #define EINSTELLUNGSPROFIL_H
 #include <QWidget>
+#include <QLayout>
+#include <QLabel>
+#include <QFrame>
+#include <QGroupBox>
+#include <QSpacerItem>
 
-class EinstellungsProfil : QWidget{
-
+class EinstellungsProfil : public QGroupBox{
+ Q_OBJECT
 private:
     QString Profil_Name;
     int Volume = 0;
