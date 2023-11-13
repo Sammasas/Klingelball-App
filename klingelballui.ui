@@ -17,7 +17,7 @@
    <string notr="true">QPushButton{border-image: url(:/new/prefix1/ButtonUp.png);}</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0,1">
+   <layout class="QVBoxLayout" name="verticalLayout_2" stretch="20,3">
     <item>
      <widget class="QTabWidget" name="tabWidget">
       <property name="enabled">
@@ -447,8 +447,8 @@
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>406</width>
-                 <height>203</height>
+                 <width>388</width>
+                 <height>474</height>
                 </rect>
                </property>
                <layout class="QGridLayout" name="gridLayout_2"/>
@@ -481,7 +481,7 @@
         <string>Einstellungen</string>
        </property>
        <attribute name="icon">
-        <iconset>
+        <iconset resource="UI-Resources.qrc">
          <normaloff>:/Icons/settings_icon_176440.png</normaloff>:/Icons/settings_icon_176440.png</iconset>
        </attribute>
        <attribute name="title">

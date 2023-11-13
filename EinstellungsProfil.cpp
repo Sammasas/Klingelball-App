@@ -2,11 +2,7 @@
 
 
 EinstellungsProfil::EinstellungsProfil(QString name, int Volume, int Frequenz_Stillstehend, int Frequenz_Bewegend)
-<<<<<<< Updated upstream
     : QGroupBox(){
-=======
-    : QGroupBox() {
->>>>>>> Stashed changes
 
     this->Profil_Name = name;
     this->Volume = Volume;
@@ -33,10 +29,8 @@ EinstellungsProfil::EinstellungsProfil(QString name, int Volume, int Frequenz_St
     profil_Volume_label->setAccessibleDescription(getName());
     profil_Frequenz_Stillstehend_label->setAccessibleDescription(getName());
     profil_Frequenz_Bewegend_label->setAccessibleDescription(getName());
-<<<<<<< Updated upstream
-=======
+
     this->setAccessibleDescription(getName());
->>>>>>> Stashed changes
 
     profil_Volume_label->setAccessibleName(getName()+profil_Volume_label->text());
     profil_Frequenz_Stillstehend_label->setAccessibleName(getName()+profil_Frequenz_Stillstehend_label->text());
@@ -48,11 +42,8 @@ EinstellungsProfil::EinstellungsProfil(QString name, int Volume, int Frequenz_St
     vLayout->addWidget(profil_Frequenz_Stillstehend_label);
 
     this->setLayout(vLayout);
-
-<<<<<<< Updated upstream
     this->setMinimumHeight(120);
 
-=======
     this->setCheckable(true);
     this->setChecked(false);
 
@@ -86,5 +77,4 @@ void EinstellungsProfil::mousePressEvent(QMouseEvent *event){
     if(event->type() == QEvent::MouseButtonPress){
         this->profile_selected();
     }
->>>>>>> Stashed changes
 }

@@ -6,6 +6,7 @@
 #include <QFrame>
 #include <QGroupBox>
 #include <QSpacerItem>
+#include <QMouseEvent>
 
 class EinstellungsProfil : public QGroupBox{
  Q_OBJECT
@@ -20,6 +21,10 @@ public:
     int getVolume(){return this->Volume;}
     int getFrequenz_Stillstehend(){return this->Frequenz_Stillstehend;}
     int getFrequenz_Bewegend(){return this->Frequenz_Bewegend;}
+    void profile_selected();
+
+protected:
+    void mousePressEvent(QMouseEvent * event);
 
 };
 
