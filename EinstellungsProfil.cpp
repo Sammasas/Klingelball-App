@@ -2,7 +2,11 @@
 
 
 EinstellungsProfil::EinstellungsProfil(QString name, int Volume, int Frequenz_Stillstehend, int Frequenz_Bewegend)
+<<<<<<< Updated upstream
     : QGroupBox(){
+=======
+    : QGroupBox() {
+>>>>>>> Stashed changes
 
     this->Profil_Name = name;
     this->Volume = Volume;
@@ -29,6 +33,10 @@ EinstellungsProfil::EinstellungsProfil(QString name, int Volume, int Frequenz_St
     profil_Volume_label->setAccessibleDescription(getName());
     profil_Frequenz_Stillstehend_label->setAccessibleDescription(getName());
     profil_Frequenz_Bewegend_label->setAccessibleDescription(getName());
+<<<<<<< Updated upstream
+=======
+    this->setAccessibleDescription(getName());
+>>>>>>> Stashed changes
 
     profil_Volume_label->setAccessibleName(getName()+profil_Volume_label->text());
     profil_Frequenz_Stillstehend_label->setAccessibleName(getName()+profil_Frequenz_Stillstehend_label->text());
@@ -41,6 +49,42 @@ EinstellungsProfil::EinstellungsProfil(QString name, int Volume, int Frequenz_St
 
     this->setLayout(vLayout);
 
+<<<<<<< Updated upstream
     this->setMinimumHeight(120);
 
+=======
+    this->setCheckable(true);
+    this->setChecked(false);
+
+    this->setMinimumHeight(120);
+
+    QString groupBox_namelabel_stylesheet = "QLabel{color: black;"
+                             "font-weight: bold;"
+                             "line-height: 1.3;}";
+
+    QString groupBox_label_stylesheet = "QLabel{color: black;}";
+
+    profil_name_label->setStyleSheet(groupBox_namelabel_stylesheet);
+    profil_Volume_label->setStyleSheet(groupBox_label_stylesheet);
+    profil_Frequenz_Bewegend_label->setStyleSheet(groupBox_label_stylesheet);
+    profil_Frequenz_Stillstehend_label->setStyleSheet(groupBox_label_stylesheet);
+
+    //TODO: deselect when new profile is selected
+    //TODO: Einstellungen zu profil
+
+}
+
+void EinstellungsProfil::profile_selected(){
+    if (this->isChecked()){
+        this->setChecked(false);
+    }else if(!this->isChecked())
+        this->setChecked(true);
+
+}
+
+void EinstellungsProfil::mousePressEvent(QMouseEvent *event){
+    if(event->type() == QEvent::MouseButtonPress){
+        this->profile_selected();
+    }
+>>>>>>> Stashed changes
 }
