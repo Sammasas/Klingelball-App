@@ -11,6 +11,7 @@
 #include <QFile>
 #include "EinstellungsProfil.h"
 #include <QScroller>
+#include <QTimer>
 
 
 
@@ -35,12 +36,15 @@ private slots:
 
     void on_Darkmode_checkBox_clicked();
 
+
+    void on_FontSize_spinBox_valueChanged(int arg1);
+
 private:
     Ui::KlingelballUI *ui;
 
     QSoundEffect effect;
-    void playSoundEffect(int Volume);
 
+    void playSoundEffect(int Volume);
     void SetupUI();
 
     void createUIProfile(EinstellungsProfil *profil);

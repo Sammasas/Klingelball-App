@@ -4,23 +4,19 @@
 void KlingelballUI::on_Bis_Frequ_valueChanged(int arg1)
 {
 
-    QAudioFormat format;
-    format.setSampleRate(8000);
-    format.setChannelCount(1);
-
-
-
 }
 
 
 void KlingelballUI::on_Volume_valueChanged(int arg1)
 {
+    QTimer *timer = new QTimer(this);
+    connect(timer, SIGNAL(&QTimer::timeout), this, SLOT(playSoundEffect(arg1)));
     playSoundEffect(ui->Volume->value());
+    timer->start(1000);
 }
 
 void KlingelballUI::playSoundEffect(int Volume){
-
-    effect.setSource(QUrl::fromLocalFile(":/SoundFiles/testSine.wav"));
+    effect.setSource(QUrl::fromLocalFile(":/SoundFiles/beepV1.wav"));
     effect.setLoopCount(1);
     effect.setVolume((float)Volume/100);
     effect.play();

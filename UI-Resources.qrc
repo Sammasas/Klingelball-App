@@ -10,5 +10,6 @@
     </qresource>
     <qresource prefix="/SoundFiles">
         <file>testSine.wav</file>
+        <file>beepV1.wav</file>
     </qresource>
 </RCC>

@@ -40,7 +40,7 @@
        <enum>QTabWidget::Rounded</enum>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="Sound_Tab">
        <attribute name="title">
@@ -420,6 +420,9 @@
        </layout>
       </widget>
       <widget class="QWidget" name="Profile_Tab">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
        <attribute name="title">
         <string>Profile</string>
        </attribute>
@@ -447,8 +450,8 @@
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>388</width>
-                 <height>474</height>
+                 <width>406</width>
+                 <height>509</height>
                 </rect>
                </property>
                <layout class="QGridLayout" name="gridLayout_2"/>
@@ -550,6 +553,28 @@
           </property>
           <property name="tristate">
            <bool>false</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QSpinBox" name="FontSize_spinBox">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Minimum" vsizetype="MinimumExpanding">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+          </property>
+          <property name="buttonSymbols">
+           <enum>QAbstractSpinBox::PlusMinus</enum>
+          </property>
+          <property name="minimum">
+           <number>12</number>
+          </property>
+          <property name="maximum">
+           <number>36</number>
           </property>
          </widget>
         </item>

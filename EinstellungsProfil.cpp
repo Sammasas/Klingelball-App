@@ -21,20 +21,25 @@ EinstellungsProfil::EinstellungsProfil(QString name, int Volume, int Frequenz_St
     profil_Frequenz_Stillstehend_label->setText("Frequenz-Stillstehend: " + QString::number(getFrequenz_Stillstehend()) + "%");
     profil_Frequenz_Bewegend_label->setText("Frequenz-Bewegend: " + QString::number(getFrequenz_Bewegend()) + "%");
 
-    profil_name_label->setTextInteractionFlags(Qt::TextSelectableByMouse);
-    profil_Volume_label->setTextInteractionFlags(Qt::TextSelectableByMouse);
-    profil_Frequenz_Stillstehend_label->setTextInteractionFlags(Qt::TextSelectableByMouse);
-    profil_Frequenz_Bewegend_label->setTextInteractionFlags(Qt::TextSelectableByMouse);
+    //profil_name_label->setTextInteractionFlags(Qt::TextSelectableByMouse);
+    //profil_Volume_label->setTextInteractionFlags(Qt::TextSelectableByMouse);
+    //profil_Frequenz_Stillstehend_label->setTextInteractionFlags(Qt::TextSelectableByMouse);
+    //profil_Frequenz_Bewegend_label->setTextInteractionFlags(Qt::TextSelectableByMouse);
 
     profil_Volume_label->setAccessibleDescription(getName());
     profil_Frequenz_Stillstehend_label->setAccessibleDescription(getName());
     profil_Frequenz_Bewegend_label->setAccessibleDescription(getName());
 
-    this->setAccessibleDescription(getName());
 
-    profil_Volume_label->setAccessibleName(getName()+profil_Volume_label->text());
-    profil_Frequenz_Stillstehend_label->setAccessibleName(getName()+profil_Frequenz_Stillstehend_label->text());
-    profil_Frequenz_Bewegend_label->setAccessibleName(getName()+profil_Frequenz_Bewegend_label->text());
+    profil_Volume_label->setAccessibleName(profil_Volume_label->text());
+    profil_Frequenz_Stillstehend_label->setAccessibleName(profil_Frequenz_Stillstehend_label->text());
+    profil_Frequenz_Bewegend_label->setAccessibleName(profil_Frequenz_Bewegend_label->text());
+
+    this->setAccessibleName (getName()+
+                                   profil_Volume_label->accessibleName()+
+                                   profil_Frequenz_Bewegend_label->accessibleName()+
+                                   profil_Frequenz_Stillstehend_label->accessibleName());
+
 
     vLayout->addWidget(profil_name_label);
     vLayout->addWidget(profil_Volume_label);
@@ -47,11 +52,9 @@ EinstellungsProfil::EinstellungsProfil(QString name, int Volume, int Frequenz_St
     this->setCheckable(true);
     this->setChecked(false);
 
-    this->setMinimumHeight(120);
-
     QString groupBox_namelabel_stylesheet = "QLabel{color: black;"
-                             "font-weight: bold;"
-                             "line-height: 1.3;}";
+                                            "font-weight: bold;}";
+
 
     QString groupBox_label_stylesheet = "QLabel{color: black;}";
 
@@ -60,6 +63,15 @@ EinstellungsProfil::EinstellungsProfil(QString name, int Volume, int Frequenz_St
     profil_Frequenz_Bewegend_label->setStyleSheet(groupBox_label_stylesheet);
     profil_Frequenz_Stillstehend_label->setStyleSheet(groupBox_label_stylesheet);
 
+    QFont Profil_title_Font("Segoe UI", 20, QFont::Bold);
+    QFont Profil_text_Font("Segoe UI", 15);
+
+    this->setMinimumHeight(Profil_title_Font.pointSize()+ (3*Profil_text_Font.pointSize())+40);
+
+    profil_name_label->setFont(Profil_title_Font);
+    profil_Volume_label->setFont(Profil_text_Font);
+    profil_Frequenz_Bewegend_label->setFont(Profil_text_Font);
+    profil_Frequenz_Stillstehend_label->setFont(Profil_text_Font);
     //TODO: deselect when new profile is selected
     //TODO: Einstellungen zu profil
 
@@ -74,7 +86,5 @@ void EinstellungsProfil::profile_selected(){
 }
 
 void EinstellungsProfil::mousePressEvent(QMouseEvent *event){
-    if(event->type() == QEvent::MouseButtonPress){
-        this->profile_selected();
-    }
+    this->profile_selected();
 }

@@ -7,6 +7,7 @@
 #include <QGroupBox>
 #include <QSpacerItem>
 #include <QMouseEvent>
+#include <QFont>
 
 class EinstellungsProfil : public QGroupBox{
  Q_OBJECT
@@ -27,5 +28,6 @@ protected:
     void mousePressEvent(QMouseEvent * event);
 
 };
+
 
 #endif // EINSTELLUNGSPROFIL_H
