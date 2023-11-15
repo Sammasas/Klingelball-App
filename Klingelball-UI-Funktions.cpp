@@ -64,9 +64,9 @@ void KlingelballUI::createUIProfile(EinstellungsProfil *profil){
 void KlingelballUI::on_profil_from_currentsettings_button_clicked()
 {
     ui->stackedWidget->setCurrentIndex(1);
-    ui->new_profile_volume_label->setText("Lautstärke" + ui->Volume->text());
-    ui->new_profile_Bew_Freq_label->setText("Frequenz-Stillstehend" + ui->Bis_Frequ->text());
-    ui->new_profile_Still_Freq_label->setText("Frequenz-Bewegend" + ui->Von_Frequ->text());
+    ui->new_profile_volume_label->setText("Lautstärke: " + ui->Volume->text());
+    ui->new_profile_Bew_Freq_label->setText("Frequenz-Stillstehend: " + ui->Bis_Frequ->text());
+    ui->new_profile_Still_Freq_label->setText("Frequenz-Bewegend: " + ui->Von_Frequ->text());
 }
 
 
@@ -76,13 +76,21 @@ void KlingelballUI::on_new_profile_button_clicked()
                                                              ui->Volume->value(),
                                                              ui->Von_Frequ->value(),
                                                              ui->Bis_Frequ->value());
+
+
+    Profile_list->append(new_profile);
     createUIProfile(new_profile);
-    Profile_list.append(*new_profile);
 
-
+    connect(new_profile, SIGNAL(profile_selected()), this, SLOT(change_profile_selection()));
 
     ui->new_profile_lineEdit->clear();
     ui->stackedWidget->setCurrentIndex(0);
 }
 
+void KlingelballUI::change_profile_selection()
+{
+    foreach (EinstellungsProfil *profile, *Profile_list) {
+        profile->setChecked(false);
+    }
 
+}

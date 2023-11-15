@@ -74,7 +74,7 @@ QGroupBox::checked{
 }
 
 QGroupBox::indicator{
-    width: 0px;
+
     border: none;
     background: transparent;
 }

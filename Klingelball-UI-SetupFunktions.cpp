@@ -44,11 +44,6 @@ void KlingelballUI::SetupUI(){
     ui->tabWidget->setIconSize(QSize(ui->Volume_UP->height()*0.5, ui->Volume_UP->height()*0.5));
 
     ui->new_profile_button->setFont(dynamicSizeFont);
-
-
-
-
-
     //**********Layout*****************//
 
 

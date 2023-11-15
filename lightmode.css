@@ -59,6 +59,11 @@ QGroupBox{
     background-color: transparent;
 }
 
+QGroupBox::checked{
+    border: 2px solid black;
+    border-radius: 7px;
+}
+
 QGroupBox::indicator{
     width: 0px;
     border: none;

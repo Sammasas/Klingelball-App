@@ -1,6 +1,20 @@
 #include "EinstellungsProfil.h"
 
 
+EinstellungsProfil::EinstellungsProfil(){
+    this->Profil_Name = "Profil";
+    this->Volume = 0;
+    this->Frequenz_Bewegend = 0;
+    this->Frequenz_Stillstehend = 0;
+}
+
+EinstellungsProfil::EinstellungsProfil(const EinstellungsProfil &other){
+   this->Profil_Name = other.Profil_Name;
+   this->Volume = other.Volume;
+   this->Frequenz_Stillstehend = other.Frequenz_Stillstehend;
+   this->Frequenz_Bewegend = other.Frequenz_Bewegend;
+}
+
 EinstellungsProfil::EinstellungsProfil(QString name, int Volume, int Frequenz_Stillstehend, int Frequenz_Bewegend)
     : QGroupBox(){
 
@@ -65,25 +79,32 @@ EinstellungsProfil::EinstellungsProfil(QString name, int Volume, int Frequenz_St
     QFont Profil_title_Font("Segoe UI", 20, QFont::Bold);
     QFont Profil_text_Font("Segoe UI", 15);
 
-    this->setFixedHeight(Profil_title_Font.pointSize()+ (3*Profil_text_Font.pointSize())+40);
+    this->setFixedHeight(Profil_title_Font.pointSize()+ (3*Profil_text_Font.pointSize())+60);
+    //Font cuts in the bottom
 
     profil_name_label->setFont(Profil_title_Font);
     profil_Volume_label->setFont(Profil_text_Font);
     profil_Frequenz_Bewegend_label->setFont(Profil_text_Font);
     profil_Frequenz_Stillstehend_label->setFont(Profil_text_Font);
+
     //TODO: deselect when new profile is selected
     //TODO: Einstellungen zu profil
 
 }
 
-void EinstellungsProfil::profile_selected(){
+void EinstellungsProfil::toggle_profile(){
     if (this->isChecked()){
         this->setChecked(false);
     }else if(!this->isChecked())
         this->setChecked(true);
-
 }
 
 void EinstellungsProfil::mousePressEvent(QMouseEvent *event){
-    this->profile_selected();
+    if (this->isChecked()){
+        this->toggle_profile();
+    }else{
+        emit profile_selected();
+        this->toggle_profile();
+    }
 }
+

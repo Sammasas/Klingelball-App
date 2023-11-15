@@ -27,6 +27,9 @@ public:
     KlingelballUI(QWidget *parent = nullptr);
     ~KlingelballUI();
 
+public slots:
+    void change_profile_selection();
+
 private slots:
     void on_Bis_Frequ_valueChanged(int arg1);
 
@@ -53,6 +56,8 @@ private:
 
     void createUIProfile(EinstellungsProfil *profil);
 
-    QList<EinstellungsProfil> Profile_list;
+    QList<EinstellungsProfil *> *Profile_list;
+
+
 };
 #endif // KLINGELBALLUI_H
