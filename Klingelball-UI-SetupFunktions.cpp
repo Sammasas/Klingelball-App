@@ -3,20 +3,6 @@
 
 
 void KlingelballUI::SetupUI(){
-    /******Buttons*********/
-    ui->Volume_UP->setIconSize(QSize(ui->Volume_UP->height()*0.7, ui->Volume_UP->height()));
-    ui->Volume_Down->setIconSize(QSize(ui->Volume_UP->height()*0.7, ui->Volume_UP->height()));
-
-    ui->Bis_Frequ_Up->setIconSize(QSize(ui->Volume_UP->height()*0.7, ui->Volume_UP->height()));
-    ui->Bis_Frequ_Down->setIconSize(QSize(ui->Volume_UP->height()*0.7, ui->Volume_UP->height()));
-
-    ui->Von_Frequ_Up->setIconSize(QSize(ui->Volume_UP->height()*0.7, ui->Volume_UP->height()));
-    ui->Von_Frequ_Down->setIconSize(QSize(ui->Volume_UP->height()*0.7, ui->Volume_UP->height()));
-
-    /*ui->Helligkeit_Up->setIconSize(QSize(ui->Volume_UP->height()*0.7, ui->Volume_UP->height()));
-    ui->Helligkeit_Down->setIconSize(QSize(ui->Volume_UP->height()*0.7, ui->Volume_UP->height()));
-*/
-    ui->tabWidget->setIconSize(QSize(ui->Volume_UP->height()*0.5, ui->Volume_UP->height()*0.5));
 
     /*****Font************/
     qreal refDpi = 444.;
@@ -42,6 +28,25 @@ void KlingelballUI::SetupUI(){
     QFont dynamicSizeFont("Segoe UI", ui->Volume_UP->height()*0.5, QFont::Bold);
 
 
+    /******Buttons*********/
+    ui->Volume_UP->setIconSize(QSize(ui->Volume_UP->height()*0.7, ui->Volume_UP->height()));
+    ui->Volume_Down->setIconSize(QSize(ui->Volume_UP->height()*0.7, ui->Volume_UP->height()));
+
+    ui->Bis_Frequ_Up->setIconSize(QSize(ui->Volume_UP->height()*0.7, ui->Volume_UP->height()));
+    ui->Bis_Frequ_Down->setIconSize(QSize(ui->Volume_UP->height()*0.7, ui->Volume_UP->height()));
+
+    ui->Von_Frequ_Up->setIconSize(QSize(ui->Volume_UP->height()*0.7, ui->Volume_UP->height()));
+    ui->Von_Frequ_Down->setIconSize(QSize(ui->Volume_UP->height()*0.7, ui->Volume_UP->height()));
+
+    /*ui->Helligkeit_Up->setIconSize(QSize(ui->Volume_UP->height()*0.7, ui->Volume_UP->height()));
+    ui->Helligkeit_Down->setIconSize(QSize(ui->Volume_UP->height()*0.7, ui->Volume_UP->height()));
+*/
+    ui->tabWidget->setIconSize(QSize(ui->Volume_UP->height()*0.5, ui->Volume_UP->height()*0.5));
+
+    ui->new_profile_button->setFont(dynamicSizeFont);
+
+
+
 
 
     //**********Layout*****************//
@@ -64,6 +69,11 @@ void KlingelballUI::SetupUI(){
     ui->Bis_Frequenz_Label->setFont(dynamicSizeFont);
     ui->Von_Frequenz_Label->setFont(dynamicSizeFont);
 
+    ui->new_profile_label->setFont(dynamicSizeFont);
+    ui->new_profile_volume_label->setFont(dynamicSizeFont);
+    ui->new_profile_Bew_Freq_label->setFont(dynamicSizeFont);
+    ui->new_profile_Still_Freq_label->setFont(dynamicSizeFont);
+
     ui->Volume_Label->setTextInteractionFlags(Qt::TextSelectableByMouse );
     ui->Frequenz_Label->setTextInteractionFlags(Qt::TextSelectableByMouse );
     ui->Von_Frequenz_Label->setTextInteractionFlags(Qt::TextSelectableByMouse );
@@ -71,4 +81,8 @@ void KlingelballUI::SetupUI(){
     ui->Aussehen_label->setTextInteractionFlags(Qt::TextSelectableByMouse);
     /************TabWidget************/
     //ui->tabWidget->setFont(dynamicSizeFont);
+
+
+    /************Line Edit************/
+    ui->new_profile_lineEdit->setFont(dynamicSizeFont);
 }

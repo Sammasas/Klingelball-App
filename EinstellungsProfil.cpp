@@ -47,7 +47,6 @@ EinstellungsProfil::EinstellungsProfil(QString name, int Volume, int Frequenz_St
     vLayout->addWidget(profil_Frequenz_Stillstehend_label);
 
     this->setLayout(vLayout);
-    this->setMinimumHeight(120);
 
     this->setCheckable(true);
     this->setChecked(false);
@@ -66,7 +65,7 @@ EinstellungsProfil::EinstellungsProfil(QString name, int Volume, int Frequenz_St
     QFont Profil_title_Font("Segoe UI", 20, QFont::Bold);
     QFont Profil_text_Font("Segoe UI", 15);
 
-    this->setMinimumHeight(Profil_title_Font.pointSize()+ (3*Profil_text_Font.pointSize())+40);
+    this->setFixedHeight(Profil_title_Font.pointSize()+ (3*Profil_text_Font.pointSize())+40);
 
     profil_name_label->setFont(Profil_title_Font);
     profil_Volume_label->setFont(Profil_text_Font);

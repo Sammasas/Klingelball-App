@@ -27,6 +27,10 @@ public:
 protected:
     void mousePressEvent(QMouseEvent * event);
 
+Q_SIGNALS:
+   //TODO signal when profile os selected connect to list to deselect every other profile
+
+
 };
 
 

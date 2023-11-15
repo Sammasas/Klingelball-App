@@ -12,7 +12,7 @@
 #include "EinstellungsProfil.h"
 #include <QScroller>
 #include <QTimer>
-
+#include <QList>
 
 
 QT_BEGIN_NAMESPACE
@@ -39,6 +39,10 @@ private slots:
 
     void on_FontSize_spinBox_valueChanged(int arg1);
 
+    void on_profil_from_currentsettings_button_clicked();
+
+    void on_new_profile_button_clicked();
+
 private:
     Ui::KlingelballUI *ui;
 
@@ -48,5 +52,7 @@ private:
     void SetupUI();
 
     void createUIProfile(EinstellungsProfil *profil);
+
+    QList<EinstellungsProfil> Profile_list;
 };
 #endif // KLINGELBALLUI_H

@@ -57,4 +57,32 @@ void KlingelballUI::on_Darkmode_checkBox_clicked()
 void KlingelballUI::createUIProfile(EinstellungsProfil *profil){
 
     ui->scrollAreaWidgetContents->layout()->addWidget(profil);
+    //TODO add widget on top
 }
+
+
+void KlingelballUI::on_profil_from_currentsettings_button_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(1);
+    ui->new_profile_volume_label->setText("Lautstärke" + ui->Volume->text());
+    ui->new_profile_Bew_Freq_label->setText("Frequenz-Stillstehend" + ui->Bis_Frequ->text());
+    ui->new_profile_Still_Freq_label->setText("Frequenz-Bewegend" + ui->Von_Frequ->text());
+}
+
+
+void KlingelballUI::on_new_profile_button_clicked()
+{
+    EinstellungsProfil *new_profile = new EinstellungsProfil(ui->new_profile_lineEdit->text(),
+                                                             ui->Volume->value(),
+                                                             ui->Von_Frequ->value(),
+                                                             ui->Bis_Frequ->value());
+    createUIProfile(new_profile);
+    Profile_list.append(*new_profile);
+
+
+
+    ui->new_profile_lineEdit->clear();
+    ui->stackedWidget->setCurrentIndex(0);
+}
+
+
