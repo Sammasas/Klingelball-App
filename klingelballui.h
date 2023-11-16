@@ -55,17 +55,25 @@ private:
     Ui::KlingelballUI *ui;
 
     QSoundEffect effect;
-    bool transmitt_profile = false;
+    bool transmit_profile = false;
+
+    QFont *dynamicSizeFont;
+
+    void setup_UI();
+    void setup_font();
+    void setup_labels();
+    void setup_buttons();
+    void setup_spinbox();
+    void setup_lineedit();
 
     void playSoundEffect(int Volume);
-    void SetupUI();
 
     void create_Profile(QString name, int volume, int freq_still, int freq_bew);
     void create_Profile_visualisation(EinstellungsProfil *profil);
     void destroy_Profile_visualisation(EinstellungsProfil *profil);
     QList<EinstellungsProfil *> *Profile_list;
 
-    void set_transmitt_profile(bool b);
+    void set_transmit_profile(bool b);
 
 };
 #endif // KLINGELBALLUI_H
