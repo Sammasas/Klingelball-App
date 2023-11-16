@@ -44,6 +44,7 @@ protected:
 
 Q_SIGNALS:
     void profile_selected();
+    void profile_selection_updated();
 };
 
 

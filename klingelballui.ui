@@ -40,7 +40,7 @@
        <enum>QTabWidget::Rounded</enum>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="Sound_Tab">
        <attribute name="title">
@@ -433,7 +433,7 @@
            <number>0</number>
           </property>
           <widget class="QWidget" name="Profil_page">
-           <layout class="QGridLayout" name="gridLayout" rowminimumheight="0,0">
+           <layout class="QGridLayout" name="gridLayout" rowminimumheight="0,0,0">
             <item row="0" column="0">
              <widget class="QScrollArea" name="scrollArea">
               <property name="verticalScrollBarPolicy">
@@ -450,8 +450,8 @@
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>388</width>
-                 <height>474</height>
+                 <width>406</width>
+                 <height>487</height>
                 </rect>
                </property>
                <layout class="QGridLayout" name="gridLayout_2">
@@ -485,9 +485,17 @@
               </property>
              </widget>
             </item>
+            <item row="2" column="0">
+             <widget class="QPushButton" name="delete_current_profile_button">
+              <property name="text">
+               <string>Ausgewähltes Profil löschen</string>
+              </property>
+             </widget>
+            </item>
            </layout>
            <zorder>profil_from_currentsettings_button</zorder>
            <zorder>scrollArea</zorder>
+           <zorder>delete_current_profile_button</zorder>
           </widget>
           <widget class="QWidget" name="new_profile_page">
            <layout class="QVBoxLayout" name="verticalLayout_7">
@@ -549,7 +557,7 @@
                </font>
               </property>
               <property name="text">
-               <string>Volume: </string>
+               <string>Lautstärke: </string>
               </property>
              </widget>
             </item>
@@ -589,6 +597,13 @@
                </size>
               </property>
              </spacer>
+            </item>
+            <item>
+             <widget class="QPushButton" name="new_profile_cancle_button">
+              <property name="text">
+               <string>Abbrechen</string>
+              </property>
+             </widget>
             </item>
            </layout>
           </widget>
@@ -671,28 +686,6 @@
           </property>
           <property name="tristate">
            <bool>false</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QSpinBox" name="FontSize_spinBox">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Minimum" vsizetype="MinimumExpanding">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-          </property>
-          <property name="buttonSymbols">
-           <enum>QAbstractSpinBox::PlusMinus</enum>
-          </property>
-          <property name="minimum">
-           <number>12</number>
-          </property>
-          <property name="maximum">
-           <number>36</number>
           </property>
          </widget>
         </item>

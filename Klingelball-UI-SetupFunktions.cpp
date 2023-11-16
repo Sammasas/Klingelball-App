@@ -38,12 +38,11 @@ void KlingelballUI::SetupUI(){
     ui->Von_Frequ_Up->setIconSize(QSize(ui->Volume_UP->height()*0.7, ui->Volume_UP->height()));
     ui->Von_Frequ_Down->setIconSize(QSize(ui->Volume_UP->height()*0.7, ui->Volume_UP->height()));
 
-    /*ui->Helligkeit_Up->setIconSize(QSize(ui->Volume_UP->height()*0.7, ui->Volume_UP->height()));
-    ui->Helligkeit_Down->setIconSize(QSize(ui->Volume_UP->height()*0.7, ui->Volume_UP->height()));
-*/
     ui->tabWidget->setIconSize(QSize(ui->Volume_UP->height()*0.5, ui->Volume_UP->height()*0.5));
 
     ui->new_profile_button->setFont(dynamicSizeFont);
+    ui->new_profile_cancle_button->setFont(dynamicSizeFont);
+
     //**********Layout*****************//
 
 

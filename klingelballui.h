@@ -29,6 +29,7 @@ public:
 
 public slots:
     void change_profile_selection();
+    void update_profile_transmittion_state();
 
 private slots:
     void on_Bis_Frequ_valueChanged(int arg1);
@@ -46,18 +47,25 @@ private slots:
 
     void on_new_profile_button_clicked();
 
+    void on_new_profile_cancle_button_clicked();
+
+    void on_delete_current_profile_button_clicked();
+
 private:
     Ui::KlingelballUI *ui;
 
     QSoundEffect effect;
+    bool transmitt_profile = false;
 
     void playSoundEffect(int Volume);
     void SetupUI();
 
-    void createUIProfile(EinstellungsProfil *profil);
-
+    void create_Profile(QString name, int volume, int freq_still, int freq_bew);
+    void create_Profile_visualisation(EinstellungsProfil *profil);
+    void destroy_Profile_visualisation(EinstellungsProfil *profil);
     QList<EinstellungsProfil *> *Profile_list;
 
+    void set_transmitt_profile(bool b);
 
 };
 #endif // KLINGELBALLUI_H

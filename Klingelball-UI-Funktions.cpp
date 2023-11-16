@@ -10,19 +10,17 @@ void KlingelballUI::on_Bis_Frequ_valueChanged(int arg1)
 void KlingelballUI::on_Volume_valueChanged(int arg1)
 {
     QTimer *timer = new QTimer(this);
-    connect(timer, SIGNAL(&QTimer::timeout), this, SLOT(playSoundEffect(arg1)));
+    connect(timer, SIGNAL(&QTimer::timeout), this, SLOT(playSoundEffect()));
     playSoundEffect(ui->Volume->value());
     timer->start(1000);
 }
 
-void KlingelballUI::playSoundEffect(int Volume){
+void KlingelballUI::playSoundEffect(int Volume = 100){
     effect.setSource(QUrl::fromLocalFile(":/SoundFiles/beepV1.wav"));
     effect.setLoopCount(1);
     effect.setVolume((float)Volume/100);
     effect.play();
 }
-
-
 
 
 void KlingelballUI::on_Lightmode_checkBox_clicked()
@@ -54,10 +52,28 @@ void KlingelballUI::on_Darkmode_checkBox_clicked()
     }
 }
 
-void KlingelballUI::createUIProfile(EinstellungsProfil *profil){
+void KlingelballUI::create_Profile_visualisation(EinstellungsProfil *profil){
 
     ui->scrollAreaWidgetContents->layout()->addWidget(profil);
     //TODO add widget on top
+}
+
+
+void KlingelballUI::create_Profile(QString name, int volume, int freq_still, int freq_bew)
+{
+    EinstellungsProfil *new_profile = new EinstellungsProfil(name, volume, freq_still, freq_bew);
+
+    Profile_list->append(new_profile);
+    create_Profile_visualisation(new_profile);
+
+    connect(new_profile, SIGNAL(profile_selected()), this, SLOT(change_profile_selection()));
+    connect(new_profile, SIGNAL(profile_selection_updated()), this, SLOT(update_profile_transmittion_state()));
+}
+
+void KlingelballUI::destroy_Profile_visualisation(EinstellungsProfil *profil)
+{
+    ui->scrollAreaWidgetContents->layout()->removeWidget(profil);
+
 }
 
 
@@ -72,16 +88,11 @@ void KlingelballUI::on_profil_from_currentsettings_button_clicked()
 
 void KlingelballUI::on_new_profile_button_clicked()
 {
-    EinstellungsProfil *new_profile = new EinstellungsProfil(ui->new_profile_lineEdit->text(),
-                                                             ui->Volume->value(),
-                                                             ui->Von_Frequ->value(),
-                                                             ui->Bis_Frequ->value());
+    create_Profile(ui->new_profile_lineEdit->text(),
+                   ui->Volume->value(),
+                   ui->Von_Frequ->value(),
+                   ui->Bis_Frequ->value());
 
-
-    Profile_list->append(new_profile);
-    createUIProfile(new_profile);
-
-    connect(new_profile, SIGNAL(profile_selected()), this, SLOT(change_profile_selection()));
 
     ui->new_profile_lineEdit->clear();
     ui->stackedWidget->setCurrentIndex(0);
@@ -93,4 +104,47 @@ void KlingelballUI::change_profile_selection()
         profile->setChecked(false);
     }
 
+}
+
+
+void KlingelballUI::on_new_profile_cancle_button_clicked()
+{
+   ui->new_profile_lineEdit->clear();
+   ui->stackedWidget->setCurrentIndex(0);
+}
+
+
+void KlingelballUI::on_delete_current_profile_button_clicked()
+{
+    foreach (EinstellungsProfil *profil, *Profile_list) {
+        if(profil->isChecked()){
+            destroy_Profile_visualisation(profil);
+            Profile_list->removeOne(profil);
+            profil->deleteLater();
+        }
+    }
+
+}
+
+void KlingelballUI::set_transmitt_profile(bool b)
+{
+    this->transmitt_profile = b;
+    if (b == false)
+        ui->uebertragen_button->setText("Übertragen");
+    else
+        ui->uebertragen_button->setText(("Profil übertragen"));
+}
+
+void KlingelballUI::update_profile_transmittion_state()
+{
+    bool b = false;
+    foreach (EinstellungsProfil *profil, *Profile_list) {
+        if(profil->isChecked())
+            b = true;
+    }
+
+    if (b)
+      set_transmitt_profile(true);
+    else
+      set_transmitt_profile(false);
 }
