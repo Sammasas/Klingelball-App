@@ -1,13 +1,13 @@
 QPushButton{
     Background: transparent;
-    border: 3px solid black;
-    border-radius: 10px;
-}
-
-QPushButton::pressed{
     border: 2px solid black;
     border-radius: 7px;
+}
 
+QPushButton::pressed{    
+    border: 3px solid black;
+    border-radius: 10px;
+    background-color: #b5b5b5;
 }
 
 QLabel{
@@ -54,14 +54,15 @@ QGroupBox{
     color: black;
     margin-top: 5px;
     font-weight: bold;
-    border: 3px solid black;
-    border-radius: 10px;
+    border: 2px solid black;
+    border-radius: 7px;
     background-color: transparent;
 }
 
 QGroupBox::checked{
-    border: 2px solid black;
-    border-radius: 7px;
+border: 3px solid black;
+border-radius: 10px;
+background-color: #b5b5b5;
 }
 
 QGroupBox::indicator{

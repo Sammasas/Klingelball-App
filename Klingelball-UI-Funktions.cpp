@@ -9,10 +9,7 @@ void KlingelballUI::on_Bis_Frequ_valueChanged(int arg1)
 
 void KlingelballUI::on_Volume_valueChanged(int arg1)
 {
-    QTimer *timer = new QTimer(this);
-    connect(timer, SIGNAL(&QTimer::timeout), this, SLOT(playSoundEffect()));
-    playSoundEffect(ui->Volume->value());
-    timer->start(1000);
+    startTimer(1000);
 }
 
 void KlingelballUI::playSoundEffect(int Volume = 100){
@@ -20,8 +17,15 @@ void KlingelballUI::playSoundEffect(int Volume = 100){
     effect.setLoopCount(1);
     effect.setVolume((float)Volume/100);
     effect.play();
+    emit soundeffect_played();
 }
 
+void KlingelballUI::start_timer(int time){
+    QTimer *timer = new QTimer(this);
+    connect(timer, SIGNAL(&QTimer::timeout), this, SLOT(playSoundEffect()));
+    playSoundEffect(ui->Volume->value());
+    timer->start(time);
+}
 
 void KlingelballUI::on_Lightmode_checkBox_clicked()
 {

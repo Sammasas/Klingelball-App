@@ -13,6 +13,7 @@
 #include <QScroller>
 #include <QTimer>
 #include <QList>
+#include <QScreen>
 
 
 QT_BEGIN_NAMESPACE
@@ -58,6 +59,7 @@ private:
     bool transmit_profile = false;
 
     QFont *dynamicSizeFont;
+    QFont *profile_dynamicSizeFont;
 
     void setup_UI();
     void setup_font();
@@ -65,8 +67,10 @@ private:
     void setup_buttons();
     void setup_spinbox();
     void setup_lineedit();
+    void setup_tabwidget();
 
     void playSoundEffect(int Volume);
+    void start_timer(int time);
 
     void create_Profile(QString name, int volume, int freq_still, int freq_bew);
     void create_Profile_visualisation(EinstellungsProfil *profil);
@@ -75,5 +79,7 @@ private:
 
     void set_transmit_profile(bool b);
 
+Q_SIGNALS:
+    void soundeffect_played();
 };
 #endif // KLINGELBALLUI_H

@@ -15,6 +15,11 @@ KlingelballUI::KlingelballUI(QWidget *parent)
 
     QScroller::grabGesture(ui->scrollArea, QScroller::LeftMouseButtonGesture );
 
+    EinstellungsProfil *test_profil1 = new EinstellungsProfil("Turnsaal", 70, 20, 80);
+    EinstellungsProfil *test_profil2 = new EinstellungsProfil("Sportplatz", 70, 20, 80);
+    create_Profile_visualisation(test_profil1);
+    create_Profile_visualisation(test_profil2);
+
 
 
 }
