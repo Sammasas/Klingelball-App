@@ -130,9 +130,9 @@ void KlingelballUI::on_delete_current_profile_button_clicked()
 
 }
 
-void KlingelballUI::set_transmit_profile(bool b)
+void KlingelballUI::set_transmitt_profile(bool b)
 {
-    this->transmit_profile = b;
+    this->transmitt_profile = b;
     if (b == false)
         ui->uebertragen_button->setText("Übertragen");
     else
@@ -148,7 +148,7 @@ void KlingelballUI::update_profile_transmittion_state()
     }
 
     if (b)
-      set_transmit_profile(true);
+      set_transmitt_profile(true);
     else
-      set_transmit_profile(false);
+      set_transmitt_profile(false);
 }

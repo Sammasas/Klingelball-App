@@ -56,6 +56,7 @@ private:
     Ui::KlingelballUI *ui;
 
     QSoundEffect effect;
+<<<<<<< HEAD
     bool transmit_profile = false;
 
     QFont *dynamicSizeFont;
@@ -71,13 +72,19 @@ private:
 
     void playSoundEffect(int Volume);
     void start_timer(int time);
+=======
+    bool transmitt_profile = false;
+
+    void playSoundEffect(int Volume);
+    void SetupUI();
+>>>>>>> parent of 2243e57 (UI Updates)
 
     void create_Profile(QString name, int volume, int freq_still, int freq_bew);
     void create_Profile_visualisation(EinstellungsProfil *profil);
     void destroy_Profile_visualisation(EinstellungsProfil *profil);
     QList<EinstellungsProfil *> *Profile_list;
 
-    void set_transmit_profile(bool b);
+    void set_transmitt_profile(bool b);
 
 Q_SIGNALS:
     void soundeffect_played();
