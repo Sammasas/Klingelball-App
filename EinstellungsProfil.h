@@ -19,6 +19,18 @@ private:
     int Volume = 0;
     int Frequenz_Stillstehend = 0;
     int Frequenz_Bewegend = 0;
+
+    QLabel *profil_name_label;
+    QLabel *profil_Volume_label;
+    QLabel *profil_Frequenz_Stillstehend_label;
+    QLabel *profil_Frequenz_Bewegend_label;
+
+    QString groupBox_namelabel_stylesheet = "QLabel{color: white;"
+                                            "font-weight: bold;}";
+
+
+    QString groupBox_label_stylesheet = "QLabel{color: white;}";
+    QString groupBox_namelabel_stylesheet_black = "QLabel{color: black;}";
 public:
     EinstellungsProfil();
     EinstellungsProfil(const EinstellungsProfil &other);
@@ -37,6 +49,7 @@ public:
     inline void setFrequenz_Bewegend(int freq)          { this->Frequenz_Bewegend = freq; }
 
     void toggle_profile();
+    void setLabelStylesheet(QString *stylesheet);
 
 
 protected:

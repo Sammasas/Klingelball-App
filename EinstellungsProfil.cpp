@@ -25,10 +25,10 @@ EinstellungsProfil::EinstellungsProfil(QString name, int Volume, int Frequenz_St
 
     QVBoxLayout *vLayout = new QVBoxLayout(this);
 
-    QLabel *profil_name_label = new QLabel(this);
-    QLabel *profil_Volume_label = new QLabel(this);
-    QLabel *profil_Frequenz_Stillstehend_label = new QLabel(this);
-    QLabel *profil_Frequenz_Bewegend_label = new QLabel(this);
+    profil_name_label = new QLabel(this);
+    profil_Volume_label = new QLabel(this);
+    profil_Frequenz_Stillstehend_label = new QLabel(this);
+    profil_Frequenz_Bewegend_label = new QLabel(this);
 
     profil_name_label->setText(getName());
     profil_Volume_label->setText("Volume: " + QString::number(getVolume()) + "%");
@@ -65,14 +65,10 @@ EinstellungsProfil::EinstellungsProfil(QString name, int Volume, int Frequenz_St
     this->setCheckable(true);
     this->setChecked(false);
 
-    QString groupBox_namelabel_stylesheet = "QLabel{color: black;"
-                                            "font-weight: bold;}";
 
-
-    QString groupBox_label_stylesheet = "QLabel{color: black;}";
 
     profil_name_label->setStyleSheet(groupBox_namelabel_stylesheet);
-    profil_Volume_label->setStyleSheet(groupBox_label_stylesheet);
+    profil_Volume_label->setStyleSheet(groupBox_namelabel_stylesheet);
     profil_Frequenz_Bewegend_label->setStyleSheet(groupBox_label_stylesheet);
     profil_Frequenz_Stillstehend_label->setStyleSheet(groupBox_label_stylesheet);
 
@@ -95,8 +91,12 @@ EinstellungsProfil::EinstellungsProfil(QString name, int Volume, int Frequenz_St
 void EinstellungsProfil::toggle_profile(){
     if (this->isChecked()){
         this->setChecked(false);
-    }else if(!this->isChecked())
+        setLabelStylesheet(&groupBox_namelabel_stylesheet);
+    }else if(!this->isChecked()){
         this->setChecked(true);
+        setLabelStylesheet(&groupBox_namelabel_stylesheet_black);
+    }
+
 }
 
 void EinstellungsProfil::mousePressEvent(QMouseEvent *event){
@@ -108,5 +108,13 @@ void EinstellungsProfil::mousePressEvent(QMouseEvent *event){
         this->toggle_profile();
         emit profile_selection_updated();
     }
+}
+
+void EinstellungsProfil::setLabelStylesheet(QString *stylesheet){
+    profil_name_label->setStyleSheet(*stylesheet);
+    profil_Volume_label->setStyleSheet(*stylesheet);
+    profil_Frequenz_Bewegend_label->setStyleSheet(*stylesheet);
+    profil_Frequenz_Stillstehend_label->setStyleSheet(*stylesheet);
+
 }
 

@@ -9,6 +9,7 @@ void KlingelballUI::setup_UI(){
     setup_buttons();
     setup_spinbox();
     setup_lineedit();
+    ui->Settings_Tab->setStyleSheet("QTabBar::tab{padding-right: -40px;}");
 
 }
 
@@ -31,12 +32,6 @@ void KlingelballUI::setup_font(){
     qreal refHeight = 2340.;
     qreal refWidth = 1080.;
 
-    QRect rect = KlingelballUI::geometry();
-
-    qreal height = qMax(rect.width(), rect.height());
-    qreal width = qMin(rect.width(), rect.height());
-
-    qreal dpi = KlingelballUI::logicalDpiX();
     qreal m_ratio = qMin(height/refHeight, width/refWidth);
     qreal m_ratioFont = qMin(height*refDpi/(dpi*refHeight), width*refDpi/(dpi*refWidth));
 
@@ -49,6 +44,9 @@ void KlingelballUI::setup_font(){
 
 void KlingelballUI::setup_buttons()
 {
+    ui->uebertragen_button->setFont(*dynamicSizeFont);
+    ui->uebertragen_button->setStyleSheet("QPushButton{border: 4px solid black;}");
+
     ui->Volume_UP->setIconSize(QSize(ui->Volume_UP->height()*0.7, ui->Volume_UP->height()));
     ui->Volume_Down->setIconSize(QSize(ui->Volume_UP->height()*0.7, ui->Volume_UP->height()));
 
@@ -62,6 +60,10 @@ void KlingelballUI::setup_buttons()
 
     ui->new_profile_button->setFont(*dynamicSizeFont);
     ui->new_profile_cancle_button->setFont(*dynamicSizeFont);
+
+    ui->Volume_UP->setStyleSheet("QPushButton{background-color: #03ad10;}");
+
+
 
 }
 

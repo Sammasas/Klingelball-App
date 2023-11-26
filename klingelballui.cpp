@@ -11,6 +11,10 @@ KlingelballUI::KlingelballUI(QWidget *parent)
     ui->tabWidget->setCurrentIndex(0);
     ui->stackedWidget->setCurrentIndex(0);
     Profile_list = new QList<EinstellungsProfil *>;
+
+
+
+
     setup_UI();
 
     QScroller::grabGesture(ui->scrollArea, QScroller::LeftMouseButtonGesture );

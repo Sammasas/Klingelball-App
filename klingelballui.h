@@ -13,6 +13,7 @@
 #include <QScroller>
 #include <QTimer>
 #include <QList>
+#include <QScreen>
 
 
 QT_BEGIN_NAMESPACE
@@ -74,6 +75,14 @@ private:
     QList<EinstellungsProfil *> *Profile_list;
 
     void set_transmit_profile(bool b);
+
+    QRect rect = KlingelballUI::geometry();
+    QScreen *screen;
+
+    qreal height = qMax(rect.width(), rect.height());
+    qreal width = qMin(rect.width(), rect.height());
+
+    qreal dpi = KlingelballUI::logicalDpiX();
 
 };
 #endif // KLINGELBALLUI_H
