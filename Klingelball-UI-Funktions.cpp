@@ -125,6 +125,7 @@ void KlingelballUI::on_delete_current_profile_button_clicked()
             destroy_Profile_visualisation(profil);
             Profile_list->removeOne(profil);
             profil->deleteLater();
+            update_profile_transmittion_state();
         }
     }
 

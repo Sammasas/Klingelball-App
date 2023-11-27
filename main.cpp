@@ -2,6 +2,7 @@
 
 #include <QApplication>
 #include <QFile>
+#include <QFontDatabase>
 
 int main(int argc, char *argv[])
 {
@@ -13,6 +14,7 @@ int main(int argc, char *argv[])
     styleSheetFile.open(QFile::ReadOnly);
     QString styleSheet = QLatin1String(styleSheetFile.readAll());
     w.setStyleSheet(styleSheet);
+    QFontDatabase::addApplicationFont(":/Font/InterVariable.ttf");
 
     return a.exec();
 }

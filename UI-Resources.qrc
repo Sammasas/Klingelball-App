@@ -15,4 +15,7 @@
         <file>testSine.wav</file>
         <file>beepV1.wav</file>
     </qresource>
+    <qresource prefix="/Font">
+        <file>InterVariable.ttf</file>
+    </qresource>
 </RCC>

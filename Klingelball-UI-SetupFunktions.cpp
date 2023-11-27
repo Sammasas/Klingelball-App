@@ -37,31 +37,41 @@ void KlingelballUI::setup_font(){
 
     QFont serifFont("Times", 16*m_ratioFont, QFont::Bold);
 
-    dynamicSizeFont = new QFont("Segoe UI", ui->Volume_UP->height()*0.5, QFont::Bold);
 
+    testFont = new QFont("segoe UI", ui->Volume_UP->height()*0.5, QFont::Bold);
 }
 
 
 void KlingelballUI::setup_buttons()
 {
     ui->uebertragen_button->setFont(*dynamicSizeFont);
-    ui->uebertragen_button->setStyleSheet("QPushButton{border: 4px solid black;}");
+    /*ui->uebertragen_button->setStyleSheet("QPushButton{border: 4px solid black;}");*/
 
-    ui->Volume_UP->setIconSize(QSize(ui->Volume_UP->height()*0.7, ui->Volume_UP->height()));
-    ui->Volume_Down->setIconSize(QSize(ui->Volume_UP->height()*0.7, ui->Volume_UP->height()));
+    float iconSizeMultiplier = 1.5;
 
-    ui->Bis_Frequ_Up->setIconSize(QSize(ui->Volume_UP->height()*0.7, ui->Volume_UP->height()));
-    ui->Bis_Frequ_Down->setIconSize(QSize(ui->Volume_UP->height()*0.7, ui->Volume_UP->height()));
+    ui->Volume_UP->setIconSize(QSize(ui->Volume_UP->height()*iconSizeMultiplier, ui->Volume_UP->height()));
+    ui->Volume_Down->setIconSize(QSize(ui->Volume_UP->height()*iconSizeMultiplier, ui->Volume_UP->height()));
 
-    ui->Von_Frequ_Up->setIconSize(QSize(ui->Volume_UP->height()*0.7, ui->Volume_UP->height()));
-    ui->Von_Frequ_Down->setIconSize(QSize(ui->Volume_UP->height()*0.7, ui->Volume_UP->height()));
+    ui->Bis_Frequ_Up->setIconSize(QSize(ui->Volume_UP->height()*iconSizeMultiplier, ui->Volume_UP->height()));
+    ui->Bis_Frequ_Down->setIconSize(QSize(ui->Volume_UP->height()*iconSizeMultiplier, ui->Volume_UP->height()));
+
+    ui->Von_Frequ_Up->setIconSize(QSize(ui->Volume_UP->height()*iconSizeMultiplier, ui->Volume_UP->height()));
+    ui->Von_Frequ_Down->setIconSize(QSize(ui->Volume_UP->height()*iconSizeMultiplier, ui->Volume_UP->height()));
 
     ui->tabWidget->setIconSize(QSize(ui->Volume_UP->height()*0.5, ui->Volume_UP->height()*0.5));
 
     ui->new_profile_button->setFont(*dynamicSizeFont);
     ui->new_profile_cancle_button->setFont(*dynamicSizeFont);
 
-    ui->Volume_UP->setStyleSheet("QPushButton{background-color: #03ad10;}");
+    QString bluePushbuttonstyle = "QPushButton{background-color: #0068d0;}"
+                                  "QPushButton::pressed{"
+                                  "Background: #5b5b5b;"
+                                  "border: 2px solid black;"
+                                  "border-radius: 7px;}";
+
+    //ui->Volume_UP->setStyleSheet(bluePushbuttonstyle);
+    //ui->Bis_Frequ_Up->setStyleSheet(bluePushbuttonstyle);
+    //ui->Von_Frequ_Up->setStyleSheet(bluePushbuttonstyle);
 
 
 
@@ -70,6 +80,7 @@ void KlingelballUI::setup_buttons()
 
 void KlingelballUI::setup_labels()
 {
+    dynamicSizeFont = new QFont("Magneto", ui->Volume_UP->height()*0.5, QFont::Bold);
     ui->Volume_Label->setFont(*dynamicSizeFont);
     ui->Frequenz_Label->setFont(*dynamicSizeFont);
     ui->Bis_Frequenz_Label->setFont(*dynamicSizeFont);

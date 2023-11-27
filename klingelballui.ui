@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>448</width>
+    <width>462</width>
     <height>730</height>
    </rect>
   </property>
@@ -40,13 +40,13 @@
        <enum>QTabWidget::Rounded</enum>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="Sound_Tab">
        <attribute name="title">
         <string>Ton</string>
        </attribute>
-       <layout class="QVBoxLayout" name="verticalLayout_3" stretch="0,0">
+       <layout class="QVBoxLayout" name="verticalLayout_3" stretch="0,0,0">
         <property name="sizeConstraint">
          <enum>QLayout::SetNoConstraint</enum>
         </property>
@@ -61,15 +61,16 @@
           <item>
            <widget class="QLabel" name="Volume_Label">
             <property name="sizePolicy">
-             <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+             <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
             </property>
             <property name="font">
              <font>
+              <family>Magneto</family>
               <pointsize>20</pointsize>
-              <bold>true</bold>
+              <bold>false</bold>
              </font>
             </property>
             <property name="text">
@@ -184,36 +185,16 @@
          </layout>
         </item>
         <item>
-         <layout class="QGridLayout" name="Sound_Layout" rowstretch="7,7,10,7,10" columnstretch="0,0">
+         <layout class="QGridLayout" name="Sound_Layout" rowstretch="7,7,10,7,10,0,0" columnstretch="0,0">
           <property name="sizeConstraint">
            <enum>QLayout::SetMaximumSize</enum>
           </property>
           <property name="horizontalSpacing">
-           <number>6</number>
+           <number>20</number>
           </property>
           <property name="verticalSpacing">
            <number>4</number>
           </property>
-          <item row="4" column="1">
-           <widget class="QPushButton" name="Bis_Frequ_Down">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="accessibleName">
-             <string>Bis Frenquenz down</string>
-            </property>
-            <property name="text">
-             <string/>
-            </property>
-            <property name="icon">
-             <iconset resource="UI-Resources.qrc">
-              <normaloff>:/Icons/Chevron_down_inverted.png</normaloff>:/Icons/Chevron_down_inverted.png</iconset>
-            </property>
-           </widget>
-          </item>
           <item row="2" column="1">
            <widget class="QPushButton" name="Bis_Frequ_Up">
             <property name="sizePolicy">
@@ -234,58 +215,6 @@
             </property>
            </widget>
           </item>
-          <item row="3" column="1">
-           <widget class="QSpinBox" name="Bis_Frequ">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="font">
-             <font>
-              <pointsize>20</pointsize>
-              <bold>true</bold>
-             </font>
-            </property>
-            <property name="cursor">
-             <cursorShape>BlankCursor</cursorShape>
-            </property>
-            <property name="mouseTracking">
-             <bool>false</bool>
-            </property>
-            <property name="focusPolicy">
-             <enum>Qt::ClickFocus</enum>
-            </property>
-            <property name="accessibleName">
-             <string>Frequenz bis</string>
-            </property>
-            <property name="frame">
-             <bool>false</bool>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
-            </property>
-            <property name="readOnly">
-             <bool>true</bool>
-            </property>
-            <property name="buttonSymbols">
-             <enum>QAbstractSpinBox::NoButtons</enum>
-            </property>
-            <property name="keyboardTracking">
-             <bool>false</bool>
-            </property>
-            <property name="suffix">
-             <string>%</string>
-            </property>
-            <property name="maximum">
-             <number>100</number>
-            </property>
-            <property name="singleStep">
-             <number>5</number>
-            </property>
-           </widget>
-          </item>
           <item row="1" column="1">
            <widget class="QLabel" name="Bis_Frequenz_Label">
             <property name="font">
@@ -302,43 +231,20 @@
             </property>
            </widget>
           </item>
-          <item row="4" column="0">
-           <widget class="QPushButton" name="Von_Frequ_Down">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="accessibleName">
-             <string>Von Frequenz Down</string>
+          <item row="0" column="0">
+           <widget class="QLabel" name="Frequenz_Label">
+            <property name="font">
+             <font>
+              <pointsize>20</pointsize>
+              <bold>true</bold>
+              <kerning>true</kerning>
+             </font>
             </property>
             <property name="text">
-             <string/>
+             <string>Ton-Frequenz</string>
             </property>
-            <property name="icon">
-             <iconset resource="UI-Resources.qrc">
-              <normaloff>:/Icons/Chevron_down_inverted.png</normaloff>:/Icons/Chevron_down_inverted.png</iconset>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="0">
-           <widget class="QPushButton" name="Von_Frequ_Up">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="accessibleName">
-             <string>Von Frequenz Up</string>
-            </property>
-            <property name="text">
-             <string/>
-            </property>
-            <property name="icon">
-             <iconset resource="UI-Resources.qrc">
-              <normaloff>:/Icons/Chevron_Up_inverted.png</normaloff>:/Icons/Chevron_Up_inverted.png</iconset>
+            <property name="alignment">
+             <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
             </property>
            </widget>
           </item>
@@ -410,24 +316,135 @@
             </property>
            </widget>
           </item>
-          <item row="0" column="0">
-           <widget class="QLabel" name="Frequenz_Label">
+          <item row="2" column="0">
+           <widget class="QPushButton" name="Von_Frequ_Up">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="accessibleName">
+             <string>Von Frequenz Up</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="UI-Resources.qrc">
+              <normaloff>:/Icons/Chevron_Up_inverted.png</normaloff>:/Icons/Chevron_Up_inverted.png</iconset>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="1">
+           <widget class="QPushButton" name="Bis_Frequ_Down">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="accessibleName">
+             <string>Bis Frenquenz down</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="UI-Resources.qrc">
+              <normaloff>:/Icons/Chevron_down_inverted.png</normaloff>:/Icons/Chevron_down_inverted.png</iconset>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <widget class="QSpinBox" name="Bis_Frequ">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
             <property name="font">
              <font>
               <pointsize>20</pointsize>
               <bold>true</bold>
-              <kerning>true</kerning>
              </font>
             </property>
-            <property name="text">
-             <string>Frequenz</string>
+            <property name="cursor">
+             <cursorShape>BlankCursor</cursorShape>
+            </property>
+            <property name="mouseTracking">
+             <bool>false</bool>
+            </property>
+            <property name="focusPolicy">
+             <enum>Qt::ClickFocus</enum>
+            </property>
+            <property name="accessibleName">
+             <string>Frequenz bis</string>
+            </property>
+            <property name="frame">
+             <bool>false</bool>
             </property>
             <property name="alignment">
-             <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+             <set>Qt::AlignCenter</set>
+            </property>
+            <property name="readOnly">
+             <bool>true</bool>
+            </property>
+            <property name="buttonSymbols">
+             <enum>QAbstractSpinBox::NoButtons</enum>
+            </property>
+            <property name="keyboardTracking">
+             <bool>false</bool>
+            </property>
+            <property name="suffix">
+             <string>%</string>
+            </property>
+            <property name="maximum">
+             <number>100</number>
+            </property>
+            <property name="singleStep">
+             <number>5</number>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="0">
+           <widget class="QPushButton" name="Von_Frequ_Down">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="accessibleName">
+             <string>Von Frequenz Down</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="UI-Resources.qrc">
+              <normaloff>:/Icons/Chevron_down_inverted.png</normaloff>:/Icons/Chevron_down_inverted.png</iconset>
             </property>
            </widget>
           </item>
          </layout>
+        </item>
+        <item>
+         <spacer name="verticalSpacer_5">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeType">
+           <enum>QSizePolicy::Preferred</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
         </item>
        </layout>
       </widget>
@@ -462,7 +479,7 @@
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>388</width>
+                 <width>402</width>
                  <height>403</height>
                 </rect>
                </property>

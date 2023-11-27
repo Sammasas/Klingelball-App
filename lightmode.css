@@ -8,14 +8,14 @@ QWidget
 QPushButton{
     color: white;
     Background: #e50616;
-    border: 3px solid black;
-    border-radius: 10px;
+    /*border: 3px solid black;*/
+    border-radius: 25px;
 }
 
 QPushButton::pressed{
     Background: #5b5b5b;
-    border: 2px solid black;
-    border-radius: 7px;
+    /*border: 2px solid black;*/
+    border-radius: 20px;
 
 }
 
@@ -30,7 +30,7 @@ QTabWidget{
 
 
 QTabWidget::pane {
-    border: 4px solid black;
+    /*border: 4px solid black;*/
     border-radius: 5px;
     background: transparent;
 }
@@ -42,7 +42,7 @@ QTabWidget::tab-bar {
 }
 
 QTabBar::tab{
-    border: 2px solid black;
+    /*border: 2px solid black;*/
     margin-left: 10px;
     margin-right: 10px;
     margin-bottom: 5px;
@@ -79,13 +79,12 @@ QGroupBox{
     color: white;
     margin-top: 5px;
     font-weight: bold;
-    border: 3px solid black;
+    /*border: 3px solid black;*/
     border-radius: 10px;
-    background-color: #1a8714;
+    background-color: #0068d0;
 }
 
 QGroupBox::checked{
-    border: 7px solid #1a8714;
     background: transparent;
     border-radius: 7px;
 }

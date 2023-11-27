@@ -59,6 +59,7 @@ private:
     bool transmit_profile = false;
 
     QFont *dynamicSizeFont;
+    QFont *testFont;
 
     void setup_UI();
     void setup_font();
