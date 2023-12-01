@@ -13,8 +13,11 @@ int main(int argc, char *argv[])
     QFile styleSheetFile(":/stylesheet/lightmode.css");
     styleSheetFile.open(QFile::ReadOnly);
     QString styleSheet = QLatin1String(styleSheetFile.readAll());
-    w.setStyleSheet(styleSheet);
     QFontDatabase::addApplicationFont(":/Font/InterVariable.ttf");
+    QFont interVariable("Inter Variable Text", 10, QFont::Bold);
+    w.setFont(interVariable);
+    w.setStyleSheet(styleSheet);
+
 
     return a.exec();
 }

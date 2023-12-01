@@ -21,6 +21,7 @@ QPushButton::pressed{
 
 QLabel{
     Background: transparent;
+
 }
 
 QTabWidget{

@@ -80,7 +80,7 @@ void KlingelballUI::setup_buttons()
 
 void KlingelballUI::setup_labels()
 {
-    dynamicSizeFont = new QFont("Magneto", ui->Volume_UP->height()*0.5, QFont::Bold);
+    dynamicSizeFont = new QFont("segue UI", ui->Volume_UP->height()*0.5, QFont::Bold);
     ui->Volume_Label->setFont(*dynamicSizeFont);
     ui->Frequenz_Label->setFont(*dynamicSizeFont);
     ui->Bis_Frequenz_Label->setFont(*dynamicSizeFont);
