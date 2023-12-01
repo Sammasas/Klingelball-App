@@ -1,5 +1,6 @@
 QT       += core gui
 QT       += multimedia
+QT       += bluetooth
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++17
@@ -12,13 +13,16 @@ CONFIG += c++17
 
 SOURCES += \
     EinstellungsProfil.cpp \
-    Klingelball-UI-Funktions.cpp \
-    Klingelball-UI-SetupFunktions.cpp \
+    Klingelball-BLE-Functions.cpp \
+    Klingelball-UI-Functions.cpp \
+    Klingelball-UI-SetupFunctions.cpp \
+    deviceinfo.cpp \
     main.cpp \
     klingelballui.cpp
 
 HEADERS += \
     EinstellungsProfil.h \
+    deviceinfo.h \
     klingelballui.h
 
 FORMS += \

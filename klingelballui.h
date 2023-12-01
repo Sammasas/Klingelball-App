@@ -14,7 +14,13 @@
 #include <QTimer>
 #include <QList>
 #include <QScreen>
-
+#include <QBluetoothLocalDevice>
+#include <QBluetoothDeviceDiscoveryAgent>
+#include <QBluetoothServer>
+#include <QBluetoothDeviceInfo>
+#include "deviceinfo.h"
+#include <qlowenergycontroller.h>
+#include <QBluetoothPermission>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class KlingelballUI; }
@@ -52,6 +58,8 @@ private slots:
 
     void on_delete_current_profile_button_clicked();
 
+    void on_uebertragen_button_clicked();
+
 private:
     Ui::KlingelballUI *ui;
 
@@ -84,6 +92,22 @@ private:
     qreal width = qMin(rect.width(), rect.height());
 
     qreal dpi = KlingelballUI::logicalDpiX();
+
+
+    /********************************************/
+
+    void printMessage (QString message);
+
+    QBluetoothDeviceDiscoveryAgent *m_deviceDiscoveryAgent;
+
+    void startDeviceDiscovery();
+
+    void addDevice(const QBluetoothDeviceInfo&);
+    void ScanFinished();
+    void ScanError(QBluetoothDeviceDiscoveryAgent::Error);
+
+
+
 
 };
 #endif // KLINGELBALLUI_H
