@@ -1,6 +1,6 @@
 #include "deviceinfo.h"
 
-DeviceInfo::DeviceInfo(QBluetoothDeviceInfo &d){
+DeviceInfo::DeviceInfo(QBluetoothDeviceInfo d){
     this->device = d;
 }
 

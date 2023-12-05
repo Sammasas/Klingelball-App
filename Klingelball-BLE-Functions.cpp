@@ -1,14 +1,35 @@
 #include "klingelballui.h"
 #include "ui_klingelballui.h"
 
+void KlingelballUI::setupBLE(){
 
+    KlingelballServiceUUID = new QBluetoothUuid("4fafc201-1fb5-459e-8fcc-c5c9c331914b");
+    AudioCharacteristicUUID = new QBluetoothUuid("4a78b8dd-a43d-46cf-9270-f6b750a717c8");
+    LightCharacteristicUUID = new QBluetoothUuid("99067788-c62b-489d-82a9-6cbec8a31d07");
+
+    m_deviceDiscoveryAgent = new QBluetoothDeviceDiscoveryAgent(this);
+    m_deviceDiscoveryAgent->setLowEnergyDiscoveryTimeout(15000);
+
+    connect(m_deviceDiscoveryAgent, &QBluetoothDeviceDiscoveryAgent::deviceDiscovered,
+            this, &KlingelballUI::addDevice);
+
+    connect(m_deviceDiscoveryAgent, &QBluetoothDeviceDiscoveryAgent::errorOccurred,
+            this, &KlingelballUI::ScanError);
+
+    connect(m_deviceDiscoveryAgent, &QBluetoothDeviceDiscoveryAgent::finished,
+            this, &KlingelballUI::ScanFinished);
+
+    connect(m_deviceDiscoveryAgent, &QBluetoothDeviceDiscoveryAgent::canceled,
+            this, &KlingelballUI::ScanFinished);
+}
 
 void KlingelballUI::on_uebertragen_button_clicked()
-{
-    qDebug() << "writeCharacteristik";
-    if(KlingelballConnected){
-        qDebug()<<"device still connected attempt to write";
-
+{   
+    if(remoteServiceDiscovered && KlingelballConnected){
+        qDebug() << "writeCharacteristik";
+        m_service->writeCharacteristic(*AudioCharacteristic, QString("hi").toUtf8(), QLowEnergyService::WriteWithResponse);
+    }else{
+        qDebug() << "Klingelball not connected or no remoteservice discovered";
     }
 
 }
@@ -54,11 +75,13 @@ void KlingelballUI::startDeviceDiscovery(){
 
 void KlingelballUI::addDevice(const QBluetoothDeviceInfo &device){
     if(device.coreConfigurations() & QBluetoothDeviceInfo::LowEnergyCoreConfiguration){
-        if(device.name() == "EchoBall"){
-            printMessage(device.name());
-            qDebug() << device.deviceUuid().toString();
+        if(device.name() == "Klingelball"){
+            /*DeviceInfo deviceinfo(device);
+            deviceList->append(&deviceinfo);
+            ui->UIDeviceList->addItem(device.name());*/
+            printMessage("verbinden...");
+            m_deviceDiscoveryAgent->stop();
             connectDevice(device);
-
         }
     }
 }
@@ -103,6 +126,7 @@ void KlingelballUI::ScanError(QBluetoothDeviceDiscoveryAgent::Error error){
 }
 
 void KlingelballUI::connectDevice(QBluetoothDeviceInfo currentdevice){
+    qDebug()<< "connectDevice";
     QBluetoothAddress currentDeviceAddress = currentdevice.address();
     m_controller = QLowEnergyController::createCentral(currentdevice, this);
 
@@ -128,45 +152,45 @@ void KlingelballUI::serviceScanDone(){
 void KlingelballUI::controllerError(QLowEnergyController::Error error){
     switch(error){
         case QLowEnergyController::Error::ConnectionError:
-            qDebug()<<"ConnectionError";
+            qWarning()<<"ConnectionError";
             break;
         case QLowEnergyController::Error::RssiReadError:
-            qDebug()<<"RssiReadError";
+            qWarning()<<"RssiReadError";
             break;
         case QLowEnergyController::Error::UnknownError:
-            qDebug()<<"UnknownError";
+            qWarning()<<"UnknownError";
             break;
 
         case QLowEnergyController::Error::AdvertisingError:
-            qDebug()<<"AdvertisingError";
+            qWarning()<<"AdvertisingError";
             break;
 
         case QLowEnergyController::Error::AuthorizationError:
-            qDebug()<<"AuthorizationError";
+            qWarning()<<"AuthorizationError";
             break;
 
         case QLowEnergyController::Error::InvalidBluetoothAdapterError:
-            qDebug()<<"InvalidBluetoothAdapterError";
+            qWarning()<<"InvalidBluetoothAdapterError";
             break;
 
         case QLowEnergyController::Error::MissingPermissionsError:
-            qDebug()<<"MissingPermissionsError";
+            qWarning()<<"MissingPermissionsError";
             break;
 
         case QLowEnergyController::Error::NetworkError:
-            qDebug()<<"NetworkError";
+            qWarning()<<"NetworkError";
             break;
 
         case QLowEnergyController::Error::NoError:
-            qDebug()<<"NoError";
+            qWarning()<<"NoError";
             break;
 
         case QLowEnergyController::Error::RemoteHostClosedError:
-            qDebug()<<"RemoteHostClosedError";
+            qWarning()<<"RemoteHostClosedError";
             break;
 
         case QLowEnergyController::Error::UnknownRemoteDeviceError:
-            qDebug()<<"UnknownRemoteDeviceError";
+            qWarning()<<"UnknownRemoteDeviceError";
             break;
 
     }
@@ -174,36 +198,52 @@ void KlingelballUI::controllerError(QLowEnergyController::Error error){
 
 void KlingelballUI::deviceConnected(){
     qDebug() << "device connected";
+    printMessage("verbunden!");
     KlingelballConnected = true;
-    m_deviceDiscoveryAgent->stop();
     m_controller->discoverServices();
 }
 
 void KlingelballUI::deviceDisconnected(){
     qDebug() << "device disconnected";
+    delete m_controller;
+    delete m_service;
     KlingelballConnected = false;
+    remoteServiceDiscovered = false;
 }
 
 void KlingelballUI::setupServiceDiscovery(){
     qDebug()<<"setupServiceDiscovery";
 
-    m_service = m_controller->createServiceObject(*KlingelballUUID, this);
+    m_service = m_controller->createServiceObject(*KlingelballServiceUUID, this);
 
-    connect(m_service, SIGNAL(stateChanged(QLowEnergyService::ServiceState)), this, SLOT(KlingelballServiceStatechanged(QLowEnergyService::ServiceState)));
-    connect(m_service, SIGNAL(errorOccurred(QLowEnergyService::ServiceError)), this, SLOT(KlingelballServiceError(QLowEnergyService::ServiceError)));
-    connect(m_service, SIGNAL(characteristicRead(QLowEnergyCharacteristic,QByteArray)), this, SLOT(KlingelballCharacteristicRead(QLowEnergyCharacteristic,QByteArray)));
-    connect(m_service, SIGNAL(characteristicWritten(QLowEnergyCharacteristic,QByteArray)), this, SLOT(KlingelballCharacteristicWritten(QLowEnergyCharacteristic,QByteArray)));
-    connect(m_service, SIGNAL(characteristicChanged(QLowEnergyCharacteristic,QByteArray)), this, SLOT(KlingelballCharacteristicChanged(QLowEnergyCharacteristic,QByteArray)));
-    connect(m_service, SIGNAL(descriptorRead(QLowEnergyDescriptor,QByteArray)), this, SLOT(KlingelballDescriptorRead(QLowEnergyDescriptor,QByteArray)));
-    connect(m_service, SIGNAL(descriptorWritten(QLowEnergyDescriptor,QByteArray)), this, SLOT(KlingelballDescriptorWritten(QLowEnergyDescriptor,QByteArray)));
+    connect(m_service, SIGNAL(stateChanged(QLowEnergyService::ServiceState)), this,
+            SLOT(KlingelballServiceStatechanged(QLowEnergyService::ServiceState)));
+    connect(m_service, SIGNAL(errorOccurred(QLowEnergyService::ServiceError)), this,
+            SLOT(KlingelballServiceError(QLowEnergyService::ServiceError)));
+    connect(m_service, SIGNAL(characteristicRead(QLowEnergyCharacteristic,QByteArray)), this,
+            SLOT(KlingelballCharacteristicRead(QLowEnergyCharacteristic,QByteArray)));
+    connect(m_service, SIGNAL(characteristicWritten(QLowEnergyCharacteristic,QByteArray)), this,
+            SLOT(KlingelballCharacteristicWritten(QLowEnergyCharacteristic,QByteArray)));
+    connect(m_service, SIGNAL(characteristicChanged(QLowEnergyCharacteristic,QByteArray)), this,
+            SLOT(KlingelballCharacteristicChanged(QLowEnergyCharacteristic,QByteArray)));
+    connect(m_service, SIGNAL(descriptorRead(QLowEnergyDescriptor,QByteArray)), this,
+            SLOT(KlingelballDescriptorRead(QLowEnergyDescriptor,QByteArray)));
+    connect(m_service, SIGNAL(descriptorWritten(QLowEnergyDescriptor,QByteArray)), this,
+            SLOT(KlingelballDescriptorWritten(QLowEnergyDescriptor,QByteArray)));
+    qDebug()<<"setupServiceDiscovery:conn done";
 
-    m_service->discoverDetails();
+
+    //qDebug()<<"setupServiceDiscovery:new QLowEnergyCharacteristic";
+    //m_service->discoverDetails();
+    qDebug()<<"setupServiceDiscovery:exit";
+
+
 }
 
 void KlingelballUI::KlingelballServiceStatechanged(QLowEnergyService::ServiceState serviceState){
     switch(serviceState){
     case QLowEnergyService::ServiceState::InvalidService:
-        qDebug("invalid  Service");
+        qWarning("invalid  Service");
         break;
 
     case QLowEnergyService::ServiceState::LocalService:
@@ -216,8 +256,14 @@ void KlingelballUI::KlingelballServiceStatechanged(QLowEnergyService::ServiceSta
 
     case QLowEnergyService::ServiceState::RemoteServiceDiscovered:
         qDebug("Remote Service discovered");
-        AudioCharacteristic = new QLowEnergyCharacteristic(m_service->characteristic(*AudioCharacteristicUUID));
-        m_service->writeCharacteristic(*AudioCharacteristic, QString("hi").toUtf8(), QLowEnergyService::WriteWithResponse);
+        AudioCharacteristic = new QLowEnergyCharacteristic(
+                    m_service->characteristic(*AudioCharacteristicUUID));
+        qDebug()<<"setupServiceDiscovery:new QLowEnergyCharacteristic";
+
+        LightCharacteristic = new QLowEnergyCharacteristic(
+                    m_service->characteristic(*LightCharacteristicUUID));
+
+        remoteServiceDiscovered = true;
         break;
 
     case QLowEnergyService::ServiceState::RemoteServiceDiscovering:
@@ -230,32 +276,32 @@ void KlingelballUI::KlingelballServiceError(QLowEnergyService::ServiceError erro
 
     switch(error){
         case QLowEnergyService::ServiceError::NoError:
-            qDebug("NoError");
-        break;
+            qWarning("NoError");
+            break;
 
-    case QLowEnergyService::ServiceError::OperationError:
-        qDebug("operationError");
-        break;
+        case QLowEnergyService::ServiceError::OperationError:
+            qWarning("operationError");
+            break;
 
-    case QLowEnergyService::ServiceError::CharacteristicReadError:
-        qDebug("CharacteristicReadError");
-        break;
+        case QLowEnergyService::ServiceError::CharacteristicReadError:
+            qWarning("CharacteristicReadError");
+            break;
 
-    case QLowEnergyService::ServiceError::CharacteristicWriteError:
-        qDebug("characteristicWriteError");
-        break;
+        case QLowEnergyService::ServiceError::CharacteristicWriteError:
+            qWarning("characteristicWriteError");
+            break;
 
-    case QLowEnergyService::ServiceError::DescriptorReadError:
-        qDebug("DescriptionReadError");
-        break;
+        case QLowEnergyService::ServiceError::DescriptorReadError:
+            qWarning("DescriptionReadError");
+            break;
 
-    case QLowEnergyService::ServiceError::DescriptorWriteError:
-        qDebug("DescriptorWriteError");
-        break;
+        case QLowEnergyService::ServiceError::DescriptorWriteError:
+            qWarning("DescriptorWriteError");
+            break;
 
-    case QLowEnergyService::ServiceError::UnknownError:
-        qDebug("UnknownError");
-        break;
+        case QLowEnergyService::ServiceError::UnknownError:
+            qWarning("UnknownError");
+            break;
     }
 }
 

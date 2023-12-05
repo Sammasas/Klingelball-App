@@ -109,4 +109,11 @@ QScrollArea{
     border: 3px solid black;
     border-radius: 7px;
 }
+QListWidget::item{
+    background-color: red;
+}
+
+QListWidget::item::selected{
+    background-color: blue;
+}
 

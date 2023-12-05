@@ -61,7 +61,7 @@ private slots:
     void on_Darkmode_checkBox_clicked();
 
 
-    void on_FontSize_spinBox_valueChanged(int arg1);
+    //void on_FontSize_spinBox_valueChanged(int arg1);
 
     void on_profil_from_currentsettings_button_clicked();
 
@@ -113,20 +113,20 @@ private:
 
     /********************************************/
 
-    QBluetoothUuid *KlingelballUUID = new QBluetoothUuid("4fafc201-1fb5-459e-8fcc-c5c9c331914b");
+    QBluetoothUuid *KlingelballServiceUUID;
 
     QLowEnergyCharacteristic *AudioCharacteristic;
-    QBluetoothUuid *AudioCharacteristicUUID = new QBluetoothUuid("4a78b8dd-a43d-46cf-9270-f6b750a717c8");
+    QBluetoothUuid *AudioCharacteristicUUID;
 
     QLowEnergyCharacteristic *LightCharacteristic;
-    QBluetoothUuid *LightCharacteristicUUID = new QBluetoothUuid("99067788-c62b-489d-82a9-6cbec8a31d07");
+    QBluetoothUuid *LightCharacteristicUUID;
 
-    QLowEnergyCharacteristic *TestCharacteristic;
+    /*QLowEnergyCharacteristic *TestCharacteristic;
     QBluetoothUuid *TestCharacteristicUUID = new QBluetoothUuid("a47b99b4-3804-4411-b61c-50852ab7aa2d");
 
     QLowEnergyCharacteristic *OnOffCharacteristic;
     QBluetoothUuid *OnOffCharacteristicUUID = new QBluetoothUuid("beb5483e-36e1-4688-b7f5-ea07361b26a8");
-
+    */
     void printMessage (QString message);
 
     QBluetoothDeviceDiscoveryAgent *m_deviceDiscoveryAgent;
@@ -134,6 +134,7 @@ private:
     QLowEnergyService *m_service;
 
     bool KlingelballConnected = false;
+    bool remoteServiceDiscovered = false;
 
     void startDeviceDiscovery();
 
@@ -144,6 +145,9 @@ private:
     void connectDevice(QBluetoothDeviceInfo currentdevice);
 
     void setupServiceDiscovery();
+    void setupBLE();
+
+    QList<DeviceInfo *> *deviceList;
 
 
 
