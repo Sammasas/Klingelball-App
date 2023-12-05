@@ -25,9 +25,9 @@ void KlingelballUI::setupBLE(){
 
 void KlingelballUI::on_uebertragen_button_clicked()
 {   
-    if(remoteServiceDiscovered && KlingelballConnected){
+    if(remoteServiceDiscovered && KlingelballConnected && !m_service->characteristics().empty()){
         qDebug() << "writeCharacteristik";
-        m_service->writeCharacteristic(*AudioCharacteristic, QString("hi").toUtf8(), QLowEnergyService::WriteWithResponse);
+        m_service->writeCharacteristic(m_service->characteristics().last(), QString("hi").toUtf8(), QLowEnergyService::WriteWithResponse);
     }else{
         qDebug() << "Klingelball not connected or no remoteservice discovered";
     }
@@ -213,8 +213,11 @@ void KlingelballUI::deviceDisconnected(){
 
 void KlingelballUI::setupServiceDiscovery(){
     qDebug()<<"setupServiceDiscovery";
+    for(int i = 0; i < m_controller->services().length(); i++){
+        qDebug()<< m_controller->services()[i];
+    }
 
-    m_service = m_controller->createServiceObject(*KlingelballServiceUUID, this);
+    m_service = m_controller->createServiceObject(m_controller->services().last());
 
     connect(m_service, SIGNAL(stateChanged(QLowEnergyService::ServiceState)), this,
             SLOT(KlingelballServiceStatechanged(QLowEnergyService::ServiceState)));
@@ -232,9 +235,8 @@ void KlingelballUI::setupServiceDiscovery(){
             SLOT(KlingelballDescriptorWritten(QLowEnergyDescriptor,QByteArray)));
     qDebug()<<"setupServiceDiscovery:conn done";
 
+    m_service->discoverDetails();
 
-    //qDebug()<<"setupServiceDiscovery:new QLowEnergyCharacteristic";
-    //m_service->discoverDetails();
     qDebug()<<"setupServiceDiscovery:exit";
 
 
@@ -262,6 +264,13 @@ void KlingelballUI::KlingelballServiceStatechanged(QLowEnergyService::ServiceSta
 
         LightCharacteristic = new QLowEnergyCharacteristic(
                     m_service->characteristic(*LightCharacteristicUUID));
+
+        qDebug() << m_service->characteristics().length();
+
+        for (int i = 0; i < m_service->characteristics().length(); i++){
+            qDebug()<< m_service->characteristics()[i].uuid().toString();
+        }
+
 
         remoteServiceDiscovered = true;
         break;

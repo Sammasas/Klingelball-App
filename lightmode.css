@@ -20,6 +20,7 @@ QPushButton::pressed{
 }
 
 QLabel{
+    color: black;
     Background: transparent;
 
 }
@@ -73,6 +74,7 @@ QTabBar::tab::disabled{
 }
 
 QSpinBox{
+    color: black;
     Background: transparent;
 }
 
