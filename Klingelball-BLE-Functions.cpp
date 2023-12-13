@@ -39,6 +39,7 @@ void KlingelballUI::on_uebertragen_button_clicked()
 
 void KlingelballUI::on_searchKlingelball_clicked()
 {
+    ui->UIDeviceList->clear();
     startDeviceDiscovery();
 }
 
@@ -48,8 +49,19 @@ void KlingelballUI::on_connectKlingelball_clicked()
     for (int i = 0; i < ui->UIDeviceList->count(); i++){
         if(ui->UIDeviceList->item(i)->isSelected()){
             m_deviceDiscoveryAgent->stop();
+
+            qDebug()<<"address: " << deviceList->at(i)->address();
+            //qDebug()<<"name: " << deviceList->at(i)->name();
+
+            QBluetoothDeviceInfo *device = new QBluetoothDeviceInfo(deviceList->at(i)->address(),
+                                                                     "EchoBall",
+                                                                     QBluetoothDeviceInfo::LowEnergyCoreConfiguration);
+
+            /*QBluetoothDeviceInfo device{deviceList->at(i)->address(),
+                        deviceList->at(i)->name(),
+                        QBluetoothDeviceInfo::LowEnergyCoreConfiguration};*/
             qDebug () << "connecting";
-            connectDevice(*(deviceList->at(ui->UIDeviceList->currentRow())));
+            connectDevice(*device);
         }
     }
 }
@@ -100,31 +112,31 @@ void KlingelballUI::ScanError(QBluetoothDeviceDiscoveryAgent::Error error){
     switch(error){
 
     case QBluetoothDeviceDiscoveryAgent::NoError:
-        printMessage("No Error");
+        qWarning("No Error");
     break;
     case QBluetoothDeviceDiscoveryAgent::PoweredOffError:
-        printMessage("Bluetooth turned off");
+        qWarning("Bluetooth turned off");
         break;
     case QBluetoothDeviceDiscoveryAgent::InputOutputError:
-        printMessage("InOut Error");
+        qWarning("InOut Error");
         break;
     case QBluetoothDeviceDiscoveryAgent::InvalidBluetoothAdapterError:
-        printMessage("InvalidAdapter");
+        qWarning("InvalidAdapter");
         break;
     case QBluetoothDeviceDiscoveryAgent::UnsupportedDiscoveryMethod:
-        printMessage("Error 4");
+        qWarning("Error 4");
         break;
     case QBluetoothDeviceDiscoveryAgent::UnsupportedPlatformError:
-        printMessage("Error 5");
+        qWarning("Error 5");
         break;
     case QBluetoothDeviceDiscoveryAgent::LocationServiceTurnedOffError:
-        printMessage("Error 6");
+        qWarning("Error 6");
         break;
     case QBluetoothDeviceDiscoveryAgent::MissingPermissionsError:
-        printMessage("Error 7");
+        qWarning("Error 7");
         break;
     case QBluetoothDeviceDiscoveryAgent::UnknownError:
-        printMessage("Unknown Error");
+        qWarning("Unknown Error");
         break;
     }
 
