@@ -86,10 +86,10 @@ void KlingelballUI::setup_labels()
     ui->Bis_Frequenz_Label->setFont(*dynamicSizeFont);
     ui->Von_Frequenz_Label->setFont(*dynamicSizeFont);
 
-    ui->new_profile_label->setFont(*dynamicSizeFont);
+    /*ui->new_profile_label->setFont(*dynamicSizeFont);
     ui->new_profile_volume_label->setFont(*dynamicSizeFont);
     ui->new_profile_Bew_Freq_label->setFont(*dynamicSizeFont);
-    ui->new_profile_Still_Freq_label->setFont(*dynamicSizeFont);
+    ui->new_profile_Still_Freq_label->setFont(*dynamicSizeFont);*/
 
     ui->Volume_Label->setTextInteractionFlags(Qt::TextSelectableByMouse );
     ui->Frequenz_Label->setTextInteractionFlags(Qt::TextSelectableByMouse );

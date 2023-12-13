@@ -44,3 +44,8 @@ contains(ANDROID_TARGET_ARCH,x86_64) {
     ANDROID_PACKAGE_SOURCE_DIR = \
           $$PWD/android-sources
 }
+
+contains(ANDROID_TARGET_ARCH,arm64-v8a) {
+    ANDROID_PACKAGE_SOURCE_DIR = \
+        $$PWD/android
+}

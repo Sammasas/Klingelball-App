@@ -3,6 +3,8 @@
 
 void KlingelballUI::setupBLE(){
 
+    deviceList = new QList<const QBluetoothDeviceInfo *>;
+
     KlingelballServiceUUID = new QBluetoothUuid("4fafc201-1fb5-459e-8fcc-c5c9c331914b");
     AudioCharacteristicUUID = new QBluetoothUuid("4a78b8dd-a43d-46cf-9270-f6b750a717c8");
     LightCharacteristicUUID = new QBluetoothUuid("99067788-c62b-489d-82a9-6cbec8a31d07");
@@ -43,12 +45,19 @@ void KlingelballUI::on_searchKlingelball_clicked()
 
 void KlingelballUI::on_connectKlingelball_clicked()
 {
-
+    for (int i = 0; i < ui->UIDeviceList->count(); i++){
+        if(ui->UIDeviceList->item(i)->isSelected()){
+            m_deviceDiscoveryAgent->stop();
+            qDebug () << "connecting";
+            connectDevice(*(deviceList->at(ui->UIDeviceList->currentRow())));
+        }
+    }
 }
 
 
 void KlingelballUI::printMessage(QString message){
-    ui->uebertragen_button->setText(message);
+    ui->statusLabel->setText("Status: " + message);
+
 }
 
 void KlingelballUI::startDeviceDiscovery(){
@@ -75,13 +84,9 @@ void KlingelballUI::startDeviceDiscovery(){
 
 void KlingelballUI::addDevice(const QBluetoothDeviceInfo &device){
     if(device.coreConfigurations() & QBluetoothDeviceInfo::LowEnergyCoreConfiguration){
-        if(device.name() == "Klingelball"){
-            /*DeviceInfo deviceinfo(device);
-            deviceList->append(&deviceinfo);
-            ui->UIDeviceList->addItem(device.name());*/
-            printMessage("verbinden...");
-            m_deviceDiscoveryAgent->stop();
-            connectDevice(device);
+        if(device.name() == "Klingelball" || device.name() == "EchoBall"){
+            deviceList->append(&device);
+            ui->UIDeviceList->addItem(device.name());
         }
     }
 }
@@ -125,7 +130,7 @@ void KlingelballUI::ScanError(QBluetoothDeviceDiscoveryAgent::Error error){
 
 }
 
-void KlingelballUI::connectDevice(QBluetoothDeviceInfo currentdevice){
+void KlingelballUI::connectDevice(const QBluetoothDeviceInfo currentdevice){
     qDebug()<< "connectDevice";
     QBluetoothAddress currentDeviceAddress = currentdevice.address();
     m_controller = QLowEnergyController::createCentral(currentdevice, this);
@@ -209,6 +214,12 @@ void KlingelballUI::deviceDisconnected(){
     delete m_service;
     KlingelballConnected = false;
     remoteServiceDiscovered = false;
+
+    for(int i = 0; i < ui->UIDeviceList->count(); i ++){
+        if(ui->UIDeviceList->takeItem(i)->text() == m_controller->remoteName()){
+            ui->UIDeviceList->removeItemWidget(ui->UIDeviceList->takeItem(i));
+        }
+    }
 }
 
 void KlingelballUI::setupServiceDiscovery(){

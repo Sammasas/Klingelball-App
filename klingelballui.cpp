@@ -16,8 +16,7 @@ KlingelballUI::KlingelballUI(QWidget *parent)
     QScroller::grabGesture(ui->scrollArea, QScroller::LeftMouseButtonGesture );
 
     setupBLE();
-    ui->UIDeviceList->addItem("Klingelball 1");
-    ui->UIDeviceList->addItem("Klingelball 2");
+
 
 
 

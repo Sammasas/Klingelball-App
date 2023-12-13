@@ -6,10 +6,10 @@
 #include <QObject>
 
 
-class DeviceInfo: QObject
+class DeviceInfo
 
 {
-    Q_OBJECT
+
 private:
     QBluetoothDeviceInfo device;
 
@@ -17,7 +17,7 @@ public:
     DeviceInfo(QBluetoothDeviceInfo d);
     QString getAddress();
     QString getName(){ return device.name();}
-    QBluetoothDeviceInfo getDevice();
+    QBluetoothDeviceInfo getDevice(){return device;};
     void setDevice(const QBluetoothDeviceInfo &dev);
 };
 

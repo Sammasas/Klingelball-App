@@ -142,13 +142,12 @@ private:
     void ScanFinished();
     void ScanError(QBluetoothDeviceDiscoveryAgent::Error);
 
-    void connectDevice(QBluetoothDeviceInfo currentdevice);
+    void connectDevice(const QBluetoothDeviceInfo currentdevice);
 
     void setupServiceDiscovery();
     void setupBLE();
 
-    QList<DeviceInfo *> *deviceList;
-
+    QList<const QBluetoothDeviceInfo *> *deviceList;
 
 
 
