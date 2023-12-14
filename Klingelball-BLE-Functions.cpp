@@ -3,7 +3,7 @@
 
 void KlingelballUI::setupBLE(){
 
-    deviceList = new QList<const QBluetoothDeviceInfo *>;
+    deviceList = new QList<DeviceInfo *>;
 
     KlingelballServiceUUID = new QBluetoothUuid("4fafc201-1fb5-459e-8fcc-c5c9c331914b");
     AudioCharacteristicUUID = new QBluetoothUuid("4a78b8dd-a43d-46cf-9270-f6b750a717c8");
@@ -29,7 +29,11 @@ void KlingelballUI::on_uebertragen_button_clicked()
 {   
     if(remoteServiceDiscovered && KlingelballConnected && !m_service->characteristics().empty()){
         qDebug() << "writeCharacteristik";
-        m_service->writeCharacteristic(m_service->characteristics().last(), QString("hi").toUtf8(), QLowEnergyService::WriteWithResponse);
+
+        for (int i = 0; i < m_service->characteristics().count(); i++){
+            m_service->writeCharacteristic(m_service->characteristics().at(i), QString("").toUtf8(), QLowEnergyService::WriteWithResponse);
+        }
+
     }else{
         qDebug() << "Klingelball not connected or no remoteservice discovered";
     }
@@ -50,18 +54,8 @@ void KlingelballUI::on_connectKlingelball_clicked()
         if(ui->UIDeviceList->item(i)->isSelected()){
             m_deviceDiscoveryAgent->stop();
 
-            qDebug()<<"address: " << deviceList->at(i)->address();
-            //qDebug()<<"name: " << deviceList->at(i)->name();
-
-            QBluetoothDeviceInfo *device = new QBluetoothDeviceInfo(deviceList->at(i)->address(),
-                                                                     "EchoBall",
-                                                                     QBluetoothDeviceInfo::LowEnergyCoreConfiguration);
-
-            /*QBluetoothDeviceInfo device{deviceList->at(i)->address(),
-                        deviceList->at(i)->name(),
-                        QBluetoothDeviceInfo::LowEnergyCoreConfiguration};*/
             qDebug () << "connecting";
-            connectDevice(*device);
+            //connectDevice(deviceList->at(i)->getDevice());
         }
     }
 }
@@ -97,8 +91,11 @@ void KlingelballUI::startDeviceDiscovery(){
 void KlingelballUI::addDevice(const QBluetoothDeviceInfo &device){
     if(device.coreConfigurations() & QBluetoothDeviceInfo::LowEnergyCoreConfiguration){
         if(device.name() == "Klingelball" || device.name() == "EchoBall"){
-            deviceList->append(&device);
+            DeviceInfo devInfo{device};
+            deviceList->append(&devInfo);
             ui->UIDeviceList->addItem(device.name());
+            connectDevice(&device);
+            m_deviceDiscoveryAgent->stop();
         }
     }
 }
@@ -142,10 +139,10 @@ void KlingelballUI::ScanError(QBluetoothDeviceDiscoveryAgent::Error error){
 
 }
 
-void KlingelballUI::connectDevice(const QBluetoothDeviceInfo currentdevice){
+void KlingelballUI::connectDevice(const QBluetoothDeviceInfo *currentdevice){
     qDebug()<< "connectDevice";
-    QBluetoothAddress currentDeviceAddress = currentdevice.address();
-    m_controller = QLowEnergyController::createCentral(currentdevice, this);
+    QBluetoothAddress currentDeviceAddress = currentdevice->address();
+    m_controller = QLowEnergyController::createCentral(*currentdevice, this);
 
     connect(m_controller, SIGNAL(serviceDiscovered(QBluetoothUuid)), this, SLOT(serviceDiscovered(QBluetoothUuid)));
     connect(m_controller, SIGNAL(discoveryFinished()), this, SLOT(serviceScanDone()));
@@ -167,6 +164,7 @@ void KlingelballUI::serviceScanDone(){
 }
 
 void KlingelballUI::controllerError(QLowEnergyController::Error error){
+    printMessage("Error");
     switch(error){
         case QLowEnergyController::Error::ConnectionError:
             qWarning()<<"ConnectionError";
@@ -227,11 +225,11 @@ void KlingelballUI::deviceDisconnected(){
     KlingelballConnected = false;
     remoteServiceDiscovered = false;
 
-    for(int i = 0; i < ui->UIDeviceList->count(); i ++){
+    /*for(int i = 0; i < ui->UIDeviceList->count(); i ++){
         if(ui->UIDeviceList->takeItem(i)->text() == m_controller->remoteName()){
             ui->UIDeviceList->removeItemWidget(ui->UIDeviceList->takeItem(i));
         }
-    }
+    }*/
 }
 
 void KlingelballUI::setupServiceDiscovery(){

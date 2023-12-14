@@ -459,7 +459,7 @@
         <item>
          <widget class="QStackedWidget" name="stackedWidget">
           <property name="currentIndex">
-           <number>1</number>
+           <number>0</number>
           </property>
           <widget class="QWidget" name="Profil_page">
            <layout class="QGridLayout" name="gridLayout" rowstretch="0,0,0" rowminimumheight="0,0,0">
@@ -479,8 +479,8 @@
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>402</width>
-                 <height>403</height>
+                 <width>420</width>
+                 <height>440</height>
                 </rect>
                </property>
                <layout class="QGridLayout" name="gridLayout_2">
@@ -772,7 +772,7 @@
           <property name="minimumSize">
            <size>
             <width>0</width>
-            <height>40</height>
+            <height>50</height>
            </size>
           </property>
           <property name="font">
@@ -790,7 +790,7 @@
           <property name="minimumSize">
            <size>
             <width>0</width>
-            <height>40</height>
+            <height>50</height>
            </size>
           </property>
           <property name="font">

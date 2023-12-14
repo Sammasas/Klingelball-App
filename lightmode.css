@@ -86,10 +86,12 @@ QGroupBox{
     /*border: 3px solid black;*/
     border-radius: 10px;
     background-color: #0068d0;
+
 }
 
 QGroupBox::checked{
-    background: transparent;
+    background-color: #5b5b5b;
+    color: white;
     border-radius: 7px;
 }
 

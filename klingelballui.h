@@ -77,6 +77,8 @@ private slots:
 
     void on_connectKlingelball_clicked();
 
+    void on_tabWidget_currentChanged(int index);
+
 private:
     Ui::KlingelballUI *ui;
 
@@ -142,12 +144,12 @@ private:
     void ScanFinished();
     void ScanError(QBluetoothDeviceDiscoveryAgent::Error);
 
-    void connectDevice(const QBluetoothDeviceInfo currentdevice);
+    void connectDevice(const QBluetoothDeviceInfo *currentdevice);
 
     void setupServiceDiscovery();
     void setupBLE();
 
-    QList<const QBluetoothDeviceInfo *> *deviceList;
+    QList<DeviceInfo *> *deviceList;
 
 
 
