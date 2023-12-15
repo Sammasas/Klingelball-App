@@ -123,6 +123,12 @@ private:
     QLowEnergyCharacteristic *LightCharacteristic;
     QBluetoothUuid *LightCharacteristicUUID;
 
+    QLowEnergyCharacteristic *TestCharactersitic;
+    QBluetoothUuid *TestCharacteristicUUID;
+
+    QLowEnergyCharacteristic *Test2Characteristic;
+    QBluetoothUuid *Test2CharacteristicUUID;
+
     /*QLowEnergyCharacteristic *TestCharacteristic;
     QBluetoothUuid *TestCharacteristicUUID = new QBluetoothUuid("a47b99b4-3804-4411-b61c-50852ab7aa2d");
 

@@ -781,7 +781,7 @@
            </font>
           </property>
           <property name="text">
-           <string>Klingelball suchen</string>
+           <string>Klingelball verbinden</string>
           </property>
          </widget>
         </item>
@@ -799,7 +799,7 @@
            </font>
           </property>
           <property name="text">
-           <string>Klingelball verbinden</string>
+           <string>Klingelball trennen</string>
           </property>
          </widget>
         </item>

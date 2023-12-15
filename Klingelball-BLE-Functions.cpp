@@ -8,6 +8,8 @@ void KlingelballUI::setupBLE(){
     KlingelballServiceUUID = new QBluetoothUuid("4fafc201-1fb5-459e-8fcc-c5c9c331914b");
     AudioCharacteristicUUID = new QBluetoothUuid("4a78b8dd-a43d-46cf-9270-f6b750a717c8");
     LightCharacteristicUUID = new QBluetoothUuid("99067788-c62b-489d-82a9-6cbec8a31d07");
+    TestCharacteristicUUID = new QBluetoothUuid("beb5483e-36e1-4688-b7f5-ea07361b26a8");
+    Test2CharacteristicUUID = new QBluetoothUuid("a66c99c9-7c02-45b3-8c6f-6066d9d508ae");
 
     m_deviceDiscoveryAgent = new QBluetoothDeviceDiscoveryAgent(this);
     m_deviceDiscoveryAgent->setLowEnergyDiscoveryTimeout(15000);
@@ -29,9 +31,17 @@ void KlingelballUI::on_uebertragen_button_clicked()
 {   
     if(remoteServiceDiscovered && KlingelballConnected && !m_service->characteristics().empty()){
         qDebug() << "writeCharacteristik";
-
+        uint8_t i = 255;
+        unsigned char c = 0;
+        c = (char)i;
+        QByteArray a(sizeof(c), c);
+        a.append(ui->Volume->value());
+        a.append(ui->Bis_Frequ->value());
+        a.append(ui->Von_Frequ->value());
         for (int i = 0; i < m_service->characteristics().count(); i++){
-            m_service->writeCharacteristic(m_service->characteristics().at(i), QString("").toUtf8(), QLowEnergyService::WriteWithResponse);
+            qDebug() << "writing Characteristic: " << i;
+            printMessage("writing characteristic: " + QString::number(i));
+            m_service->writeCharacteristic(m_service->characteristics().at(i), a, QLowEnergyService::WriteWithResponse);
         }
 
     }else{
@@ -43,6 +53,9 @@ void KlingelballUI::on_uebertragen_button_clicked()
 
 void KlingelballUI::on_searchKlingelball_clicked()
 {
+    if(KlingelballConnected){
+        m_controller->disconnectFromDevice();
+    }
     ui->UIDeviceList->clear();
     startDeviceDiscovery();
 }
@@ -50,13 +63,16 @@ void KlingelballUI::on_searchKlingelball_clicked()
 
 void KlingelballUI::on_connectKlingelball_clicked()
 {
-    for (int i = 0; i < ui->UIDeviceList->count(); i++){
+    /*for (int i = 0; i < ui->UIDeviceList->count(); i++){
         if(ui->UIDeviceList->item(i)->isSelected()){
             m_deviceDiscoveryAgent->stop();
 
             qDebug () << "connecting";
             //connectDevice(deviceList->at(i)->getDevice());
         }
+    }*/
+    if(KlingelballConnected){
+        m_controller->disconnectFromDevice();
     }
 }
 
@@ -168,6 +184,15 @@ void KlingelballUI::controllerError(QLowEnergyController::Error error){
     switch(error){
         case QLowEnergyController::Error::ConnectionError:
             qWarning()<<"ConnectionError";
+            printMessage("Disconnected");
+            KlingelballConnected = false;
+            remoteServiceDiscovered = false;
+
+            for(int i = 0; i < ui->UIDeviceList->count(); i ++){
+                if(ui->UIDeviceList->takeItem(i)->text() == m_controller->remoteName()){
+                    ui->UIDeviceList->removeItemWidget(ui->UIDeviceList->takeItem(i));
+                }
+            }
             break;
         case QLowEnergyController::Error::RssiReadError:
             qWarning()<<"RssiReadError";
@@ -219,17 +244,18 @@ void KlingelballUI::deviceConnected(){
 }
 
 void KlingelballUI::deviceDisconnected(){
+    printMessage("device disconnected");
     qDebug() << "device disconnected";
     delete m_controller;
     delete m_service;
     KlingelballConnected = false;
     remoteServiceDiscovered = false;
 
-    /*for(int i = 0; i < ui->UIDeviceList->count(); i ++){
+    for(int i = 0; i < ui->UIDeviceList->count(); i ++){
         if(ui->UIDeviceList->takeItem(i)->text() == m_controller->remoteName()){
             ui->UIDeviceList->removeItemWidget(ui->UIDeviceList->takeItem(i));
         }
-    }*/
+    }
 }
 
 void KlingelballUI::setupServiceDiscovery(){
@@ -286,12 +312,18 @@ void KlingelballUI::KlingelballServiceStatechanged(QLowEnergyService::ServiceSta
         LightCharacteristic = new QLowEnergyCharacteristic(
                     m_service->characteristic(*LightCharacteristicUUID));
 
+        TestCharactersitic = new QLowEnergyCharacteristic(
+                    m_service->characteristic(*TestCharacteristicUUID));
+
+        Test2Characteristic = new QLowEnergyCharacteristic(
+                    m_service->characteristic(*Test2CharacteristicUUID));
+
         qDebug() << m_service->characteristics().length();
 
         for (int i = 0; i < m_service->characteristics().length(); i++){
             qDebug()<< m_service->characteristics()[i].uuid().toString();
         }
-
+        printMessage("Charactersitics found!");
 
         remoteServiceDiscovered = true;
         break;
@@ -319,6 +351,7 @@ void KlingelballUI::KlingelballServiceError(QLowEnergyService::ServiceError erro
 
         case QLowEnergyService::ServiceError::CharacteristicWriteError:
             qWarning("characteristicWriteError");
+            printMessage("Write Error!");
             break;
 
         case QLowEnergyService::ServiceError::DescriptorReadError:
@@ -339,7 +372,7 @@ void KlingelballUI::KlingelballCharacteristicRead(QLowEnergyCharacteristic chara
 
 void KlingelballUI::KlingelballCharacteristicWritten(QLowEnergyCharacteristic characteristic, QByteArray data){
     qDebug()<< "characteristicWritten";
-    qDebug() << data.toStdString();
+    qDebug() << data;
     printMessage("über. success!!");
 }
 

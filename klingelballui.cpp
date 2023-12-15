@@ -16,7 +16,7 @@ KlingelballUI::KlingelballUI(QWidget *parent)
     QScroller::grabGesture(ui->scrollArea, QScroller::LeftMouseButtonGesture );
 
     setupBLE();
-    ui->connectKlingelball->setDisabled(true);
+    //ui->connectKlingelball->setDisabled(true);
 }
 
 KlingelballUI::~KlingelballUI()
