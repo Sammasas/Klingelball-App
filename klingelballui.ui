@@ -31,16 +31,16 @@
        </font>
       </property>
       <property name="accessibleName">
-       <string>Einstellungen</string>
+       <string/>
       </property>
       <property name="accessibleDescription">
-       <string>Einstellungen</string>
+       <string/>
       </property>
       <property name="tabShape">
        <enum>QTabWidget::Rounded</enum>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="Sound_Tab">
        <attribute name="title">
@@ -93,7 +93,7 @@
              </sizepolicy>
             </property>
             <property name="accessibleName">
-             <string>Volume Up</string>
+             <string>Lautstärke erhöhen</string>
             </property>
             <property name="styleSheet">
              <string notr="true"/>
@@ -134,7 +134,7 @@
              <enum>Qt::ClickFocus</enum>
             </property>
             <property name="accessibleName">
-             <string>Volume</string>
+             <string>Lautstärke %</string>
             </property>
             <property name="frame">
              <bool>false</bool>
@@ -171,7 +171,7 @@
              </sizepolicy>
             </property>
             <property name="accessibleName">
-             <string>Volume Down</string>
+             <string>Lautstärke verringern</string>
             </property>
             <property name="text">
              <string/>
@@ -204,7 +204,7 @@
              </sizepolicy>
             </property>
             <property name="accessibleName">
-             <string>Bis Frequenz Up</string>
+             <string>Bewegende Frequenz erhöhen</string>
             </property>
             <property name="text">
              <string/>
@@ -285,7 +285,7 @@
              <enum>Qt::ClickFocus</enum>
             </property>
             <property name="accessibleName">
-             <string>Frequenz von</string>
+             <string>Stillstehende Frequenz %</string>
             </property>
             <property name="wrapping">
              <bool>false</bool>
@@ -325,7 +325,7 @@
              </sizepolicy>
             </property>
             <property name="accessibleName">
-             <string>Von Frequenz Up</string>
+             <string>Stillstehende Frequenz erhöhen</string>
             </property>
             <property name="text">
              <string/>
@@ -345,7 +345,7 @@
              </sizepolicy>
             </property>
             <property name="accessibleName">
-             <string>Bis Frenquenz down</string>
+             <string>Bewegende Frequenz verringern</string>
             </property>
             <property name="text">
              <string/>
@@ -380,7 +380,7 @@
              <enum>Qt::ClickFocus</enum>
             </property>
             <property name="accessibleName">
-             <string>Frequenz bis</string>
+             <string>Bewegende Frequenz %</string>
             </property>
             <property name="frame">
              <bool>false</bool>
@@ -398,7 +398,7 @@
              <bool>false</bool>
             </property>
             <property name="suffix">
-             <string>%</string>
+             <string notr="true">%</string>
             </property>
             <property name="maximum">
              <number>100</number>
@@ -417,7 +417,7 @@
              </sizepolicy>
             </property>
             <property name="accessibleName">
-             <string>Von Frequenz Down</string>
+             <string>Stillstehende Frequenz verringern</string>
             </property>
             <property name="text">
              <string/>
@@ -459,7 +459,7 @@
         <item>
          <widget class="QStackedWidget" name="stackedWidget">
           <property name="currentIndex">
-           <number>0</number>
+           <number>1</number>
           </property>
           <widget class="QWidget" name="Profil_page">
            <layout class="QGridLayout" name="gridLayout" rowstretch="0,0,0" rowminimumheight="0,0,0">
@@ -479,8 +479,8 @@
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>420</width>
-                 <height>440</height>
+                 <width>402</width>
+                 <height>403</height>
                 </rect>
                </property>
                <layout class="QGridLayout" name="gridLayout_2">
@@ -750,6 +750,9 @@
         </item>
         <item>
          <widget class="QListWidget" name="UIDeviceList">
+          <property name="accessibleName">
+           <string/>
+          </property>
           <property name="currentRow">
            <number>-1</number>
           </property>

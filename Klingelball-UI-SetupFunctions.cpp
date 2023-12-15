@@ -10,7 +10,12 @@ void KlingelballUI::setup_UI(){
     setup_spinbox();
     setup_lineedit();
     ui->Settings_Tab->setStyleSheet("QTabBar::tab{padding-right: -40px;}");
-
+    ui->tabWidget->setFocusPolicy(Qt::NoFocus);
+    ui->Settings_Tab->setFocusPolicy(Qt::NoFocus);
+    ui->Profile_Tab->setFocusPolicy(Qt::NoFocus);
+    ui->Sound_Tab->setFocusPolicy(Qt::NoFocus);
+    ui->centralwidget->setFocusPolicy(Qt::NoFocus);
+    ui->tabWidget->tabBar()->setAccessibleTabName(2, "Einstellungen");
 }
 
 
@@ -86,14 +91,18 @@ void KlingelballUI::setup_labels()
     ui->Bis_Frequenz_Label->setFont(*dynamicSizeFont);
     ui->Von_Frequenz_Label->setFont(*dynamicSizeFont);
 
-    /*ui->new_profile_label->setFont(*dynamicSizeFont);
-    ui->new_profile_volume_label->setFont(*dynamicSizeFont);
-    ui->new_profile_Bew_Freq_label->setFont(*dynamicSizeFont);
-    ui->new_profile_Still_Freq_label->setFont(*dynamicSizeFont);*/
+    ui->new_profile_label->setFont(*dynamicSizeFont);
+    ui->new_profile_label->setTextInteractionFlags(Qt::TextSelectableByMouse );
+    ui->new_profile_volume_label->setTextInteractionFlags(Qt::TextSelectableByMouse );
+    ui->new_profile_Bew_Freq_label->setTextInteractionFlags(Qt::TextSelectableByMouse );
+    ui->new_profile_Still_Freq_label->setTextInteractionFlags(Qt::TextSelectableByMouse );
+
 
     ui->Volume_Label->setTextInteractionFlags(Qt::TextSelectableByMouse );
     ui->Frequenz_Label->setTextInteractionFlags(Qt::TextSelectableByMouse );
     ui->Von_Frequenz_Label->setTextInteractionFlags(Qt::TextSelectableByMouse );
     ui->Bis_Frequenz_Label->setTextInteractionFlags(Qt::TextSelectableByMouse );
     ui->Aussehen_label->setTextInteractionFlags(Qt::TextSelectableByMouse);
+
+    ui->statusLabel->setTextInteractionFlags(Qt::TextSelectableByMouse );
 }
