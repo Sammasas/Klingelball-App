@@ -49,21 +49,21 @@ QTabBar::tab{
     margin-left: 10px;
     margin-right: 10px;
     margin-bottom: 5px;
+    margin-top: 10px;
     width: 100px;
 }
 
-QTabBar::tab:selected {
-    color: black;
+QTabBar::tab:selected {   
+    color: white;
     background: transparent;
+    background: #e50616;
     border-radius: 5px;
 }
 
 QTabBar::tab:!selected {
-
-    color: white;
-    background: #e50616;
+    color: black;
+    background: transparent;
     border-radius: 5px;
-
 }
 
 QTabBar::tab::disabled{
