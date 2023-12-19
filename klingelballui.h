@@ -21,6 +21,7 @@
 #include "deviceinfo.h"
 #include <qlowenergycontroller.h>
 #include <QBluetoothPermission>
+#include <QBluetoothLocalDevice>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class KlingelballUI; }

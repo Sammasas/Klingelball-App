@@ -5,6 +5,11 @@ void KlingelballUI::setupBLE(){
 
     deviceList = new QList<DeviceInfo *>;
 
+    QBluetoothLocalDevice localDevice;
+    if(localDevice.isValid()){
+        localDevice.powerOn();
+    }
+
     KlingelballServiceUUID = new QBluetoothUuid("4fafc201-1fb5-459e-8fcc-c5c9c331914b");
     AudioCharacteristicUUID = new QBluetoothUuid("4a78b8dd-a43d-46cf-9270-f6b750a717c8");
     LightCharacteristicUUID = new QBluetoothUuid("99067788-c62b-489d-82a9-6cbec8a31d07");
@@ -32,23 +37,14 @@ void KlingelballUI::on_uebertragen_button_clicked()
     if(remoteServiceDiscovered && KlingelballConnected && !m_service->characteristics().empty()){
         qDebug() << "writeCharacteristik";
 
-        QByteArray a;
-        a.resize(4);
-        a[0] = 0;
-        a[1] = (uint8_t)ui->Volume->value();
-        a[2] = (uint8_t)ui->Bis_Frequ->value();
-        a[3] = (uint8_t)ui->Von_Frequ->value();
-
-        a[0] = generatePruefziffer(a);
-
-
-        qDebug() << (int)a[0];
-        qDebug() << a.toInt();
-
         for (int i = 0; i < m_service->characteristics().count(); i++){
             qDebug() << "writing Characteristic: " << i;
             printMessage("writing characteristic: " + QString::number(i));
-            m_service->writeCharacteristic(m_service->characteristics().at(i), a, QLowEnergyService::WriteWithResponse);
+            m_service->writeCharacteristic(m_service->characteristics().at(i), generateBytearray(Setting::SoundFrequenzy,
+                                                                                                 ui->Volume->value(),
+                                                                                                 ui->Von_Frequ->value(),
+                                                                                                 ui->Bis_Frequ->value()),
+                                           QLowEnergyService::WriteWithResponse);
         }
 
     }else{
@@ -155,12 +151,8 @@ void KlingelballUI::startDeviceDiscovery(){
 void KlingelballUI::addDevice(const QBluetoothDeviceInfo &device){
     if(device.coreConfigurations() & QBluetoothDeviceInfo::LowEnergyCoreConfiguration){
         if(device.name() == "Klingelball" || device.name() == "EchoBall"){
-            ptrDevinfo = new DeviceInfo(device);
-            deviceList->append(ptrDevinfo);
+            deviceList->append(new DeviceInfo{device});
             ui->UIDeviceList->addItem(device.name());
-
-            //connectDevice(&device);
-            //m_deviceDiscoveryAgent->stop();
         }
     }
 }
@@ -303,6 +295,8 @@ void KlingelballUI::deviceDisconnected(){
     for(int i = 0; i < ui->UIDeviceList->count(); i ++){
         if(ui->UIDeviceList->takeItem(i)->text() == m_controller->remoteName()){
             ui->UIDeviceList->removeItemWidget(ui->UIDeviceList->takeItem(i));
+            delete deviceList->at(i);
+            deviceList->removeAt(i);
         }
     }
 }

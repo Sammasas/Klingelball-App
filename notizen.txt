@@ -100,3 +100,4 @@ Reihnfolge wichtig!!! wischreihnfolge
 angehnemeres geräusch (Musik)
 
 
+QSettingsclass!!!
