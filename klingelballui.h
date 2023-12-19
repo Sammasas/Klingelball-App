@@ -79,6 +79,8 @@ private slots:
 
     void on_tabWidget_currentChanged(int index);
 
+    void on_disconnectKlingelball_clicked();
+
 private:
     Ui::KlingelballUI *ui;
 
@@ -156,6 +158,18 @@ private:
     void setupBLE();
 
     QList<DeviceInfo *> *deviceList;
+    DeviceInfo *ptrDevinfo;
+
+
+    enum Setting{GeneralSettings,
+                 SoundFrequenzy,
+                 GeneralSound,
+                 LightColorStill,
+                 LightColorMoving,
+                 GenralLight};
+
+    QByteArray generateBytearray(Setting s,uint8_t data1, uint8_t data2, uint8_t data3);
+    char generatePruefziffer (QByteArray a);
 
 
 

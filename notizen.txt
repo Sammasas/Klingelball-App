@@ -10,3 +10,93 @@ Piepsfrequenz und tonfrequenz änderbar
 Standartfarbe -> wenn schneller in den rotbereich
 
 wcag2.2 en301 549
+
+
+Trennstrich zwischen einstellungsbereichen
+vertikalen trennstriche
+
+Darkmode 
+
+Vorgefertigt
+Kontraste änderbar (Blau gelb usw)
+
+
+Ballnamen änderbar (Für räume)
+
+
+Profil oben
+Profil erstellen und direkt tastatur 
+
+
+Erst namen wenn draufdrücken erst details anzeigen
+
+Zurüvksetzten nbutton 
+
+
+Mit wischen erhöhen
+
+Trennen weglassen wenn noch kein ball verbunden ist 
+Erkennbar wenn noch kein ball verbunden ist 
+
+auswählbar wegeben weglassen 
+
+benutzerdefinierte sounds
+
+Nicht zu hoher ton hellerer ton 
+
+Dreck könnt sich ansammeln in den löchern
+größe passt aber leichter
+
+Simplere beschreibungen 
+
+Beschreibung Überschrift (Erkennbar das es überschrft 
+
+Registerkarten unten hin (Tabs)!Wichtig!
+Zum besser finden
+
+Registerkarte beschreibung (plus taste oder erkkenbar das man sie auswählen kann)
+Ton Einstellungen
+Beschreibung aktiv/nichtaktiv
+als erstes unten schaun wieviele registerkarten hab ich 
+vorlesen (2/3)!
+
+An den standart anpassen!
+von jeder seite hörbar
+Reihnfolge anpassen
+nach tabs in die seite springen
+
+Lässt alles zwischen Tabs und übertragen aus-> sollte in einstellungen springen
+
+Durch wischen 
+
+Drei fingern registerkarte ändern
+
+
+Klingelball oe weggeben
+
+Blindenfußball Donnerstag hier um 17 uhr kann man zuschauen und mitmachen frau stuhaz 
+
+
+Links wischen sollt hochgehen auch zu tabs
+
+Funktion wenn nicht bewegt ton und wenn bewegt kein ton
+wenn 5 sekunden nicht bewegt anfangen geräusch machen 
+
+Piepsen besser
+
+Umrandung und größere buttons farbe
+
+Hintergrund schwarz
+
+Schaltflächen kleiner schrift größer
+
+Weichere bälle 
+zu schwer 
+
+zu leise
+
+Reihnfolge wichtig!!! wischreihnfolge
+
+angehnemeres geräusch (Musik)
+
+

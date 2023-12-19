@@ -40,7 +40,7 @@
        <enum>QTabWidget::Rounded</enum>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="Sound_Tab">
        <attribute name="title">
@@ -479,8 +479,8 @@
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>402</width>
-                 <height>403</height>
+                 <width>86</width>
+                 <height>16</height>
                 </rect>
                </property>
                <layout class="QGridLayout" name="gridLayout_2">
@@ -784,12 +784,30 @@
            </font>
           </property>
           <property name="text">
-           <string>Klingelball verbinden</string>
+           <string>Klingelball suchen</string>
           </property>
          </widget>
         </item>
         <item>
          <widget class="QPushButton" name="connectKlingelball">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>50</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>18</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>Klingelball verbinden</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="disconnectKlingelball">
           <property name="minimumSize">
            <size>
             <width>0</width>

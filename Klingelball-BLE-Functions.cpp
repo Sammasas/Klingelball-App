@@ -31,13 +31,20 @@ void KlingelballUI::on_uebertragen_button_clicked()
 {   
     if(remoteServiceDiscovered && KlingelballConnected && !m_service->characteristics().empty()){
         qDebug() << "writeCharacteristik";
-        uint8_t i = 255;
-        unsigned char c = 0;
-        c = (char)i;
-        QByteArray a(sizeof(c), c);
-        a.append(ui->Volume->value());
-        a.append(ui->Bis_Frequ->value());
-        a.append(ui->Von_Frequ->value());
+
+        QByteArray a;
+        a.resize(4);
+        a[0] = 0;
+        a[1] = (uint8_t)ui->Volume->value();
+        a[2] = (uint8_t)ui->Bis_Frequ->value();
+        a[3] = (uint8_t)ui->Von_Frequ->value();
+
+        a[0] = generatePruefziffer(a);
+
+
+        qDebug() << (int)a[0];
+        qDebug() << a.toInt();
+
         for (int i = 0; i < m_service->characteristics().count(); i++){
             qDebug() << "writing Characteristic: " << i;
             printMessage("writing characteristic: " + QString::number(i));
@@ -48,6 +55,42 @@ void KlingelballUI::on_uebertragen_button_clicked()
         qDebug() << "Klingelball not connected or no remoteservice discovered";
     }
 
+}
+
+QByteArray KlingelballUI::generateBytearray(Setting s,uint8_t data1, uint8_t data2, uint8_t data3){
+    QByteArray a;
+    a.resize(4);
+    a[0] = 0;
+    a[1] = data1;
+    a[2] = data2;
+    a[3] = data3;
+
+    a[0] = generatePruefziffer(a) + s*10;
+    return a;
+}
+
+char KlingelballUI::generatePruefziffer(QByteArray a){
+  char pruef = 0;
+  int length = sizeof(a)/sizeof(a[0]);
+  qDebug()<<"prueffziffer"<<length;
+
+
+  for(int i = 1; i < 4; i++){  //prüfziffer berechnen
+    qDebug() << i;
+    if(i % 2){
+      pruef += a[i] * 3;
+      qDebug() << "ungerade";
+
+    } else{ //gerade
+        qDebug() << "gerade";
+      pruef += a[i] * 1;
+
+    }
+  }
+
+  pruef = 9 - (pruef % 10);
+
+ return pruef;
 }
 
 
@@ -63,14 +106,19 @@ void KlingelballUI::on_searchKlingelball_clicked()
 
 void KlingelballUI::on_connectKlingelball_clicked()
 {
-    /*for (int i = 0; i < ui->UIDeviceList->count(); i++){
+    for (int i = 0; i < ui->UIDeviceList->count(); i++){
         if(ui->UIDeviceList->item(i)->isSelected()){
             m_deviceDiscoveryAgent->stop();
 
             qDebug () << "connecting";
-            //connectDevice(deviceList->at(i)->getDevice());
+            connectDevice(deviceList->at(i)->getDevice());
         }
-    }*/
+    }
+
+}
+
+void KlingelballUI::on_disconnectKlingelball_clicked()
+{
     if(KlingelballConnected){
         m_controller->disconnectFromDevice();
     }
@@ -107,11 +155,12 @@ void KlingelballUI::startDeviceDiscovery(){
 void KlingelballUI::addDevice(const QBluetoothDeviceInfo &device){
     if(device.coreConfigurations() & QBluetoothDeviceInfo::LowEnergyCoreConfiguration){
         if(device.name() == "Klingelball" || device.name() == "EchoBall"){
-            DeviceInfo devInfo{device};
-            deviceList->append(&devInfo);
+            ptrDevinfo = new DeviceInfo(device);
+            deviceList->append(ptrDevinfo);
             ui->UIDeviceList->addItem(device.name());
-            connectDevice(&device);
-            m_deviceDiscoveryAgent->stop();
+
+            //connectDevice(&device);
+            //m_deviceDiscoveryAgent->stop();
         }
     }
 }
