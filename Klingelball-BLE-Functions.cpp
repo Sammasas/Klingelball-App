@@ -198,7 +198,6 @@ void KlingelballUI::ScanError(QBluetoothDeviceDiscoveryAgent::Error error){
 
 void KlingelballUI::connectDevice(const QBluetoothDeviceInfo *currentdevice){
     qDebug()<< "connectDevice";
-    QBluetoothAddress currentDeviceAddress = currentdevice->address();
     m_controller = QLowEnergyController::createCentral(*currentdevice, this);
 
     connect(m_controller, SIGNAL(serviceDiscovered(QBluetoothUuid)), this, SLOT(serviceDiscovered(QBluetoothUuid)));

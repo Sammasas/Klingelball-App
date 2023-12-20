@@ -18,6 +18,8 @@ void KlingelballUI::setup_UI(){
     ui->tabWidget->tabBar()->setAccessibleTabName(3, "Einstellungen");
 
     ui->verticalLayout_2->setContentsMargins(0, 0, 12, 15);
+    ui->tabWidget->setMaximumWidth(qApp->screens()[0]->size().width()-5);
+
 }
 
 void KlingelballUI::setup_lineedit()
@@ -34,6 +36,8 @@ void KlingelballUI::setup_spinbox()
 
     ui->Stillstehend_Freq->setFont(*dynamicSizeFont);
     ui->Bewegend_Freq->setFont(*dynamicSizeFont);
+
+    ui->Heilligkeit->setFont(*dynamicSizeFont);
 }
 
 void KlingelballUI::setup_font(){
@@ -47,7 +51,7 @@ void KlingelballUI::setup_font(){
     QFont serifFont("Times", 16*m_ratioFont, QFont::Bold);
 
 
-    testFont = new QFont("segoe UI", ui->Volume_UP->height()*0.5, QFont::Bold);
+    //testFont = new QFont("segoe UI", ui->Volume_UP->height()*0.5, QFont::Bold);
 }
 
 
@@ -78,16 +82,8 @@ void KlingelballUI::setup_buttons()
     ui->new_profile_button->setFont(*dynamicSizeFont);
     ui->new_profile_cancle_button->setFont(*dynamicSizeFont);
 
-    QString bluePushbuttonstyle = "QPushButton{background-color: #0068d0;}"
-                                  "QPushButton::pressed{"
-                                  "Background: #5b5b5b;"
-                                  "border: 2px solid black;"
-                                  "border-radius: 7px;}";
-
-    //ui->Volume_UP->setStyleSheet(bluePushbuttonstyle);
-    //ui->Bis_Frequ_Up->setStyleSheet(bluePushbuttonstyle);
-    //ui->Von_Frequ_Up->setStyleSheet(bluePushbuttonstyle);
-
+    ui->Heilligkeit_erhoehen->setIconSize(QSize(ui->Volume_UP->height()*iconSizeMultiplier, ui->Volume_UP->height()));
+    ui->Heilligkeit_verringern->setIconSize(QSize(ui->Volume_UP->height()*iconSizeMultiplier, ui->Volume_UP->height()));
 
 
 }
@@ -95,13 +91,20 @@ void KlingelballUI::setup_buttons()
 
 void KlingelballUI::setup_labels()
 {
-    dynamicSizeFont = new QFont("segue UI", ui->Volume_UP->height()*0.5, QFont::Bold);
+    dynamicSizeFont = new QFont("segue UI", ui->Volume_UP->height()*0.6, QFont::Bold);
+    SmallerdynamicSizeFont = new QFont("segue UI", ui->Volume_UP->height()*0.5, QFont::Bold);
     ui->Volume_Label->setFont(*dynamicSizeFont);
     ui->Bis_Frequenz_Label->setFont(*dynamicSizeFont);
     ui->Von_Frequenz_Label->setFont(*dynamicSizeFont);
 
     ui->Stillstehend_Freq_Label->setFont(*dynamicSizeFont);
     ui->Bewegend_Freq_Label->setFont(*dynamicSizeFont);
+
+    ui->Heilligkeit_Label->setFont(*dynamicSizeFont);
+    ui->Stillstehend_Farbe_label->setFont(*SmallerdynamicSizeFont);
+    ui->Bewegend_Farbe_Label->setFont(*SmallerdynamicSizeFont);
+
+    ui->Farbe_Label->setFont(*dynamicSizeFont);
 
     ui->new_profile_label->setFont(*dynamicSizeFont);
     ui->new_profile_label->setTextInteractionFlags(Qt::TextSelectableByMouse );

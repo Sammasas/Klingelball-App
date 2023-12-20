@@ -89,7 +89,7 @@ private:
     bool transmit_profile = false;
 
     QFont *dynamicSizeFont;
-    QFont *testFont;
+    QFont *SmallerdynamicSizeFont;
 
     void setup_UI();
     void setup_font();

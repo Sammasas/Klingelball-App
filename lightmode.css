@@ -9,8 +9,7 @@ QWidget
 QPushButton{
     color: white;
     Background: #e50616;
-    /*border: 3px solid black;*/
-    border-radius: 25px;
+    border-radius: 20px;
 }
 
 QPushButton::pressed{
@@ -50,7 +49,7 @@ QTabBar::tab{
     margin-right: 10px;
     margin-bottom: 5px;
     margin-top: 10px;
-    width: 100px;
+
 }
 
 QTabBar::tab:selected {   
