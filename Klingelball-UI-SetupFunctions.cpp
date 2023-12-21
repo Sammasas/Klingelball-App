@@ -18,7 +18,7 @@ void KlingelballUI::setup_UI(){
     ui->tabWidget->tabBar()->setAccessibleTabName(3, "Einstellungen");
 
     ui->verticalLayout_2->setContentsMargins(0, 0, 12, 15);
-    ui->tabWidget->setMaximumWidth(qApp->screens()[0]->size().width()-5);
+    ui->tabWidget->setMaximumWidth(qApp->screens()[0]->size().width());
 
 }
 
@@ -30,12 +30,12 @@ void KlingelballUI::setup_lineedit()
 
 void KlingelballUI::setup_spinbox()
 {
-    ui->Volume->setFont(*dynamicSizeFont);
-    ui->Bis_Frequ->setFont(*dynamicSizeFont);
-    ui->Von_Frequ->setFont(*dynamicSizeFont);
+    ui->Lautstaerke->setFont(*dynamicSizeFont);
+    ui->Stillstehend_Ton_Freq->setFont(*dynamicSizeFont);
+    ui->Bewegend_Ton_Freq->setFont(*dynamicSizeFont);
 
-    ui->Stillstehend_Freq->setFont(*dynamicSizeFont);
-    ui->Bewegend_Freq->setFont(*dynamicSizeFont);
+    ui->Stillstehend_Beep_Freq->setFont(*dynamicSizeFont);
+    ui->Bewegend_Beep_Freq->setFont(*dynamicSizeFont);
 
     ui->Heilligkeit->setFont(*dynamicSizeFont);
 }
@@ -51,39 +51,38 @@ void KlingelballUI::setup_font(){
     QFont serifFont("Times", 16*m_ratioFont, QFont::Bold);
 
 
-    //testFont = new QFont("segoe UI", ui->Volume_UP->height()*0.5, QFont::Bold);
+    //testFont = new QFont("segoe UI", ui->Lautstaerke_erhoehen->height()*0.5, QFont::Bold);
 }
 
 
 void KlingelballUI::setup_buttons()
 {
     ui->uebertragen_button->setFont(*dynamicSizeFont);
-    /*ui->uebertragen_button->setStyleSheet("QPushButton{border: 4px solid black;}");*/
 
     float iconSizeMultiplier = 1.5;
 
-    ui->Volume_UP->setIconSize(QSize(ui->Volume_UP->height()*iconSizeMultiplier, ui->Volume_UP->height()));
-    ui->Volume_Down->setIconSize(QSize(ui->Volume_UP->height()*iconSizeMultiplier, ui->Volume_UP->height()));
+    ui->Lautstaerke_erhoehen->setIconSize(QSize(ui->Lautstaerke_erhoehen->height()*iconSizeMultiplier, ui->Lautstaerke_erhoehen->height()));
+    ui->Lautstaerke_verringern->setIconSize(QSize(ui->Lautstaerke_erhoehen->height()*iconSizeMultiplier, ui->Lautstaerke_erhoehen->height()));
 
-    ui->Bis_Frequ_Up->setIconSize(QSize(ui->Volume_UP->height()*iconSizeMultiplier, ui->Volume_UP->height()));
-    ui->Bis_Frequ_Down->setIconSize(QSize(ui->Volume_UP->height()*iconSizeMultiplier, ui->Volume_UP->height()));
+    ui->Bewegend_Ton_Freq_erhoehen->setIconSize(QSize(ui->Lautstaerke_erhoehen->height()*iconSizeMultiplier, ui->Lautstaerke_erhoehen->height()));
+    ui->Bewegend_Ton_Freq_verringern->setIconSize(QSize(ui->Lautstaerke_erhoehen->height()*iconSizeMultiplier, ui->Lautstaerke_erhoehen->height()));
 
-    ui->Von_Frequ_Up->setIconSize(QSize(ui->Volume_UP->height()*iconSizeMultiplier, ui->Volume_UP->height()));
-    ui->Von_Frequ_Down->setIconSize(QSize(ui->Volume_UP->height()*iconSizeMultiplier, ui->Volume_UP->height()));
+    ui->Stillstehend_Ton_Freq_erhoehen->setIconSize(QSize(ui->Lautstaerke_erhoehen->height()*iconSizeMultiplier, ui->Lautstaerke_erhoehen->height()));
+    ui->Stillstehend_Ton_Freq_Verringern->setIconSize(QSize(ui->Lautstaerke_erhoehen->height()*iconSizeMultiplier, ui->Lautstaerke_erhoehen->height()));
 
-    ui->Stillstehend_Freq_erhoehen->setIconSize(QSize(ui->Volume_UP->height()*iconSizeMultiplier, ui->Volume_UP->height()));
-    ui->Stillstehend_Freq_verringern->setIconSize(QSize(ui->Volume_UP->height()*iconSizeMultiplier, ui->Volume_UP->height()));
+    ui->Stillstehend_Beep_Freq_erhoehen->setIconSize(QSize(ui->Lautstaerke_erhoehen->height()*iconSizeMultiplier, ui->Lautstaerke_erhoehen->height()));
+    ui->Stillstehend_Beep_Freq_verringern->setIconSize(QSize(ui->Lautstaerke_erhoehen->height()*iconSizeMultiplier, ui->Lautstaerke_erhoehen->height()));
 
-    ui->Bewegend_Freq_erhoehen->setIconSize(QSize(ui->Volume_UP->height()*iconSizeMultiplier, ui->Volume_UP->height()));
-    ui->Bewegend_Freq_verringern->setIconSize(QSize(ui->Volume_UP->height()*iconSizeMultiplier, ui->Volume_UP->height()));
+    ui->Bewegend_Beep_Freq_erhoehen->setIconSize(QSize(ui->Lautstaerke_erhoehen->height()*iconSizeMultiplier, ui->Lautstaerke_erhoehen->height()));
+    ui->Bewegend_Beep_Freq_verringern->setIconSize(QSize(ui->Lautstaerke_erhoehen->height()*iconSizeMultiplier, ui->Lautstaerke_erhoehen->height()));
 
-    ui->tabWidget->setIconSize(QSize(ui->Volume_UP->height()*0.5, ui->Volume_UP->height()*0.5));
+    ui->tabWidget->setIconSize(QSize(ui->Lautstaerke_erhoehen->height()*0.5, ui->Lautstaerke_erhoehen->height()*0.5));
 
     ui->new_profile_button->setFont(*dynamicSizeFont);
     ui->new_profile_cancle_button->setFont(*dynamicSizeFont);
 
-    ui->Heilligkeit_erhoehen->setIconSize(QSize(ui->Volume_UP->height()*iconSizeMultiplier, ui->Volume_UP->height()));
-    ui->Heilligkeit_verringern->setIconSize(QSize(ui->Volume_UP->height()*iconSizeMultiplier, ui->Volume_UP->height()));
+    ui->Heilligkeit_erhoehen->setIconSize(QSize(ui->Lautstaerke_erhoehen->height()*iconSizeMultiplier, ui->Lautstaerke_erhoehen->height()));
+    ui->Heilligkeit_verringern->setIconSize(QSize(ui->Lautstaerke_erhoehen->height()*iconSizeMultiplier, ui->Lautstaerke_erhoehen->height()));
 
 
 }
@@ -91,14 +90,14 @@ void KlingelballUI::setup_buttons()
 
 void KlingelballUI::setup_labels()
 {
-    dynamicSizeFont = new QFont("segue UI", ui->Volume_UP->height()*0.6, QFont::Bold);
-    SmallerdynamicSizeFont = new QFont("segue UI", ui->Volume_UP->height()*0.5, QFont::Bold);
-    ui->Volume_Label->setFont(*dynamicSizeFont);
-    ui->Bis_Frequenz_Label->setFont(*dynamicSizeFont);
-    ui->Von_Frequenz_Label->setFont(*dynamicSizeFont);
+    dynamicSizeFont = new QFont("segue UI", ui->Lautstaerke_erhoehen->height()*0.6, QFont::Bold);
+    SmallerdynamicSizeFont = new QFont("segue UI", ui->Lautstaerke_erhoehen->height()*0.5, QFont::Bold);
+    ui->Lautstaerke_Label->setFont(*dynamicSizeFont);
+    ui->Stillstehend_Ton_Freq_Label->setFont(*dynamicSizeFont);
+    ui->Bewegend_Ton_Freq_Label->setFont(*dynamicSizeFont);
 
-    ui->Stillstehend_Freq_Label->setFont(*dynamicSizeFont);
-    ui->Bewegend_Freq_Label->setFont(*dynamicSizeFont);
+    ui->Stillstehend_Beep_Freq_Label->setFont(*dynamicSizeFont);
+    ui->Bewegend_Beep_Freq_Label->setFont(*dynamicSizeFont);
 
     ui->Heilligkeit_Label->setFont(*dynamicSizeFont);
     ui->Stillstehend_Farbe_label->setFont(*SmallerdynamicSizeFont);
@@ -112,14 +111,14 @@ void KlingelballUI::setup_labels()
     ui->new_profile_Bew_Freq_label->setTextInteractionFlags(Qt::TextSelectableByMouse );
     ui->new_profile_Still_Freq_label->setTextInteractionFlags(Qt::TextSelectableByMouse );
 
-    ui->Stillstehend_Freq_Label->setTextInteractionFlags(Qt::TextSelectableByMouse );
-    ui->Bewegend_Freq_Label->setTextInteractionFlags(Qt::TextSelectableByMouse );
+    ui->Stillstehend_Beep_Freq_Label->setTextInteractionFlags(Qt::TextSelectableByMouse );
+    ui->Bewegend_Beep_Freq_Label->setTextInteractionFlags(Qt::TextSelectableByMouse );
 
 
 
-    ui->Volume_Label->setTextInteractionFlags(Qt::TextSelectableByMouse );
-    ui->Von_Frequenz_Label->setTextInteractionFlags(Qt::TextSelectableByMouse );
-    ui->Bis_Frequenz_Label->setTextInteractionFlags(Qt::TextSelectableByMouse );
+    ui->Lautstaerke_Label->setTextInteractionFlags(Qt::TextSelectableByMouse );
+    ui->Stillstehend_Ton_Freq_Label->setTextInteractionFlags(Qt::TextSelectableByMouse );
+    ui->Bewegend_Ton_Freq_Label->setTextInteractionFlags(Qt::TextSelectableByMouse );
     ui->Aussehen_label->setTextInteractionFlags(Qt::TextSelectableByMouse);
 
     ui->statusLabel->setTextInteractionFlags(Qt::TextSelectableByMouse );

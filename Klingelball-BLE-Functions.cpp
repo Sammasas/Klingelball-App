@@ -36,21 +36,93 @@ void KlingelballUI::on_uebertragen_button_clicked()
 {   
     if(remoteServiceDiscovered && KlingelballConnected && !m_service->characteristics().empty()){
         qDebug() << "writeCharacteristik";
-
-        for (int i = 0; i < m_service->characteristics().count(); i++){
-            qDebug() << "writing Characteristic: " << i;
-            printMessage("writing characteristic: " + QString::number(i));
-            m_service->writeCharacteristic(m_service->characteristics().at(i), generateBytearray(Setting::SoundFrequenzy,
-                                                                                                 ui->Volume->value(),
-                                                                                                 ui->Von_Frequ->value(),
-                                                                                                 ui->Bis_Frequ->value()),
-                                           QLowEnergyService::WriteWithResponse);
-        }
+        transmittionActive = true;
+        transmitSettings();
 
     }else{
         qDebug() << "Klingelball not connected or no remoteservice discovered";
     }
 
+}
+
+void KlingelballUI::transmitSettings (){
+    switch(transmittionStatus){
+        case TransmittionDone:
+            printMessage("TransmittionDone");
+            transmittionActive = false;
+            transmittionStatus = TransmitGeneralSettings;
+            break;
+
+        case TransmitGeneralSettings:
+            printMessage("TransmitGeneralSettings");
+            m_service->writeCharacteristic(m_service->characteristics().at(0), generateBytearray(Setting::GeneralSettings,
+                                                                                             1,
+                                                                                             0,
+                                                                                             0), //TODO: implement transmitting general setting
+                                       QLowEnergyService::WriteWithResponse);
+
+            transmittionStatus = TransmitSoundFrequenzy;
+            break;
+
+        case TransmitSoundFrequenzy:
+            printMessage("TransmitSoundFrequenzy");
+
+            m_service->writeCharacteristic(m_service->characteristics().at(0), generateBytearray(Setting::SoundFrequenzy,
+                                                                                             ui->Lautstaerke->value(),
+                                                                                             ui->Stillstehend_Ton_Freq->value(),
+                                                                                             ui->Bewegend_Ton_Freq->value()),
+                                       QLowEnergyService::WriteWithResponse);
+
+            transmittionStatus = TransmitGeneralSound;
+            break;
+
+        case TransmitGeneralSound:
+            printMessage("TransmitGeneralSound");
+
+            m_service->writeCharacteristic(m_service->characteristics().at(0), generateBytearray(Setting::GeneralSound,
+                                                                                                 0, //TODO: implement optional beeping
+                                                                                                 ui->Stillstehend_Beep_Freq->value(),
+                                                                                                 ui->Bewegend_Beep_Freq->value()),
+                                           QLowEnergyService::WriteWithResponse);
+
+            transmittionStatus = TransmitGeneralLight;
+            break;
+
+        case TransmitGeneralLight:
+
+            m_service->writeCharacteristic(m_service->characteristics().at(0), generateBytearray(Setting::GeneralLight,
+                                                                                                 ui->Heilligkeit->value(),
+                                                                                                 0, //TODO: Implement Blinking lights
+                                                                                                 0),
+                                           QLowEnergyService::WriteWithResponse);
+
+            printMessage("TransmitGeneralLight");
+            transmittionStatus = TransmitLightColorStill;
+            break;
+
+        case TransmitLightColorStill:
+            printMessage("TransmitLightColorStill");
+
+            m_service->writeCharacteristic(m_service->characteristics().at(0), generateBytearray(Setting::LightColorStill,
+                                                                                                 StillstehendSelectedColor().red(),
+                                                                                                 StillstehendSelectedColor().green(),
+                                                                                                 StillstehendSelectedColor().blue()),
+                                           QLowEnergyService::WriteWithResponse);
+            transmittionStatus = TransmitLightColorMoving;
+            break;
+
+        case TransmitLightColorMoving:
+            printMessage("TransmitLightColorMoving");
+
+            m_service->writeCharacteristic(m_service->characteristics().at(0), generateBytearray(Setting::LightColorMoving,
+                                                                                                 BewegendSelectedColor().red(),
+                                                                                                 BewegendSelectedColor().green(),
+                                                                                                 BewegendSelectedColor().blue()),
+                                           QLowEnergyService::WriteWithResponse);
+
+            transmittionStatus = TransmittionDone;
+            break;
+    }
 }
 
 QByteArray KlingelballUI::generateBytearray(Setting s,uint8_t data1, uint8_t data2, uint8_t data3){
@@ -97,6 +169,36 @@ void KlingelballUI::on_searchKlingelball_clicked()
     }
     ui->UIDeviceList->clear();
     startDeviceDiscovery();
+}
+
+QColor KlingelballUI::StillstehendSelectedColor(){
+    if(ui->Stillstehend_Farbe1->isChecked())
+        return QColor(255, 255, 255);
+    if(ui->Stillstehend_Farbe2->isChecked())
+        return QColor(255, 0, 0);
+    if(ui->Stillstehend_Farbe3->isChecked())
+        return QColor(0, 0, 255);
+    if(ui->Stillstehend_Farbe4->isChecked())
+        return QColor(0, 255, 0);
+    if(ui->Stillstehend_Farbe5->isChecked())
+        return QColor(255, 255, 0);
+    else
+        return QColor(0, 0, 0);
+}
+
+QColor KlingelballUI::BewegendSelectedColor(){
+    if(ui->Bewegend_Farbe1->isChecked())
+        return QColor(255, 255, 255);
+    if(ui->Bewegend_Farbe2->isChecked())
+        return QColor(255, 0, 0);
+    if(ui->Bewegend_Farbe3->isChecked())
+        return QColor(0, 0, 255);
+    if(ui->Bewegend_Farbe4->isChecked())
+        return QColor(0, 255, 0);
+    if(ui->Bewegend_Farbe5->isChecked())
+        return QColor(255, 255, 0);
+    else
+        return QColor(0, 0, 0);
 }
 
 
@@ -416,6 +518,9 @@ void KlingelballUI::KlingelballCharacteristicWritten(QLowEnergyCharacteristic ch
     qDebug()<< "characteristicWritten";
     qDebug() << data;
     printMessage("über. success!!");
+    if (transmittionActive){
+        transmitSettings();
+    }
 }
 
 void KlingelballUI::KlingelballCharacteristicChanged(QLowEnergyCharacteristic characteristic, QByteArray data){}

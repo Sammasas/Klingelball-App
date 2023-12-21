@@ -84,18 +84,18 @@ void KlingelballUI::destroy_Profile_visualisation(EinstellungsProfil *profil)
 void KlingelballUI::on_profil_from_currentsettings_button_clicked()
 {
     ui->stackedWidget->setCurrentIndex(1);
-    ui->new_profile_volume_label->setText("Lautstärke: " + ui->Volume->text());
-    ui->new_profile_Bew_Freq_label->setText("Frequenz-Stillstehend: " + ui->Bis_Frequ->text());
-    ui->new_profile_Still_Freq_label->setText("Frequenz-Bewegend: " + ui->Von_Frequ->text());
+    ui->new_profile_volume_label->setText("Lautstärke: " + ui->Lautstaerke->text());
+    ui->new_profile_Bew_Freq_label->setText("Frequenz-Stillstehend: " + ui->Stillstehend_Ton_Freq->text());
+    ui->new_profile_Still_Freq_label->setText("Frequenz-Bewegend: " + ui->Bewegend_Ton_Freq->text());
 }
 
 
 void KlingelballUI::on_new_profile_button_clicked()
 {
     create_Profile(ui->new_profile_lineEdit->text(),
-                   ui->Volume->value(),
-                   ui->Von_Frequ->value(),
-                   ui->Bis_Frequ->value());
+                   ui->Lautstaerke->value(),
+                   ui->Stillstehend_Ton_Freq->value(),
+                   ui->Bewegend_Ton_Freq->value());
 
 
     ui->new_profile_lineEdit->clear();

@@ -167,10 +167,27 @@ private:
                  GeneralSound,
                  LightColorStill,
                  LightColorMoving,
-                 GenralLight};
+                 GeneralLight};
+
+    enum SettingTransmitStatus{TransmitGeneralSettings,
+                 TransmitSoundFrequenzy,
+                 TransmitGeneralSound,
+                 TransmitLightColorStill,
+                 TransmitLightColorMoving,
+                 TransmitGeneralLight,
+                 TransmittionDone};
+    SettingTransmitStatus transmittionStatus = TransmitGeneralSettings;
+
+    bool transmittionActive = false;
+
+    void transmitSettings();
 
     QByteArray generateBytearray(Setting s,uint8_t data1, uint8_t data2, uint8_t data3);
     char generatePruefziffer (QByteArray a);
+
+    QColor StillstehendSelectedColor();
+    QColor BewegendSelectedColor();
+
 
 
 
