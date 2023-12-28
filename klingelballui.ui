@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>444</width>
+    <width>462</width>
     <height>785</height>
    </rect>
   </property>
@@ -43,7 +43,7 @@
        <enum>QTabWidget::Rounded</enum>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="Sound_Tab">
        <attribute name="title">
@@ -1052,6 +1052,12 @@ QRadioButton::indicator::unchecked{
                <property name="text">
                 <string/>
                </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+               <property name="checked">
+                <bool>false</bool>
+               </property>
               </widget>
              </item>
              <item row="1" column="4">
@@ -1287,6 +1293,12 @@ QRadioButton::indicator::unchecked{
                <property name="text">
                 <string/>
                </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+               <property name="checked">
+                <bool>false</bool>
+               </property>
               </widget>
              </item>
             </layout>
@@ -1341,7 +1353,7 @@ QRadioButton::indicator::unchecked{
                  <x>0</x>
                  <y>0</y>
                  <width>402</width>
-                 <height>422</height>
+                 <height>459</height>
                 </rect>
                </property>
                <layout class="QGridLayout" name="gridLayout_2">

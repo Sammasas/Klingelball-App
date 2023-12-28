@@ -22,6 +22,7 @@
 #include <qlowenergycontroller.h>
 #include <QBluetoothPermission>
 #include <QBluetoothLocalDevice>
+#include <QButtonGroup>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class KlingelballUI; }
@@ -51,6 +52,8 @@ public slots:
     void KlingelballCharacteristicChanged(QLowEnergyCharacteristic characteristic, QByteArray data);
     void KlingelballDescriptorRead(QLowEnergyDescriptor descriptor, QByteArray data);
     void KlingelballDescriptorWritten(QLowEnergyDescriptor descriptor, QByteArray data);
+    void stillstehendButtonGroupClicked(QAbstractButton *button);
+    void bewegendButtonGroupClicked(QAbstractButton *button);
 
 private slots:
     void on_Bis_Frequ_valueChanged(int arg1);
@@ -60,9 +63,6 @@ private slots:
     void on_Lightmode_checkBox_clicked();
 
     void on_Darkmode_checkBox_clicked();
-
-
-    //void on_FontSize_spinBox_valueChanged(int arg1);
 
     void on_profil_from_currentsettings_button_clicked();
 
@@ -97,6 +97,7 @@ private:
     void setup_buttons();
     void setup_spinbox();
     void setup_lineedit();
+    void setup_ButtonGroup();
 
     void playSoundEffect(int Volume);
 
@@ -187,6 +188,13 @@ private:
 
     QColor StillstehendSelectedColor();
     QColor BewegendSelectedColor();
+
+    QButtonGroup *stillstehendColorSelectionButtonGroup;
+    QButtonGroup *bewegendColorSelectionButtonGroup;
+    bool stillstehendButtonGroupOneSelected = false;
+    bool bewegendButtonGroupOneSelected = false;
+    int stillstehendButtonGroupSelectedID = 0;
+    int bewegendButtonGroupSelectedID = 0;
 
 
 
