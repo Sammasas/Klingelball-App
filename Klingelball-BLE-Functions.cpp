@@ -56,9 +56,9 @@ void KlingelballUI::transmitSettings (){
         case TransmitGeneralSettings:
             printMessage("TransmitGeneralSettings");
             m_service->writeCharacteristic(m_service->characteristics().at(0), generateBytearray(Setting::GeneralSettings,
-                                                                                             1,
+                                                                                             ui->OnOff_Button->isChecked(),
                                                                                              0,
-                                                                                             0), //TODO: implement transmitting general setting
+                                                                                             0),
                                        QLowEnergyService::WriteWithResponse);
 
             transmittionStatus = TransmitSoundFrequenzy;
@@ -210,6 +210,9 @@ void KlingelballUI::on_connectKlingelball_clicked()
 
             qDebug () << "connecting";
             connectDevice(deviceList->at(i)->getDevice());
+
+
+
         }
     }
 
@@ -382,6 +385,10 @@ void KlingelballUI::deviceConnected(){
     qDebug() << "device connected";
     printMessage("verbunden!");
     KlingelballConnected = true;
+    ui->connectKlingelball->setVisible(false);
+    ui->disconnectKlingelball->setVisible(true);
+    ui->UIDeviceList->setStyleSheet("QListWidget::item::selected{"
+                                    "background-color: orange;}");
     m_controller->discoverServices();
 }
 
@@ -400,6 +407,10 @@ void KlingelballUI::deviceDisconnected(){
             deviceList->removeAt(i);
         }
     }
+    ui->connectKlingelball->setVisible(true);
+    ui->disconnectKlingelball->setVisible(false);
+    ui->UIDeviceList->setStyleSheet("QListWidget::item::selected{"
+                                    "background-color: blue;}");
 }
 
 void KlingelballUI::setupServiceDiscovery(){
@@ -468,7 +479,8 @@ void KlingelballUI::KlingelballServiceStatechanged(QLowEnergyService::ServiceSta
             qDebug()<< m_service->characteristics()[i].uuid().toString();
         }
         printMessage("Charactersitics found!");
-
+        ui->UIDeviceList->setStyleSheet("QListWidget::item::selected{"
+                                        "background-color: #00aa00;}");
         remoteServiceDiscovered = true;
         break;
 

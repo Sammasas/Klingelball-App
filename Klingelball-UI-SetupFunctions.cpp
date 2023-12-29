@@ -21,6 +21,8 @@ void KlingelballUI::setup_UI(){
     ui->verticalLayout_2->setContentsMargins(0, 0, 12, 15);
     ui->tabWidget->setMaximumWidth(qApp->screens()[0]->size().width());
 
+    ui->disconnectKlingelball->setVisible(false);
+
 
 
 

@@ -20,7 +20,7 @@ KlingelballUI::KlingelballUI(QWidget *parent)
     QScroller::grabGesture(ui->scrollArea, QScroller::LeftMouseButtonGesture );
 
     setupBLE();
-    //ui->connectKlingelball->setDisabled(true);
+    ui->statusLabel->setVisible(false);
 }
 
 KlingelballUI::~KlingelballUI()
@@ -47,4 +47,14 @@ KlingelballUI::~KlingelballUI()
 
 
 
+
+
+void KlingelballUI::on_OnOff_Button_toggled(bool checked)
+{
+    if(checked){
+        ui->OnOff_Button->setText("Ball: Ein");
+    }else{
+        ui->OnOff_Button->setText("Ball: Aus");
+    }
+}
 

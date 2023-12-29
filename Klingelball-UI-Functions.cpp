@@ -159,8 +159,16 @@ void KlingelballUI::on_tabWidget_currentChanged(int index)
     QIcon settingsIcon(":/Icons/settings_icon_176440.png");
     QIcon settingsIconInverted(":/Icons/settingsIcon_inverted.png");
 
-    if(index == 3){
-        ui->tabWidget->setTabIcon(3, settingsIconInverted);
+    QIcon ballIcon(":/Icons/Ball_icon.png");
+    QIcon ballIconInverted(":/Icons/Ball_icon_inverted.png");
+
+    if(index == ui->tabWidget->indexOf(ui->Settings_Tab)){
+        ui->tabWidget->setTabIcon(ui->tabWidget->indexOf(ui->Settings_Tab), settingsIconInverted);
     }else
-        ui->tabWidget->setTabIcon(3, settingsIcon);
+        ui->tabWidget->setTabIcon(ui->tabWidget->indexOf(ui->Settings_Tab), settingsIcon);
+
+    if(index == ui->tabWidget->indexOf(ui->Ball_Tab)){
+        ui->tabWidget->setTabIcon(ui->tabWidget->indexOf(ui->Ball_Tab), ballIconInverted);
+    }else
+        ui->tabWidget->setTabIcon(ui->tabWidget->indexOf(ui->Ball_Tab), ballIcon);
 }

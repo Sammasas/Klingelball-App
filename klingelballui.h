@@ -82,6 +82,10 @@ private slots:
 
     void on_disconnectKlingelball_clicked();
 
+    //void on_pushButton_toggled(bool checked);
+
+    void on_OnOff_Button_toggled(bool checked);
+
 private:
     Ui::KlingelballUI *ui;
 
@@ -178,6 +182,11 @@ private:
                  TransmitGeneralLight,
                  TransmittionDone};
     SettingTransmitStatus transmittionStatus = TransmitGeneralSettings;
+
+    enum ConnectionStatus{Disconnected,
+                         Connecting,
+                         Connected,
+                         Transmitting};
 
     bool transmittionActive = false;
 

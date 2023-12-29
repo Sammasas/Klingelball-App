@@ -6,6 +6,8 @@
         <file>Chevron_down_inverted.png</file>
         <file>Chevron_Up_inverted.png</file>
         <file>settingsIcon_inverted.png</file>
+        <file>Ball_icon.png</file>
+        <file>Ball_icon_inverted.png</file>
     </qresource>
     <qresource prefix="/stylesheet">
         <file>lightmode.css</file>

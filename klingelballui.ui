@@ -43,7 +43,7 @@
        <enum>QTabWidget::Rounded</enum>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>3</number>
       </property>
       <widget class="QWidget" name="Sound_Tab">
        <attribute name="title">
@@ -741,7 +741,7 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="Light_tab">
+      <widget class="QWidget" name="Light_Tab">
        <attribute name="title">
         <string>Licht</string>
        </attribute>
@@ -1353,7 +1353,7 @@ QRadioButton::indicator::unchecked{
                  <x>0</x>
                  <y>0</y>
                  <width>402</width>
-                 <height>459</height>
+                 <height>372</height>
                 </rect>
                </property>
                <layout class="QGridLayout" name="gridLayout_2">
@@ -1541,7 +1541,7 @@ QRadioButton::indicator::unchecked{
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="Settings_Tab">
+      <widget class="QWidget" name="Ball_Tab">
        <property name="accessibleName">
         <string>Einstellungen</string>
        </property>
@@ -1553,74 +1553,6 @@ QRadioButton::indicator::unchecked{
         <string/>
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_6">
-        <item>
-         <widget class="QLabel" name="Aussehen_label">
-          <property name="font">
-           <font>
-            <pointsize>28</pointsize>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="text">
-           <string>Aussehen:</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="Lightmode_checkBox">
-          <property name="font">
-           <font>
-            <pointsize>22</pointsize>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="text">
-           <string>Heller Modus</string>
-          </property>
-          <property name="icon">
-           <iconset theme="applications-engineering">
-            <normaloff>.</normaloff>.</iconset>
-          </property>
-          <property name="iconSize">
-           <size>
-            <width>20</width>
-            <height>20</height>
-           </size>
-          </property>
-          <property name="checked">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="Darkmode_checkBox">
-          <property name="font">
-           <font>
-            <pointsize>22</pointsize>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="text">
-           <string>Dunkler Modus</string>
-          </property>
-          <property name="icon">
-           <iconset theme="applications-engineering">
-            <normaloff>.</normaloff>.</iconset>
-          </property>
-          <property name="iconSize">
-           <size>
-            <width>20</width>
-            <height>20</height>
-           </size>
-          </property>
-          <property name="checked">
-           <bool>false</bool>
-          </property>
-          <property name="tristate">
-           <bool>false</bool>
-          </property>
-         </widget>
-        </item>
         <item>
          <widget class="QListWidget" name="UIDeviceList">
           <property name="accessibleName">
@@ -1698,7 +1630,135 @@ QRadioButton::indicator::unchecked{
          </widget>
         </item>
         <item>
+         <widget class="QPushButton" name="OnOff_Button">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>50</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>18</pointsize>
+            <bold>false</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton:!checked{
+	background-color: #e50616;
+}
+
+QPushButton::checked{
+	background-color: #00aa00;
+}
+
+</string>
+          </property>
+          <property name="text">
+           <string>Ball: Ein</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
          <spacer name="verticalSpacer">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="Settings_Tab">
+       <attribute name="icon">
+        <iconset resource="UI-Resources.qrc">
+         <normaloff>:/Icons/Ball_icon.png</normaloff>:/Icons/Ball_icon.png</iconset>
+       </attribute>
+       <attribute name="title">
+        <string/>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_10">
+        <item>
+         <widget class="QLabel" name="Aussehen_label">
+          <property name="font">
+           <font>
+            <pointsize>28</pointsize>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string>Aussehen:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="Lightmode_checkBox">
+          <property name="font">
+           <font>
+            <pointsize>22</pointsize>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string>Heller Modus</string>
+          </property>
+          <property name="icon">
+           <iconset theme="applications-engineering">
+            <normaloff>.</normaloff>.</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>20</width>
+            <height>20</height>
+           </size>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="Darkmode_checkBox">
+          <property name="font">
+           <font>
+            <pointsize>22</pointsize>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string>Dunkler Modus</string>
+          </property>
+          <property name="icon">
+           <iconset theme="applications-engineering">
+            <normaloff>.</normaloff>.</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>20</width>
+            <height>20</height>
+           </size>
+          </property>
+          <property name="checked">
+           <bool>false</bool>
+          </property>
+          <property name="tristate">
+           <bool>false</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="verticalSpacer_10">
           <property name="orientation">
            <enum>Qt::Vertical</enum>
           </property>
