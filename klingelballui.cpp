@@ -49,12 +49,7 @@ KlingelballUI::~KlingelballUI()
 
 
 
-void KlingelballUI::on_OnOff_Button_toggled(bool checked)
-{
-    if(checked){
-        ui->OnOff_Button->setText("Ball: Ein");
-    }else{
-        ui->OnOff_Button->setText("Ball: Aus");
-    }
-}
+
+
+
 

@@ -22,6 +22,8 @@ void KlingelballUI::setup_UI(){
     ui->tabWidget->setMaximumWidth(qApp->screens()[0]->size().width());
 
     ui->disconnectKlingelball->setVisible(false);
+    ui->OnOff_Button->setVisible(false);
+    ui->connectKlingelball->setVisible(false);
 
 
 

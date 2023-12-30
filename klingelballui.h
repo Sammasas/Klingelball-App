@@ -86,6 +86,8 @@ private slots:
 
     void on_OnOff_Button_toggled(bool checked);
 
+    void on_UIDeviceList_currentRowChanged(int currentRow);
+
 private:
     Ui::KlingelballUI *ui;
 

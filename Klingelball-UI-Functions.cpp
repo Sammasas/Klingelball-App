@@ -172,3 +172,23 @@ void KlingelballUI::on_tabWidget_currentChanged(int index)
     }else
         ui->tabWidget->setTabIcon(ui->tabWidget->indexOf(ui->Ball_Tab), ballIcon);
 }
+
+void KlingelballUI::on_OnOff_Button_toggled(bool checked)
+{
+    if(checked){
+        ui->OnOff_Button->setText("Ball: Ein");
+    }else{
+        ui->OnOff_Button->setText("Ball: Aus");
+    }
+}
+
+void KlingelballUI::on_UIDeviceList_currentRowChanged(int currentRow)
+{
+    if(!ui->connectKlingelball->isVisible()){
+        ui->connectKlingelball->setVisible(true);
+    }
+    if(currentRow == -1){
+        ui->connectKlingelball->setVisible(false);
+    }
+}
+

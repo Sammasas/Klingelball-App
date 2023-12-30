@@ -37,6 +37,8 @@ void KlingelballUI::on_uebertragen_button_clicked()
     if(remoteServiceDiscovered && KlingelballConnected && !m_service->characteristics().empty()){
         qDebug() << "writeCharacteristik";
         transmittionActive = true;
+        ui->UIDeviceList->setStyleSheet("QListWidget::item::selected{"
+                                        "background-color: orange;}");
         transmitSettings();
 
     }else{
@@ -50,6 +52,8 @@ void KlingelballUI::transmitSettings (){
         case TransmittionDone:
             printMessage("TransmittionDone");
             transmittionActive = false;
+            ui->UIDeviceList->setStyleSheet("QListWidget::item::selected{"
+                                            "background-color: #00aa00;}");
             transmittionStatus = TransmitGeneralSettings;
             break;
 
@@ -167,6 +171,8 @@ void KlingelballUI::on_searchKlingelball_clicked()
     if(KlingelballConnected){
         m_controller->disconnectFromDevice();
     }
+    ui->searchKlingelball->setStyleSheet("QPushButton{"
+                                         "background-color: orange;}");
     ui->UIDeviceList->clear();
     startDeviceDiscovery();
 }
@@ -263,6 +269,8 @@ void KlingelballUI::addDevice(const QBluetoothDeviceInfo &device){
 }
 
 void KlingelballUI::ScanFinished(){
+    ui->searchKlingelball->setStyleSheet("QPushButton{"
+                                         "background-color: #e50616;}");
     printMessage("Scan finished");
 
 }
@@ -386,6 +394,7 @@ void KlingelballUI::deviceConnected(){
     printMessage("verbunden!");
     KlingelballConnected = true;
     ui->connectKlingelball->setVisible(false);
+    ui->OnOff_Button->setVisible(true);
     ui->disconnectKlingelball->setVisible(true);
     ui->UIDeviceList->setStyleSheet("QListWidget::item::selected{"
                                     "background-color: orange;}");
@@ -407,7 +416,7 @@ void KlingelballUI::deviceDisconnected(){
             deviceList->removeAt(i);
         }
     }
-    ui->connectKlingelball->setVisible(true);
+    ui->OnOff_Button->setVisible(false);
     ui->disconnectKlingelball->setVisible(false);
     ui->UIDeviceList->setStyleSheet("QListWidget::item::selected{"
                                     "background-color: blue;}");
