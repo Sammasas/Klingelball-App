@@ -37,7 +37,7 @@ void KlingelballUI::on_Lightmode_checkBox_clicked()
         styleSheetFile.open(QFile::ReadOnly);
         QString styleSheet = QLatin1String(styleSheetFile.readAll());
         setStyleSheet(styleSheet);
-
+        on_tabWidget_currentChanged(ui->tabWidget->currentIndex());
     }
 }
 
@@ -53,6 +53,7 @@ void KlingelballUI::on_Darkmode_checkBox_clicked()
         styleSheetFile.open(QFile::ReadOnly);
         QString styleSheet = QLatin1String(styleSheetFile.readAll());
         setStyleSheet(styleSheet);
+        on_tabWidget_currentChanged(ui->tabWidget->currentIndex());
     }
 }
 
@@ -163,14 +164,22 @@ void KlingelballUI::on_tabWidget_currentChanged(int index)
     QIcon ballIconInverted(":/Icons/Ball_icon_inverted.png");
 
     if(index == ui->tabWidget->indexOf(ui->Settings_Tab)){
-        ui->tabWidget->setTabIcon(ui->tabWidget->indexOf(ui->Settings_Tab), settingsIconInverted);
+        ui->Lightmode_checkBox->isChecked() ?
+                    ui->tabWidget->setTabIcon(ui->tabWidget->indexOf(ui->Settings_Tab), settingsIconInverted) :
+                    ui->tabWidget->setTabIcon(ui->tabWidget->indexOf(ui->Settings_Tab), settingsIconInverted);
     }else
-        ui->tabWidget->setTabIcon(ui->tabWidget->indexOf(ui->Settings_Tab), settingsIcon);
+       ui->Lightmode_checkBox->isChecked() ?
+                    ui->tabWidget->setTabIcon(ui->tabWidget->indexOf(ui->Settings_Tab), settingsIcon) :
+                    ui->tabWidget->setTabIcon(ui->tabWidget->indexOf(ui->Settings_Tab), settingsIconInverted);
 
     if(index == ui->tabWidget->indexOf(ui->Ball_Tab)){
-        ui->tabWidget->setTabIcon(ui->tabWidget->indexOf(ui->Ball_Tab), ballIconInverted);
+        ui->Lightmode_checkBox->isChecked() ?
+                    ui->tabWidget->setTabIcon(ui->tabWidget->indexOf(ui->Ball_Tab), ballIconInverted):
+                    ui->tabWidget->setTabIcon(ui->tabWidget->indexOf(ui->Ball_Tab), ballIconInverted);
     }else
-        ui->tabWidget->setTabIcon(ui->tabWidget->indexOf(ui->Ball_Tab), ballIcon);
+        ui->Lightmode_checkBox->isChecked() ?
+                    ui->tabWidget->setTabIcon(ui->tabWidget->indexOf(ui->Ball_Tab), ballIcon):
+                    ui->tabWidget->setTabIcon(ui->tabWidget->indexOf(ui->Ball_Tab), ballIconInverted);
 }
 
 void KlingelballUI::on_OnOff_Button_toggled(bool checked)

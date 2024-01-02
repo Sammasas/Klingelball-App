@@ -23,6 +23,7 @@
 #include <QBluetoothPermission>
 #include <QBluetoothLocalDevice>
 #include <QButtonGroup>
+#include <QSettings>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class KlingelballUI; }
@@ -206,9 +207,6 @@ private:
     bool bewegendButtonGroupOneSelected = false;
     int stillstehendButtonGroupSelectedID = 0;
     int bewegendButtonGroupSelectedID = 0;
-
-
-
 
 };
 #endif // KLINGELBALLUI_H

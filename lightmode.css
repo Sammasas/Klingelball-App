@@ -107,6 +107,16 @@ QCheckBox{
 QCheckBox::indicator {
      width: 27px;
      height: 27px;
+     border: 2px solid black;
+
+}
+
+QCheckBox::indicator:checked{
+    image: url(:/Icons/checkmark_icon.png);
+}
+
+QCheckBox::indicator:unchecked{
+    image: url(:/Icons/checkmark_icon_inverted.png);
 }
 
 QScrollArea{
@@ -116,7 +126,6 @@ QScrollArea{
 
 QListWidget{
     border: 3px solid black;
-    border-color: black;
     border-radius: 5px;
 }
 

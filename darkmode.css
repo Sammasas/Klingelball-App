@@ -102,11 +102,26 @@ QGroupBox::indicator{
 
 QCheckBox{
     color: white;
+
 }
 
 QCheckBox::indicator {
      width: 27px;
      height: 27px;
+     border: 2px solid white;
+
+}
+
+QCheckBox::indicator:checked{
+    margin-right: 2px;
+    margin-left: 2px;
+    image: url(:/Icons/checkmark_icon_inverted.png);
+}
+
+QCheckBox::indicator:unchecked{
+    margin-right: 2px;
+    margin-left: 2px;
+    image: url(:/Icons/checkmark_icon.png);
 }
 
 QScrollArea{
@@ -115,11 +130,18 @@ QScrollArea{
 }
 
 QListWidget{
-    border-color: white;
+    border: 3px solid white;
+    border-radius: 5px;
 }
 
 QListWidget::item{
-    background-color: red;
+    background-color: #e50616;
+    color: white;
+    border-radius: 5px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    margin-left: 2px;
+    margin-right: 2px;
 }
 
 QListWidget::item::selected{

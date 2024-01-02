@@ -21,6 +21,7 @@ KlingelballUI::KlingelballUI(QWidget *parent)
 
     setupBLE();
     ui->statusLabel->setVisible(false);
+    ui->tabWidget->setTabEnabled(2, false);
 }
 
 KlingelballUI::~KlingelballUI()

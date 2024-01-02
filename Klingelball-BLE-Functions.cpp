@@ -93,14 +93,13 @@ void KlingelballUI::transmitSettings (){
             break;
 
         case TransmitGeneralLight:
-
+            printMessage("TransmitGeneralLight");
             m_service->writeCharacteristic(m_service->characteristics().at(0), generateBytearray(Setting::GeneralLight,
                                                                                                  ui->Heilligkeit->value(),
                                                                                                  0, //TODO: Implement Blinking lights
                                                                                                  0),
                                            QLowEnergyService::WriteWithResponse);
 
-            printMessage("TransmitGeneralLight");
             transmittionStatus = TransmitLightColorStill;
             break;
 
@@ -204,7 +203,7 @@ QColor KlingelballUI::BewegendSelectedColor(){
     if(ui->Bewegend_Farbe5->isChecked())
         return QColor(255, 255, 0);
     else
-        return QColor(0, 0, 0);
+        return StillstehendSelectedColor();
 }
 
 
