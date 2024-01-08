@@ -56,6 +56,7 @@ public slots:
     void stillstehendButtonGroupClicked(QAbstractButton *button);
     void bewegendButtonGroupClicked(QAbstractButton *button);
 
+
 private slots:
     void on_Bis_Frequ_valueChanged(int arg1);
 
@@ -88,6 +89,8 @@ private slots:
     void on_OnOff_Button_toggled(bool checked);
 
     void on_UIDeviceList_currentRowChanged(int currentRow);
+
+    void transmitSettings();
 
 private:
     Ui::KlingelballUI *ui;
@@ -193,7 +196,7 @@ private:
 
     bool transmittionActive = false;
 
-    void transmitSettings();
+
 
     QByteArray generateBytearray(Setting s,uint8_t data1, uint8_t data2, uint8_t data3);
     char generatePruefziffer (QByteArray a);
@@ -207,6 +210,8 @@ private:
     bool bewegendButtonGroupOneSelected = false;
     int stillstehendButtonGroupSelectedID = 0;
     int bewegendButtonGroupSelectedID = 0;
+
+    QTimer *timer;
 
 };
 #endif // KLINGELBALLUI_H

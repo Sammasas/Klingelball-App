@@ -59,6 +59,7 @@ void KlingelballUI::transmitSettings (){
 
         case TransmitGeneralSettings:
             printMessage("TransmitGeneralSettings");
+            qDebug() <<"Case:" << QString::number(Setting::GeneralSettings);
             m_service->writeCharacteristic(m_service->characteristics().at(0), generateBytearray(Setting::GeneralSettings,
                                                                                              ui->OnOff_Button->isChecked(),
                                                                                              0,
@@ -70,7 +71,7 @@ void KlingelballUI::transmitSettings (){
 
         case TransmitSoundFrequenzy:
             printMessage("TransmitSoundFrequenzy");
-
+            qDebug() <<"Case:" << QString::number(Setting::SoundFrequenzy);
             m_service->writeCharacteristic(m_service->characteristics().at(0), generateBytearray(Setting::SoundFrequenzy,
                                                                                              ui->Lautstaerke->value(),
                                                                                              ui->Stillstehend_Ton_Freq->value(),
@@ -82,7 +83,7 @@ void KlingelballUI::transmitSettings (){
 
         case TransmitGeneralSound:
             printMessage("TransmitGeneralSound");
-
+            qDebug() <<"Case:" << QString::number(Setting::GeneralSound);
             m_service->writeCharacteristic(m_service->characteristics().at(0), generateBytearray(Setting::GeneralSound,
                                                                                                  0, //TODO: implement optional beeping
                                                                                                  ui->Stillstehend_Beep_Freq->value(),
@@ -94,6 +95,7 @@ void KlingelballUI::transmitSettings (){
 
         case TransmitGeneralLight:
             printMessage("TransmitGeneralLight");
+            qDebug() <<"Case:" << QString::number(Setting::GeneralLight);
             m_service->writeCharacteristic(m_service->characteristics().at(0), generateBytearray(Setting::GeneralLight,
                                                                                                  ui->Heilligkeit->value(),
                                                                                                  0, //TODO: Implement Blinking lights
@@ -105,7 +107,7 @@ void KlingelballUI::transmitSettings (){
 
         case TransmitLightColorStill:
             printMessage("TransmitLightColorStill");
-
+            qDebug() <<"Case:" << QString::number(Setting::LightColorStill);
             m_service->writeCharacteristic(m_service->characteristics().at(0), generateBytearray(Setting::LightColorStill,
                                                                                                  StillstehendSelectedColor().red(),
                                                                                                  StillstehendSelectedColor().green(),
@@ -128,6 +130,8 @@ void KlingelballUI::transmitSettings (){
     }
 }
 
+
+
 QByteArray KlingelballUI::generateBytearray(Setting s,uint8_t data1, uint8_t data2, uint8_t data3){
     QByteArray a;
     a.resize(4);
@@ -137,14 +141,17 @@ QByteArray KlingelballUI::generateBytearray(Setting s,uint8_t data1, uint8_t dat
     a[3] = data3;
 
     a[0] = generatePruefziffer(a) + s*10;
+
+    qDebug() << "Übertrage:" << QString::number(a[0])
+            << QString::number(a[1])
+            << QString::number(a[2])
+            << QString::number(a[3]);
     return a;
 }
 
 char KlingelballUI::generatePruefziffer(QByteArray a){
   char pruef = 0;
   int length = sizeof(a)/sizeof(a[0]);
-  qDebug()<<"prueffziffer"<<length;
-
 
   for(int i = 1; i < 4; i++){  //prüfziffer berechnen
     qDebug() << i;
@@ -161,6 +168,7 @@ char KlingelballUI::generatePruefziffer(QByteArray a){
 
   pruef = 9 - (pruef % 10);
 
+  qDebug()<<"prueffziffer"<<QString::number(pruef);
  return pruef;
 }
 
@@ -538,8 +546,11 @@ void KlingelballUI::KlingelballCharacteristicWritten(QLowEnergyCharacteristic ch
     qDebug()<< "characteristicWritten";
     qDebug() << data;
     printMessage("über. success!!");
+    timer = new QTimer(this);
+    timer->setSingleShot(true);
     if (transmittionActive){
-        transmitSettings();
+        connect(timer, SIGNAL(timeout()), this, SLOT(transmitSettings()));
+        timer->start(1000);
     }
 }
 
