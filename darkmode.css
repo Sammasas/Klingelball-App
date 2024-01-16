@@ -148,3 +148,10 @@ QListWidget::item::selected{
     background-color: blue;
 }
 
+QRadioButton::indicator:checked{
+        border: 7px solid white;
+}
+
+QRadioButton::indicator:unchecked{
+        border: 2px solid #868686;
+}

@@ -14,10 +14,9 @@ QPushButton{
 
 QPushButton::pressed{
     Background: #5b5b5b;
-    /*border: 2px solid black;*/
     border-radius: 20px;
-
 }
+
 
 QLabel{
     color: black;
@@ -32,29 +31,29 @@ QTabWidget{
 
 
 QTabWidget::pane {
-    /*border: 4px solid black;*/
+
     border-radius: 5px;
     background: transparent;
 }
 
+QTabBar::tab{
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 5px;
+    margin-top: 10px;
+
+    padding-left: 5px;
+    padding-right: 5px;
+
+}
 
 QTabWidget::tab-bar {
      alignment: center;
 
 }
 
-QTabBar::tab{
-    /*border: 2px solid black;*/
-    margin-left: 10px;
-    margin-right: 10px;
-    margin-bottom: 5px;
-    margin-top: 10px;
-
-}
-
-QTabBar::tab:selected {   
+QTabBar::tab:selected {
     color: white;
-    background: transparent;
     background: #e50616;
     border-radius: 5px;
 }
@@ -76,6 +75,7 @@ QTabBar::tab::disabled{
 QSpinBox{
     color: black;
     Background: transparent;
+    selection-background-color: white;
 }
 
 QGroupBox{
@@ -145,10 +145,4 @@ QListWidget::item::selected{
 
 
 
-QRadioButton::indicator::checked{
-        border: 4px solid black;
-}
 
-QRadioButton::indicator::unchecked{
-        border: 2px solid #868686;
-}

@@ -92,6 +92,12 @@ private slots:
 
     void transmitSettings();
 
+    void gotBatteryStatus(int s);
+
+Q_SIGNALS:
+    void BatteryStatusRead(int);
+
+
 private:
     Ui::KlingelballUI *ui;
 
@@ -131,24 +137,12 @@ private:
 
     QBluetoothUuid *KlingelballServiceUUID;
 
-    QLowEnergyCharacteristic *AudioCharacteristic;
-    QBluetoothUuid *AudioCharacteristicUUID;
+    QLowEnergyCharacteristic *BatteryCharacteristic;
+    QBluetoothUuid *BatteryCharacteristicUUID;
 
-    QLowEnergyCharacteristic *LightCharacteristic;
-    QBluetoothUuid *LightCharacteristicUUID;
+    QLowEnergyCharacteristic *DataCharacteristic;
+    QBluetoothUuid *DataCharacteristicUUID;
 
-    QLowEnergyCharacteristic *TestCharactersitic;
-    QBluetoothUuid *TestCharacteristicUUID;
-
-    QLowEnergyCharacteristic *Test2Characteristic;
-    QBluetoothUuid *Test2CharacteristicUUID;
-
-    /*QLowEnergyCharacteristic *TestCharacteristic;
-    QBluetoothUuid *TestCharacteristicUUID = new QBluetoothUuid("a47b99b4-3804-4411-b61c-50852ab7aa2d");
-
-    QLowEnergyCharacteristic *OnOffCharacteristic;
-    QBluetoothUuid *OnOffCharacteristicUUID = new QBluetoothUuid("beb5483e-36e1-4688-b7f5-ea07361b26a8");
-    */
     void printMessage (QString message);
 
     QBluetoothDeviceDiscoveryAgent *m_deviceDiscoveryAgent;
@@ -204,6 +198,8 @@ private:
     QColor StillstehendSelectedColor();
     QColor BewegendSelectedColor();
 
+    void readBatteryStatus(QLowEnergyCharacteristic *c);
+
     QButtonGroup *stillstehendColorSelectionButtonGroup;
     QButtonGroup *bewegendColorSelectionButtonGroup;
     bool stillstehendButtonGroupOneSelected = false;
@@ -211,7 +207,54 @@ private:
     int stillstehendButtonGroupSelectedID = 0;
     int bewegendButtonGroupSelectedID = 0;
 
-    QTimer *timer;
+    QString RadioButtonCommonStyleDark = "QRadioButton{"
+                                         "background-color: none;"
+                                         "margin-top: 10px;"
+                                         "margin-bottom: 10px;"
+                                         "margin-left: 10px;"
+                                         "margin-right: 10px;}"
+                                         "QRadioButton::indicator:checked"
+                                     "{border: 4px solid white;}"
+                                     "QRadioButton::indicator:unchecked{"
+                                     "border: 2px solid #868686;}";
+
+    QString RadioButtonCommonStyleLight = "QRadioButton{"
+                                          "background-color: none;"
+                                          "margin-top: 10px;"
+                                          "margin-bottom: 10px;"
+                                          "margin-left: 10px;"
+                                          "margin-right: 10px;} "
+                                    "QRadioButton::indicator:checked"
+                                     "{border: 4px solid black;} "
+                                     "QRadioButton::indicator:unchecked{"
+                                     "border: 2px solid #868686;} ";
+
+    QString RadioButtonColor1 = "QRadioButton::indicator{"
+                                 "background-color: white;"
+                                 "width: 40px;height: 40px;"
+                                 "border: 2px solid #868686;"
+                                 "border-radius: 20px;} ";
+
+    QString RadioButtonColor2 = "QRadioButton::indicator{"
+                                 "background-color: red;"
+                                 "width: 40px;height: 40px;"
+                                 "border: 2px solid #868686;"
+                                 "border-radius: 20px;} ";
+    QString RadioButtonColor3 = "QRadioButton::indicator{"
+                                 "background-color: blue;"
+                                 "width: 40px;height: 40px;"
+                                 "border: 2px solid #868686;"
+                                 "border-radius: 20px;} ";
+    QString RadioButtonColor4 = "QRadioButton::indicator{"
+                                 "background-color: green;"
+                                 "width: 40px;height: 40px;"
+                                 "border: 2px solid #868686;"
+                                 "border-radius: 20px;} ";
+    QString RadioButtonColor5 = "QRadioButton::indicator{"
+                                 "background-color: yellow;"
+                                 "width: 40px;height: 40px;"
+                                 "border: 2px solid #868686;"
+                                 "border-radius: 20px;} ";
 
 };
 #endif // KLINGELBALLUI_H

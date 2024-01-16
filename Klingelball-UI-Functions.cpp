@@ -36,6 +36,19 @@ void KlingelballUI::on_Lightmode_checkBox_clicked()
         QFile styleSheetFile(":/stylesheet/lightmode.css");
         styleSheetFile.open(QFile::ReadOnly);
         QString styleSheet = QLatin1String(styleSheetFile.readAll());
+
+        ui->Bewegend_Farbe1->setStyleSheet(RadioButtonCommonStyleLight + RadioButtonColor1);
+        ui->Bewegend_Farbe2->setStyleSheet(RadioButtonCommonStyleLight + RadioButtonColor2);
+        ui->Bewegend_Farbe3->setStyleSheet(RadioButtonCommonStyleLight + RadioButtonColor3);
+        ui->Bewegend_Farbe4->setStyleSheet(RadioButtonCommonStyleLight + RadioButtonColor4);
+        ui->Bewegend_Farbe5->setStyleSheet(RadioButtonCommonStyleLight + RadioButtonColor5);
+
+        ui->Stillstehend_Farbe1->setStyleSheet(RadioButtonCommonStyleLight + RadioButtonColor1);
+        ui->Stillstehend_Farbe2->setStyleSheet(RadioButtonCommonStyleLight + RadioButtonColor2);
+        ui->Stillstehend_Farbe3->setStyleSheet(RadioButtonCommonStyleLight + RadioButtonColor3);
+        ui->Stillstehend_Farbe4->setStyleSheet(RadioButtonCommonStyleLight + RadioButtonColor4);
+        ui->Stillstehend_Farbe5->setStyleSheet(RadioButtonCommonStyleLight + RadioButtonColor5);
+
         setStyleSheet(styleSheet);
         on_tabWidget_currentChanged(ui->tabWidget->currentIndex());
     }
@@ -52,6 +65,19 @@ void KlingelballUI::on_Darkmode_checkBox_clicked()
         QFile styleSheetFile(":/stylesheet/darkmode.css");
         styleSheetFile.open(QFile::ReadOnly);
         QString styleSheet = QLatin1String(styleSheetFile.readAll());
+
+        ui->Bewegend_Farbe1->setStyleSheet(RadioButtonCommonStyleDark + RadioButtonColor1);
+        ui->Bewegend_Farbe2->setStyleSheet(RadioButtonCommonStyleDark + RadioButtonColor2);
+        ui->Bewegend_Farbe3->setStyleSheet(RadioButtonCommonStyleDark + RadioButtonColor3);
+        ui->Bewegend_Farbe4->setStyleSheet(RadioButtonCommonStyleDark + RadioButtonColor4);
+        ui->Bewegend_Farbe5->setStyleSheet(RadioButtonCommonStyleDark + RadioButtonColor5);
+
+        ui->Stillstehend_Farbe1->setStyleSheet(RadioButtonCommonStyleDark + RadioButtonColor1);
+        ui->Stillstehend_Farbe2->setStyleSheet(RadioButtonCommonStyleDark + RadioButtonColor2);
+        ui->Stillstehend_Farbe3->setStyleSheet(RadioButtonCommonStyleDark + RadioButtonColor3);
+        ui->Stillstehend_Farbe4->setStyleSheet(RadioButtonCommonStyleDark + RadioButtonColor4);
+        ui->Stillstehend_Farbe5->setStyleSheet(RadioButtonCommonStyleDark + RadioButtonColor5);
+
         setStyleSheet(styleSheet);
         on_tabWidget_currentChanged(ui->tabWidget->currentIndex());
     }

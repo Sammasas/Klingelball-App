@@ -32,25 +32,3 @@ KlingelballUI::~KlingelballUI()
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

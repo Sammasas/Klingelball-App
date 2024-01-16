@@ -1,4 +1,4 @@
-#include "klingelballui.h"
+    #include "klingelballui.h"
 #include "ui_klingelballui.h"
 
 
@@ -24,6 +24,7 @@ void KlingelballUI::setup_UI(){
     ui->disconnectKlingelball->setVisible(false);
     ui->OnOff_Button->setVisible(false);
     ui->connectKlingelball->setVisible(false);
+    ui->batteryStatusProgressbar->setVisible(false);
 
 
 
@@ -120,6 +121,8 @@ void KlingelballUI::setup_font(){
 void KlingelballUI::setup_buttons()
 {
     ui->uebertragen_button->setFont(*dynamicSizeFont);
+    ui->Uebertragen2->setFont(*dynamicSizeFont);
+    ui->Uebtragen3->setFont(*dynamicSizeFont);
 
     float iconSizeMultiplier = 1.5;
 
