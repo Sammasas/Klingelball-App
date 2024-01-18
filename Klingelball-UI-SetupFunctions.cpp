@@ -10,7 +10,6 @@ void KlingelballUI::setup_UI(){
     setup_spinbox();
     setup_lineedit();
     setup_ButtonGroup();
-    ui->Settings_Tab->setStyleSheet("QTabBar::tab{padding-right: -40px;}");
     ui->tabWidget->setFocusPolicy(Qt::NoFocus);
     ui->Settings_Tab->setFocusPolicy(Qt::NoFocus);
     ui->Profile_Tab->setFocusPolicy(Qt::NoFocus);
@@ -18,14 +17,18 @@ void KlingelballUI::setup_UI(){
     ui->centralwidget->setFocusPolicy(Qt::NoFocus);
     ui->tabWidget->tabBar()->setAccessibleTabName(3, "Einstellungen");
 
-    ui->verticalLayout_2->setContentsMargins(0, 0, 12, 15);
-    ui->tabWidget->setMaximumWidth(qApp->screens()[0]->size().width());
+    ui->verticalLayout_2->setContentsMargins(0, 0, 0, 0);
+    ui->tabWidget->setMaximumWidth(qApp->screens()[0]->size().width()+2);
 
     ui->disconnectKlingelball->setVisible(false);
     ui->OnOff_Button->setVisible(false);
     ui->connectKlingelball->setVisible(false);
     ui->batteryStatusProgressbar->setVisible(false);
 
+    ui->tabWidget->tabBar()->setStyleSheet("QTabBar{"
+                                           "border-top: 2px solid black;}");
+
+    ui->tabWidget->tabBar()->setIconSize(QSize(30, 30));
 
 
 }

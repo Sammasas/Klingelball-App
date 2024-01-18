@@ -2,6 +2,7 @@ QWidget
 {
    background-color: white;
 
+
 }
 
 
@@ -32,8 +33,6 @@ QTabWidget{
 
 QTabWidget::pane {
 
-    border-radius: 5px;
-    background: transparent;
 }
 
 QTabBar::tab{
@@ -48,14 +47,21 @@ QTabBar::tab{
 }
 
 QTabWidget::tab-bar {
-     alignment: center;
+    alignment: center;
+
+}
+
+QTabBar{
+
+    alignment: center;
 
 }
 
 QTabBar::tab:selected {
-    color: white;
-    background: #e50616;
-    border-radius: 5px;
+    color: #e50616;
+    background: transparent;
+    border-bottom: 2px solid #e50616;
+
 }
 
 QTabBar::tab:!selected {

@@ -189,7 +189,7 @@ void KlingelballUI::on_tabWidget_currentChanged(int index)
     QIcon ballIcon(":/Icons/Ball_icon.png");
     QIcon ballIconInverted(":/Icons/Ball_icon_inverted.png");
 
-    if(index == ui->tabWidget->indexOf(ui->Settings_Tab)){
+    /*if(index == ui->tabWidget->indexOf(ui->Settings_Tab)){
         ui->Lightmode_checkBox->isChecked() ?
                     ui->tabWidget->setTabIcon(ui->tabWidget->indexOf(ui->Settings_Tab), settingsIconInverted) :
                     ui->tabWidget->setTabIcon(ui->tabWidget->indexOf(ui->Settings_Tab), settingsIconInverted);
@@ -206,6 +206,7 @@ void KlingelballUI::on_tabWidget_currentChanged(int index)
         ui->Lightmode_checkBox->isChecked() ?
                     ui->tabWidget->setTabIcon(ui->tabWidget->indexOf(ui->Ball_Tab), ballIcon):
                     ui->tabWidget->setTabIcon(ui->tabWidget->indexOf(ui->Ball_Tab), ballIconInverted);
+    */
 }
 
 void KlingelballUI::on_OnOff_Button_toggled(bool checked)

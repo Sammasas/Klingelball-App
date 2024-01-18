@@ -10,6 +10,14 @@
         <file>Ball_icon_inverted.png</file>
         <file>checkmark_icon.png</file>
         <file>checkmark_icon_inverted.png</file>
+        <file>ball_icon_red.png</file>
+        <file>lautstarke_dark.png</file>
+        <file>lautstarke_red.png</file>
+        <file>light-icon_red.png</file>
+        <file>settings_icon_red.png</file>
+        <file>lautstarke_light.png</file>
+        <file>light_icon_dark.png</file>
+        <file>light_icon_light.png</file>
     </qresource>
     <qresource prefix="/stylesheet">
         <file>lightmode.css</file>

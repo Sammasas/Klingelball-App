@@ -180,7 +180,8 @@ private:
                  TransmitLightColorStill,
                  TransmitLightColorMoving,
                  TransmitGeneralLight,
-                 TransmittionDone};
+                 TransmittionDone,
+                 TransmittionError};
     SettingTransmitStatus transmittionStatus = TransmitGeneralSettings;
 
     enum ConnectionStatus{Disconnected,
@@ -255,6 +256,8 @@ private:
                                  "width: 40px;height: 40px;"
                                  "border: 2px solid #868686;"
                                  "border-radius: 20px;} ";
+
+    void setUebertragenButtonTextandStyle(QString text, QString style);
 
 };
 #endif // KLINGELBALLUI_H

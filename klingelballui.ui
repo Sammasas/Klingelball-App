@@ -26,7 +26,7 @@
       <property name="font">
        <font>
         <family>Segoe UI</family>
-        <pointsize>26</pointsize>
+        <pointsize>27</pointsize>
         <bold>true</bold>
        </font>
       </property>
@@ -37,7 +37,7 @@
        <string/>
       </property>
       <property name="tabPosition">
-       <enum>QTabWidget::North</enum>
+       <enum>QTabWidget::South</enum>
       </property>
       <property name="tabShape">
        <enum>QTabWidget::Rounded</enum>
@@ -45,14 +45,32 @@
       <property name="currentIndex">
        <number>3</number>
       </property>
+      <property name="iconSize">
+       <size>
+        <width>30</width>
+        <height>30</height>
+       </size>
+      </property>
+      <property name="elideMode">
+       <enum>Qt::ElideNone</enum>
+      </property>
+      <property name="documentMode">
+       <bool>true</bool>
+      </property>
       <property name="tabBarAutoHide">
        <bool>false</bool>
       </property>
       <widget class="QWidget" name="Sound_Tab">
-       <attribute name="title">
-        <string>Ton</string>
+       <attribute name="icon">
+        <iconset resource="UI-Resources.qrc">
+         <normaloff>:/Icons/lautstarke_dark.png</normaloff>
+         <activeon>:/Icons/lautstarke_red.png</activeon>
+         <selectedon>:/Icons/lautstarke_red.png</selectedon>:/Icons/lautstarke_dark.png</iconset>
        </attribute>
-       <layout class="QVBoxLayout" name="verticalLayout_3" stretch="0,0,0">
+       <attribute name="title">
+        <string/>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_3" stretch="0,0,0,0">
         <property name="sizeConstraint">
          <enum>QLayout::SetNoConstraint</enum>
         </property>
@@ -93,7 +111,7 @@
           <item>
            <widget class="QPushButton" name="Lautstaerke_erhoehen">
             <property name="sizePolicy">
-             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+             <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -101,7 +119,7 @@
             <property name="minimumSize">
              <size>
               <width>0</width>
-              <height>0</height>
+              <height>40</height>
              </size>
             </property>
             <property name="maximumSize">
@@ -189,7 +207,7 @@
           <item>
            <widget class="QPushButton" name="Lautstaerke_verringern">
             <property name="sizePolicy">
-             <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+             <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -197,7 +215,7 @@
             <property name="minimumSize">
              <size>
               <width>0</width>
-              <height>0</height>
+              <height>40</height>
              </size>
             </property>
             <property name="maximumSize">
@@ -222,6 +240,18 @@
         </item>
         <item>
          <widget class="QTabWidget" name="Sound_tabWidget">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>40</height>
+           </size>
+          </property>
           <property name="font">
            <font>
             <pointsize>26</pointsize>
@@ -262,22 +292,28 @@
                  <string>Stillstehend:</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+                 <set>Qt::AlignBottom|Qt::AlignHCenter</set>
                 </property>
                </widget>
               </item>
               <item row="1" column="0">
                <widget class="QPushButton" name="Stillstehend_Ton_Freq_erhoehen">
                 <property name="sizePolicy">
-                 <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                 <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
                   <horstretch>0</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>40</height>
+                 </size>
+                </property>
                 <property name="maximumSize">
                  <size>
                   <width>16777215</width>
-                  <height>80</height>
+                  <height>60</height>
                  </size>
                 </property>
                 <property name="accessibleName">
@@ -347,15 +383,21 @@
               <item row="3" column="0">
                <widget class="QPushButton" name="Stillstehend_Ton_Freq_Verringern">
                 <property name="sizePolicy">
-                 <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                 <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
                   <horstretch>0</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>40</height>
+                 </size>
+                </property>
                 <property name="maximumSize">
                  <size>
                   <width>16777215</width>
-                  <height>80</height>
+                  <height>60</height>
                  </size>
                 </property>
                 <property name="accessibleName">
@@ -373,7 +415,7 @@
               <item row="0" column="1">
                <widget class="QLabel" name="Bewegend_Ton_Freq_Label">
                 <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                   <horstretch>0</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
@@ -388,22 +430,28 @@
                  <string>Bewegend:</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+                 <set>Qt::AlignBottom|Qt::AlignHCenter</set>
                 </property>
                </widget>
               </item>
               <item row="1" column="1">
                <widget class="QPushButton" name="Bewegend_Ton_Freq_erhoehen">
                 <property name="sizePolicy">
-                 <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
+                 <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
                   <horstretch>0</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>40</height>
+                 </size>
+                </property>
                 <property name="maximumSize">
                  <size>
                   <width>16777215</width>
-                  <height>80</height>
+                  <height>60</height>
                  </size>
                 </property>
                 <property name="accessibleName">
@@ -421,7 +469,7 @@
               <item row="2" column="1">
                <widget class="QSpinBox" name="Bewegend_Ton_Freq">
                 <property name="sizePolicy">
-                 <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                   <horstretch>0</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
@@ -473,15 +521,21 @@
               <item row="3" column="1">
                <widget class="QPushButton" name="Bewegend_Ton_Freq_verringern">
                 <property name="sizePolicy">
-                 <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                 <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
                   <horstretch>0</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>40</height>
+                 </size>
+                </property>
                 <property name="maximumSize">
                  <size>
                   <width>16777215</width>
-                  <height>80</height>
+                  <height>60</height>
                  </size>
                 </property>
                 <property name="accessibleName">
@@ -497,19 +551,6 @@
                </widget>
               </item>
              </layout>
-            </item>
-            <item>
-             <spacer name="verticalSpacer_5">
-              <property name="orientation">
-               <enum>Qt::Vertical</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>20</width>
-                <height>40</height>
-               </size>
-              </property>
-             </spacer>
             </item>
            </layout>
           </widget>
@@ -584,15 +625,21 @@
               <item row="1" column="0">
                <widget class="QPushButton" name="Stillstehend_Beep_Freq_erhoehen">
                 <property name="sizePolicy">
-                 <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                 <sizepolicy hsizetype="Minimum" vsizetype="MinimumExpanding">
                   <horstretch>0</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>40</height>
+                 </size>
+                </property>
                 <property name="maximumSize">
                  <size>
                   <width>16777215</width>
-                  <height>80</height>
+                  <height>60</height>
                  </size>
                 </property>
                 <property name="accessibleName">
@@ -619,14 +666,14 @@
                  <string>Stillstehend:</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+                 <set>Qt::AlignBottom|Qt::AlignHCenter</set>
                 </property>
                </widget>
               </item>
               <item row="3" column="0">
                <widget class="QPushButton" name="Stillstehend_Beep_Freq_verringern">
                 <property name="sizePolicy">
-                 <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                 <sizepolicy hsizetype="Minimum" vsizetype="MinimumExpanding">
                   <horstretch>0</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
@@ -634,7 +681,7 @@
                 <property name="maximumSize">
                  <size>
                   <width>16777215</width>
-                  <height>80</height>
+                  <height>60</height>
                  </size>
                 </property>
                 <property name="accessibleName">
@@ -661,14 +708,14 @@
                  <string>Bewegend:</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+                 <set>Qt::AlignBottom|Qt::AlignHCenter</set>
                 </property>
                </widget>
               </item>
               <item row="1" column="1">
                <widget class="QPushButton" name="Bewegend_Beep_Freq_erhoehen">
                 <property name="sizePolicy">
-                 <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                 <sizepolicy hsizetype="Minimum" vsizetype="MinimumExpanding">
                   <horstretch>0</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
@@ -682,7 +729,7 @@
                 <property name="maximumSize">
                  <size>
                   <width>16777215</width>
-                  <height>80</height>
+                  <height>60</height>
                  </size>
                 </property>
                 <property name="accessibleName">
@@ -752,7 +799,7 @@
               <item row="3" column="1">
                <widget class="QPushButton" name="Bewegend_Beep_Freq_verringern">
                 <property name="sizePolicy">
-                 <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                 <sizepolicy hsizetype="Minimum" vsizetype="MinimumExpanding">
                   <horstretch>0</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
@@ -766,7 +813,7 @@
                 <property name="maximumSize">
                  <size>
                   <width>16777215</width>
-                  <height>80</height>
+                  <height>60</height>
                  </size>
                 </property>
                 <property name="accessibleName">
@@ -783,25 +830,22 @@
               </item>
              </layout>
             </item>
-            <item>
-             <spacer name="verticalSpacer_7">
-              <property name="orientation">
-               <enum>Qt::Vertical</enum>
-              </property>
-              <property name="sizeType">
-               <enum>QSizePolicy::Preferred</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>20</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
            </layout>
           </widget>
          </widget>
+        </item>
+        <item>
+         <spacer name="verticalSpacer_5">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
         </item>
         <item>
          <widget class="QPushButton" name="uebertragen_button">
@@ -831,8 +875,13 @@
        </layout>
       </widget>
       <widget class="QWidget" name="Light_Tab">
+       <attribute name="icon">
+        <iconset resource="UI-Resources.qrc">
+         <normaloff>:/Icons/light_icon_light.png</normaloff>
+         <activeon>:/Icons/light-icon_red.png</activeon>:/Icons/light_icon_light.png</iconset>
+       </attribute>
        <attribute name="title">
-        <string>Licht</string>
+        <string/>
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_9">
         <item>
@@ -869,10 +918,22 @@
           <item>
            <widget class="QPushButton" name="Heilligkeit_erhoehen">
             <property name="sizePolicy">
-             <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+             <sizepolicy hsizetype="Minimum" vsizetype="MinimumExpanding">
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>40</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>60</height>
+             </size>
             </property>
             <property name="accessibleName">
              <string>Lautstärke erhöhen</string>
@@ -898,7 +959,7 @@
           <item>
            <widget class="QSpinBox" name="Heilligkeit">
             <property name="sizePolicy">
-             <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+             <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -947,10 +1008,22 @@
           <item>
            <widget class="QPushButton" name="Heilligkeit_verringern">
             <property name="sizePolicy">
-             <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+             <sizepolicy hsizetype="Minimum" vsizetype="MinimumExpanding">
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>40</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>60</height>
+             </size>
             </property>
             <property name="accessibleName">
              <string>Lautstärke verringern</string>
@@ -1470,8 +1543,8 @@ QRadioButton::indicator:unchecked{
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>420</width>
-                 <height>592</height>
+                 <width>424</width>
+                 <height>594</height>
                 </rect>
                </property>
                <layout class="QGridLayout" name="gridLayout_2">
@@ -1665,7 +1738,8 @@ QRadioButton::indicator:unchecked{
        </property>
        <attribute name="icon">
         <iconset resource="UI-Resources.qrc">
-         <normaloff>:/Icons/settings_icon_176440.png</normaloff>:/Icons/settings_icon_176440.png</iconset>
+         <normaloff>:/Icons/Ball_icon.png</normaloff>
+         <activeon>:/Icons/ball_icon_red.png</activeon>:/Icons/Ball_icon.png</iconset>
        </attribute>
        <attribute name="title">
         <string/>
@@ -1673,6 +1747,12 @@ QRadioButton::indicator:unchecked{
        <layout class="QVBoxLayout" name="verticalLayout_6">
         <item>
          <widget class="QListWidget" name="UIDeviceList">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
           <property name="accessibleName">
            <string/>
           </property>
@@ -1827,7 +1907,8 @@ QPushButton::checked{
       <widget class="QWidget" name="Settings_Tab">
        <attribute name="icon">
         <iconset resource="UI-Resources.qrc">
-         <normaloff>:/Icons/Ball_icon.png</normaloff>:/Icons/Ball_icon.png</iconset>
+         <normaloff>:/Icons/settings_icon_176440.png</normaloff>
+         <activeon>:/Icons/settings_icon_red.png</activeon>:/Icons/settings_icon_176440.png</iconset>
        </attribute>
        <attribute name="title">
         <string/>
