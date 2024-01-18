@@ -22,53 +22,11 @@ QPushButton::pressed{
 QLabel{
     color: black;
     Background: transparent;
-
-}
-
-QTabWidget{
-
-
 }
 
 
-QTabWidget::pane {
 
-}
 
-QTabBar::tab{
-    margin-left: 10px;
-    margin-right: 10px;
-    margin-bottom: 5px;
-    margin-top: 10px;
-
-    padding-left: 5px;
-    padding-right: 5px;
-
-}
-
-QTabWidget::tab-bar {
-    alignment: center;
-
-}
-
-QTabBar{
-
-    alignment: center;
-
-}
-
-QTabBar::tab:selected {
-    color: #e50616;
-    background: transparent;
-    border-bottom: 2px solid #e50616;
-
-}
-
-QTabBar::tab:!selected {
-    color: black;
-    background: transparent;
-    border-radius: 5px;
-}
 
 QTabBar::tab::disabled{
     width: 0;

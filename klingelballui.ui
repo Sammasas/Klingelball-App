@@ -36,6 +36,52 @@
       <property name="accessibleDescription">
        <string/>
       </property>
+      <property name="styleSheet">
+       <string notr="true">QTabWidget{
+    background: #5d5e5e;
+}
+
+QTabWidget::pane{
+    background: #5d5e5e;
+
+}
+
+
+QTabBar::tab{
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 5px;
+    margin-top: 10px;
+
+    /*padding-left: 5px;
+    padding-right: 5px;*/
+
+}
+
+QTabWidget::tab-bar {
+    alignment: center;
+
+}
+
+QTabBar{
+
+    alignment: center;
+
+}
+
+QTabBar::tab:selected {
+    color: #e50616;
+    background: transparent;
+    border-bottom: 2px solid #e50616;
+
+}
+
+QTabBar::tab:!selected {
+    color: black;
+    background: transparent;
+    border-radius: 5px;
+}</string>
+      </property>
       <property name="tabPosition">
        <enum>QTabWidget::South</enum>
       </property>
@@ -43,7 +89,7 @@
        <enum>QTabWidget::Rounded</enum>
       </property>
       <property name="currentIndex">
-       <number>3</number>
+       <number>0</number>
       </property>
       <property name="iconSize">
        <size>
@@ -70,7 +116,7 @@
        <attribute name="title">
         <string/>
        </attribute>
-       <layout class="QVBoxLayout" name="verticalLayout_3" stretch="0,0,0,0">
+       <layout class="QVBoxLayout" name="verticalLayout_3" stretch="0,0,0,0,0">
         <property name="sizeConstraint">
          <enum>QLayout::SetNoConstraint</enum>
         </property>
@@ -81,6 +127,9 @@
          <layout class="QVBoxLayout" name="Volume_Layout" stretch="4,4,4,4">
           <property name="spacing">
            <number>4</number>
+          </property>
+          <property name="bottomMargin">
+           <number>5</number>
           </property>
           <item>
            <widget class="QLabel" name="Lautstaerke_Label">
@@ -239,6 +288,22 @@
          </layout>
         </item>
         <item>
+         <widget class="Line" name="line">
+          <property name="autoFillBackground">
+           <bool>false</bool>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Plain</enum>
+          </property>
+          <property name="lineWidth">
+           <number>3</number>
+          </property>
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+        </item>
+        <item>
          <widget class="QTabWidget" name="Sound_tabWidget">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
@@ -258,15 +323,75 @@
             <bold>true</bold>
            </font>
           </property>
+          <property name="autoFillBackground">
+           <bool>false</bool>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">/*QTabWidget::pane {
+   border-top: 1px solid black;
+ border-bottom: 1px solid black;
+  top: -2px; 
+  background: black;
+  
+} 
+
+QTabBar::tab {
+   background: white; 
+	padding: 15px;	
+} 
+
+QTabBar::tab:selected { 
+  border-bottom: 1px solid black;
+  margin-bottom: -1px; 
+}*/
+QTabWidget::pane {
+  border: 1px solid black;
+  top:-1px; 
+  background: rgb(245, 245, 245);
+} 
+
+QTabBar::tab {
+  background: rgb(230, 230, 230); 
+  
+	padding: 15px;
+	margin-left: 0px;
+	margin-right: 0px;
+  
+} 
+
+QTabBar::tab:unselected{
+	background: white;
+   top: 5px; 
+	border-bottom: 1px solid black; 
+	border-radius: 0px;
+}
+
+QTabBar::tab:selected { 
+border: 1px solid black; 
+  background: white; 
+  margin-bottom: -1px; 
+}</string>
+          </property>
           <property name="tabPosition">
            <enum>QTabWidget::North</enum>
           </property>
           <property name="currentIndex">
-           <number>1</number>
+           <number>0</number>
           </property>
           <widget class="QWidget" name="Ton_tab">
+           <property name="autoFillBackground">
+            <bool>true</bool>
+           </property>
+           <property name="styleSheet">
+            <string notr="true"/>
+           </property>
+           <attribute name="icon">
+            <iconset resource="UI-Resources.qrc">
+             <normaloff>:/Icons/Ton-icon-dark.png</normaloff>
+             <activeon>:/Icons/Ton-icon-red.png</activeon>:/Icons/Ton-icon-dark.png</iconset>
+           </attribute>
            <attribute name="title">
-            <string>Ton</string>
+            <string/>
            </attribute>
            <layout class="QVBoxLayout" name="verticalLayout_5">
             <item>
@@ -555,8 +680,16 @@
            </layout>
           </widget>
           <widget class="QWidget" name="Beep_tab">
+           <property name="styleSheet">
+            <string notr="true"/>
+           </property>
+           <attribute name="icon">
+            <iconset resource="UI-Resources.qrc">
+             <normaloff>:/Icons/Beep-icon-dark.png</normaloff>
+             <activeon>:/Icons/Beep-icon-red.png</activeon>:/Icons/Beep-icon-dark.png</iconset>
+           </attribute>
            <attribute name="title">
-            <string>Piepsen</string>
+            <string/>
            </attribute>
            <layout class="QVBoxLayout" name="verticalLayout_8">
             <item>
@@ -677,6 +810,12 @@
                   <horstretch>0</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>40</height>
+                 </size>
                 </property>
                 <property name="maximumSize">
                  <size>
@@ -1543,8 +1682,8 @@ QRadioButton::indicator:unchecked{
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>424</width>
-                 <height>594</height>
+                 <width>406</width>
+                 <height>552</height>
                 </rect>
                </property>
                <layout class="QGridLayout" name="gridLayout_2">

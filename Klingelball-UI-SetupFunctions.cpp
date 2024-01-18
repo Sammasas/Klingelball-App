@@ -27,8 +27,10 @@ void KlingelballUI::setup_UI(){
 
     ui->tabWidget->tabBar()->setStyleSheet("QTabBar{"
                                            "border-top: 2px solid black;}");
+    ui->Sound_tabWidget->setAutoFillBackground(true);
 
     ui->tabWidget->tabBar()->setIconSize(QSize(30, 30));
+    ui->Sound_tabWidget->tabBar()->setIconSize(QSize(30, 30));
 
 
 }
