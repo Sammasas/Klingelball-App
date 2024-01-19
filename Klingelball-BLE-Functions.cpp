@@ -146,6 +146,7 @@ void KlingelballUI::transmitSettings (){
     }
 }
 
+
 QByteArray KlingelballUI::generateBytearray(Setting s,uint8_t data1, uint8_t data2, uint8_t data3){
     QByteArray a;
     a.resize(4);
@@ -164,22 +165,23 @@ QByteArray KlingelballUI::generateBytearray(Setting s,uint8_t data1, uint8_t dat
 }
 
 char KlingelballUI::generatePruefziffer(QByteArray a){
-  char pruef = 0;
+  int pruef = 0;
   int length = sizeof(a)/sizeof(a[0]);
 
   for(int i = 1; i < 4; i++){  //prüfziffer berechnen
     qDebug() << i;
     if(i % 2){
       pruef += a[i] * 1;
-      qDebug() << "ungerade";
+      qDebug() << QString::number(a[i]);
 
     } else{ //gerade
         qDebug() << "gerade";
       pruef += a[i] * 3;
+      qDebug() << QString::number(a[i]);
 
     }
   }
-
+    qDebug() << QString::number(pruef);
   pruef = 9 - (pruef % 10);
 
   qDebug()<<"prueffziffer"<<QString::number(pruef);
@@ -276,7 +278,7 @@ void KlingelballUI::startDeviceDiscovery(){
 #endif // QT_CONFIG(permissions)
 
     m_deviceDiscoveryAgent->start(QBluetoothDeviceDiscoveryAgent::LowEnergyMethod);
-    printMessage("suchen... ");
+    printMessage("suchen... ");//TODO: if bluetooth isnt on message
 }
 
 void KlingelballUI::addDevice(const QBluetoothDeviceInfo &device){

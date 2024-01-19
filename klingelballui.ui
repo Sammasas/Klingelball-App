@@ -37,15 +37,7 @@
        <string/>
       </property>
       <property name="styleSheet">
-       <string notr="true">QTabWidget{
-    background: #5d5e5e;
-}
-
-QTabWidget::pane{
-    background: #5d5e5e;
-
-}
-
+       <string notr="true">
 
 QTabBar::tab{
     margin-left: 10px;
@@ -60,11 +52,12 @@ QTabBar::tab{
 
 QTabWidget::tab-bar {
     alignment: center;
+	
 
 }
 
 QTabBar{
-
+border-top: 2px solid black;
     alignment: center;
 
 }
@@ -79,7 +72,7 @@ QTabBar::tab:selected {
 QTabBar::tab:!selected {
     color: black;
     background: transparent;
-    border-radius: 5px;
+    
 }</string>
       </property>
       <property name="tabPosition">
@@ -327,28 +320,20 @@ QTabBar::tab:!selected {
            <bool>false</bool>
           </property>
           <property name="styleSheet">
-           <string notr="true">/*QTabWidget::pane {
-   border-top: 1px solid black;
- border-bottom: 1px solid black;
-  top: -2px; 
-  background: black;
-  
-} 
+           <string notr="true">QTabWidget{
+	background-color: red;
+}
 
-QTabBar::tab {
-   background: white; 
-	padding: 15px;	
-} 
-
-QTabBar::tab:selected { 
-  border-bottom: 1px solid black;
-  margin-bottom: -1px; 
-}*/
 QTabWidget::pane {
-  border: 1px solid black;
-  top:-1px; 
-  background: rgb(245, 245, 245);
+  border: 2px solid black;
+  top:-2px; 
+  background: black;
+	border-radius: 0px;
 } 
+
+QTabBar{
+	border-top: 0px;
+}
 
 QTabBar::tab {
   background: rgb(230, 230, 230); 
@@ -356,29 +341,43 @@ QTabBar::tab {
 	padding: 15px;
 	margin-left: 0px;
 	margin-right: 0px;
+
   
 } 
 
 QTabBar::tab:unselected{
 	background: white;
    top: 5px; 
-	border-bottom: 1px solid black; 
+	
 	border-radius: 0px;
+	border-bottom: 2px  solid black;
+	border-top: 1px solid lightgrey;
+	border-left: 1px solid lightgrey;
+	border-right: 1px solid lightgrey;
+	
 }
 
 QTabBar::tab:selected { 
-border: 1px solid black; 
+border: 2px solid black; 
   background: white; 
-  margin-bottom: -1px; 
+  margin-bottom: -2px; 
+border-bottom: 2px solid #e50616;
 }</string>
           </property>
           <property name="tabPosition">
            <enum>QTabWidget::North</enum>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>1</number>
           </property>
           <widget class="QWidget" name="Ton_tab">
+           <property name="palette">
+            <palette>
+             <active/>
+             <inactive/>
+             <disabled/>
+            </palette>
+           </property>
            <property name="autoFillBackground">
             <bool>true</bool>
            </property>
@@ -680,8 +679,17 @@ border: 1px solid black;
            </layout>
           </widget>
           <widget class="QWidget" name="Beep_tab">
+           <property name="autoFillBackground">
+            <bool>true</bool>
+           </property>
            <property name="styleSheet">
-            <string notr="true"/>
+            <string notr="true">QTabWidget{
+background-color: black;
+	
+}
+QTabWidget::pane{
+	background-color: black;
+}</string>
            </property>
            <attribute name="icon">
             <iconset resource="UI-Resources.qrc">
@@ -842,6 +850,9 @@ border: 1px solid black;
                   <pointsize>20</pointsize>
                   <bold>true</bold>
                  </font>
+                </property>
+                <property name="autoFillBackground">
+                 <bool>false</bool>
                 </property>
                 <property name="text">
                  <string>Bewegend:</string>
@@ -1682,8 +1693,8 @@ QRadioButton::indicator:unchecked{
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>406</width>
-                 <height>552</height>
+                 <width>424</width>
+                 <height>586</height>
                 </rect>
                </property>
                <layout class="QGridLayout" name="gridLayout_2">
@@ -2004,8 +2015,30 @@ QPushButton::checked{
         </item>
         <item>
          <widget class="QProgressBar" name="batteryStatusProgressbar">
+          <property name="font">
+           <font>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QProgressBar {
+	color: black;
+    border: 2px solid black;
+    border-radius: 12px;
+	text-align: center;
+}
+
+
+QProgressBar::chunk {
+background: #05B8CC;
+border-radius: 10px;
+}</string>
+          </property>
           <property name="value">
-           <number>24</number>
+           <number>50</number>
+          </property>
+          <property name="format">
+           <string>Akkustand: %p%</string>
           </property>
          </widget>
         </item>

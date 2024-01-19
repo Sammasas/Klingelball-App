@@ -24,9 +24,6 @@ void KlingelballUI::setup_UI(){
     ui->OnOff_Button->setVisible(false);
     ui->connectKlingelball->setVisible(false);
     ui->batteryStatusProgressbar->setVisible(false);
-
-    ui->tabWidget->tabBar()->setStyleSheet("QTabBar{"
-                                           "border-top: 2px solid black;}");
     ui->Sound_tabWidget->setAutoFillBackground(true);
 
     ui->tabWidget->tabBar()->setIconSize(QSize(30, 30));
