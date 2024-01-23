@@ -24,6 +24,10 @@
 #include <QBluetoothLocalDevice>
 #include <QButtonGroup>
 #include <QSettings>
+#include <QFontDatabase>
+#include <QJniObject>
+#include <QStyleHints>
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class KlingelballUI; }
@@ -93,6 +97,8 @@ private slots:
     void transmitSettings();
 
     void gotBatteryStatus(int s);
+
+    void on_colorSchemeChanged(Qt::ColorScheme scheme);
 
 Q_SIGNALS:
     void BatteryStatusRead(int);
@@ -258,6 +264,7 @@ private:
                                  "border-radius: 20px;} ";
 
     void setUebertragenButtonTextandStyle(QString text, QString style);
+
 
 };
 #endif // KLINGELBALLUI_H

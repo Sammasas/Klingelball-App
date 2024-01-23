@@ -228,3 +228,58 @@ void KlingelballUI::on_UIDeviceList_currentRowChanged(int currentRow)
     }
 }
 
+void KlingelballUI::setup_ButtonGroup(){
+    stillstehendColorSelectionButtonGroup = new QButtonGroup;
+    stillstehendColorSelectionButtonGroup->addButton(ui->Stillstehend_Farbe1, 1);
+    stillstehendColorSelectionButtonGroup->addButton(ui->Stillstehend_Farbe2, 2);
+    stillstehendColorSelectionButtonGroup->addButton(ui->Stillstehend_Farbe3, 3);
+    stillstehendColorSelectionButtonGroup->addButton(ui->Stillstehend_Farbe4, 4);
+    stillstehendColorSelectionButtonGroup->addButton(ui->Stillstehend_Farbe5, 5);
+
+
+    bewegendColorSelectionButtonGroup = new QButtonGroup;
+    bewegendColorSelectionButtonGroup->addButton(ui->Bewegend_Farbe1, 1);
+    bewegendColorSelectionButtonGroup->addButton(ui->Bewegend_Farbe2, 2);
+    bewegendColorSelectionButtonGroup->addButton(ui->Bewegend_Farbe3, 3);
+    bewegendColorSelectionButtonGroup->addButton(ui->Bewegend_Farbe4, 4);
+    bewegendColorSelectionButtonGroup->addButton(ui->Bewegend_Farbe5, 5);
+
+    connect(stillstehendColorSelectionButtonGroup, SIGNAL(buttonClicked(QAbstractButton*)), this, SLOT(stillstehendButtonGroupClicked(QAbstractButton*)));
+    connect(bewegendColorSelectionButtonGroup, SIGNAL(buttonClicked(QAbstractButton*)), this, SLOT(bewegendButtonGroupClicked(QAbstractButton*)));
+}
+
+void KlingelballUI::stillstehendButtonGroupClicked(QAbstractButton *button){
+    if(stillstehendButtonGroupOneSelected){
+        if(button->isChecked() && (stillstehendColorSelectionButtonGroup->id(button) == stillstehendButtonGroupSelectedID)){
+            stillstehendColorSelectionButtonGroup->setExclusive(false);
+            button->setChecked(false);
+            stillstehendColorSelectionButtonGroup->setExclusive(true);
+            stillstehendButtonGroupOneSelected = false;
+            stillstehendButtonGroupSelectedID = 0;
+        }else{
+            stillstehendButtonGroupSelectedID = stillstehendColorSelectionButtonGroup->id(button);
+        }
+    }else{
+        stillstehendButtonGroupOneSelected = true;
+        stillstehendButtonGroupSelectedID = stillstehendColorSelectionButtonGroup->id(button);
+    }
+
+}
+
+void KlingelballUI::bewegendButtonGroupClicked(QAbstractButton *button){
+    if(bewegendButtonGroupOneSelected){
+        if(button->isChecked() && (bewegendColorSelectionButtonGroup->id(button) == bewegendButtonGroupSelectedID)){
+            bewegendColorSelectionButtonGroup->setExclusive(false);
+            button->setChecked(false);
+            bewegendColorSelectionButtonGroup->setExclusive(true);
+            bewegendButtonGroupOneSelected = false;
+            bewegendButtonGroupSelectedID = 0;
+        }else{
+            bewegendButtonGroupSelectedID = bewegendColorSelectionButtonGroup->id(button);
+        }
+    }else{
+        bewegendButtonGroupOneSelected = true;
+        bewegendButtonGroupSelectedID = bewegendColorSelectionButtonGroup->id(button);
+    }
+}
+

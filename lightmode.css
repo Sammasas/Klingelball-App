@@ -23,17 +23,6 @@ QLabel{
 }
 
 
-
-
-
-QTabBar::tab::disabled{
-    width: 0;
-    height: 0;
-    margin: 0;
-    padding: 0;
-    border: none;
-}
-
 QSpinBox{
     color: black;
     Background: transparent;

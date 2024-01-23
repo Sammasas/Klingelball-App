@@ -32,60 +32,7 @@ void KlingelballUI::setup_UI(){
 
 }
 
-void KlingelballUI::setup_ButtonGroup(){
-    stillstehendColorSelectionButtonGroup = new QButtonGroup;
-    stillstehendColorSelectionButtonGroup->addButton(ui->Stillstehend_Farbe1, 1);
-    stillstehendColorSelectionButtonGroup->addButton(ui->Stillstehend_Farbe2, 2);
-    stillstehendColorSelectionButtonGroup->addButton(ui->Stillstehend_Farbe3, 3);
-    stillstehendColorSelectionButtonGroup->addButton(ui->Stillstehend_Farbe4, 4);
-    stillstehendColorSelectionButtonGroup->addButton(ui->Stillstehend_Farbe5, 5);
 
-
-    bewegendColorSelectionButtonGroup = new QButtonGroup;
-    bewegendColorSelectionButtonGroup->addButton(ui->Bewegend_Farbe1, 1);
-    bewegendColorSelectionButtonGroup->addButton(ui->Bewegend_Farbe2, 2);
-    bewegendColorSelectionButtonGroup->addButton(ui->Bewegend_Farbe3, 3);
-    bewegendColorSelectionButtonGroup->addButton(ui->Bewegend_Farbe4, 4);
-    bewegendColorSelectionButtonGroup->addButton(ui->Bewegend_Farbe5, 5);
-
-    connect(stillstehendColorSelectionButtonGroup, SIGNAL(buttonClicked(QAbstractButton*)), this, SLOT(stillstehendButtonGroupClicked(QAbstractButton*)));
-    connect(bewegendColorSelectionButtonGroup, SIGNAL(buttonClicked(QAbstractButton*)), this, SLOT(bewegendButtonGroupClicked(QAbstractButton*)));
-}
-
-void KlingelballUI::stillstehendButtonGroupClicked(QAbstractButton *button){
-    if(stillstehendButtonGroupOneSelected){
-        if(button->isChecked() && (stillstehendColorSelectionButtonGroup->id(button) == stillstehendButtonGroupSelectedID)){
-            stillstehendColorSelectionButtonGroup->setExclusive(false);
-            button->setChecked(false);
-            stillstehendColorSelectionButtonGroup->setExclusive(true);
-            stillstehendButtonGroupOneSelected = false;
-            stillstehendButtonGroupSelectedID = 0;
-        }else{
-            stillstehendButtonGroupSelectedID = stillstehendColorSelectionButtonGroup->id(button);
-        }
-    }else{
-        stillstehendButtonGroupOneSelected = true;
-        stillstehendButtonGroupSelectedID = stillstehendColorSelectionButtonGroup->id(button);
-    }
-
-}
-
-void KlingelballUI::bewegendButtonGroupClicked(QAbstractButton *button){
-    if(bewegendButtonGroupOneSelected){
-        if(button->isChecked() && (bewegendColorSelectionButtonGroup->id(button) == bewegendButtonGroupSelectedID)){
-            bewegendColorSelectionButtonGroup->setExclusive(false);
-            button->setChecked(false);
-            bewegendColorSelectionButtonGroup->setExclusive(true);
-            bewegendButtonGroupOneSelected = false;
-            bewegendButtonGroupSelectedID = 0;
-        }else{
-            bewegendButtonGroupSelectedID = bewegendColorSelectionButtonGroup->id(button);
-        }
-    }else{
-        bewegendButtonGroupOneSelected = true;
-        bewegendButtonGroupSelectedID = bewegendColorSelectionButtonGroup->id(button);
-    }
-}
 
 void KlingelballUI::setup_lineedit()
 {
@@ -157,6 +104,30 @@ void KlingelballUI::setup_buttons()
 
 void KlingelballUI::setup_labels()
 {
+    qWarning() << QString::number(QFontDatabase::systemFont(QFontDatabase::SystemFont::GeneralFont).pointSize());
+    qWarning() << QString::number(QFontDatabase::systemFont(QFontDatabase::SystemFont::FixedFont).pointSize());
+    qWarning() << QString::number(QFontDatabase::systemFont(QFontDatabase::SystemFont::TitleFont).pointSize());
+
+    /*QJniObject qtActivity = QJniObject::callStaticObjectMethod("org/qtproject/qt6/android/QtNative", "activity", "()Landroid/app/Activity;");
+    QJniObject resources = qtActivity.callObjectMethod("getResources","()Landroid/content/res/Resources;");
+    QJniObject configuration = resources.callObjectMethod("getConfiguration","()Landroid/content/res/Configuration;");
+    float scale = configuration.getField<float>("fontScale");*/
+
+    //QJniObject activity = QJniObject::callStaticObjectMethod("org/qtproject/qt5/android/QtNative", "activity", "()Landroid/app/Activity;");   //activity is valid
+    /*auto activity = QJniObject(QNativeInterface::QAndroidApplication::context());
+
+            if ( activity.isValid() )
+    {
+        QJniObject resources = activity.callObjectMethod("getResources","()Landroid/content/res/Resources;");
+        QJniObject configuration = resources.callObjectMethod("getConfiguration","()Landroid/content/res/Configuration;");
+        float scale = configuration.getField<float>("fontScale");
+        qWarning() << QString::number(scale);
+        dynamicSizeFont = new QFont("...", 15*scale, QFont::Bold);
+        // Equivalent to Jave code: 'Intent intent = new Intent();'*/
+
+
+
+
     dynamicSizeFont = new QFont("segue UI", ui->Lautstaerke_erhoehen->height()*0.6, QFont::Bold);
     SmallerdynamicSizeFont = new QFont("segue UI", ui->Lautstaerke_erhoehen->height()*0.5, QFont::Bold);
     ui->Lautstaerke_Label->setFont(*dynamicSizeFont);

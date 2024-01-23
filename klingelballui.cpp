@@ -22,6 +22,18 @@ KlingelballUI::KlingelballUI(QWidget *parent)
     setupBLE();
     ui->statusLabel->setVisible(false);
     ui->tabWidget->setTabEnabled(2, false);
+
+    connect(QGuiApplication::styleHints(), SIGNAL(colorSchemeChanged (Qt::ColorScheme)), this, SLOT(on_colorSchemeChanged(Qt::ColorScheme)));
+
+
+}
+
+void KlingelballUI::on_colorSchemeChanged(Qt::ColorScheme scheme){
+    if(scheme == Qt::ColorScheme::Dark){
+        ui->Darkmode_checkBox->click();
+    }else if (scheme == Qt::ColorScheme::Light){
+        ui->Lightmode_checkBox->click();
+    }
 }
 
 KlingelballUI::~KlingelballUI()

@@ -1,6 +1,7 @@
 QT       += core gui
 QT       += multimedia
 QT       += bluetooth
+
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++17
@@ -38,7 +39,9 @@ RESOURCES += \
     UI-Resources.qrc
 
 DISTFILES += \
-    android/AndroidManifest.xml
+    android/AndroidManifest.xml \
+    android/build.gradle \
+    android/res/values/libs.xml
 
 contains(ANDROID_TARGET_ARCH,x86_64) {
     ANDROID_PACKAGE_SOURCE_DIR = \
@@ -46,6 +49,11 @@ contains(ANDROID_TARGET_ARCH,x86_64) {
 }
 
 contains(ANDROID_TARGET_ARCH,arm64-v8a) {
+    ANDROID_PACKAGE_SOURCE_DIR = \
+        $$PWD/android
+}
+
+contains(ANDROID_TARGET_ARCH,armeabi-v7a) {
     ANDROID_PACKAGE_SOURCE_DIR = \
         $$PWD/android
 }
