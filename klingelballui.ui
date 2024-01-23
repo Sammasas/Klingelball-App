@@ -370,6 +370,14 @@ border: 2px solid black;
   background: transparent; 
   margin-bottom: -2px; 
 border-bottom: 2px solid #e50616;
+}
+
+QTabBar::tab::disabled{
+    width: 0;
+    height: 0;
+    margin: 0;
+    padding: 0;
+    border: none;
 }</string>
           </property>
           <property name="tabPosition">
@@ -380,6 +388,9 @@ border-bottom: 2px solid #e50616;
           </property>
           <property name="elideMode">
            <enum>Qt::ElideMiddle</enum>
+          </property>
+          <property name="tabsClosable">
+           <bool>false</bool>
           </property>
           <property name="tabBarAutoHide">
            <bool>false</bool>
@@ -706,18 +717,6 @@ border-bottom: 2px solid #e50616;
               </item>
              </layout>
             </item>
-            <item>
-             <widget class="QLabel" name="label">
-              <property name="font">
-               <font>
-                <pointsize>11</pointsize>
-               </font>
-              </property>
-              <property name="text">
-               <string>Stelle die Tonhöhe ein, wenn der Ball stillsteht und wenn sich der Ball bewegt</string>
-              </property>
-             </widget>
-            </item>
            </layout>
           </widget>
           <widget class="QWidget" name="Beep_tab">
@@ -833,6 +832,19 @@ QTabWidget::pane{
                 <property name="icon">
                  <iconset resource="UI-Resources.qrc">
                   <normaloff>:/Icons/Chevron_Up_inverted.png</normaloff>:/Icons/Chevron_Up_inverted.png</iconset>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1" rowspan="3">
+               <widget class="Line" name="line_2">
+                <property name="frameShadow">
+                 <enum>QFrame::Plain</enum>
+                </property>
+                <property name="lineWidth">
+                 <number>2</number>
+                </property>
+                <property name="orientation">
+                 <enum>Qt::Vertical</enum>
                 </property>
                </widget>
               </item>
@@ -1020,32 +1032,7 @@ QTabWidget::pane{
                 </property>
                </widget>
               </item>
-              <item row="1" column="1" rowspan="3">
-               <widget class="Line" name="line_2">
-                <property name="frameShadow">
-                 <enum>QFrame::Plain</enum>
-                </property>
-                <property name="lineWidth">
-                 <number>2</number>
-                </property>
-                <property name="orientation">
-                 <enum>Qt::Vertical</enum>
-                </property>
-               </widget>
-              </item>
              </layout>
-            </item>
-            <item>
-             <widget class="QLabel" name="label_2">
-              <property name="font">
-               <font>
-                <pointsize>11</pointsize>
-               </font>
-              </property>
-              <property name="text">
-               <string>Stelle das Piepsen ein, wenn der Ball stillsteht und wenn sich der Ball bewegt</string>
-              </property>
-             </widget>
             </item>
            </layout>
           </widget>

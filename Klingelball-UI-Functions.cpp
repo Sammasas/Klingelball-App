@@ -50,6 +50,18 @@ void KlingelballUI::on_Lightmode_checkBox_clicked()
         ui->Stillstehend_Farbe5->setStyleSheet(RadioButtonCommonStyleLight + RadioButtonColor5);
 
         setStyleSheet(styleSheet);
+        ui->Sound_tabWidget->setStyleSheet("QTabWidget{\n	background-color: red;\n}\n\nQTabWidget::pane {\n  border: 2px solid black;\n  top:-2px; \n  background: solid black;\n	border-radius: 0px;\n} \n\nQTabBar{\n	border-top: 0px;\n}\n\nQTabBar::tab {\n  background: rgb(230, 230, 230); \n  \n	padding: 15px;\n	margin-left: 0px;\n	margin-right: 0px;\n\n  \n} \n\nQTabBar::tab:unselected{\n	background: darkgrey;\n   top: 5px; \n	\n	border-radius: 0px;\n	border-bottom: 2px  solid black;\n	border-top: 1px solid lightgrey;\n	border-left: 1px solid lightgrey;\n	border-right: 1px solid lightgrey;\n	\n}\n\nQTabBar::tab:selected { \nborder: 2px solid black; \n  background: transparent; \n  margin-bottom: -2px; \nborder-bottom: 2px solid #e50616;\n}\n\nQTabBar::tab::disabled{\n    width: 0;\n    height: 0;\n    margin: 0;\n    padding: 0;\n    border: none;\n}");
+        ui->tabWidget->setStyleSheet("\n\nQTabBar::tab{\n    margin-left: 10px;\n    margin-right: 10px;\n    margin-bottom: 5px;\n    margin-top: 10px;\n\n    /*padding-left: 5px;\n    padding-right: 5px;*/\n\n}\n\nQTabWidget::tab-bar {\n    alignment: center;\n	\n\n}\n\nQTabBar{\nborder-top: 2px solid black;\n    alignment: center;\n\n}\n\nQTabBar::tab:selected {\n    color: #e50616;\n    background: transparent;\n    border-bottom: 2px solid #e50616;\n\n}\n\nQTabBar::tab:!selected {\n    color: black;\n    background: transparent;\n    \n}\n\nQTabBar::tab::disabled{\n    width: 0;\n    height: 0;\n    margin: 0;\n    padding: 0;\n    border: none;\n}");
+
+        ui->line->setStyleSheet("color: black;");
+        ui->line_2->setStyleSheet("color: black;");
+        ui->line_3->setStyleSheet("color: black;");
+
+        ui->tabWidget->setTabIcon(0, QIcon(":/Icons/lautstarke_dark.png"));
+        ui->tabWidget->setTabIcon(1, QIcon(":/Icons/light_icon_light.png"));
+        ui->tabWidget->setTabIcon(3, QIcon(":/Icons/Ball_icon.png"));
+        ui->tabWidget->setTabIcon(4, QIcon(":/Icons/settings_icon_176440.png"));
+
         on_tabWidget_currentChanged(ui->tabWidget->currentIndex());
     }
 }
@@ -79,6 +91,18 @@ void KlingelballUI::on_Darkmode_checkBox_clicked()
         ui->Stillstehend_Farbe5->setStyleSheet(RadioButtonCommonStyleDark + RadioButtonColor5);
 
         setStyleSheet(styleSheet);
+        ui->Sound_tabWidget->setStyleSheet("QTabWidget{\n	background-color: red;\n}\n\nQTabWidget::pane {\n  border: 2px solid white;\n  top:-2px; \n  background: solid white;\n	border-radius: 0px;\n} \n\nQTabBar{\n	border-top: 0px;\n}\n\nQTabBar::tab {\n  background: rgb(230, 230, 230); \n  \n	padding: 15px;\n	margin-left: 0px;\n	margin-right: 0px;\n\n  \n} \n\nQTabBar::tab:unselected{\n	background: darkgrey;\n   top: 5px; \n	\n	border-radius: 0px;\n	border-bottom: 2px  solid black;\n	border-top: 1px solid lightgrey;\n	border-left: 1px solid lightgrey;\n	border-right: 1px solid lightgrey;\n	\n}\n\nQTabBar::tab:selected { \nborder: 2px solid white; \n  background: transparent; \n  margin-bottom: -2px; \nborder-bottom: 2px solid #e50616;\n}\n\nQTabBar::tab::disabled{\n    width: 0;\n    height: 0;\n    margin: 0;\n    padding: 0;\n    border: none;\n}");
+        ui->tabWidget->setStyleSheet("\n\nQTabBar::tab{\n    margin-left: 10px;\n    margin-right: 10px;\n    margin-bottom: 5px;\n    margin-top: 10px;\n\n    /*padding-left: 5px;\n    padding-right: 5px;*/\n\n}\n\nQTabWidget::tab-bar {\n    alignment: center;\n	\n\n}\n\nQTabBar{\nborder-top: 2px solid white;\n    alignment: center;\n\n}\n\nQTabBar::tab:selected {\n    color: #e50616;\n    background: transparent;\n    border-bottom: 2px solid #e50616;\n\n}\n\nQTabBar::tab:!selected {\n    color: black;\n    background: transparent;\n    \n}\n\nQTabBar::tab::disabled{\n    width: 0;\n    height: 0;\n    margin: 0;\n    padding: 0;\n    border: none;\n}");
+
+        ui->line->setStyleSheet("color: white;");
+        ui->line_2->setStyleSheet("color: white;");
+        ui->line_3->setStyleSheet("color: white;");
+
+        ui->tabWidget->setTabIcon(0, QIcon(":/Icons/lautstarke_light.png"));
+        ui->tabWidget->setTabIcon(1, QIcon(":/Icons/light_icon_dark.png"));
+        ui->tabWidget->setTabIcon(3, QIcon(":/Icons/Ball_icon_inverted.png"));
+        ui->tabWidget->setTabIcon(4, QIcon(":/Icons/settingsIcon_inverted.png"));
+
         on_tabWidget_currentChanged(ui->tabWidget->currentIndex());
     }
 }
@@ -183,30 +207,79 @@ void KlingelballUI::update_profile_transmittion_state()
 
 void KlingelballUI::on_tabWidget_currentChanged(int index)
 {
-    QIcon settingsIcon(":/Icons/settings_icon_176440.png");
-    QIcon settingsIconInverted(":/Icons/settingsIcon_inverted.png");
 
-    QIcon ballIcon(":/Icons/Ball_icon.png");
-    QIcon ballIconInverted(":/Icons/Ball_icon_inverted.png");
+    if(ui->Darkmode_checkBox->isChecked()){
+        switch(index){
+        case 0:
+            ui->tabWidget->setTabIcon(0, QIcon(":/Icons/lautstarke_red.png"));
+            ui->tabWidget->setTabIcon(1, QIcon(":/Icons/light_icon_dark.png"));
+            ui->tabWidget->setTabIcon(3, QIcon(":/Icons/Ball_icon_inverted.png"));
+            ui->tabWidget->setTabIcon(4, QIcon(":/Icons/settingsIcon_inverted.png"));
+            break;
+        case 1:
+            ui->tabWidget->setTabIcon(0, QIcon(":/Icons/lautstarke_light.png"));
+            ui->tabWidget->setTabIcon(1, QIcon(":/Icons/light-icon_red.png"));
+            ui->tabWidget->setTabIcon(3, QIcon(":/Icons/Ball_icon_inverted.png"));
+            ui->tabWidget->setTabIcon(4, QIcon(":/Icons/settingsIcon_inverted.png"));
+            break;
+        case 3:
+            ui->tabWidget->setTabIcon(0, QIcon(":/Icons/lautstarke_light.png"));
+            ui->tabWidget->setTabIcon(1, QIcon(":/Icons/light_icon_dark.png"));
+            ui->tabWidget->setTabIcon(3, QIcon(":/Icons/ball_icon_red.png"));
+            ui->tabWidget->setTabIcon(4, QIcon(":/Icons/settingsIcon_inverted.png"));
+            break;
+        case 4:
+            ui->tabWidget->setTabIcon(0, QIcon(":/Icons/lautstarke_light.png"));
+            ui->tabWidget->setTabIcon(1, QIcon(":/Icons/light_icon_dark.png"));
+            ui->tabWidget->setTabIcon(3, QIcon(":/Icons/Ball_icon_inverted.png"));
+            ui->tabWidget->setTabIcon(4, QIcon(":/Icons/settings_icon_red.png"));
+            break;
+        default:
+            ui->tabWidget->setTabIcon(0, QIcon(":/Icons/lautstarke_light.png"));
+            ui->tabWidget->setTabIcon(1, QIcon(":/Icons/light_icon_dark.png"));
+            ui->tabWidget->setTabIcon(3, QIcon(":/Icons/Ball_icon_inverted.png"));
+            ui->tabWidget->setTabIcon(4, QIcon(":/Icons/settings_icon_red.png"));
+            break;
+        }
+    }else if (ui->Lightmode_checkBox->isChecked()){
+        switch(index){
+        case 0:
+            ui->tabWidget->setTabIcon(0, QIcon(":/Icons/lautstarke_red.png"));
+            ui->tabWidget->setTabIcon(1, QIcon(":/Icons/light_icon_light.png"));
+            ui->tabWidget->setTabIcon(3, QIcon(":/Icons/Ball_icon.png"));
+            ui->tabWidget->setTabIcon(4, QIcon(":/Icons/settings_icon_176440.png"));
+            break;
+        case 1:
+            ui->tabWidget->setTabIcon(0, QIcon(":/Icons/lautstarke_dark.png"));
+            ui->tabWidget->setTabIcon(1, QIcon(":/Icons/light-icon_red.png"));
+            ui->tabWidget->setTabIcon(3, QIcon(":/Icons/Ball_icon.png"));
+            ui->tabWidget->setTabIcon(4, QIcon(":/Icons/settings_icon_176440.png"));
+            break;
+        case 3:
+            ui->tabWidget->setTabIcon(0, QIcon(":/Icons/lautstarke_dark.png"));
+            ui->tabWidget->setTabIcon(1, QIcon(":/Icons/light_icon_light.png"));
+            ui->tabWidget->setTabIcon(3, QIcon(":/Icons/ball_icon_red.png"));
+            ui->tabWidget->setTabIcon(4, QIcon(":/Icons/settings_icon_176440.png"));
+            break;
+        case 4:
+            ui->tabWidget->setTabIcon(0, QIcon(":/Icons/lautstarke_dark.png"));
+            ui->tabWidget->setTabIcon(1, QIcon(":/Icons/light_icon_light.png"));
+            ui->tabWidget->setTabIcon(3, QIcon(":/Icons/Ball_icon.png"));
+            ui->tabWidget->setTabIcon(4, QIcon(":/Icons/settings_icon_red.png"));
+            break;
+        default:
+            ui->tabWidget->setTabIcon(0, QIcon(":/Icons/lautstarke_dark.png"));
+            ui->tabWidget->setTabIcon(1, QIcon(":/Icons/light_icon_light.png"));
+            ui->tabWidget->setTabIcon(3, QIcon(":/Icons/Ball_icon.png"));
+            ui->tabWidget->setTabIcon(4, QIcon(":/Icons/settings_icon_176440.png"));
+            break;
+        }
+    }
 
-    /*if(index == ui->tabWidget->indexOf(ui->Settings_Tab)){
-        ui->Lightmode_checkBox->isChecked() ?
-                    ui->tabWidget->setTabIcon(ui->tabWidget->indexOf(ui->Settings_Tab), settingsIconInverted) :
-                    ui->tabWidget->setTabIcon(ui->tabWidget->indexOf(ui->Settings_Tab), settingsIconInverted);
-    }else
-       ui->Lightmode_checkBox->isChecked() ?
-                    ui->tabWidget->setTabIcon(ui->tabWidget->indexOf(ui->Settings_Tab), settingsIcon) :
-                    ui->tabWidget->setTabIcon(ui->tabWidget->indexOf(ui->Settings_Tab), settingsIconInverted);
 
-    if(index == ui->tabWidget->indexOf(ui->Ball_Tab)){
-        ui->Lightmode_checkBox->isChecked() ?
-                    ui->tabWidget->setTabIcon(ui->tabWidget->indexOf(ui->Ball_Tab), ballIconInverted):
-                    ui->tabWidget->setTabIcon(ui->tabWidget->indexOf(ui->Ball_Tab), ballIconInverted);
-    }else
-        ui->Lightmode_checkBox->isChecked() ?
-                    ui->tabWidget->setTabIcon(ui->tabWidget->indexOf(ui->Ball_Tab), ballIcon):
-                    ui->tabWidget->setTabIcon(ui->tabWidget->indexOf(ui->Ball_Tab), ballIconInverted);
-    */
+
+
+
 }
 
 void KlingelballUI::on_OnOff_Button_toggled(bool checked)

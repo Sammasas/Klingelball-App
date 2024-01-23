@@ -91,7 +91,7 @@ void KlingelballUI::transmitSettings (){
             printMessage("TransmitGeneralSound");
             qDebug() <<"Case:" << QString::number(Setting::GeneralSound);
             m_service->writeCharacteristic(m_service->characteristics().at(0), generateBytearray(Setting::GeneralSound,
-                                                                                                 1, //TODO: implement optional beeping
+                                                                                                 1,
                                                                                                  ui->Stillstehend_Beep_Freq->value(),
                                                                                                  ui->Bewegend_Beep_Freq->value()),
                                            QLowEnergyService::WriteWithResponse);

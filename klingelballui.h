@@ -100,6 +100,8 @@ private slots:
 
     void on_colorSchemeChanged(Qt::ColorScheme scheme);
 
+
+
 Q_SIGNALS:
     void BatteryStatusRead(int);
 

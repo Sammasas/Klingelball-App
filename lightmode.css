@@ -26,7 +26,7 @@ QLabel{
 QSpinBox{
     color: black;
     Background: transparent;
-    selection-background-color: white;
+    selection-background-color: transparent;
 }
 
 QGroupBox{
