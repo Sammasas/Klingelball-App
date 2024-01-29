@@ -612,7 +612,6 @@ void KlingelballUI::KlingelballCharacteristicWritten(QLowEnergyCharacteristic ch
 
     if (transmittionActive){
         m_service->readCharacteristic(characteristic);
-
     }
 }
 

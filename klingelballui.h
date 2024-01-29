@@ -27,6 +27,7 @@
 #include <QFontDatabase>
 #include <QJniObject>
 #include <QStyleHints>
+#include <QFontDialog>
 
 
 QT_BEGIN_NAMESPACE
@@ -99,6 +100,8 @@ private slots:
     void gotBatteryStatus(int s);
 
     void on_colorSchemeChanged(Qt::ColorScheme scheme);
+
+    void on_fontDatabaseChanged();
 
 
 

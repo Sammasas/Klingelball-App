@@ -128,7 +128,8 @@ void KlingelballUI::setup_labels()
 
 
 
-    dynamicSizeFont = new QFont("segue UI", ui->Lautstaerke_erhoehen->height()*0.6, QFont::Bold);
+    dynamicSizeFont = new QFont("segue UI", QApplication::font().pointSize(), QFont::Bold);
+
     SmallerdynamicSizeFont = new QFont("segue UI", ui->Lautstaerke_erhoehen->height()*0.5, QFont::Bold);
     ui->Lautstaerke_Label->setFont(*dynamicSizeFont);
     ui->Stillstehend_Ton_Freq_Label->setFont(*dynamicSizeFont);

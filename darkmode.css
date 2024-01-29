@@ -111,3 +111,17 @@ QRadioButton::indicator:checked{
 QRadioButton::indicator:unchecked{
         border: 2px solid #868686;
 }
+
+QProgressBar {
+        color: black;
+        background: white;
+    border: 2px solid white;
+    border-radius: 12px;
+        text-align: center;
+}
+
+
+QProgressBar::chunk {
+background: #049bac;
+border-radius: 10px;
+}

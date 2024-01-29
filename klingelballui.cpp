@@ -25,8 +25,13 @@ KlingelballUI::KlingelballUI(QWidget *parent)
 
 
     connect(QGuiApplication::styleHints(), SIGNAL(colorSchemeChanged (Qt::ColorScheme)), this, SLOT(on_colorSchemeChanged(Qt::ColorScheme)));
+    connect(QApplication::instance(), SIGNAL(fontDatabaseChanged()), this, SLOT(on_fontDatabaseChanged()));
 
+}
 
+void  KlingelballUI::on_fontDatabaseChanged(){
+    qWarning() <<"font changed!";
+    setup_UI();
 }
 
 void KlingelballUI::on_colorSchemeChanged(Qt::ColorScheme scheme){

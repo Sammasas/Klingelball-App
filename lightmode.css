@@ -27,6 +27,7 @@ QSpinBox{
     color: black;
     Background: transparent;
     selection-background-color: transparent;
+    selection-color: black;
 }
 
 QGroupBox{
@@ -92,6 +93,20 @@ QListWidget::item{
 
 QListWidget::item::selected{
     background-color: blue;
+}
+
+QProgressBar {
+        color: black;
+        background: white;
+    border: 2px solid black;
+    border-radius: 12px;
+        text-align: center;
+}
+
+
+QProgressBar::chunk {
+background: #049bac;
+border-radius: 10px;
 }
 
 
