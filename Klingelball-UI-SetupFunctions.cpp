@@ -15,7 +15,16 @@ void KlingelballUI::setup_UI(){
     ui->Profile_Tab->setFocusPolicy(Qt::NoFocus);
     ui->Sound_Tab->setFocusPolicy(Qt::NoFocus);
     ui->centralwidget->setFocusPolicy(Qt::NoFocus);
-    ui->tabWidget->tabBar()->setAccessibleTabName(3, "Einstellungen");
+    ui->tabWidget->tabBar()->setAccessibleTabName(0, "Toneinstellungen Tab 1 von 4");
+    ui->tabWidget->tabBar()->setAccessibleTabName(1, "Lichteinstellungen Tab 2 von 4");
+    ui->tabWidget->tabBar()->setAccessibleTabName(3, "Ball verbinden Tab 3 von 4");
+    ui->tabWidget->tabBar()->setAccessibleTabName(4, "Einstellungen Tab 4 von 4");
+
+
+    ui->Sound_tabWidget->tabBar()->setAccessibleTabName(0, "Tonhöheneinstellung Tab 1 von 2");
+    ui->Sound_tabWidget->tabBar()->setAccessibleTabName(1, "Piepseinstellung Tab 2 von 2");
+
+    ui->Lautstaerke->setAccessibleName("Lautstärke" + QString::number(ui->Lautstaerke->value()) + "% Einstellbar");
 
     ui->verticalLayout_2->setContentsMargins(0, 0, 0, 0);
     ui->tabWidget->setMaximumWidth(qApp->screens()[0]->size().width()+2);
@@ -28,6 +37,8 @@ void KlingelballUI::setup_UI(){
 
     ui->tabWidget->tabBar()->setIconSize(QSize(30, 30));
     ui->Sound_tabWidget->tabBar()->setIconSize(QSize(30, 30));
+
+
 
 
 }
@@ -98,7 +109,6 @@ void KlingelballUI::setup_buttons()
     ui->Heilligkeit_erhoehen->setIconSize(QSize(ui->Lautstaerke_erhoehen->height()*iconSizeMultiplier, ui->Lautstaerke_erhoehen->height()));
     ui->Heilligkeit_verringern->setIconSize(QSize(ui->Lautstaerke_erhoehen->height()*iconSizeMultiplier, ui->Lautstaerke_erhoehen->height()));
 
-
 }
 
 
@@ -144,7 +154,7 @@ void KlingelballUI::setup_labels()
 
     ui->Farbe_Label->setFont(*dynamicSizeFont);
 
-    ui->new_profile_label->setFont(*dynamicSizeFont);
+    /*ui->new_profile_label->setFont(*dynamicSizeFont);
     ui->new_profile_label->setTextInteractionFlags(Qt::TextSelectableByMouse );
     ui->new_profile_volume_label->setTextInteractionFlags(Qt::TextSelectableByMouse );
     ui->new_profile_Bew_Freq_label->setTextInteractionFlags(Qt::TextSelectableByMouse );
@@ -160,5 +170,5 @@ void KlingelballUI::setup_labels()
     ui->Bewegend_Ton_Freq_Label->setTextInteractionFlags(Qt::TextSelectableByMouse );
     ui->Aussehen_label->setTextInteractionFlags(Qt::TextSelectableByMouse);
 
-    ui->statusLabel->setTextInteractionFlags(Qt::TextSelectableByMouse );
+    ui->statusLabel->setTextInteractionFlags(Qt::TextSelectableByMouse );*/
 }

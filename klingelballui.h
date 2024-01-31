@@ -8,6 +8,7 @@
 #include <QBuffer>
 #include <QAudioOutput>
 #include <QAudioFormat>
+#include <QAccessibleActionInterface>
 #include <QFile>
 #include "EinstellungsProfil.h"
 #include <QScroller>
@@ -63,9 +64,6 @@ public slots:
 
 
 private slots:
-    void on_Bis_Frequ_valueChanged(int arg1);
-
-    void on_Volume_valueChanged(int arg1);
 
     void on_Lightmode_checkBox_clicked();
 
@@ -104,6 +102,12 @@ private slots:
     void on_fontDatabaseChanged();
 
 
+
+    void on_Lautstaerke_valueChanged(int arg1);
+
+    void on_Stillstehend_Beep_Freq_valueChanged(int arg1);
+
+    void on_Bewegend_Beep_Freq_valueChanged(int arg1);
 
 Q_SIGNALS:
     void BatteryStatusRead(int);

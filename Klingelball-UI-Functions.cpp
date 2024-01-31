@@ -1,21 +1,7 @@
 #include "klingelballui.h"
 #include "ui_klingelballui.h"
 
-void KlingelballUI::on_Bis_Frequ_valueChanged(int arg1)
-{
 
-}
-
-
-void KlingelballUI::on_Volume_valueChanged(int arg1)
-{
-    /*
-    QTimer *timer = new QTimer(this);
-    connect(timer, SIGNAL(&QTimer::timeout), this, SLOT(playSoundEffect()));
-    playSoundEffect(ui->Volume->value());
-    timer->start(1000);
-    */
-}
 
 void KlingelballUI::playSoundEffect(int Volume = 100){
 

@@ -30,6 +30,9 @@
         <bold>true</bold>
        </font>
       </property>
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
+      </property>
       <property name="accessibleName">
        <string/>
       </property>
@@ -90,7 +93,7 @@ QTabBar::tab::disabled{
        <enum>QTabWidget::Rounded</enum>
       </property>
       <property name="currentIndex">
-       <number>3</number>
+       <number>0</number>
       </property>
       <property name="iconSize">
        <size>
@@ -178,6 +181,12 @@ QTabBar::tab::disabled{
               <height>60</height>
              </size>
             </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
+            <property name="contextMenuPolicy">
+             <enum>Qt::NoContextMenu</enum>
+            </property>
             <property name="accessibleName">
              <string>Lautstärke erhöhen</string>
             </property>
@@ -223,7 +232,7 @@ QTabBar::tab::disabled{
              <cursorShape>BlankCursor</cursorShape>
             </property>
             <property name="focusPolicy">
-             <enum>Qt::ClickFocus</enum>
+             <enum>Qt::TabFocus</enum>
             </property>
             <property name="accessibleName">
              <string>Lautstärke %</string>
@@ -235,7 +244,7 @@ QTabBar::tab::disabled{
              <set>Qt::AlignCenter</set>
             </property>
             <property name="readOnly">
-             <bool>true</bool>
+             <bool>false</bool>
             </property>
             <property name="buttonSymbols">
              <enum>QAbstractSpinBox::NoButtons</enum>
@@ -273,6 +282,9 @@ QTabBar::tab::disabled{
               <width>16777215</width>
               <height>60</height>
              </size>
+            </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
             </property>
             <property name="accessibleName">
              <string>Lautstärke verringern</string>
@@ -323,6 +335,9 @@ QTabBar::tab::disabled{
             <pointsize>16</pointsize>
             <bold>true</bold>
            </font>
+          </property>
+          <property name="focusPolicy">
+           <enum>Qt::NoFocus</enum>
           </property>
           <property name="autoFillBackground">
            <bool>false</bool>
@@ -384,7 +399,7 @@ QTabBar::tab::disabled{
            <enum>QTabWidget::North</enum>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>1</number>
           </property>
           <property name="elideMode">
            <enum>Qt::ElideMiddle</enum>
@@ -419,7 +434,7 @@ QTabBar::tab::disabled{
            </attribute>
            <layout class="QVBoxLayout" name="verticalLayout_5">
             <item>
-             <layout class="QGridLayout" name="Ton_Layout" rowstretch="0,0,0,0" columnstretch="0,0,0">
+             <layout class="QGridLayout" name="Ton_Layout" rowstretch="0,0,0,0,0" columnstretch="0,0,0">
               <property name="sizeConstraint">
                <enum>QLayout::SetMaximumSize</enum>
               </property>
@@ -429,29 +444,7 @@ QTabBar::tab::disabled{
               <property name="verticalSpacing">
                <number>4</number>
               </property>
-              <item row="0" column="2">
-               <widget class="QLabel" name="Bewegend_Ton_Freq_Label">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="font">
-                 <font>
-                  <pointsize>20</pointsize>
-                  <bold>true</bold>
-                 </font>
-                </property>
-                <property name="text">
-                 <string>Bewegend:</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignBottom|Qt::AlignHCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="0">
+              <item row="2" column="0">
                <widget class="QPushButton" name="Stillstehend_Ton_Freq_erhoehen">
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
@@ -472,7 +465,7 @@ QTabBar::tab::disabled{
                  </size>
                 </property>
                 <property name="accessibleName">
-                 <string>Stillstehende Frequenz erhöhen</string>
+                 <string>Stillstehende Tonfrequenz um 5% erhöhen Taste</string>
                 </property>
                 <property name="text">
                  <string/>
@@ -483,7 +476,7 @@ QTabBar::tab::disabled{
                 </property>
                </widget>
               </item>
-              <item row="2" column="0">
+              <item row="3" column="0">
                <widget class="QSpinBox" name="Stillstehend_Ton_Freq">
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -516,7 +509,7 @@ QTabBar::tab::disabled{
                  <set>Qt::AlignCenter</set>
                 </property>
                 <property name="readOnly">
-                 <bool>true</bool>
+                 <bool>false</bool>
                 </property>
                 <property name="buttonSymbols">
                  <enum>QAbstractSpinBox::NoButtons</enum>
@@ -535,8 +528,30 @@ QTabBar::tab::disabled{
                 </property>
                </widget>
               </item>
-              <item row="3" column="2">
-               <widget class="QPushButton" name="Bewegend_Ton_Freq_verringern">
+              <item row="1" column="0">
+               <widget class="QLabel" name="Stillstehend_Ton_Freq_Label">
+                <property name="font">
+                 <font>
+                  <pointsize>20</pointsize>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="accessibleName">
+                 <string>Überschrift</string>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true"/>
+                </property>
+                <property name="text">
+                 <string>Stillstehend:</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignBottom|Qt::AlignHCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="0">
+               <widget class="QPushButton" name="Stillstehend_Ton_Freq_Verringern">
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
                   <horstretch>0</horstretch>
@@ -556,7 +571,7 @@ QTabBar::tab::disabled{
                  </size>
                 </property>
                 <property name="accessibleName">
-                 <string>Bewegende Frequenz verringern</string>
+                 <string>StillstehendeTonfrequenz um 5% verringern Taste</string>
                 </property>
                 <property name="text">
                  <string/>
@@ -567,7 +582,64 @@ QTabBar::tab::disabled{
                 </property>
                </widget>
               </item>
+              <item row="1" column="2">
+               <widget class="QLabel" name="Bewegend_Ton_Freq_Label">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="font">
+                 <font>
+                  <pointsize>20</pointsize>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="accessibleName">
+                 <string>Überschrift</string>
+                </property>
+                <property name="text">
+                 <string>Bewegend:</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignBottom|Qt::AlignHCenter</set>
+                </property>
+               </widget>
+              </item>
               <item row="2" column="2">
+               <widget class="QPushButton" name="Bewegend_Ton_Freq_erhoehen">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>40</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>60</height>
+                 </size>
+                </property>
+                <property name="accessibleName">
+                 <string>Bewegende Tonfrequenz um 5% erhöhen Taste</string>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="icon">
+                 <iconset resource="UI-Resources.qrc">
+                  <normaloff>:/Icons/Chevron_Up_inverted.png</normaloff>:/Icons/Chevron_Up_inverted.png</iconset>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="2">
                <widget class="QSpinBox" name="Bewegend_Ton_Freq">
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -600,7 +672,7 @@ QTabBar::tab::disabled{
                  <set>Qt::AlignCenter</set>
                 </property>
                 <property name="readOnly">
-                 <bool>true</bool>
+                 <bool>false</bool>
                 </property>
                 <property name="buttonSymbols">
                  <enum>QAbstractSpinBox::NoButtons</enum>
@@ -619,8 +691,8 @@ QTabBar::tab::disabled{
                 </property>
                </widget>
               </item>
-              <item row="1" column="2">
-               <widget class="QPushButton" name="Bewegend_Ton_Freq_erhoehen">
+              <item row="4" column="2">
+               <widget class="QPushButton" name="Bewegend_Ton_Freq_verringern">
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
                   <horstretch>0</horstretch>
@@ -640,58 +712,7 @@ QTabBar::tab::disabled{
                  </size>
                 </property>
                 <property name="accessibleName">
-                 <string>Bewegende Frequenz erhöhen</string>
-                </property>
-                <property name="text">
-                 <string/>
-                </property>
-                <property name="icon">
-                 <iconset resource="UI-Resources.qrc">
-                  <normaloff>:/Icons/Chevron_Up_inverted.png</normaloff>:/Icons/Chevron_Up_inverted.png</iconset>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="0">
-               <widget class="QLabel" name="Stillstehend_Ton_Freq_Label">
-                <property name="font">
-                 <font>
-                  <pointsize>20</pointsize>
-                  <bold>true</bold>
-                 </font>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true"/>
-                </property>
-                <property name="text">
-                 <string>Stillstehend:</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignBottom|Qt::AlignHCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="0">
-               <widget class="QPushButton" name="Stillstehend_Ton_Freq_Verringern">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>0</width>
-                  <height>40</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>16777215</width>
-                  <height>60</height>
-                 </size>
-                </property>
-                <property name="accessibleName">
-                 <string>Stillstehende Frequenz verringern</string>
+                 <string>Bewegende Tonfrequenz um 5% verringern Taste</string>
                 </property>
                 <property name="text">
                  <string/>
@@ -702,7 +723,7 @@ QTabBar::tab::disabled{
                 </property>
                </widget>
               </item>
-              <item row="1" column="1" rowspan="3">
+              <item row="2" column="1" rowspan="3">
                <widget class="Line" name="line_3">
                 <property name="frameShadow">
                  <enum>QFrame::Plain</enum>
@@ -742,7 +763,7 @@ QTabWidget::pane{
            </attribute>
            <layout class="QVBoxLayout" name="verticalLayout_8">
             <item>
-             <layout class="QGridLayout" name="Beep_Layout" rowstretch="0,0,0,0" columnstretch="0,0,0">
+             <layout class="QGridLayout" name="Beep_Layout" rowstretch="0,0,0,0,0" columnstretch="0,0,0">
               <property name="sizeConstraint">
                <enum>QLayout::SetMaximumSize</enum>
               </property>
@@ -752,58 +773,29 @@ QTabWidget::pane{
               <property name="verticalSpacing">
                <number>4</number>
               </property>
-              <item row="3" column="0">
-               <widget class="QPushButton" name="Stillstehend_Beep_Freq_verringern">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Minimum" vsizetype="MinimumExpanding">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>0</width>
-                  <height>40</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>16777215</width>
-                  <height>60</height>
-                 </size>
-                </property>
-                <property name="accessibleName">
-                 <string>Stillstehende Frequenz verringern</string>
-                </property>
-                <property name="text">
-                 <string/>
-                </property>
-                <property name="icon">
-                 <iconset resource="UI-Resources.qrc">
-                  <normaloff>:/Icons/Chevron_down_inverted.png</normaloff>:/Icons/Chevron_down_inverted.png</iconset>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="2">
-               <widget class="QLabel" name="Bewegend_Beep_Freq_Label">
+              <item row="1" column="0">
+               <widget class="QLabel" name="Stillstehend_Beep_Freq_Label">
                 <property name="font">
                  <font>
                   <pointsize>20</pointsize>
                   <bold>true</bold>
                  </font>
                 </property>
-                <property name="autoFillBackground">
-                 <bool>false</bool>
+                <property name="focusPolicy">
+                 <enum>Qt::TabFocus</enum>
+                </property>
+                <property name="accessibleName">
+                 <string>Überschrift</string>
                 </property>
                 <property name="text">
-                 <string>Bewegend:</string>
+                 <string>Stillstehend:</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignBottom|Qt::AlignHCenter</set>
                 </property>
                </widget>
               </item>
-              <item row="1" column="0">
+              <item row="2" column="0">
                <widget class="QPushButton" name="Stillstehend_Beep_Freq_erhoehen">
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Minimum" vsizetype="MinimumExpanding">
@@ -824,7 +816,7 @@ QTabWidget::pane{
                  </size>
                 </property>
                 <property name="accessibleName">
-                 <string>Stillstehende Frequenz erhöhen</string>
+                 <string>Stillstehende Piepsfrequenz um 5% erhöhen Taste</string>
                 </property>
                 <property name="text">
                  <string/>
@@ -835,152 +827,7 @@ QTabWidget::pane{
                 </property>
                </widget>
               </item>
-              <item row="1" column="1" rowspan="3">
-               <widget class="Line" name="line_2">
-                <property name="frameShadow">
-                 <enum>QFrame::Plain</enum>
-                </property>
-                <property name="lineWidth">
-                 <number>2</number>
-                </property>
-                <property name="orientation">
-                 <enum>Qt::Vertical</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="2">
-               <widget class="QPushButton" name="Bewegend_Beep_Freq_verringern">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Minimum" vsizetype="MinimumExpanding">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>0</width>
-                  <height>40</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>16777215</width>
-                  <height>60</height>
-                 </size>
-                </property>
-                <property name="accessibleName">
-                 <string>Bewegende Frequenz verringern</string>
-                </property>
-                <property name="text">
-                 <string/>
-                </property>
-                <property name="icon">
-                 <iconset resource="UI-Resources.qrc">
-                  <normaloff>:/Icons/Chevron_down_inverted.png</normaloff>:/Icons/Chevron_down_inverted.png</iconset>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="0">
-               <widget class="QLabel" name="Stillstehend_Beep_Freq_Label">
-                <property name="font">
-                 <font>
-                  <pointsize>20</pointsize>
-                  <bold>true</bold>
-                 </font>
-                </property>
-                <property name="text">
-                 <string>Stillstehend:</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignBottom|Qt::AlignHCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="2">
-               <widget class="QPushButton" name="Bewegend_Beep_Freq_erhoehen">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Minimum" vsizetype="MinimumExpanding">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>0</width>
-                  <height>40</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>16777215</width>
-                  <height>60</height>
-                 </size>
-                </property>
-                <property name="accessibleName">
-                 <string>Bewegende Frequenz erhöhen</string>
-                </property>
-                <property name="text">
-                 <string/>
-                </property>
-                <property name="icon">
-                 <iconset resource="UI-Resources.qrc">
-                  <normaloff>:/Icons/Chevron_Up_inverted.png</normaloff>:/Icons/Chevron_Up_inverted.png</iconset>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="2">
-               <widget class="QSpinBox" name="Bewegend_Beep_Freq">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="font">
-                 <font>
-                  <pointsize>20</pointsize>
-                  <bold>true</bold>
-                 </font>
-                </property>
-                <property name="cursor">
-                 <cursorShape>BlankCursor</cursorShape>
-                </property>
-                <property name="mouseTracking">
-                 <bool>false</bool>
-                </property>
-                <property name="focusPolicy">
-                 <enum>Qt::ClickFocus</enum>
-                </property>
-                <property name="accessibleName">
-                 <string>Bewegende Frequenz %</string>
-                </property>
-                <property name="frame">
-                 <bool>false</bool>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
-                </property>
-                <property name="readOnly">
-                 <bool>false</bool>
-                </property>
-                <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::NoButtons</enum>
-                </property>
-                <property name="keyboardTracking">
-                 <bool>false</bool>
-                </property>
-                <property name="suffix">
-                 <string notr="true">%</string>
-                </property>
-                <property name="maximum">
-                 <number>100</number>
-                </property>
-                <property name="singleStep">
-                 <number>5</number>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="0">
+              <item row="3" column="0">
                <widget class="QSpinBox" name="Stillstehend_Beep_Freq">
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -1001,7 +848,7 @@ QTabWidget::pane{
                  <enum>Qt::ClickFocus</enum>
                 </property>
                 <property name="accessibleName">
-                 <string>Stillstehende Frequenz %</string>
+                 <string>Stillstehende Piepsrequenz %</string>
                 </property>
                 <property name="wrapping">
                  <bool>false</bool>
@@ -1029,6 +876,192 @@ QTabWidget::pane{
                 </property>
                 <property name="singleStep">
                  <number>5</number>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="0">
+               <widget class="QPushButton" name="Stillstehend_Beep_Freq_verringern">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Minimum" vsizetype="MinimumExpanding">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>40</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>60</height>
+                 </size>
+                </property>
+                <property name="accessibleName">
+                 <string>Stillstehende Piepsrequenz um 5% verringern Taste</string>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="icon">
+                 <iconset resource="UI-Resources.qrc">
+                  <normaloff>:/Icons/Chevron_down_inverted.png</normaloff>:/Icons/Chevron_down_inverted.png</iconset>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="2">
+               <widget class="QLabel" name="Bewegend_Beep_Freq_Label">
+                <property name="font">
+                 <font>
+                  <pointsize>20</pointsize>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="focusPolicy">
+                 <enum>Qt::TabFocus</enum>
+                </property>
+                <property name="accessibleName">
+                 <string>Überschrift</string>
+                </property>
+                <property name="autoFillBackground">
+                 <bool>false</bool>
+                </property>
+                <property name="text">
+                 <string>Bewegend:</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignBottom|Qt::AlignHCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="2">
+               <widget class="QPushButton" name="Bewegend_Beep_Freq_erhoehen">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Minimum" vsizetype="MinimumExpanding">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>40</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>60</height>
+                 </size>
+                </property>
+                <property name="accessibleName">
+                 <string>Bewegende Piepsfrequenz um 5% erhöhen Taste</string>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="icon">
+                 <iconset resource="UI-Resources.qrc">
+                  <normaloff>:/Icons/Chevron_Up_inverted.png</normaloff>:/Icons/Chevron_Up_inverted.png</iconset>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="2">
+               <widget class="QSpinBox" name="Bewegend_Beep_Freq">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="font">
+                 <font>
+                  <pointsize>20</pointsize>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="cursor">
+                 <cursorShape>BlankCursor</cursorShape>
+                </property>
+                <property name="mouseTracking">
+                 <bool>false</bool>
+                </property>
+                <property name="focusPolicy">
+                 <enum>Qt::ClickFocus</enum>
+                </property>
+                <property name="accessibleName">
+                 <string>Bewegende Piepsfrequenz %</string>
+                </property>
+                <property name="frame">
+                 <bool>false</bool>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="readOnly">
+                 <bool>false</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::NoButtons</enum>
+                </property>
+                <property name="keyboardTracking">
+                 <bool>false</bool>
+                </property>
+                <property name="suffix">
+                 <string notr="true">%</string>
+                </property>
+                <property name="maximum">
+                 <number>100</number>
+                </property>
+                <property name="singleStep">
+                 <number>5</number>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="2">
+               <widget class="QPushButton" name="Bewegend_Beep_Freq_verringern">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Minimum" vsizetype="MinimumExpanding">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>40</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>60</height>
+                 </size>
+                </property>
+                <property name="accessibleName">
+                 <string>Bewegende Piepsfrequenz um 5% verringern Taste</string>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="icon">
+                 <iconset resource="UI-Resources.qrc">
+                  <normaloff>:/Icons/Chevron_down_inverted.png</normaloff>:/Icons/Chevron_down_inverted.png</iconset>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1" rowspan="3">
+               <widget class="Line" name="line_2">
+                <property name="frameShadow">
+                 <enum>QFrame::Plain</enum>
+                </property>
+                <property name="lineWidth">
+                 <number>2</number>
+                </property>
+                <property name="orientation">
+                 <enum>Qt::Vertical</enum>
                 </property>
                </widget>
               </item>
@@ -1190,7 +1223,7 @@ QTabWidget::pane{
              <set>Qt::AlignCenter</set>
             </property>
             <property name="readOnly">
-             <bool>true</bool>
+             <bool>false</bool>
             </property>
             <property name="buttonSymbols">
              <enum>QAbstractSpinBox::NoButtons</enum>
@@ -1289,109 +1322,6 @@ QTabWidget::pane{
                </property>
               </widget>
              </item>
-             <item row="1" column="1">
-              <widget class="QRadioButton" name="Stillstehend_Farbe2">
-               <property name="styleSheet">
-                <string notr="true">QRadioButton{
-	background-color: none;
-	margin-top: 10px;
-	margin-bottom: 10px;
-	margin-left: 10px;
-	margin-right: 10px;
-}
-QRadioButton::indicator{
-	background-color: red;
-	width: 40px;
-	height: 40px;
-	border: none;
-	border-radius: 20px;
-}
-
-QRadioButton::indicator:checked{
-        border: 4px solid black;
-}
-
-QRadioButton::indicator:unchecked{
-        border: 2px solid #868686;
-}
-
-</string>
-               </property>
-               <property name="text">
-                <string/>
-               </property>
-              </widget>
-             </item>
-             <item row="1" column="2">
-              <widget class="QRadioButton" name="Stillstehend_Farbe3">
-               <property name="styleSheet">
-                <string notr="true">QRadioButton{
-
-	
-	background-color: none;
-	margin-top: 10px;
-	margin-bottom: 10px;
-	margin-left: 10px;
-	margin-right: 10px;
-}
-QRadioButton::indicator{
-	background-color: blue;
-	width: 40px;
-	height: 40px;
-	border: none;
-	border-radius: 20px;
-}
-
-QRadioButton::indicator:checked{
-        border: 4px solid black;
-}
-
-QRadioButton::indicator:unchecked{
-        border: 2px solid #868686;
-}
-
-
-</string>
-               </property>
-               <property name="text">
-                <string/>
-               </property>
-              </widget>
-             </item>
-             <item row="1" column="3">
-              <widget class="QRadioButton" name="Stillstehend_Farbe4">
-               <property name="styleSheet">
-                <string notr="true">QRadioButton{
-	background-color: none;
-	margin-top: 10px;
-	margin-bottom: 10px;
-	margin-left: 10px;
-	margin-right: 10px;
-}
-
-QRadioButton::indicator{
-	background-color: green;
-	width: 40px;
-	height: 40px;
-	border: none;
-	border-radius: 20px;
-}
-
-QRadioButton::indicator:checked{
-        border: 4px solid black;
-}
-
-QRadioButton::indicator:unchecked{
-        border: 2px solid #868686;
-}
-
-</string>
-               </property>
-               <property name="text">
-                <string/>
-               </property>
-              </widget>
-             </item>
              <item row="1" column="0">
               <widget class="QRadioButton" name="Stillstehend_Farbe1">
                <property name="styleSheet">
@@ -1429,6 +1359,109 @@ QRadioButton::indicator:unchecked{
                </property>
                <property name="checked">
                 <bool>false</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="1">
+              <widget class="QRadioButton" name="Stillstehend_Farbe2">
+               <property name="styleSheet">
+                <string notr="true">QRadioButton{
+	background-color: none;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+QRadioButton::indicator{
+	background-color: red;
+	width: 40px;
+	height: 40px;
+	border: none;
+	border-radius: 20px;
+}
+
+QRadioButton::indicator:checked{
+        border: 4px solid black;
+}
+
+QRadioButton::indicator:unchecked{
+        border: 2px solid #868686;
+}
+
+</string>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="2">
+              <widget class="QRadioButton" name="Stillstehend_Farbe4">
+               <property name="styleSheet">
+                <string notr="true">QRadioButton{
+	background-color: none;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+QRadioButton::indicator{
+	background-color: green;
+	width: 40px;
+	height: 40px;
+	border: none;
+	border-radius: 20px;
+}
+
+QRadioButton::indicator:checked{
+        border: 4px solid black;
+}
+
+QRadioButton::indicator:unchecked{
+        border: 2px solid #868686;
+}
+
+</string>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="3">
+              <widget class="QRadioButton" name="Stillstehend_Farbe3">
+               <property name="styleSheet">
+                <string notr="true">QRadioButton{
+
+	
+	background-color: none;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+QRadioButton::indicator{
+	background-color: blue;
+	width: 40px;
+	height: 40px;
+	border: none;
+	border-radius: 20px;
+}
+
+QRadioButton::indicator:checked{
+        border: 4px solid black;
+}
+
+QRadioButton::indicator:unchecked{
+        border: 2px solid #868686;
+}
+
+
+</string>
+               </property>
+               <property name="text">
+                <string/>
                </property>
               </widget>
              </item>
@@ -1747,8 +1780,8 @@ QRadioButton::indicator:unchecked{
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>424</width>
-                 <height>586</height>
+                 <width>406</width>
+                 <height>552</height>
                 </rect>
                </property>
                <layout class="QGridLayout" name="gridLayout_2">
@@ -2140,6 +2173,9 @@ QPushButton::checked{
           <property name="text">
            <string>Aussehen:</string>
           </property>
+          <property name="buddy">
+           <cstring>Lightmode_checkBox</cstring>
+          </property>
          </widget>
         </item>
         <item>
@@ -2212,6 +2248,51 @@ QPushButton::checked{
    </layout>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>tabWidget</tabstop>
+  <tabstop>Lautstaerke</tabstop>
+  <tabstop>Lautstaerke_erhoehen</tabstop>
+  <tabstop>Lautstaerke_verringern</tabstop>
+  <tabstop>Heilligkeit_erhoehen</tabstop>
+  <tabstop>Bewegend_Ton_Freq_erhoehen</tabstop>
+  <tabstop>Heilligkeit_verringern</tabstop>
+  <tabstop>Bewegend_Farbe1</tabstop>
+  <tabstop>Bewegend_Farbe2</tabstop>
+  <tabstop>Bewegend_Farbe3</tabstop>
+  <tabstop>Bewegend_Farbe4</tabstop>
+  <tabstop>Bewegend_Farbe5</tabstop>
+  <tabstop>Uebertragen2</tabstop>
+  <tabstop>profil_from_currentsettings_button</tabstop>
+  <tabstop>new_profile_button</tabstop>
+  <tabstop>UIDeviceList</tabstop>
+  <tabstop>searchKlingelball</tabstop>
+  <tabstop>connectKlingelball</tabstop>
+  <tabstop>disconnectKlingelball</tabstop>
+  <tabstop>OnOff_Button</tabstop>
+  <tabstop>Uebtragen3</tabstop>
+  <tabstop>Bewegend_Ton_Freq_verringern</tabstop>
+  <tabstop>Lightmode_checkBox</tabstop>
+  <tabstop>Darkmode_checkBox</tabstop>
+  <tabstop>new_profile_cancle_button</tabstop>
+  <tabstop>delete_current_profile_button</tabstop>
+  <tabstop>new_profile_lineEdit</tabstop>
+  <tabstop>Stillstehend_Ton_Freq_Verringern</tabstop>
+  <tabstop>Stillstehend_Ton_Freq_erhoehen</tabstop>
+  <tabstop>Stillstehend_Beep_Freq_Label</tabstop>
+  <tabstop>Stillstehend_Beep_Freq_erhoehen</tabstop>
+  <tabstop>Stillstehend_Beep_Freq_verringern</tabstop>
+  <tabstop>Bewegend_Beep_Freq_Label</tabstop>
+  <tabstop>Bewegend_Beep_Freq_erhoehen</tabstop>
+  <tabstop>Bewegend_Beep_Freq_verringern</tabstop>
+  <tabstop>Stillstehend_Farbe1</tabstop>
+  <tabstop>Stillstehend_Farbe2</tabstop>
+  <tabstop>Stillstehend_Farbe4</tabstop>
+  <tabstop>Stillstehend_Farbe3</tabstop>
+  <tabstop>Stillstehend_Farbe5</tabstop>
+  <tabstop>Sound_tabWidget</tabstop>
+  <tabstop>uebertragen_button</tabstop>
+  <tabstop>scrollArea</tabstop>
+ </tabstops>
  <resources>
   <include location="UI-Resources.qrc"/>
  </resources>
@@ -2223,12 +2304,12 @@ QPushButton::checked{
    <slot>stepDown()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>138</x>
-     <y>677</y>
+     <x>147</x>
+     <y>339</y>
     </hint>
     <hint type="destinationlabel">
-     <x>121</x>
-     <y>655</y>
+     <x>130</x>
+     <y>295</y>
     </hint>
    </hints>
   </connection>
@@ -2239,12 +2320,12 @@ QPushButton::checked{
    <slot>stepDown()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>438</x>
-     <y>677</y>
+     <x>440</x>
+     <y>339</y>
     </hint>
     <hint type="destinationlabel">
-     <x>438</x>
-     <y>655</y>
+     <x>440</x>
+     <y>295</y>
     </hint>
    </hints>
   </connection>
@@ -2255,12 +2336,12 @@ QPushButton::checked{
    <slot>stepUp()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>155</x>
-     <y>173</y>
+     <x>162</x>
+     <y>81</y>
     </hint>
     <hint type="destinationlabel">
-     <x>150</x>
-     <y>192</y>
+     <x>157</x>
+     <y>118</y>
     </hint>
    </hints>
   </connection>
@@ -2271,12 +2352,12 @@ QPushButton::checked{
    <slot>stepUp()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>438</x>
-     <y>618</y>
+     <x>440</x>
+     <y>309</y>
     </hint>
     <hint type="destinationlabel">
-     <x>438</x>
-     <y>655</y>
+     <x>440</x>
+     <y>295</y>
     </hint>
    </hints>
   </connection>
@@ -2287,12 +2368,12 @@ QPushButton::checked{
    <slot>stepDown()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>202</x>
-     <y>269</y>
+     <x>209</x>
+     <y>162</y>
     </hint>
     <hint type="destinationlabel">
-     <x>190</x>
-     <y>192</y>
+     <x>197</x>
+     <y>118</y>
     </hint>
    </hints>
   </connection>
@@ -2303,12 +2384,12 @@ QPushButton::checked{
    <slot>stepUp()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>157</x>
-     <y>618</y>
+     <x>166</x>
+     <y>309</y>
     </hint>
     <hint type="destinationlabel">
-     <x>138</x>
-     <y>655</y>
+     <x>147</x>
+     <y>295</y>
     </hint>
    </hints>
   </connection>
@@ -2320,11 +2401,11 @@ QPushButton::checked{
    <hints>
     <hint type="sourcelabel">
      <x>151</x>
-     <y>484</y>
+     <y>394</y>
     </hint>
     <hint type="destinationlabel">
      <x>149</x>
-     <y>530</y>
+     <y>431</y>
     </hint>
    </hints>
   </connection>
@@ -2336,11 +2417,11 @@ QPushButton::checked{
    <hints>
     <hint type="sourcelabel">
      <x>172</x>
-     <y>554</y>
+     <y>475</y>
     </hint>
     <hint type="destinationlabel">
      <x>182</x>
-     <y>530</y>
+     <y>431</y>
     </hint>
    </hints>
   </connection>
@@ -2352,11 +2433,11 @@ QPushButton::checked{
    <hints>
     <hint type="sourcelabel">
      <x>420</x>
-     <y>484</y>
+     <y>550</y>
     </hint>
     <hint type="destinationlabel">
      <x>420</x>
-     <y>530</y>
+     <y>587</y>
     </hint>
    </hints>
   </connection>
@@ -2368,11 +2449,11 @@ QPushButton::checked{
    <hints>
     <hint type="sourcelabel">
      <x>420</x>
-     <y>554</y>
+     <y>631</y>
     </hint>
     <hint type="destinationlabel">
      <x>438</x>
-     <y>533</y>
+     <y>587</y>
     </hint>
    </hints>
   </connection>
@@ -2383,12 +2464,12 @@ QPushButton::checked{
    <slot>stepUp()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>241</x>
-     <y>141</y>
+     <x>248</x>
+     <y>105</y>
     </hint>
     <hint type="destinationlabel">
-     <x>221</x>
-     <y>198</y>
+     <x>228</x>
+     <y>144</y>
     </hint>
    </hints>
   </connection>
@@ -2399,12 +2480,12 @@ QPushButton::checked{
    <slot>stepDown()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>303</x>
-     <y>244</y>
+     <x>310</x>
+     <y>210</y>
     </hint>
     <hint type="destinationlabel">
-     <x>314</x>
-     <y>198</y>
+     <x>321</x>
+     <y>144</y>
     </hint>
    </hints>
   </connection>
@@ -2415,12 +2496,12 @@ QPushButton::checked{
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>230</x>
-     <y>730</y>
+     <x>236</x>
+     <y>719</y>
     </hint>
     <hint type="destinationlabel">
-     <x>230</x>
-     <y>730</y>
+     <x>236</x>
+     <y>719</y>
     </hint>
    </hints>
   </connection>
@@ -2431,12 +2512,12 @@ QPushButton::checked{
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>230</x>
-     <y>730</y>
+     <x>236</x>
+     <y>719</y>
     </hint>
     <hint type="destinationlabel">
-     <x>230</x>
-     <y>730</y>
+     <x>236</x>
+     <y>719</y>
     </hint>
    </hints>
   </connection>

@@ -14,6 +14,9 @@ KlingelballUI::KlingelballUI(QWidget *parent)
     ui->tabWidget->setCurrentIndex(3);
     ui->tabWidget->setCurrentIndex(0);
     ui->stackedWidget->setCurrentIndex(0);
+
+    ui->Sound_tabWidget->setCurrentIndex(1);
+    ui->Sound_tabWidget->setCurrentIndex(0);
     Profile_list = new QList<EinstellungsProfil *>;
 
 
@@ -49,4 +52,22 @@ KlingelballUI::~KlingelballUI()
 
 
 
+
+
+void KlingelballUI::on_Lautstaerke_valueChanged(int arg1)
+{
+    ui->Lautstaerke->setAccessibleName("Lautstärke" + QString::number(arg1) + "% Einstellbar");
+}
+
+
+void KlingelballUI::on_Stillstehend_Beep_Freq_valueChanged(int arg1)
+{
+
+}
+
+
+void KlingelballUI::on_Bewegend_Beep_Freq_valueChanged(int arg1)
+{
+
+}
 

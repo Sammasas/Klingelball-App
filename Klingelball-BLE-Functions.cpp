@@ -263,27 +263,52 @@ void KlingelballUI::startDeviceDiscovery(){
 #if QT_CONFIG(permissions)
     //! [permissions]
     QBluetoothPermission permission{};
+    QLocationPermission Locationpermission {};
     permission.setCommunicationModes(QBluetoothPermission::Access);
+    Locationpermission.setAvailability(QLocationPermission::WhenInUse);
+
+
     switch (qApp->checkPermission(permission)) {
     case Qt::PermissionStatus::Undetermined:
         qApp->requestPermission(permission, this, &KlingelballUI::startDeviceDiscovery);
+        printMessage("request permission");
         return;
     case Qt::PermissionStatus::Denied:
         printMessage("Ble permission denied");
         return;
     case Qt::PermissionStatus::Granted:
+        printMessage("permission granted");
+        break; // proceed to search
+    }
+
+    switch (qApp->checkPermission(Locationpermission)) {
+    case Qt::PermissionStatus::Undetermined:
+        qApp->requestPermission(Locationpermission, this, &KlingelballUI::startDeviceDiscovery);
+        printMessage("request permission");
+        return;
+    case Qt::PermissionStatus::Denied:
+        printMessage("Ble permission denied");
+        return;
+    case Qt::PermissionStatus::Granted:
+        printMessage("permission granted");
+        if(Locationpermission.availability())
         break; // proceed to search
     }
     //! [permissions]
 #endif // QT_CONFIG(permissions)
 
     m_deviceDiscoveryAgent->start(QBluetoothDeviceDiscoveryAgent::LowEnergyMethod);
+    if(!m_deviceDiscoveryAgent->isActive()){
+        qWarning()<< "discovery failed!";
+        ui->searchKlingelball->setStyleSheet("QPushButton{"
+                                             "background-color: #e50616;}");
+    }
     printMessage("suchen... ");//TODO: if bluetooth isnt on message
 }
 
 void KlingelballUI::addDevice(const QBluetoothDeviceInfo &device){
     if(device.coreConfigurations() & QBluetoothDeviceInfo::LowEnergyCoreConfiguration){
-        if(device.name() == "Klingelball" || device.name() == "EchoBall"){
+        if(device.name() == "Klingelball" || device.name() == "EchoBall"){ //TODO Suche nach address
             deviceList->append(new DeviceInfo{device});
             ui->UIDeviceList->addItem(device.name());
         }
