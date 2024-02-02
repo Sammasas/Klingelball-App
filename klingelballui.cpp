@@ -7,7 +7,7 @@ KlingelballUI::KlingelballUI(QWidget *parent)
     , ui(new Ui::KlingelballUI)
 {
     ui->setupUi(this);
-    setup_UI();
+    setup_UI(1.2, 1.5);
     ui->tabWidget->setCurrentIndex(0);
     ui->tabWidget->setCurrentIndex(1);
     ui->tabWidget->setCurrentIndex(2);

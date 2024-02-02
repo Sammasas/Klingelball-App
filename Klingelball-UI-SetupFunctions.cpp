@@ -2,9 +2,9 @@
 #include "ui_klingelballui.h"
 
 
-void KlingelballUI::setup_UI(){
+void KlingelballUI::setup_UI(float smallerFontFactor, float fontFactor){
 
-    setup_font();
+    setup_font(smallerFontFactor, fontFactor);
     setup_labels();
     setup_buttons();
     setup_spinbox();
@@ -23,6 +23,7 @@ void KlingelballUI::setup_UI(){
 
     ui->Sound_tabWidget->tabBar()->setAccessibleTabName(0, "Tonhöheneinstellung Tab 1 von 2");
     ui->Sound_tabWidget->tabBar()->setAccessibleTabName(1, "Piepseinstellung Tab 2 von 2");
+
 
     ui->Lautstaerke->setAccessibleName("Lautstärke" + QString::number(ui->Lautstaerke->value()) + "% Einstellbar");
 
@@ -63,18 +64,16 @@ void KlingelballUI::setup_spinbox()
     ui->Heilligkeit->setFont(*dynamicSizeFont);
 }
 
-void KlingelballUI::setup_font(){
-    qreal refDpi = 444.;
-    qreal refHeight = 2340.;
-    qreal refWidth = 1080.;
-
-    qreal m_ratio = qMin(height/refHeight, width/refWidth);
-    qreal m_ratioFont = qMin(height*refDpi/(dpi*refHeight), width*refDpi/(dpi*refWidth));
-
-    QFont serifFont("Times", 16*m_ratioFont, QFont::Bold);
+void KlingelballUI::setup_font(float smallerFontFactor, float fontFactor){
+    //qWarning() << QString::number(QFontDatabase::systemFont(QFontDatabase::SystemFont::GeneralFont).pointSize());
+    //qWarning() << QString::number(QFontDatabase::systemFont(QFontDatabase::SystemFont::FixedFont).pointSize());
+    //qWarning() << QString::number(QFontDatabase::systemFont(QFontDatabase::SystemFont::TitleFont).pointSize());
 
 
-    //testFont = new QFont("segoe UI", ui->Lautstaerke_erhoehen->height()*0.5, QFont::Bold);
+
+    dynamicSizeFont = new QFont("segue UI", QFontDatabase::systemFont(QFontDatabase::SystemFont::FixedFont).pointSize()*1.5, QFont::Bold);
+    SmallerdynamicSizeFont = new QFont("segue UI", QFontDatabase::systemFont(QFontDatabase::SystemFont::FixedFont).pointSize(), QFont::Bold);
+
 }
 
 
@@ -114,33 +113,6 @@ void KlingelballUI::setup_buttons()
 
 void KlingelballUI::setup_labels()
 {
-    qWarning() << QString::number(QFontDatabase::systemFont(QFontDatabase::SystemFont::GeneralFont).pointSize());
-    qWarning() << QString::number(QFontDatabase::systemFont(QFontDatabase::SystemFont::FixedFont).pointSize());
-    qWarning() << QString::number(QFontDatabase::systemFont(QFontDatabase::SystemFont::TitleFont).pointSize());
-
-    /*QJniObject qtActivity = QJniObject::callStaticObjectMethod("org/qtproject/qt6/android/QtNative", "activity", "()Landroid/app/Activity;");
-    QJniObject resources = qtActivity.callObjectMethod("getResources","()Landroid/content/res/Resources;");
-    QJniObject configuration = resources.callObjectMethod("getConfiguration","()Landroid/content/res/Configuration;");
-    float scale = configuration.getField<float>("fontScale");*/
-
-    //QJniObject activity = QJniObject::callStaticObjectMethod("org/qtproject/qt5/android/QtNative", "activity", "()Landroid/app/Activity;");   //activity is valid
-    /*auto activity = QJniObject(QNativeInterface::QAndroidApplication::context());
-
-            if ( activity.isValid() )
-    {
-        QJniObject resources = activity.callObjectMethod("getResources","()Landroid/content/res/Resources;");
-        QJniObject configuration = resources.callObjectMethod("getConfiguration","()Landroid/content/res/Configuration;");
-        float scale = configuration.getField<float>("fontScale");
-        qWarning() << QString::number(scale);
-        dynamicSizeFont = new QFont("...", 15*scale, QFont::Bold);
-        // Equivalent to Jave code: 'Intent intent = new Intent();'*/
-
-
-
-
-    dynamicSizeFont = new QFont("segue UI", QApplication::font().pointSize(), QFont::Bold);
-
-    SmallerdynamicSizeFont = new QFont("segue UI", ui->Lautstaerke_erhoehen->height()*0.5, QFont::Bold);
     ui->Lautstaerke_Label->setFont(*dynamicSizeFont);
     ui->Stillstehend_Ton_Freq_Label->setFont(*dynamicSizeFont);
     ui->Bewegend_Ton_Freq_Label->setFont(*dynamicSizeFont);

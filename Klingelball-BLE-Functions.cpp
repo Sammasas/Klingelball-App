@@ -132,6 +132,7 @@ void KlingelballUI::transmitSettings (){
                                            QLowEnergyService::WriteWithResponse);
 
             transmittionStatus = TransmittionDone;
+            readBatteryStatus(BatteryCharacteristic);
             break;
         case TransmittionError:
             qWarning() << "TransmittionError";

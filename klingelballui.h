@@ -8,6 +8,7 @@
 #include <QBuffer>
 #include <QAudioOutput>
 #include <QAudioFormat>
+#include <QAccessible>
 #include <QAccessibleActionInterface>
 #include <QFile>
 #include "EinstellungsProfil.h"
@@ -122,8 +123,8 @@ private:
     QFont *dynamicSizeFont;
     QFont *SmallerdynamicSizeFont;
 
-    void setup_UI();
-    void setup_font();
+    void setup_UI(float smallerFontFactor, float fontFactor);
+    void setup_font(float smallerFontFactor, float fontFactor);
     void setup_labels();
     void setup_buttons();
     void setup_spinbox();
