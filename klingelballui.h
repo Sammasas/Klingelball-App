@@ -274,6 +274,7 @@ private:
                                  "border-radius: 20px;} ";
 
     void setUebertragenButtonTextandStyle(QString text, QString style);
+    float *fontScale;
 
 };
 #endif // KLINGELBALLUI_H

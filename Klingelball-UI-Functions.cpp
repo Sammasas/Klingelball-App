@@ -344,3 +344,14 @@ void KlingelballUI::bewegendButtonGroupClicked(QAbstractButton *button){
     }
 }
 
+void KlingelballUI::updateAccessibleDesciption(){
+    ui->Lautstaerke->setAccessibleName("Lautstärke" + QString::number(ui->Lautstaerke->value()) + "% Einstellbar");
+
+    ui->Stillstehend_Beep_Freq->setAccessibleName("Stillstehende Piepsrequenz"+ QString::number(ui->Stillstehend_Beep_Freq->value()) + "% Einstellbar");
+    ui->Bewegend_Beep_Freq->setAccessibleName("Bewegende Piepsrequenz"+ QString::number(ui->Bewegend_Beep_Freq->value()) + "% Einstellbar");
+
+    ui->Stillstehend_Ton_Freq->setAccessibleName("Stillstehende Tonfrequenz"+ QString::number(ui->Stillstehend_Ton_Freq->value()) + "% Einstellbar");
+    ui->Stillstehend_Beep_Freq->setAccessibleName("Bewegende Tonfrequenz"+ QString::number(ui->Bewegend_Ton_Freq->value()) + "% Einstellbar");
+
+    ui->Heilligkeit->setAccessibleName("Helligkeit" + QString::number(ui->Heilligkeit->value())+ "% Einstellbar");
+}

@@ -4,23 +4,29 @@
 
 void KlingelballUI::setup_UI(){
 
-    QJniObject context = QNativeInterface::QAndroidApplication::context();
+
 #ifdef Q_OS_ANDROID
+    QJniObject context = QNativeInterface::QAndroidApplication::context();
     if(QJniObject::isClassAvailable("Klingelball/AndroidSettings")) {
         QJniObject androidSettingsJavaObject = QJniObject("Klingelball/AndroidSettings");
 
-        float fontScale = androidSettingsJavaObject.callStaticMethod<jfloat>("Klingelball/AndroidSettings", "getFontScale", "(Landroid/content/Context;)F", context.object<jobject>());
-        qDebug() <<"Font scale:" << fontScale;
-        setup_font(fontScale);
+        fontScale = new float(androidSettingsJavaObject.callStaticMethod<jfloat>("Klingelball/AndroidSettings", "getFontScale", "(Landroid/content/Context;)F", context.object<jobject>()));
+        qDebug() <<"Font scale:" << *fontScale;
+        setup_font(*fontScale);
+
     }
     else {
         qDebug() << "JAVA CLASS UNAVAIABLE!";
-        setup_font(1);
+        fontScale = new float(1);
+        setup_font(*fontScale);
+        ui->tabWidget->tabBar()->setIconSize(QSize(30, 30));
+        ui->Sound_tabWidget->tabBar()->setIconSize(QSize(30, 30));
     }
 #endif
 
 #ifdef Q_OS_IOS
-    setup_font(1);
+        fontScale = new float(1);
+        setup_font(*fontScale);
 #endif
 
     setup_labels();
@@ -33,6 +39,9 @@ void KlingelballUI::setup_UI(){
     ui->Profile_Tab->setFocusPolicy(Qt::NoFocus);
     ui->Sound_Tab->setFocusPolicy(Qt::NoFocus);
     ui->centralwidget->setFocusPolicy(Qt::NoFocus);
+
+
+    /*********Setting accessible names **********/
     ui->tabWidget->tabBar()->setAccessibleTabName(0, "Toneinstellungen Tab 1 von 4");
     ui->tabWidget->tabBar()->setAccessibleTabName(1, "Lichteinstellungen Tab 2 von 4");
     ui->tabWidget->tabBar()->setAccessibleTabName(3, "Ball verbinden Tab 3 von 4");
@@ -61,25 +70,12 @@ void KlingelballUI::setup_UI(){
     ui->batteryStatusProgressbar->setVisible(false);
     ui->Sound_tabWidget->setAutoFillBackground(true);
 
-    ui->tabWidget->tabBar()->setIconSize(QSize(30, 30));
-    ui->Sound_tabWidget->tabBar()->setIconSize(QSize(30, 30));
+    ui->Sound_tabWidget->setFont(*SmallerdynamicSizeFont);
 
-
+    ui->tabWidget->tabBar()->setIconSize(QSize(30* *fontScale, 30* *fontScale));
+    ui->Sound_tabWidget->tabBar()->setIconSize(QSize(30* *fontScale, 30* *fontScale));
 
 }
-
-void KlingelballUI::updateAccessibleDesciption(){
-    ui->Lautstaerke->setAccessibleName("Lautstärke" + QString::number(ui->Lautstaerke->value()) + "% Einstellbar");
-
-    ui->Stillstehend_Beep_Freq->setAccessibleName("Stillstehende Piepsrequenz"+ QString::number(ui->Stillstehend_Beep_Freq->value()) + "% Einstellbar");
-    ui->Bewegend_Beep_Freq->setAccessibleName("Bewegende Piepsrequenz"+ QString::number(ui->Bewegend_Beep_Freq->value()) + "% Einstellbar");
-
-    ui->Stillstehend_Ton_Freq->setAccessibleName("Stillstehende Tonfrequenz"+ QString::number(ui->Stillstehend_Ton_Freq->value()) + "% Einstellbar");
-    ui->Stillstehend_Beep_Freq->setAccessibleName("Bewegende Tonfrequenz"+ QString::number(ui->Bewegend_Ton_Freq->value()) + "% Einstellbar");
-
-    ui->Heilligkeit->setAccessibleName("Helligkeit" + QString::number(ui->Heilligkeit->value())+ "% Einstellbar");
-}
-
 
 void KlingelballUI::setup_lineedit()
 {
@@ -100,8 +96,9 @@ void KlingelballUI::setup_spinbox()
 }
 
 void KlingelballUI::setup_font(float fontScale){
-    dynamicSizeFont = new QFont("segue UI", QFontDatabase::systemFont(QFontDatabase::SystemFont::FixedFont).pointSize()*fontScale, QFont::Bold);
-    SmallerdynamicSizeFont = new QFont("segue UI", QFontDatabase::systemFont(QFontDatabase::SystemFont::FixedFont).pointSize()*fontScale*0.8, QFont::Bold);
+    dynamicSizeFont = new QFont("segue UI", QFontDatabase::systemFont(QFontDatabase::SystemFont::FixedFont).pointSize()*fontScale*1.3, QFont::Bold);
+    SmallerdynamicSizeFont = new QFont("segue UI", QFontDatabase::systemFont(QFontDatabase::SystemFont::FixedFont).pointSize()*fontScale, QFont::Bold);
+
 }
 
 
@@ -142,11 +139,11 @@ void KlingelballUI::setup_buttons()
 void KlingelballUI::setup_labels()
 {
     ui->Lautstaerke_Label->setFont(*dynamicSizeFont);
-    ui->Stillstehend_Ton_Freq_Label->setFont(*dynamicSizeFont);
-    ui->Bewegend_Ton_Freq_Label->setFont(*dynamicSizeFont);
+    ui->Stillstehend_Ton_Freq_Label->setFont(*SmallerdynamicSizeFont);
+    ui->Bewegend_Ton_Freq_Label->setFont(*SmallerdynamicSizeFont);
 
-    ui->Stillstehend_Beep_Freq_Label->setFont(*dynamicSizeFont);
-    ui->Bewegend_Beep_Freq_Label->setFont(*dynamicSizeFont);
+    ui->Stillstehend_Beep_Freq_Label->setFont(*SmallerdynamicSizeFont);
+    ui->Bewegend_Beep_Freq_Label->setFont(*SmallerdynamicSizeFont);
 
     ui->Heilligkeit_Label->setFont(*dynamicSizeFont);
     ui->Stillstehend_Farbe_label->setFont(*SmallerdynamicSizeFont);
