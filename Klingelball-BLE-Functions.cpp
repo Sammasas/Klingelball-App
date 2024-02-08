@@ -309,7 +309,7 @@ void KlingelballUI::startDeviceDiscovery(){
 
 void KlingelballUI::addDevice(const QBluetoothDeviceInfo &device){
     if(device.coreConfigurations() & QBluetoothDeviceInfo::LowEnergyCoreConfiguration){
-        if(device.name() == "Klingelball" || device.name() == "EchoBall"){ //TODO Suche nach address
+        if(device.name().contains("Klingelball")){ //TODO Suche nach address
             deviceList->append(new DeviceInfo{device});
             ui->UIDeviceList->addItem(device.name());
         }
@@ -367,12 +367,9 @@ void KlingelballUI::connectDevice(const QBluetoothDeviceInfo *currentdevice){
     connect(m_controller, SIGNAL(errorOccurred(QLowEnergyController::Error)), this, SLOT(controllerError(QLowEnergyController::Error)));
     connect(m_controller, SIGNAL(disconnected()), this, SLOT(deviceDisconnected()));
 
-    /*QTimer *t = new QTimer();
-    connect(t, &QTimer::timeout, m_controller, &QLowEnergyController::connectToDevice);
-    connect(m_controller, &QLowEnergyController::connected, t, &QTimer::stop);
-    connect(m_controller, &QLowEnergyController::disconnected, t, &QTimer::stop);*/
+
     m_controller->connectToDevice();
-    //t->start(100);
+
 }
 
 void KlingelballUI::serviceDiscovered(QBluetoothUuid uuid){
@@ -531,7 +528,7 @@ void KlingelballUI::KlingelballServiceStatechanged(QLowEnergyService::ServiceSta
         qDebug() << m_service->characteristics().length();
 
         for (int i = 0; i < m_service->characteristics().length(); i++){
-            qDebug()<< m_service->characteristics()[i].uuid().toString();
+            qDebug()<< m_service->characteristics().at(i).uuid().toString();
         }
         printMessage("Charactersitics found!");
         ui->UIDeviceList->setStyleSheet("QListWidget::item::selected{"

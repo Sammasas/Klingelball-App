@@ -30,6 +30,8 @@
 #include <QJniObject>
 #include <QStyleHints>
 #include <QFontDialog>
+#include <jni.h>
+#include <QJniObject>
 
 
 QT_BEGIN_NAMESPACE
@@ -100,15 +102,13 @@ private slots:
 
     void on_colorSchemeChanged(Qt::ColorScheme scheme);
 
-    void on_fontDatabaseChanged();
-
-
-
     void on_Lautstaerke_valueChanged(int arg1);
 
     void on_Stillstehend_Beep_Freq_valueChanged(int arg1);
 
     void on_Bewegend_Beep_Freq_valueChanged(int arg1);
+
+    void updateAccessibleDesciption();
 
 Q_SIGNALS:
     void BatteryStatusRead(int);
@@ -123,8 +123,8 @@ private:
     QFont *dynamicSizeFont;
     QFont *SmallerdynamicSizeFont;
 
-    void setup_UI(float smallerFontFactor, float fontFactor);
-    void setup_font(float smallerFontFactor, float fontFactor);
+    void setup_UI();
+    void setup_font(float fontScale);
     void setup_labels();
     void setup_buttons();
     void setup_spinbox();
@@ -274,7 +274,6 @@ private:
                                  "border-radius: 20px;} ";
 
     void setUebertragenButtonTextandStyle(QString text, QString style);
-
 
 };
 #endif // KLINGELBALLUI_H

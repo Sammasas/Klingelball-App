@@ -41,20 +41,43 @@ RESOURCES += \
 
 DISTFILES += \
     android/AndroidManifest.xml \
+    android/AndroidSettings.java \
     android/build.gradle \
-    android/res/values/libs.xml
+    android/gradle.properties \
+    android/gradle/wrapper/gradle-wrapper.jar \
+    android/gradle/wrapper/gradle-wrapper.properties \
+    android/gradlew \
+    android/gradlew.bat \
+    android/res/drawable-hdpi/icon.png \
+    android/res/drawable-ldpi/icon.png \
+    android/res/drawable-mdpi/icon.png \
+    android/res/drawable-xhdpi/icon.png \
+    android/res/drawable-xxhdpi/icon.png \
+    android/res/drawable-xxxhdpi/icon.png \
+    android/res/values/libs.xml \
+    android/res/xml/qtprovider_paths.xml \
+    android/src/Klingelball/AndroidSettings.java
 
 contains(ANDROID_TARGET_ARCH,x86_64) {
     ANDROID_PACKAGE_SOURCE_DIR = \
           $$PWD/android-sources
+
 }
 
 contains(ANDROID_TARGET_ARCH,arm64-v8a) {
     ANDROID_PACKAGE_SOURCE_DIR = \
         $$PWD/android
+
 }
 
 contains(ANDROID_TARGET_ARCH,armeabi-v7a) {
     ANDROID_PACKAGE_SOURCE_DIR = \
         $$PWD/android
+
+}
+
+android{
+ANDROID_PACKAGE_SOURCE_DIR = \
+    $$PWD/android
+    OTHER_FILES += android/src/Klingelball
 }

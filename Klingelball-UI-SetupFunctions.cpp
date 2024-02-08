@@ -2,9 +2,27 @@
 #include "ui_klingelballui.h"
 
 
-void KlingelballUI::setup_UI(float smallerFontFactor, float fontFactor){
+void KlingelballUI::setup_UI(){
 
-    setup_font(smallerFontFactor, fontFactor);
+    QJniObject context = QNativeInterface::QAndroidApplication::context();
+#ifdef Q_OS_ANDROID
+    if(QJniObject::isClassAvailable("Klingelball/AndroidSettings")) {
+        QJniObject androidSettingsJavaObject = QJniObject("Klingelball/AndroidSettings");
+
+        float fontScale = androidSettingsJavaObject.callStaticMethod<jfloat>("Klingelball/AndroidSettings", "getFontScale", "(Landroid/content/Context;)F", context.object<jobject>());
+        qDebug() <<"Font scale:" << fontScale;
+        setup_font(fontScale);
+    }
+    else {
+        qDebug() << "JAVA CLASS UNAVAIABLE!";
+        setup_font(1);
+    }
+#endif
+
+#ifdef Q_OS_IOS
+    setup_font(1);
+#endif
+
     setup_labels();
     setup_buttons();
     setup_spinbox();
@@ -24,8 +42,15 @@ void KlingelballUI::setup_UI(float smallerFontFactor, float fontFactor){
     ui->Sound_tabWidget->tabBar()->setAccessibleTabName(0, "Tonhöheneinstellung Tab 1 von 2");
     ui->Sound_tabWidget->tabBar()->setAccessibleTabName(1, "Piepseinstellung Tab 2 von 2");
 
-
     ui->Lautstaerke->setAccessibleName("Lautstärke" + QString::number(ui->Lautstaerke->value()) + "% Einstellbar");
+
+    ui->Stillstehend_Beep_Freq->setAccessibleName("Stillstehende Piepsrequenz"+ QString::number(ui->Stillstehend_Beep_Freq->value()) + "% Einstellbar");
+    ui->Bewegend_Beep_Freq->setAccessibleName("Bewegende Piepsrequenz"+ QString::number(ui->Bewegend_Beep_Freq->value()) + "% Einstellbar");
+
+    ui->Stillstehend_Ton_Freq->setAccessibleName("Stillstehende Tonfrequenz"+ QString::number(ui->Stillstehend_Ton_Freq->value()) + "% Einstellbar");
+    ui->Stillstehend_Beep_Freq->setAccessibleName("Bewegende Tonfrequenz"+ QString::number(ui->Bewegend_Ton_Freq->value()) + "% Einstellbar");
+
+    ui->Heilligkeit->setAccessibleName("Helligkeit" + QString::number(ui->Heilligkeit->value())+ "% Einstellbar");
 
     ui->verticalLayout_2->setContentsMargins(0, 0, 0, 0);
     ui->tabWidget->setMaximumWidth(qApp->screens()[0]->size().width()+2);
@@ -41,9 +66,19 @@ void KlingelballUI::setup_UI(float smallerFontFactor, float fontFactor){
 
 
 
-
 }
 
+void KlingelballUI::updateAccessibleDesciption(){
+    ui->Lautstaerke->setAccessibleName("Lautstärke" + QString::number(ui->Lautstaerke->value()) + "% Einstellbar");
+
+    ui->Stillstehend_Beep_Freq->setAccessibleName("Stillstehende Piepsrequenz"+ QString::number(ui->Stillstehend_Beep_Freq->value()) + "% Einstellbar");
+    ui->Bewegend_Beep_Freq->setAccessibleName("Bewegende Piepsrequenz"+ QString::number(ui->Bewegend_Beep_Freq->value()) + "% Einstellbar");
+
+    ui->Stillstehend_Ton_Freq->setAccessibleName("Stillstehende Tonfrequenz"+ QString::number(ui->Stillstehend_Ton_Freq->value()) + "% Einstellbar");
+    ui->Stillstehend_Beep_Freq->setAccessibleName("Bewegende Tonfrequenz"+ QString::number(ui->Bewegend_Ton_Freq->value()) + "% Einstellbar");
+
+    ui->Heilligkeit->setAccessibleName("Helligkeit" + QString::number(ui->Heilligkeit->value())+ "% Einstellbar");
+}
 
 
 void KlingelballUI::setup_lineedit()
@@ -64,16 +99,9 @@ void KlingelballUI::setup_spinbox()
     ui->Heilligkeit->setFont(*dynamicSizeFont);
 }
 
-void KlingelballUI::setup_font(float smallerFontFactor, float fontFactor){
-    //qWarning() << QString::number(QFontDatabase::systemFont(QFontDatabase::SystemFont::GeneralFont).pointSize());
-    //qWarning() << QString::number(QFontDatabase::systemFont(QFontDatabase::SystemFont::FixedFont).pointSize());
-    //qWarning() << QString::number(QFontDatabase::systemFont(QFontDatabase::SystemFont::TitleFont).pointSize());
-
-
-
-    dynamicSizeFont = new QFont("segue UI", QFontDatabase::systemFont(QFontDatabase::SystemFont::FixedFont).pointSize()*1.5, QFont::Bold);
-    SmallerdynamicSizeFont = new QFont("segue UI", QFontDatabase::systemFont(QFontDatabase::SystemFont::FixedFont).pointSize(), QFont::Bold);
-
+void KlingelballUI::setup_font(float fontScale){
+    dynamicSizeFont = new QFont("segue UI", QFontDatabase::systemFont(QFontDatabase::SystemFont::FixedFont).pointSize()*fontScale, QFont::Bold);
+    SmallerdynamicSizeFont = new QFont("segue UI", QFontDatabase::systemFont(QFontDatabase::SystemFont::FixedFont).pointSize()*fontScale*0.8, QFont::Bold);
 }
 
 

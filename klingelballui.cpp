@@ -7,7 +7,7 @@ KlingelballUI::KlingelballUI(QWidget *parent)
     , ui(new Ui::KlingelballUI)
 {
     ui->setupUi(this);
-    setup_UI(1.2, 1.5);
+    setup_UI();
     ui->tabWidget->setCurrentIndex(0);
     ui->tabWidget->setCurrentIndex(1);
     ui->tabWidget->setCurrentIndex(2);
@@ -28,13 +28,14 @@ KlingelballUI::KlingelballUI(QWidget *parent)
 
 
     connect(QGuiApplication::styleHints(), SIGNAL(colorSchemeChanged (Qt::ColorScheme)), this, SLOT(on_colorSchemeChanged(Qt::ColorScheme)));
-    connect(QApplication::instance(), SIGNAL(fontDatabaseChanged()), this, SLOT(on_fontDatabaseChanged()));
 
-}
+    connect(ui->Heilligkeit, SIGNAL(valueChanged(int)), this, SLOT(updateAccessibleDesciption()));
+    connect(ui->Lautstaerke, SIGNAL(valueChanged(int)), this, SLOT(updateAccessibleDesciption()));
+    connect(ui->Stillstehend_Ton_Freq, SIGNAL(valueChanged(int)), this, SLOT(updateAccessibleDesciption()));
+    connect(ui->Bewegend_Ton_Freq, SIGNAL(valueChanged(int)), this, SLOT(updateAccessibleDesciption()));
+    connect(ui->Stillstehend_Beep_Freq, SIGNAL(valueChanged(int)), this, SLOT(updateAccessibleDesciption()));
+    connect(ui->Bewegend_Beep_Freq, SIGNAL(valueChanged(int)), this, SLOT(updateAccessibleDesciption()));
 
-void  KlingelballUI::on_fontDatabaseChanged(){
-    qWarning() <<"font changed!";
-    setup_UI();
 }
 
 void KlingelballUI::on_colorSchemeChanged(Qt::ColorScheme scheme){
