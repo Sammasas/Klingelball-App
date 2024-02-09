@@ -5,10 +5,14 @@ void KlingelballUI::setupBLE(){
 
     deviceList = new QList<DeviceInfo *>;
 
+#ifdef Q_OS_ANDROID
     QBluetoothLocalDevice localDevice;
     if(localDevice.isValid()){
         localDevice.powerOn();
-    }
+        qDebug() << "Device powered on";
+    }else
+        qDebug()<< "Device not valid";
+#endif
 
     KlingelballServiceUUID = new QBluetoothUuid("4fafc201-1fb5-459e-8fcc-c5c9c331914b");
     BatteryCharacteristicUUID = new QBluetoothUuid("4a78b8dd-a43d-46cf-9270-f6b750a717c8");
@@ -264,9 +268,7 @@ void KlingelballUI::startDeviceDiscovery(){
 #if QT_CONFIG(permissions)
     //! [permissions]
     QBluetoothPermission permission{};
-    QLocationPermission Locationpermission {};
     permission.setCommunicationModes(QBluetoothPermission::Access);
-    Locationpermission.setAvailability(QLocationPermission::WhenInUse);
 
 
     switch (qApp->checkPermission(permission)) {
@@ -282,19 +284,23 @@ void KlingelballUI::startDeviceDiscovery(){
         break; // proceed to search
     }
 
+#ifdef Q_OS_ANDROID
+    QLocationPermission Locationpermission {};
+    Locationpermission.setAvailability(QLocationPermission::WhenInUse);
     switch (qApp->checkPermission(Locationpermission)) {
     case Qt::PermissionStatus::Undetermined:
         qApp->requestPermission(Locationpermission, this, &KlingelballUI::startDeviceDiscovery);
         printMessage("request permission");
         return;
     case Qt::PermissionStatus::Denied:
-        printMessage("Ble permission denied");
+        printMessage("Location permission denied");
         return;
     case Qt::PermissionStatus::Granted:
         printMessage("permission granted");
         if(Locationpermission.availability())
-        break; // proceed to search
+            break; // proceed to search
     }
+#endif
     //! [permissions]
 #endif // QT_CONFIG(permissions)
 

@@ -40,6 +40,7 @@ RESOURCES += \
     UI-Resources.qrc
 
 DISTFILES += \
+    Info.plist \
     android/AndroidManifest.xml \
     android/AndroidSettings.java \
     android/build.gradle \
@@ -80,4 +81,8 @@ android{
 ANDROID_PACKAGE_SOURCE_DIR = \
     $$PWD/android
     OTHER_FILES += android/src/Klingelball
+}
+
+ios{
+    QMAKE_INFO_PLIST = Info.plist
 }

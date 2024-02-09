@@ -27,11 +27,15 @@
 #include <QButtonGroup>
 #include <QSettings>
 #include <QFontDatabase>
-#include <QJniObject>
 #include <QStyleHints>
 #include <QFontDialog>
-#include <jni.h>
+
+
+
+#ifdef Q_OS_ANDROID
 #include <QJniObject>
+#include <jni.h>
+#endif
 
 
 QT_BEGIN_NAMESPACE
