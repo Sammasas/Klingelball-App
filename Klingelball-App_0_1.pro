@@ -8,6 +8,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 CONFIG += c++17
 
 RC_ICONS = Logo_v2.ico
+ICON = Logo_v2.ico
 
 
 # You can make your code fail to compile if it uses deprecated APIs.

@@ -61,8 +61,11 @@ void KlingelballUI::setup_UI(){
 
     ui->Heilligkeit->setAccessibleName("Helligkeit" + QString::number(ui->Heilligkeit->value())+ "% Einstellbar");
 
-    ui->verticalLayout_2->setContentsMargins(0, 0, 0, 0);
-    ui->tabWidget->setMaximumWidth(qApp->screens()[0]->size().width()+2);
+
+    /***********Setting Content Margins and Size ***/
+
+    ui->centralwidget->setMaximumSize(qApp->screens()[0]->size());
+    ui->Sound_tabWidget->setFixedHeight( ui->Sound_tabWidget->height()+6);
 
     ui->disconnectKlingelball->setVisible(false);
     ui->OnOff_Button->setVisible(false);

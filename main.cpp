@@ -14,7 +14,6 @@ int main(int argc, char *argv[])
         QFile styleSheetFile(":/stylesheet/darkmode.css");
         styleSheetFile.open(QFile::ReadOnly);
         QString styleSheet = QLatin1String(styleSheetFile.readAll());
-        QFont interVariable("Inter Variable Text", 10, QFont::Bold);
         w.setStyleSheet(styleSheet);
     }else{
         QFile styleSheetFile(":/stylesheet/lightmode.css");

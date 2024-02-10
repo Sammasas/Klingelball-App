@@ -15,8 +15,9 @@ KlingelballUI::KlingelballUI(QWidget *parent)
     ui->tabWidget->setCurrentIndex(0);
     ui->stackedWidget->setCurrentIndex(0);
 
-    ui->Sound_tabWidget->setCurrentIndex(1);
     ui->Sound_tabWidget->setCurrentIndex(0);
+
+
     Profile_list = new QList<EinstellungsProfil *>;
 
 
@@ -28,6 +29,7 @@ KlingelballUI::KlingelballUI(QWidget *parent)
 
 
     connect(QGuiApplication::styleHints(), SIGNAL(colorSchemeChanged (Qt::ColorScheme)), this, SLOT(on_colorSchemeChanged(Qt::ColorScheme)));
+    on_colorSchemeChanged(QGuiApplication::styleHints()->colorScheme());
 
     connect(ui->Heilligkeit, SIGNAL(valueChanged(int)), this, SLOT(updateAccessibleDesciption()));
     connect(ui->Lautstaerke, SIGNAL(valueChanged(int)), this, SLOT(updateAccessibleDesciption()));
