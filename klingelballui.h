@@ -37,6 +37,10 @@
 #include <jni.h>
 #endif
 
+#ifdef Q_OS_IOS
+#include "iOSSettings.h"
+#endif
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class KlingelballUI; }
@@ -128,12 +132,15 @@ private:
     QFont *SmallerdynamicSizeFont;
 
     void setup_UI();
-    void setup_font(float fontScale);
+    void setup_fontAndroid(float fontScale);
+    void setup_fontiOS(int pointSize);
     void setup_labels();
     void setup_buttons();
     void setup_spinbox();
     void setup_lineedit();
     void setup_ButtonGroup();
+
+    float getfontScalefrompointSize(int pointSize);
 
     void playSoundEffect(int Volume);
 

@@ -12,20 +12,22 @@ void KlingelballUI::setup_UI(){
 
         fontScale = new float(androidSettingsJavaObject.callStaticMethod<jfloat>("Klingelball/AndroidSettings", "getFontScale", "(Landroid/content/Context;)F", context.object<jobject>()));
         qDebug() <<"Font scale:" << *fontScale;
-        setup_font(*fontScale);
+        setup_fontAndroid(*fontScale);
 
     }
     else {
         qDebug() << "JAVA CLASS UNAVAIABLE!";
         fontScale = new float(1);
-        setup_font(*fontScale);
+        setup_fontAndroid(*fontScale);
 
     }
 #endif
 
 #ifdef Q_OS_IOS
-        fontScale = new float(1);
-        setup_font(*fontScale);
+        qDebug() << "iOS Font:" << iOSSettings::getPrefferedFont();
+        qDebug() << "Qt Font:" << QFontDatabase::systemFont(QFontDatabase::SystemFont::FixedFont).pointSize();
+        fontScale = new float(getfontScalefrompointSize(iOSSettings::getPrefferedFont()));
+        setup_fontiOS(iOSSettings::getPrefferedFont());
 #endif
 
     setup_labels();
@@ -64,7 +66,7 @@ void KlingelballUI::setup_UI(){
     /***********Setting Content Margins and Size ***/
 
     ui->centralwidget->setMaximumSize(qApp->screens()[0]->size());
-    ui->Sound_tabWidget->setFixedHeight( ui->Sound_tabWidget->height()+6);
+    //ui->Sound_tabWidget->setFixedHeight( ui->Sound_tabWidget->height()+6);
 
     ui->disconnectKlingelball->setVisible(false);
     ui->OnOff_Button->setVisible(false);
@@ -77,6 +79,27 @@ void KlingelballUI::setup_UI(){
     ui->tabWidget->tabBar()->setIconSize(QSize(30* *fontScale, 30* *fontScale));
     ui->Sound_tabWidget->tabBar()->setIconSize(QSize(30* *fontScale, 30* *fontScale));
 
+}
+
+float KlingelballUI::getfontScalefrompointSize(int pointSize){
+    switch(pointSize){
+    case 14:
+        return 0.8;
+    case 15:
+        return 0.85;
+    case 16:
+        return 0.9;
+    case 17:
+        return 1;
+    case 19:
+        return 1.1;
+    case 21:
+        return 1.2;
+    case 23:
+        return 1.3;
+    default:
+        return 1;
+    }
 }
 
 void KlingelballUI::setup_lineedit()
@@ -97,10 +120,14 @@ void KlingelballUI::setup_spinbox()
     ui->Heilligkeit->setFont(*dynamicSizeFont);
 }
 
-void KlingelballUI::setup_font(float fontScale){
+void KlingelballUI::setup_fontAndroid(float fontScale){
     dynamicSizeFont = new QFont("segue UI", QFontDatabase::systemFont(QFontDatabase::SystemFont::FixedFont).pointSize()*fontScale*1.3, QFont::Bold);
     SmallerdynamicSizeFont = new QFont("segue UI", QFontDatabase::systemFont(QFontDatabase::SystemFont::FixedFont).pointSize()*fontScale, QFont::Bold);
+}
 
+void KlingelballUI::setup_fontiOS(int pointSize){
+    dynamicSizeFont = new QFont("segue UI", pointSize*1.3, QFont::Bold);
+    SmallerdynamicSizeFont = new QFont("segue UI", pointSize, QFont::Bold);
 }
 
 

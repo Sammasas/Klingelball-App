@@ -24,6 +24,7 @@ SOURCES += \
     main.cpp \
     klingelballui.cpp
 
+
 HEADERS += \
     EinstellungsProfil.h \
     deviceinfo.h \
@@ -86,4 +87,6 @@ ANDROID_PACKAGE_SOURCE_DIR = \
 
 ios{
     QMAKE_INFO_PLIST = Info.plist
+    HEADERS += iOSSettings.h
+    OBJECTIVE_SOURCES += iOSSettings.mm
 }
