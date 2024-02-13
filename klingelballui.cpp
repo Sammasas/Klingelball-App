@@ -65,12 +65,12 @@ void KlingelballUI::on_Lautstaerke_valueChanged(int arg1)
 
 void KlingelballUI::on_Stillstehend_Beep_Freq_valueChanged(int arg1)
 {
-
+    Q_UNUSED(arg1);
 }
 
 
 void KlingelballUI::on_Bewegend_Beep_Freq_valueChanged(int arg1)
 {
-
+    Q_UNUSED(arg1);
 }
 

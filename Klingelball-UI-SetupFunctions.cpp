@@ -19,8 +19,7 @@ void KlingelballUI::setup_UI(){
         qDebug() << "JAVA CLASS UNAVAIABLE!";
         fontScale = new float(1);
         setup_font(*fontScale);
-        ui->tabWidget->tabBar()->setIconSize(QSize(30, 30));
-        ui->Sound_tabWidget->tabBar()->setIconSize(QSize(30, 30));
+
     }
 #endif
 

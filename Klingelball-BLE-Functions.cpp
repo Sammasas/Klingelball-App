@@ -171,7 +171,7 @@ QByteArray KlingelballUI::generateBytearray(Setting s,uint8_t data1, uint8_t dat
 
 char KlingelballUI::generatePruefziffer(QByteArray a){
   int pruef = 0;
-  int length = sizeof(a)/sizeof(a[0]);
+  //int length = sizeof(a)/sizeof(a[0]);
 
   for(int i = 1; i < 4; i++){  //prüfziffer berechnen
     qDebug() << i;
@@ -379,6 +379,7 @@ void KlingelballUI::connectDevice(const QBluetoothDeviceInfo *currentdevice){
 }
 
 void KlingelballUI::serviceDiscovered(QBluetoothUuid uuid){
+    Q_UNUSED(uuid);
     qDebug() << "service discovered";
 
 }
@@ -479,7 +480,8 @@ void KlingelballUI::deviceDisconnected(){
 void KlingelballUI::setupServiceDiscovery(){
     qDebug()<<"setupServiceDiscovery";
     for(int i = 0; i < m_controller->services().length(); i++){
-        qDebug()<< m_controller->services()[i];
+        qDebug()<< m_controller->services()[i];//TODO: [i] -> .at(i)
+
     }
 
     m_service = m_controller->createServiceObject(m_controller->services().last());
@@ -644,11 +646,11 @@ void KlingelballUI::KlingelballCharacteristicWritten(QLowEnergyCharacteristic ch
     }
 }
 
-void KlingelballUI::KlingelballCharacteristicChanged(QLowEnergyCharacteristic characteristic, QByteArray data){}
+void KlingelballUI::KlingelballCharacteristicChanged(QLowEnergyCharacteristic characteristic, QByteArray data){Q_UNUSED(characteristic); Q_UNUSED(data)}
 
-void KlingelballUI::KlingelballDescriptorRead(QLowEnergyDescriptor descriptor, QByteArray data){}
+void KlingelballUI::KlingelballDescriptorRead(QLowEnergyDescriptor descriptor, QByteArray data){Q_UNUSED(descriptor); Q_UNUSED(data)}
 
-void KlingelballUI::KlingelballDescriptorWritten(QLowEnergyDescriptor descriptor, QByteArray data){}
+void KlingelballUI::KlingelballDescriptorWritten(QLowEnergyDescriptor descriptor, QByteArray data){Q_UNUSED(descriptor); Q_UNUSED(data)}
 
 void KlingelballUI::readBatteryStatus(QLowEnergyCharacteristic *c){
     if(m_service->characteristics().contains(*c))

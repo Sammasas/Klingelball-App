@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 9.0.2, 2024-02-12T10:00:14. -->
+<<<<<<< Updated upstream
+<!-- Written by QtCreator 12.0.1, 2024-02-10T17:24:46. -->
+=======
+<!-- Written by QtCreator 9.0.2, 2024-02-11T13:20:56. -->
+>>>>>>> Stashed changes
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -8,7 +12,7 @@
  </data>
  <data>
   <variable>ProjectExplorer.Project.ActiveTarget</variable>
-  <value type="qlonglong">1</value>
+  <value type="qlonglong">0</value>
  </data>
  <data>
   <variable>ProjectExplorer.Project.EditorSettings</variable>
@@ -309,12 +313,24 @@
      <value type="QString"></value>
     </valuelist>
     <valuelist type="QVariantList" key="CustomOutputParsers"/>
+<<<<<<< Updated upstream
+    <valuemap type="QVariantMap" key="Ios.device_type">
+     <value type="QString" key="displayName"></value>
+     <value type="QString" key="identifier"></value>
+     <value type="int" key="type">0</value>
+    </valuemap>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Run Klingelball-App_0_1 on iPhone (3)</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.IosRunConfiguration:/Users/sportinstitutwien/Documents/GitHub/Klingelball-App_0_1/Klingelball-App_0_1.pro</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">/Users/sportinstitutwien/Documents/GitHub/Klingelball-App_0_1/Klingelball-App_0_1.pro</value>
+    <value type="bool" key="ProjectExplorer.RunConfiguration.Customized">true</value>
+=======
     <value type="int" key="PE.EnvironmentAspect.Base">0</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Klingelball-App_0_1</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.AndroidRunConfiguration:C:/Users/samuz/OneDrive/Dokumente/Qt_Projects/Klingelball-App_0_1/Klingelball-App_0_1.pro</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Users/samuz/OneDrive/Dokumente/Qt_Projects/Klingelball-App_0_1/Klingelball-App_0_1.pro</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
+>>>>>>> Stashed changes
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
     <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
@@ -531,7 +547,6 @@
     <valuelist type="QVariantList" key="CustomOutputParsers"/>
     <value type="int" key="PE.EnvironmentAspect.Base">0</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Klingelball-App_0_1</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.AndroidRunConfiguration:C:/Users/samuz/OneDrive/Dokumente/Qt_Projects/Klingelball-App_0_1/Klingelball-App_0_1.pro</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Users/samuz/OneDrive/Dokumente/Qt_Projects/Klingelball-App_0_1/Klingelball-App_0_1.pro</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>

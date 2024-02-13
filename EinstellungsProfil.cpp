@@ -100,6 +100,7 @@ void EinstellungsProfil::toggle_profile(){
 }
 
 void EinstellungsProfil::mousePressEvent(QMouseEvent *event){
+    Q_UNUSED(event);
     if (this->isChecked()){
         this->toggle_profile();
         emit profile_selection_updated();
