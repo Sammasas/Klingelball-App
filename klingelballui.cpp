@@ -42,9 +42,13 @@ KlingelballUI::KlingelballUI(QWidget *parent)
 
 void KlingelballUI::on_colorSchemeChanged(Qt::ColorScheme scheme){
     if(scheme == Qt::ColorScheme::Dark){
-        ui->Darkmode_checkBox->click();
+        ui->Darkmode_checkBox->setChecked(true);
+        ui->Lightmode_checkBox->setChecked(false);
+        on_Darkmode_checkBox_clicked();
     }else if (scheme == Qt::ColorScheme::Light){
-        ui->Lightmode_checkBox->click();
+        ui->Darkmode_checkBox->setChecked(false);
+        ui->Lightmode_checkBox->setChecked(true);
+        on_Lightmode_checkBox_clicked();
     }
 }
 
