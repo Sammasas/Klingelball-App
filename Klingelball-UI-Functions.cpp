@@ -47,8 +47,8 @@ void KlingelballUI::on_Lightmode_checkBox_clicked()
 
         ui->tabWidget->setTabIcon(0, QIcon(":/Icons/lautstarke_dark.png"));
         ui->tabWidget->setTabIcon(1, QIcon(":/Icons/light_icon_light.png"));
-        ui->tabWidget->setTabIcon(3, QIcon(":/Icons/Ball_icon.png"));
-        ui->tabWidget->setTabIcon(4, QIcon(":/Icons/settings_icon_176440.png"));
+        ui->tabWidget->setTabIcon(2, QIcon(":/Icons/Ball_icon.png"));
+        ui->tabWidget->setTabIcon(3, QIcon(":/Icons/settings_icon_176440.png"));
 
         on_tabWidget_currentChanged(ui->tabWidget->currentIndex());
     }
@@ -88,8 +88,8 @@ void KlingelballUI::on_Darkmode_checkBox_clicked()
 
         ui->tabWidget->setTabIcon(0, QIcon(":/Icons/lautstarke_light.png"));
         ui->tabWidget->setTabIcon(1, QIcon(":/Icons/light_icon_dark.png"));
-        ui->tabWidget->setTabIcon(3, QIcon(":/Icons/Ball_icon_inverted.png"));
-        ui->tabWidget->setTabIcon(4, QIcon(":/Icons/settingsIcon_inverted.png"));
+        ui->tabWidget->setTabIcon(2, QIcon(":/Icons/Ball_icon_inverted.png"));
+        ui->tabWidget->setTabIcon(3, QIcon(":/Icons/settingsIcon_inverted.png"));
 
         on_tabWidget_currentChanged(ui->tabWidget->currentIndex());
     }
@@ -201,32 +201,32 @@ void KlingelballUI::on_tabWidget_currentChanged(int index)
         case 0:
             ui->tabWidget->setTabIcon(0, QIcon(":/Icons/lautstarke_red.png"));
             ui->tabWidget->setTabIcon(1, QIcon(":/Icons/light_icon_dark.png"));
-            ui->tabWidget->setTabIcon(3, QIcon(":/Icons/Ball_icon_inverted.png"));
-            ui->tabWidget->setTabIcon(4, QIcon(":/Icons/settingsIcon_inverted.png"));
+            ui->tabWidget->setTabIcon(2, QIcon(":/Icons/Ball_icon_inverted.png"));
+            ui->tabWidget->setTabIcon(3, QIcon(":/Icons/settingsIcon_inverted.png"));
             break;
         case 1:
             ui->tabWidget->setTabIcon(0, QIcon(":/Icons/lautstarke_light.png"));
             ui->tabWidget->setTabIcon(1, QIcon(":/Icons/light-icon_red.png"));
-            ui->tabWidget->setTabIcon(3, QIcon(":/Icons/Ball_icon_inverted.png"));
-            ui->tabWidget->setTabIcon(4, QIcon(":/Icons/settingsIcon_inverted.png"));
+            ui->tabWidget->setTabIcon(2, QIcon(":/Icons/Ball_icon_inverted.png"));
+            ui->tabWidget->setTabIcon(3, QIcon(":/Icons/settingsIcon_inverted.png"));
+            break;
+        case 2:
+            ui->tabWidget->setTabIcon(0, QIcon(":/Icons/lautstarke_light.png"));
+            ui->tabWidget->setTabIcon(1, QIcon(":/Icons/light_icon_dark.png"));
+            ui->tabWidget->setTabIcon(2, QIcon(":/Icons/ball_icon_red.png"));
+            ui->tabWidget->setTabIcon(3, QIcon(":/Icons/settingsIcon_inverted.png"));
             break;
         case 3:
             ui->tabWidget->setTabIcon(0, QIcon(":/Icons/lautstarke_light.png"));
             ui->tabWidget->setTabIcon(1, QIcon(":/Icons/light_icon_dark.png"));
-            ui->tabWidget->setTabIcon(3, QIcon(":/Icons/ball_icon_red.png"));
-            ui->tabWidget->setTabIcon(4, QIcon(":/Icons/settingsIcon_inverted.png"));
-            break;
-        case 4:
-            ui->tabWidget->setTabIcon(0, QIcon(":/Icons/lautstarke_light.png"));
-            ui->tabWidget->setTabIcon(1, QIcon(":/Icons/light_icon_dark.png"));
-            ui->tabWidget->setTabIcon(3, QIcon(":/Icons/Ball_icon_inverted.png"));
-            ui->tabWidget->setTabIcon(4, QIcon(":/Icons/settings_icon_red.png"));
+            ui->tabWidget->setTabIcon(2, QIcon(":/Icons/Ball_icon_inverted.png"));
+            ui->tabWidget->setTabIcon(3, QIcon(":/Icons/settings_icon_red.png"));
             break;
         default:
             ui->tabWidget->setTabIcon(0, QIcon(":/Icons/lautstarke_light.png"));
             ui->tabWidget->setTabIcon(1, QIcon(":/Icons/light_icon_dark.png"));
-            ui->tabWidget->setTabIcon(3, QIcon(":/Icons/Ball_icon_inverted.png"));
-            ui->tabWidget->setTabIcon(4, QIcon(":/Icons/settings_icon_red.png"));
+            ui->tabWidget->setTabIcon(2, QIcon(":/Icons/Ball_icon_inverted.png"));
+            ui->tabWidget->setTabIcon(3, QIcon(":/Icons/settings_icon_red.png"));
             break;
         }
     }else if (ui->Lightmode_checkBox->isChecked()){
@@ -234,32 +234,32 @@ void KlingelballUI::on_tabWidget_currentChanged(int index)
         case 0:
             ui->tabWidget->setTabIcon(0, QIcon(":/Icons/lautstarke_red.png"));
             ui->tabWidget->setTabIcon(1, QIcon(":/Icons/light_icon_light.png"));
-            ui->tabWidget->setTabIcon(3, QIcon(":/Icons/Ball_icon.png"));
-            ui->tabWidget->setTabIcon(4, QIcon(":/Icons/settings_icon_176440.png"));
+            ui->tabWidget->setTabIcon(2, QIcon(":/Icons/Ball_icon.png"));
+            ui->tabWidget->setTabIcon(3, QIcon(":/Icons/settings_icon_176440.png"));
             break;
         case 1:
             ui->tabWidget->setTabIcon(0, QIcon(":/Icons/lautstarke_dark.png"));
             ui->tabWidget->setTabIcon(1, QIcon(":/Icons/light-icon_red.png"));
-            ui->tabWidget->setTabIcon(3, QIcon(":/Icons/Ball_icon.png"));
-            ui->tabWidget->setTabIcon(4, QIcon(":/Icons/settings_icon_176440.png"));
+            ui->tabWidget->setTabIcon(2, QIcon(":/Icons/Ball_icon.png"));
+            ui->tabWidget->setTabIcon(3, QIcon(":/Icons/settings_icon_176440.png"));
+            break;
+        case 2:
+            ui->tabWidget->setTabIcon(0, QIcon(":/Icons/lautstarke_dark.png"));
+            ui->tabWidget->setTabIcon(1, QIcon(":/Icons/light_icon_light.png"));
+            ui->tabWidget->setTabIcon(2, QIcon(":/Icons/ball_icon_red.png"));
+            ui->tabWidget->setTabIcon(3, QIcon(":/Icons/settings_icon_176440.png"));
             break;
         case 3:
             ui->tabWidget->setTabIcon(0, QIcon(":/Icons/lautstarke_dark.png"));
             ui->tabWidget->setTabIcon(1, QIcon(":/Icons/light_icon_light.png"));
-            ui->tabWidget->setTabIcon(3, QIcon(":/Icons/ball_icon_red.png"));
-            ui->tabWidget->setTabIcon(4, QIcon(":/Icons/settings_icon_176440.png"));
-            break;
-        case 4:
-            ui->tabWidget->setTabIcon(0, QIcon(":/Icons/lautstarke_dark.png"));
-            ui->tabWidget->setTabIcon(1, QIcon(":/Icons/light_icon_light.png"));
-            ui->tabWidget->setTabIcon(3, QIcon(":/Icons/Ball_icon.png"));
-            ui->tabWidget->setTabIcon(4, QIcon(":/Icons/settings_icon_red.png"));
+            ui->tabWidget->setTabIcon(2, QIcon(":/Icons/Ball_icon.png"));
+            ui->tabWidget->setTabIcon(3, QIcon(":/Icons/settings_icon_red.png"));
             break;
         default:
             ui->tabWidget->setTabIcon(0, QIcon(":/Icons/lautstarke_dark.png"));
             ui->tabWidget->setTabIcon(1, QIcon(":/Icons/light_icon_light.png"));
-            ui->tabWidget->setTabIcon(3, QIcon(":/Icons/Ball_icon.png"));
-            ui->tabWidget->setTabIcon(4, QIcon(":/Icons/settings_icon_176440.png"));
+            ui->tabWidget->setTabIcon(2, QIcon(":/Icons/Ball_icon.png"));
+            ui->tabWidget->setTabIcon(3, QIcon(":/Icons/settings_icon_176440.png"));
             break;
         }
     }

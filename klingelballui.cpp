@@ -7,6 +7,7 @@ KlingelballUI::KlingelballUI(QWidget *parent)
     , ui(new Ui::KlingelballUI)
 {
     ui->setupUi(this);
+    ui->tabWidget->removeTab(2);
     setup_UI();
     ui->tabWidget->setCurrentIndex(0);
     ui->tabWidget->setCurrentIndex(1);
@@ -25,7 +26,7 @@ KlingelballUI::KlingelballUI(QWidget *parent)
 
     setupBLE();
     ui->statusLabel->setVisible(false);
-    ui->tabWidget->setTabEnabled(2, false);
+    //ui->tabWidget->setTabEnabled(2, false);
 
 
     connect(QGuiApplication::styleHints(), SIGNAL(colorSchemeChanged (Qt::ColorScheme)), this, SLOT(on_colorSchemeChanged(Qt::ColorScheme)));

@@ -145,6 +145,7 @@ void KlingelballUI::transmitSettings (){
                                             "background-color: #e50616;}");
             setUebertragenButtonTextandStyle("Übertragen Error!", "QPushButton{background-color: #e50616;}"
                                                   " QPushButton::pressed{Background: #5b5b5b; border-radius: 20px;}");
+            printMessage("Übertragen Error");
 
             transmittionStatus = TransmitGeneralSettings;
             break;
@@ -188,7 +189,7 @@ char KlingelballUI::generatePruefziffer(QByteArray a){
         qDebug() << QString::number(pruef);
     }
   }
-  //pruef = 9 - (pruef % 10);
+  pruef = 9 - (pruef % 10);
   qDebug()<<"prueffziffer"<<QString::number(pruef);
   return pruef;
 }
@@ -260,7 +261,13 @@ void KlingelballUI::on_disconnectKlingelball_clicked()
 
 void KlingelballUI::printMessage(QString message){
     ui->statusLabel->setText("Status: " + message);
-    qDebug() << message;
+    /*ui->ErrormessageLabel->setVisible(true);
+    ui->ErrormessageLabelSecline->setVisible(true);
+    ui->ErrormessageLabel->setText(message);
+    ui->ErrormessageLabelSecline->setText("Versichere dich, dass Bluetooth und ");
+    ui->ErrormessageLabel->adjustSize();
+    ui->ErrormessageLabelSecline->adjustSize();*/
+    qWarning() << message;
 
 }
 
@@ -310,7 +317,7 @@ void KlingelballUI::startDeviceDiscovery(){
         ui->searchKlingelball->setStyleSheet("QPushButton{"
                                              "background-color: #e50616;}");
     }
-    printMessage("suchen... ");//TODO: if bluetooth isnt on message
+   //TODO: if bluetooth isnt on message
 }
 
 void KlingelballUI::addDevice(const QBluetoothDeviceInfo &device){
@@ -333,31 +340,31 @@ void KlingelballUI::ScanError(QBluetoothDeviceDiscoveryAgent::Error error){
     switch(error){
 
     case QBluetoothDeviceDiscoveryAgent::NoError:
-        qWarning("No Error");
+        printMessage("No Error");
     break;
     case QBluetoothDeviceDiscoveryAgent::PoweredOffError:
-        qWarning("Bluetooth turned off");
+        printMessage("Bluetooth turned off");
         break;
     case QBluetoothDeviceDiscoveryAgent::InputOutputError:
-        qWarning("InOut Error");
+        printMessage("InOut Error");
         break;
     case QBluetoothDeviceDiscoveryAgent::InvalidBluetoothAdapterError:
-        qWarning("InvalidAdapter");
+        printMessage("InvalidAdapter");
         break;
     case QBluetoothDeviceDiscoveryAgent::UnsupportedDiscoveryMethod:
-        qWarning("Error 4");
+        printMessage("Error 4");
         break;
     case QBluetoothDeviceDiscoveryAgent::UnsupportedPlatformError:
-        qWarning("Error 5");
+        printMessage("Error 5");
         break;
     case QBluetoothDeviceDiscoveryAgent::LocationServiceTurnedOffError:
-        qWarning("Error 6");
+        printMessage("Error 6");
         break;
     case QBluetoothDeviceDiscoveryAgent::MissingPermissionsError:
-        qWarning("Error 7");
+        printMessage("Error 7");
         break;
     case QBluetoothDeviceDiscoveryAgent::UnknownError:
-        qWarning("Unknown Error");
+        printMessage("Unknown Error");
         break;
     }
 
@@ -390,57 +397,56 @@ void KlingelballUI::serviceScanDone(){
 }
 
 void KlingelballUI::controllerError(QLowEnergyController::Error error){
-    printMessage("Error");
     switch(error){
         case QLowEnergyController::Error::ConnectionError:
-            qWarning()<<"ConnectionError";
+            printMessage("ConnectionError");
             printMessage("Disconnected");
             KlingelballConnected = false;
             remoteServiceDiscovered = false;
 
-            for(int i = 0; i < ui->UIDeviceList->count(); i ++){
+            for(int i = 0; i < ui->UIDeviceList->count(); i++){
                 if(ui->UIDeviceList->takeItem(i)->text() == m_controller->remoteName()){
                     ui->UIDeviceList->removeItemWidget(ui->UIDeviceList->takeItem(i));
                 }
             }
             break;
         case QLowEnergyController::Error::RssiReadError:
-            qWarning()<<"RssiReadError";
+            printMessage("RssiReadError");
             break;
         case QLowEnergyController::Error::UnknownError:
-            qWarning()<<"UnknownError";
+            printMessage("UnknownError");
             break;
 
         case QLowEnergyController::Error::AdvertisingError:
-            qWarning()<<"AdvertisingError";
+            printMessage("AdvertisingError");
             break;
 
         case QLowEnergyController::Error::AuthorizationError:
-            qWarning()<<"AuthorizationError";
+            printMessage("AuthorizationError");
             break;
 
         case QLowEnergyController::Error::InvalidBluetoothAdapterError:
-            qWarning()<<"InvalidBluetoothAdapterError";
+            printMessage("InvalidBluetoothAdapterError");
             break;
 
         case QLowEnergyController::Error::MissingPermissionsError:
-            qWarning()<<"MissingPermissionsError";
+            printMessage("MissingPermissionsError");
             break;
 
         case QLowEnergyController::Error::NetworkError:
-            qWarning()<<"NetworkError";
+            printMessage("NetworkError");
             break;
 
         case QLowEnergyController::Error::NoError:
-            qWarning()<<"NoError";
+            printMessage("NoError");
             break;
 
         case QLowEnergyController::Error::RemoteHostClosedError:
-            qWarning()<<"RemoteHostClosedError";
+            printMessage("RemoteHostClosedError");
             break;
 
         case QLowEnergyController::Error::UnknownRemoteDeviceError:
-            qWarning()<<"UnknownRemoteDeviceError";
+            printMessage("UnknownRemoteDeviceError");
             break;
 
     }
@@ -448,7 +454,6 @@ void KlingelballUI::controllerError(QLowEnergyController::Error error){
 
 void KlingelballUI::deviceConnected(){
     qDebug() << "device connected";
-    printMessage("verbunden!");
     KlingelballConnected = true;
     ui->connectKlingelball->setVisible(false);
     ui->OnOff_Button->setVisible(true);
@@ -461,7 +466,6 @@ void KlingelballUI::deviceConnected(){
 }
 
 void KlingelballUI::deviceDisconnected(){
-    printMessage("device disconnected");
     qDebug() << "device disconnected";
     delete m_controller;
     delete m_service;
@@ -512,7 +516,7 @@ void KlingelballUI::setupServiceDiscovery(){
 void KlingelballUI::KlingelballServiceStatechanged(QLowEnergyService::ServiceState serviceState){
     switch(serviceState){
     case QLowEnergyService::ServiceState::InvalidService:
-        qWarning("invalid  Service");
+        printMessage("invalid  Service");
         break;
 
     case QLowEnergyService::ServiceState::LocalService:
@@ -557,32 +561,32 @@ void KlingelballUI::KlingelballServiceError(QLowEnergyService::ServiceError erro
 
     switch(error){
         case QLowEnergyService::ServiceError::NoError:
-            qWarning("NoError");
+            printMessage("NoError");
             break;
 
         case QLowEnergyService::ServiceError::OperationError:
-            qWarning("operationError");
+            printMessage("operationError");
             break;
 
         case QLowEnergyService::ServiceError::CharacteristicReadError:
-            qWarning("CharacteristicReadError");
+            printMessage("CharacteristicReadError");
             break;
 
         case QLowEnergyService::ServiceError::CharacteristicWriteError:
-            qWarning("characteristicWriteError");
+            printMessage("characteristicWriteError");
             printMessage("Write Error!");
             break;
 
         case QLowEnergyService::ServiceError::DescriptorReadError:
-            qWarning("DescriptionReadError");
+            printMessage("DescriptionReadError");
             break;
 
         case QLowEnergyService::ServiceError::DescriptorWriteError:
-            qWarning("DescriptorWriteError");
+            printMessage("DescriptorWriteError");
             break;
 
         case QLowEnergyService::ServiceError::UnknownError:
-            qWarning("UnknownError");
+            printMessage("UnknownError");
             break;
     }
 }

@@ -45,8 +45,8 @@ void KlingelballUI::setup_UI(){
     /*********Setting accessible names **********/
     ui->tabWidget->tabBar()->setAccessibleTabName(0, "Toneinstellungen Tab 1 von 4");
     ui->tabWidget->tabBar()->setAccessibleTabName(1, "Lichteinstellungen Tab 2 von 4");
-    ui->tabWidget->tabBar()->setAccessibleTabName(3, "Ball verbinden Tab 3 von 4");
-    ui->tabWidget->tabBar()->setAccessibleTabName(4, "Einstellungen Tab 4 von 4");
+    ui->tabWidget->tabBar()->setAccessibleTabName(2, "Ball verbinden Tab 3 von 4");
+    ui->tabWidget->tabBar()->setAccessibleTabName(3, "Einstellungen Tab 4 von 4");
 
 
     ui->Sound_tabWidget->tabBar()->setAccessibleTabName(0, "Tonhöheneinstellung Tab 1 von 2");
@@ -72,6 +72,8 @@ void KlingelballUI::setup_UI(){
     ui->OnOff_Button->setVisible(false);
     ui->connectKlingelball->setVisible(false);
     ui->batteryStatusProgressbar->setVisible(false);
+    ui->ErrormessageLabel->setVisible(false);
+    ui->ErrormessageLabelSecline->setVisible(false);
     ui->Sound_tabWidget->setAutoFillBackground(true);
 
     ui->Sound_tabWidget->setFont(*SmallerdynamicSizeFont);
