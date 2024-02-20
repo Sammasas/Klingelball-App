@@ -46,10 +46,10 @@
        <enum>Qt::NoFocus</enum>
       </property>
       <property name="accessibleName">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Einstellungen &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       <string/>
       </property>
       <property name="accessibleDescription">
-       <string>Tab 4 von 4</string>
+       <string/>
       </property>
       <property name="styleSheet">
        <string notr="true">
@@ -112,7 +112,7 @@ QTabBar::tab::disabled{
        <enum>QTabWidget::Rounded</enum>
       </property>
       <property name="currentIndex">
-       <number>3</number>
+       <number>2</number>
       </property>
       <property name="iconSize">
        <size>
@@ -123,18 +123,24 @@ QTabBar::tab::disabled{
       <property name="elideMode">
        <enum>Qt::ElideNone</enum>
       </property>
+      <property name="usesScrollButtons">
+       <bool>false</bool>
+      </property>
       <property name="documentMode">
        <bool>true</bool>
+      </property>
+      <property name="tabsClosable">
+       <bool>false</bool>
       </property>
       <property name="tabBarAutoHide">
        <bool>false</bool>
       </property>
       <widget class="QWidget" name="Sound_Tab">
        <property name="accessibleName">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Toneinstellungen &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string/>
        </property>
        <property name="accessibleDescription">
-        <string>Tab 1 von 4</string>
+        <string/>
        </property>
        <attribute name="icon">
         <iconset resource="UI-Resources.qrc">
@@ -222,7 +228,7 @@ QTabBar::tab::disabled{
              <enum>Qt::NoContextMenu</enum>
             </property>
             <property name="accessibleName">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Lautstärke um 5% erhöhen Taste&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             <string>Lautstärke um 5% erhöhen Taste</string>
             </property>
             <property name="accessibleDescription">
              <string/>
@@ -419,7 +425,7 @@ QTabBar::tab {
 
 QTabBar::tab:unselected{
 	background: darkgrey;
-   top: 5px; 
+    top: 5px; 
 	
 	border-radius: 0px;
 	border-bottom: 2px  solid black;
@@ -797,13 +803,7 @@ QTabBar::tab::disabled{
             <bool>true</bool>
            </property>
            <property name="styleSheet">
-            <string notr="true">QTabWidget{
-background-color: black;
-	
-}
-QTabWidget::pane{
-	background-color: black;
-}</string>
+            <string notr="true"/>
            </property>
            <attribute name="icon">
             <iconset resource="UI-Resources.qrc">
@@ -1168,10 +1168,10 @@ QTabWidget::pane{
       </widget>
       <widget class="QWidget" name="Light_Tab">
        <property name="accessibleName">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Lichteinstellungen &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string/>
        </property>
        <property name="accessibleDescription">
-        <string>Tab 2 von 4</string>
+        <string/>
        </property>
        <attribute name="icon">
         <iconset resource="UI-Resources.qrc">
@@ -1243,7 +1243,7 @@ QTabWidget::pane{
              </size>
             </property>
             <property name="accessibleName">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Helligkeit um 5% erhöhen taste&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             <string>Helligkeit um 5% erhöhen taste</string>
             </property>
             <property name="styleSheet">
              <string notr="true"/>
@@ -1333,7 +1333,7 @@ QTabWidget::pane{
              </size>
             </property>
             <property name="accessibleName">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Helligkeit um 5% verringern Taste&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             <string>Helligkeit um 5% verringern Taste</string>
             </property>
             <property name="text">
              <string/>
@@ -1349,7 +1349,7 @@ QTabWidget::pane{
         <item>
          <widget class="QLabel" name="Farbe_Label">
           <property name="accessibleName">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Farbauswahl Überschrift&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>Farbauswahl Überschrift</string>
           </property>
           <property name="text">
            <string>Farbe:</string>
@@ -1861,9 +1861,18 @@ QRadioButton::indicator:unchecked{
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="Profile_Tab">
+      <widget class="QWidget" name="Profile_Tab" >
        <property name="enabled">
-        <bool>true</bool>
+        <bool>false</bool>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="contextMenuPolicy">
+        <enum>Qt::DefaultContextMenu</enum>
        </property>
        <attribute name="title">
         <string>Profile</string>
@@ -1898,8 +1907,8 @@ QRadioButton::indicator:unchecked{
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>422</width>
-                 <height>552</height>
+                 <width>416</width>
+                 <height>562</height>
                 </rect>
                </property>
                <layout class="QGridLayout" name="gridLayout_2">
@@ -2089,10 +2098,10 @@ QRadioButton::indicator:unchecked{
       </widget>
       <widget class="QWidget" name="Ball_Tab">
        <property name="accessibleName">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ball verbinden &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string/>
        </property>
        <property name="accessibleDescription">
-        <string>Tab 3 von 4</string>
+        <string/>
        </property>
        <attribute name="icon">
         <iconset resource="UI-Resources.qrc">

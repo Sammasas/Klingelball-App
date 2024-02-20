@@ -155,6 +155,11 @@ void KlingelballUI::transmitSettings (){
 QByteArray KlingelballUI::generateBytearray(Setting s,uint8_t data1, uint8_t data2, uint8_t data3){
     QByteArray a;
     a.resize(4);
+    qDebug() << "Daten:" << QString::number(s)
+             << QString::number(data1)
+             << QString::number(data2)
+             << QString::number(data3);
+
     a[0] = 0;
     a[1] = data1;
     a[2] = data2;
@@ -163,32 +168,27 @@ QByteArray KlingelballUI::generateBytearray(Setting s,uint8_t data1, uint8_t dat
     a[0] = generatePruefziffer(a) + s*10;
 
     qDebug() << "Übertrage:" << QString::number(a[0])
-            << QString::number(a[1])
-            << QString::number(a[2])
-            << QString::number(a[3]);
+             << QString::number((uint8_t)a[1])
+            << QString::number((uint8_t)a[2])
+            << QString::number((uint8_t)a[3]);
+
     return a;
 }
 
 char KlingelballUI::generatePruefziffer(QByteArray a){
-  int pruef = 0;
+  unsigned int pruef = 0;
   //int length = sizeof(a)/sizeof(a[0]);
-
-  for(int i = 1; i < 4; i++){  //prüfziffer berechnen
-    qDebug() << i;
+  for(int i = 1; i < 4; i++){
     if(i % 2){
-      pruef += a[i] * 1;
-      qDebug() << QString::number(a[i]);
+          pruef += (uint8_t)a[i] * 1;
+        qDebug() << QString::number(pruef);
 
     } else{ //gerade
-        qDebug() << "gerade";
-      pruef += a[i] * 3;
-      qDebug() << QString::number(a[i]);
-
+      pruef += (uint8_t)a[i] * 3;
+        qDebug() << QString::number(pruef);
     }
   }
-    qDebug() << QString::number(pruef);
   pruef = 9 - (pruef % 10);
-
   qDebug()<<"prueffziffer"<<QString::number(pruef);
  return pruef;
 }
@@ -638,7 +638,10 @@ void KlingelballUI::KlingelballCharacteristicRead(QLowEnergyCharacteristic chara
 
 void KlingelballUI::KlingelballCharacteristicWritten(QLowEnergyCharacteristic characteristic, QByteArray data){
     qDebug()<< "characteristicWritten";
-    qDebug() << data;
+    qDebug() << QString::number(data[0])
+               << QString::number((uint8_t)data[1])
+               << QString::number((uint8_t)data[2])
+               << QString::number((uint8_t)data[3]);
     printMessage("über. success!!");
 
     if (transmittionActive){
