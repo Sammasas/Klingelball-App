@@ -83,7 +83,7 @@ Funktion wenn nicht bewegt ton und wenn bewegt kein ton
 wenn 5 sekunden nicht bewegt anfangen geräusch machen 
 
 Piepsen besser
-
+s
 Umrandung und größere buttons farbe
 
 Hintergrund schwarz
