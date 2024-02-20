@@ -55,7 +55,7 @@ void KlingelballUI::on_uebertragen_button_clicked()
 }
 
 void KlingelballUI::transmitSettings (){
-    switch(transmittionStatus){ //TODO: Timeout
+    switch(transmittionStatus){ //TODO: Timeout & Error doenst stop transmittion
         case TransmittionDone:
             printMessage("TransmittionDone");
             transmittionActive = false;
@@ -188,9 +188,9 @@ char KlingelballUI::generatePruefziffer(QByteArray a){
         qDebug() << QString::number(pruef);
     }
   }
-  pruef = 9 - (pruef % 10);
+  //pruef = 9 - (pruef % 10);
   qDebug()<<"prueffziffer"<<QString::number(pruef);
- return pruef;
+  return pruef;
 }
 
 
