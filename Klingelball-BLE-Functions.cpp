@@ -5,6 +5,7 @@ void KlingelballUI::setupBLE(){
 
     deviceList = new QList<DeviceInfo *>;
 
+//Powers on Bluetooth on Android devices
 #ifdef Q_OS_ANDROID
     QBluetoothLocalDevice localDevice;
     if(localDevice.isValid()){
@@ -38,6 +39,7 @@ void KlingelballUI::setupBLE(){
 
 void KlingelballUI::on_uebertragen_button_clicked()
 {   
+    //initializes transmittion and sets UI to show transmittion is aktive
     if(remoteServiceDiscovered && KlingelballConnected && !m_service->characteristics().empty()){
         qDebug() << "writeCharacteristik";
         transmittionActive = true;
@@ -153,6 +155,7 @@ void KlingelballUI::transmitSettings (){
 
 
 QByteArray KlingelballUI::generateBytearray(Setting s,uint8_t data1, uint8_t data2, uint8_t data3){
+    //Generates byte array ready for transmittion
     QByteArray a;
     a.resize(4);
     qDebug() << "Daten:" << QString::number(s)
@@ -177,7 +180,7 @@ QByteArray KlingelballUI::generateBytearray(Setting s,uint8_t data1, uint8_t dat
 
 char KlingelballUI::generatePruefziffer(QByteArray a){
   unsigned int pruef = 0;
-  //int length = sizeof(a)/sizeof(a[0]);
+
   for(int i = 1; i < 4; i++){
     if(i % 2){
           pruef += (uint8_t)a[i] * 1;
@@ -188,7 +191,7 @@ char KlingelballUI::generatePruefziffer(QByteArray a){
         qDebug() << QString::number(pruef);
     }
   }
-  //pruef = 9 - (pruef % 10);
+  pruef = 9 - (pruef % 10);
   qDebug()<<"prueffziffer"<<QString::number(pruef);
   return pruef;
 }
@@ -196,16 +199,17 @@ char KlingelballUI::generatePruefziffer(QByteArray a){
 
 void KlingelballUI::on_searchKlingelball_clicked()
 {
+    //starts new search for device, disconnects from connected device
     if(KlingelballConnected){
         m_controller->disconnectFromDevice();
     }
-    ui->searchKlingelball->setStyleSheet("QPushButton{"
-                                         "background-color: orange;}");
+
     ui->UIDeviceList->clear();
     startDeviceDiscovery();
 }
 
 QColor KlingelballUI::StillstehendSelectedColor(){
+    //returns color value based on selected color
     if(ui->Stillstehend_Farbe1->isChecked())
         return QColor(255, 255, 255);
     if(ui->Stillstehend_Farbe2->isChecked())
@@ -221,6 +225,7 @@ QColor KlingelballUI::StillstehendSelectedColor(){
 }
 
 QColor KlingelballUI::BewegendSelectedColor(){
+    //returns color value based on selected color
     if(ui->Bewegend_Farbe1->isChecked())
         return QColor(255, 255, 255);
     if(ui->Bewegend_Farbe2->isChecked())
@@ -237,6 +242,7 @@ QColor KlingelballUI::BewegendSelectedColor(){
 
 void KlingelballUI::on_connectKlingelball_clicked()
 {
+    //Connects  to selected device
     for (int i = 0; i < ui->UIDeviceList->count(); i++){
         if(ui->UIDeviceList->item(i)->isSelected()){
             m_deviceDiscoveryAgent->stop();
@@ -265,6 +271,8 @@ void KlingelballUI::printMessage(QString message){
 }
 
 void KlingelballUI::startDeviceDiscovery(){
+
+    //get permission from user to use Bluetooth
 #if QT_CONFIG(permissions)
     //! [permissions]
     QBluetoothPermission permission{};
@@ -284,6 +292,7 @@ void KlingelballUI::startDeviceDiscovery(){
         break; // proceed to search
     }
 
+    //Get permission to use location (Android Bluetooth only works with location turned on)
 #ifdef Q_OS_ANDROID
     QLocationPermission Locationpermission {};
     Locationpermission.setAvailability(QLocationPermission::WhenInUse);
@@ -304,18 +313,22 @@ void KlingelballUI::startDeviceDiscovery(){
     //! [permissions]
 #endif // QT_CONFIG(permissions)
 
+    //start device discovery and set UI to show if search is active or failed
     m_deviceDiscoveryAgent->start(QBluetoothDeviceDiscoveryAgent::LowEnergyMethod);
     if(!m_deviceDiscoveryAgent->isActive()){
         qWarning()<< "discovery failed!";
         ui->searchKlingelball->setStyleSheet("QPushButton{"
                                              "background-color: #e50616;}");
+    }else{
+        ui->searchKlingelball->setStyleSheet("QPushButton{"
+                                             "background-color: orange;}");
     }
     printMessage("suchen... ");//TODO: if bluetooth isnt on message
 }
 
 void KlingelballUI::addDevice(const QBluetoothDeviceInfo &device){
     if(device.coreConfigurations() & QBluetoothDeviceInfo::LowEnergyCoreConfiguration){
-        if(device.name().contains("Klingelball")){ //TODO Suche nach address
+        if(device.name().contains("Klingelball")){
             deviceList->append(new DeviceInfo{device});
             ui->UIDeviceList->addItem(device.name());
         }
@@ -447,6 +460,7 @@ void KlingelballUI::controllerError(QLowEnergyController::Error error){
 }
 
 void KlingelballUI::deviceConnected(){
+    //Show widgets to controll connected device
     qDebug() << "device connected";
     printMessage("verbunden!");
     KlingelballConnected = true;
@@ -454,6 +468,8 @@ void KlingelballUI::deviceConnected(){
     ui->OnOff_Button->setVisible(true);
     ui->disconnectKlingelball->setVisible(true);
     ui->batteryStatusProgressbar->setVisible(true);
+
+    //Discover services from connected device and set UI to show discovery is active
     ui->UIDeviceList->setStyleSheet("QListWidget::item::selected{"
                                     "background-color: orange;}");
 
@@ -468,6 +484,7 @@ void KlingelballUI::deviceDisconnected(){
     KlingelballConnected = false;
     remoteServiceDiscovered = false;
 
+    //Hide all widgets to controll connected device and set UI to show device is disconnected
     ui->UIDeviceList->clear();
     ui->OnOff_Button->setVisible(false);
     ui->disconnectKlingelball->setVisible(false);
@@ -594,7 +611,7 @@ void KlingelballUI::KlingelballCharacteristicRead(QLowEnergyCharacteristic chara
     for (int i = 0; i< 4; i++){
         qDebug()<< QString::number(data[i]);
     }
-
+    //Get battery status
     if (characteristic.uuid() == QBluetoothUuid("4a78b8dd-a43d-46cf-9270-f6b750a717c8")){
         qDebug() << "Reading Battery charactersitic";
         if(data[0]%10 == generatePruefziffer(data)){
@@ -611,9 +628,8 @@ void KlingelballUI::KlingelballCharacteristicRead(QLowEnergyCharacteristic chara
         }else
             qWarning() <<"Pruefziffer not valid";
     }else if (characteristic.uuid() == m_service->characteristics()[0].uuid()){
+        //verify successfull transmittion
         qDebug() << "Reading data characteristic";
-        if(data[0] == 1)
-        transmitSettings();
         switch(data[0]){
             case 1:
                 qDebug() << "Verfication successfull";

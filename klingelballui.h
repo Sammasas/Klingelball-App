@@ -125,7 +125,6 @@ Q_SIGNALS:
 private:
     Ui::KlingelballUI *ui;
 
-    QSoundEffect effect;
     bool transmit_profile = false;
 
     QFont *dynamicSizeFont;
@@ -142,23 +141,12 @@ private:
 
     float getfontScalefrompointSize(int pointSize);
 
-    void playSoundEffect(int Volume);
-
     void create_Profile(QString name, int volume, int freq_still, int freq_bew);
     void create_Profile_visualisation(EinstellungsProfil *profil);
     void destroy_Profile_visualisation(EinstellungsProfil *profil);
     QList<EinstellungsProfil *> *Profile_list;
 
     void set_transmit_profile(bool b);
-
-    QRect rect = KlingelballUI::geometry();
-    QScreen *screen;
-
-    qreal height = qMax(rect.width(), rect.height());
-    qreal width = qMin(rect.width(), rect.height());
-
-    qreal dpi = KlingelballUI::logicalDpiX();
-
 
     /********************************************/
 

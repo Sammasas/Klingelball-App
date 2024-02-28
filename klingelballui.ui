@@ -112,7 +112,7 @@ QTabBar::tab::disabled{
        <enum>QTabWidget::Rounded</enum>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>1</number>
       </property>
       <property name="iconSize">
        <size>
@@ -1861,7 +1861,7 @@ QRadioButton::indicator:unchecked{
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="Profile_Tab" >
+      <widget class="QWidget" name="Profile_Tab">
        <property name="enabled">
         <bool>false</bool>
        </property>
@@ -1907,8 +1907,8 @@ QRadioButton::indicator:unchecked{
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>416</width>
-                 <height>562</height>
+                 <width>428</width>
+                 <height>586</height>
                 </rect>
                </property>
                <layout class="QGridLayout" name="gridLayout_2">

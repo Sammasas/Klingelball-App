@@ -1,10 +1,10 @@
-    #include "klingelballui.h"
+#include "klingelballui.h"
 #include "ui_klingelballui.h"
 
 
 void KlingelballUI::setup_UI(){
 
-
+//Get font scale from Android settings
 #ifdef Q_OS_ANDROID
     QJniObject context = QNativeInterface::QAndroidApplication::context();
     if(QJniObject::isClassAvailable("Klingelball/AndroidSettings")) {
@@ -23,6 +23,7 @@ void KlingelballUI::setup_UI(){
     }
 #endif
 
+//Get font size and scale from iOS settings
 #ifdef Q_OS_IOS
         qDebug() << "iOS Font:" << iOSSettings::getPrefferedFont();
         qDebug() << "Qt Font:" << QFontDatabase::systemFont(QFontDatabase::SystemFont::FixedFont).pointSize();
@@ -73,6 +74,8 @@ void KlingelballUI::setup_UI(){
     ui->connectKlingelball->setVisible(false);
     ui->batteryStatusProgressbar->setVisible(false);
     ui->Sound_tabWidget->setAutoFillBackground(true);
+    ui->statusLabel->setVisible(false);
+    ui->tabWidget->setTabEnabled(2, false);
 
     ui->Sound_tabWidget->setFont(*SmallerdynamicSizeFont);
 
@@ -197,4 +200,24 @@ void KlingelballUI::setup_labels()
     ui->Aussehen_label->setTextInteractionFlags(Qt::TextSelectableByMouse);
 
     ui->statusLabel->setTextInteractionFlags(Qt::TextSelectableByMouse );*/
+}
+
+void KlingelballUI::setup_ButtonGroup(){
+    stillstehendColorSelectionButtonGroup = new QButtonGroup;
+    stillstehendColorSelectionButtonGroup->addButton(ui->Stillstehend_Farbe1, 1);
+    stillstehendColorSelectionButtonGroup->addButton(ui->Stillstehend_Farbe2, 2);
+    stillstehendColorSelectionButtonGroup->addButton(ui->Stillstehend_Farbe3, 3);
+    stillstehendColorSelectionButtonGroup->addButton(ui->Stillstehend_Farbe4, 4);
+    stillstehendColorSelectionButtonGroup->addButton(ui->Stillstehend_Farbe5, 5);
+
+
+    bewegendColorSelectionButtonGroup = new QButtonGroup;
+    bewegendColorSelectionButtonGroup->addButton(ui->Bewegend_Farbe1, 1);
+    bewegendColorSelectionButtonGroup->addButton(ui->Bewegend_Farbe2, 2);
+    bewegendColorSelectionButtonGroup->addButton(ui->Bewegend_Farbe3, 3);
+    bewegendColorSelectionButtonGroup->addButton(ui->Bewegend_Farbe4, 4);
+    bewegendColorSelectionButtonGroup->addButton(ui->Bewegend_Farbe5, 5);
+
+    connect(stillstehendColorSelectionButtonGroup, SIGNAL(buttonClicked(QAbstractButton*)), this, SLOT(stillstehendButtonGroupClicked(QAbstractButton*)));
+    connect(bewegendColorSelectionButtonGroup, SIGNAL(buttonClicked(QAbstractButton*)), this, SLOT(bewegendButtonGroupClicked(QAbstractButton*)));
 }
