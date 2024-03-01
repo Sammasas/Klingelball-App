@@ -329,6 +329,7 @@ void KlingelballUI::startDeviceDiscovery(){
 void KlingelballUI::addDevice(const QBluetoothDeviceInfo &device){
     if(device.coreConfigurations() & QBluetoothDeviceInfo::LowEnergyCoreConfiguration){
         if(device.name().contains("Klingelball")){
+            //Add device to deviceList and UI devicelist
             deviceList->append(new DeviceInfo{device});
             ui->UIDeviceList->addItem(device.name());
         }
@@ -342,7 +343,6 @@ void KlingelballUI::ScanFinished(){
 
 }
 void KlingelballUI::ScanError(QBluetoothDeviceDiscoveryAgent::Error error){
-
     switch(error){
 
     case QBluetoothDeviceDiscoveryAgent::NoError:

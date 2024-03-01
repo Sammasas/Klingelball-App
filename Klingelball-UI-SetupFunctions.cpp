@@ -67,7 +67,6 @@ void KlingelballUI::setup_UI(){
     /***********Setting Content Margins and Size ***/
 
     ui->centralwidget->setMaximumSize(qApp->screens()[0]->size());
-    //ui->Sound_tabWidget->setFixedHeight( ui->Sound_tabWidget->height()+6);
 
     ui->disconnectKlingelball->setVisible(false);
     ui->OnOff_Button->setVisible(false);
@@ -81,6 +80,9 @@ void KlingelballUI::setup_UI(){
 
     ui->tabWidget->tabBar()->setIconSize(QSize(30* *fontScale, 30* *fontScale));
     ui->Sound_tabWidget->tabBar()->setIconSize(QSize(30* *fontScale, 30* *fontScale));
+
+    ui->Erklaerung_textView->setTextInteractionFlags(Qt::LinksAccessibleByMouse);
+    //QScroller::grabGesture(, QScroller::LeftMouseButtonGesture);
 
 }
 
