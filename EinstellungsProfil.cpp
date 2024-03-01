@@ -1,5 +1,6 @@
 #include "EinstellungsProfil.h"
 
+//Not used in this version of the project (V1.0)
 
 EinstellungsProfil::EinstellungsProfil(){
     this->Profil_Name = "Profil";

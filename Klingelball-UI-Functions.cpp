@@ -2,16 +2,6 @@
 #include "ui_klingelballui.h"
 
 
-
-void KlingelballUI::playSoundEffect(int Volume = 100){
-
-    effect.setSource(QUrl::fromLocalFile(":/SoundFiles/beepV1.wav"));
-    effect.setLoopCount(1);
-    effect.setVolume((float)Volume/100);
-    effect.play();
-}
-
-
 void KlingelballUI::on_Lightmode_checkBox_clicked()
 {
     if(ui->Lightmode_checkBox->isChecked()){
@@ -96,7 +86,7 @@ void KlingelballUI::on_Darkmode_checkBox_clicked()
 }
 
 void KlingelballUI::create_Profile_visualisation(EinstellungsProfil *profil){
-
+//Not used in this version of the project (V1.0)
     ui->scrollAreaWidgetContents->layout()->addWidget(profil);
     //TODO add widget on top
 }
@@ -104,6 +94,7 @@ void KlingelballUI::create_Profile_visualisation(EinstellungsProfil *profil){
 
 void KlingelballUI::create_Profile(QString name, int volume, int freq_still, int freq_bew)
 {
+    //Not used in this version of the project (V1.0)
     EinstellungsProfil *new_profile = new EinstellungsProfil(name, volume, freq_still, freq_bew);
 
     Profile_list->append(new_profile);
@@ -115,6 +106,7 @@ void KlingelballUI::create_Profile(QString name, int volume, int freq_still, int
 
 void KlingelballUI::destroy_Profile_visualisation(EinstellungsProfil *profil)
 {
+    //Not used in this version of the project (V1.0)
     ui->scrollAreaWidgetContents->layout()->removeWidget(profil);
 
 }
@@ -122,6 +114,7 @@ void KlingelballUI::destroy_Profile_visualisation(EinstellungsProfil *profil)
 
 void KlingelballUI::on_profil_from_currentsettings_button_clicked()
 {
+    //Not used in this version of the project (V1.0)
     ui->stackedWidget->setCurrentIndex(1);
     ui->new_profile_volume_label->setText("Lautstärke: " + ui->Lautstaerke->text());
     ui->new_profile_Bew_Freq_label->setText("Frequenz-Stillstehend: " + ui->Stillstehend_Ton_Freq->text());
@@ -131,6 +124,7 @@ void KlingelballUI::on_profil_from_currentsettings_button_clicked()
 
 void KlingelballUI::on_new_profile_button_clicked()
 {
+    //Not used in this version of the project (V1.0)
     create_Profile(ui->new_profile_lineEdit->text(),
                    ui->Lautstaerke->value(),
                    ui->Stillstehend_Ton_Freq->value(),
@@ -152,6 +146,7 @@ void KlingelballUI::change_profile_selection()
 
 void KlingelballUI::on_new_profile_cancle_button_clicked()
 {
+   //Not used in this version of the project (V1.0)
    ui->new_profile_lineEdit->clear();
    ui->stackedWidget->setCurrentIndex(0);
 }
@@ -159,6 +154,7 @@ void KlingelballUI::on_new_profile_cancle_button_clicked()
 
 void KlingelballUI::on_delete_current_profile_button_clicked()
 {
+    //Not used in this version of the project (V1.0)
     foreach (EinstellungsProfil *profil, *Profile_list) {
         if(profil->isChecked()){
             destroy_Profile_visualisation(profil);
@@ -172,6 +168,7 @@ void KlingelballUI::on_delete_current_profile_button_clicked()
 
 void KlingelballUI::set_transmit_profile(bool b)
 {
+    //Not used in this version of the project (V1.0)
     this->transmit_profile = b;
     if (b == false)
         ui->uebertragen_button->setText("Übertragen");
@@ -181,6 +178,7 @@ void KlingelballUI::set_transmit_profile(bool b)
 
 void KlingelballUI::update_profile_transmittion_state()
 {
+    //Not used in this version of the project (V1.0)
     bool b = false;
     foreach (EinstellungsProfil *profil, *Profile_list) {
         if(profil->isChecked())
@@ -195,7 +193,7 @@ void KlingelballUI::update_profile_transmittion_state()
 
 void KlingelballUI::on_tabWidget_currentChanged(int index)
 {
-
+//change icon according to color scheme
     if(ui->Darkmode_checkBox->isChecked()){
         switch(index){
         case 0:
@@ -289,27 +287,8 @@ void KlingelballUI::on_UIDeviceList_currentRowChanged(int currentRow)
     }
 }
 
-void KlingelballUI::setup_ButtonGroup(){
-    stillstehendColorSelectionButtonGroup = new QButtonGroup;
-    stillstehendColorSelectionButtonGroup->addButton(ui->Stillstehend_Farbe1, 1);
-    stillstehendColorSelectionButtonGroup->addButton(ui->Stillstehend_Farbe2, 2);
-    stillstehendColorSelectionButtonGroup->addButton(ui->Stillstehend_Farbe3, 3);
-    stillstehendColorSelectionButtonGroup->addButton(ui->Stillstehend_Farbe4, 4);
-    stillstehendColorSelectionButtonGroup->addButton(ui->Stillstehend_Farbe5, 5);
-
-
-    bewegendColorSelectionButtonGroup = new QButtonGroup;
-    bewegendColorSelectionButtonGroup->addButton(ui->Bewegend_Farbe1, 1);
-    bewegendColorSelectionButtonGroup->addButton(ui->Bewegend_Farbe2, 2);
-    bewegendColorSelectionButtonGroup->addButton(ui->Bewegend_Farbe3, 3);
-    bewegendColorSelectionButtonGroup->addButton(ui->Bewegend_Farbe4, 4);
-    bewegendColorSelectionButtonGroup->addButton(ui->Bewegend_Farbe5, 5);
-
-    connect(stillstehendColorSelectionButtonGroup, SIGNAL(buttonClicked(QAbstractButton*)), this, SLOT(stillstehendButtonGroupClicked(QAbstractButton*)));
-    connect(bewegendColorSelectionButtonGroup, SIGNAL(buttonClicked(QAbstractButton*)), this, SLOT(bewegendButtonGroupClicked(QAbstractButton*)));
-}
-
 void KlingelballUI::stillstehendButtonGroupClicked(QAbstractButton *button){
+    //Gets ID of selected color, unselects if selected color is pressed again (Not natively implemented)
     if(stillstehendButtonGroupOneSelected){
         if(button->isChecked() && (stillstehendColorSelectionButtonGroup->id(button) == stillstehendButtonGroupSelectedID)){
             stillstehendColorSelectionButtonGroup->setExclusive(false);
@@ -328,6 +307,7 @@ void KlingelballUI::stillstehendButtonGroupClicked(QAbstractButton *button){
 }
 
 void KlingelballUI::bewegendButtonGroupClicked(QAbstractButton *button){
+    //Gets ID of selected color, unselects if selected color is pressed again (Not natively implemented)
     if(bewegendButtonGroupOneSelected){
         if(button->isChecked() && (bewegendColorSelectionButtonGroup->id(button) == bewegendButtonGroupSelectedID)){
             bewegendColorSelectionButtonGroup->setExclusive(false);
