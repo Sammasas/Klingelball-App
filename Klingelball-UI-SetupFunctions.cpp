@@ -76,7 +76,6 @@ void KlingelballUI::setup_UI(){
     ui->ErrormessageLabelSecline->setVisible(false);
     ui->Sound_tabWidget->setAutoFillBackground(true);
     ui->statusLabel->setVisible(false);
-    ui->tabWidget->setTabEnabled(2, false);
 
     ui->Sound_tabWidget->setFont(*SmallerdynamicSizeFont);
 
