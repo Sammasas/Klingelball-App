@@ -1,3 +1,11 @@
+/**********************************************/
+//Filename: EinstellungsProfil.h
+//Author: Samuel Zeillinger
+//Created On: 13 November 2023 18:44
+//Description: deviceinfo class implementation
+//Not used in this version of the project (V1.0)
+/**********************************************/
+
 #ifndef EINSTELLUNGSPROFIL_H
 #define EINSTELLUNGSPROFIL_H
 #include <QWidget>

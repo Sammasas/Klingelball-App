@@ -1,3 +1,12 @@
+/**********************************************/
+//Filename: Klingelball-BLE-Functions.cpp
+//Author: Samuel Zeillinger
+//Created On: 1 December 2023 18:31
+//Description: Every function related to Bluetooth Low Energy
+/**********************************************/
+
+
+
 #include "klingelballui.h"
 #include "ui_klingelballui.h"
 

@@ -1,3 +1,11 @@
+/**********************************************/
+//Filename: Klingelball-BLE-Functions.cpp
+//Author: Samuel Zeillinger
+//Created On: ‎13 ‎November ‎2023 ‏‎18:44
+//Description: Every function controlling the UI during runtime
+/**********************************************/
+
+
 #include "klingelballui.h"
 #include "ui_klingelballui.h"
 
@@ -339,3 +347,21 @@ void KlingelballUI::updateAccessibleDesciption(){
 
     ui->Heilligkeit->setAccessibleName("Helligkeit" + QString::number(ui->Heilligkeit->value())+ "% Einstellbar");
 }
+
+void KlingelballUI::on_Lautstaerke_valueChanged(int arg1)
+{
+    ui->Lautstaerke->setAccessibleName("Lautstärke" + QString::number(arg1) + "% Einstellbar");
+}
+
+
+void KlingelballUI::on_Stillstehend_Beep_Freq_valueChanged(int arg1)
+{
+    Q_UNUSED(arg1);
+}
+
+
+void KlingelballUI::on_Bewegend_Beep_Freq_valueChanged(int arg1)
+{
+    Q_UNUSED(arg1);
+}
+

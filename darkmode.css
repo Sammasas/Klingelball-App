@@ -1,3 +1,10 @@
+/**********************************************/
+/*Filename: darkmode.css
+/*Author: Samuel Zeillinger
+/*Created On: 13 Novmeber 2023 18:44
+/*Description: Darmode stylesheet for all common widgets (stylesheet for dynamic widgets are set during runtime)
+/**********************************************/
+
 QWidget
 {
    background-color: black;

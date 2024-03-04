@@ -1,3 +1,10 @@
+/**********************************************/
+//Filename: Klingelball-UI-SetupFunctions.cpp
+//Author: Samuel Zeillinger
+//Created On: ‎17 ‎Oktober ‎2023 ‏‎13:15
+//Description: Functions to setup the UI before runtime
+/**********************************************/
+
 #include "klingelballui.h"
 #include "ui_klingelballui.h"
 

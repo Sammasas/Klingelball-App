@@ -1,3 +1,10 @@
+/**********************************************/
+//Filename: klingelballui.h
+//Author: Samuel Zeillinger
+//Created On: 30 September 2023 20:01
+//Description: main ui class
+/**********************************************/
+
 #ifndef KLINGELBALLUI_H
 #define KLINGELBALLUI_H
 

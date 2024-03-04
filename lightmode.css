@@ -1,3 +1,10 @@
+/**********************************************/
+/*Filename: lightmode.css
+/*Author: Samuel Zeillinger
+/*Created On: 17 Oktober 2023 14:48
+/*Description: Lightmode stylesheet for all common widgets (stylesheet for dynamic widgets is set during runtime)
+/**********************************************/
+
 QWidget
 {
    background-color: white;

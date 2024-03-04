@@ -1,6 +1,14 @@
+/**********************************************/
+//Filename: EinstellungsProfil.cpp
+//Author: Samuel Zeillinger
+//Created On: 13 November 2023 20:16
+//Description: EinstellungsProfil class implementation
+//Not used in this version of the project (V1.0)
+/**********************************************/
+
 #include "EinstellungsProfil.h"
 
-//Not used in this version of the project (V1.0)
+
 
 EinstellungsProfil::EinstellungsProfil(){
     this->Profil_Name = "Profil";

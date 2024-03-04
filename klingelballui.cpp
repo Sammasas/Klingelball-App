@@ -1,3 +1,10 @@
+/**********************************************/
+//Filename: Klingelball.cpp
+//Author: Samuel Zeillinger
+//Created On: 30 ‎September ‎2023 ‏‎20:01
+//Description: klingelballui constructor
+/**********************************************/
+
 #include "klingelballui.h"
 #include "ui_klingelballui.h"
 
@@ -64,20 +71,4 @@ KlingelballUI::~KlingelballUI()
 
 
 
-void KlingelballUI::on_Lautstaerke_valueChanged(int arg1)
-{
-    ui->Lautstaerke->setAccessibleName("Lautstärke" + QString::number(arg1) + "% Einstellbar");
-}
-
-
-void KlingelballUI::on_Stillstehend_Beep_Freq_valueChanged(int arg1)
-{
-    Q_UNUSED(arg1);
-}
-
-
-void KlingelballUI::on_Bewegend_Beep_Freq_valueChanged(int arg1)
-{
-    Q_UNUSED(arg1);
-}
 

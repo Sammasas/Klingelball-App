@@ -1,3 +1,10 @@
+/**********************************************/
+//Filename: deviceinfo.h
+//Author: Samuel Zeillinger
+//Created On: 1 December 2023 18:26
+//Description: class to store info of Bluetooth device
+/**********************************************/
+
 #ifndef DEVICEINFO_H
 #define DEVICEINFO_H
 
