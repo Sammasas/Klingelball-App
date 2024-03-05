@@ -514,7 +514,10 @@ void KlingelballUI::setupServiceDiscovery(){
 
     }
 
-    m_service = m_controller->createServiceObject(m_controller->services().last());
+    foreach (QBluetoothUuid s, m_controller->services()) {
+        if (s == *KlingelballServiceUUID)
+            m_service = m_controller->createServiceObject(s);
+    }
 
     connect(m_service, SIGNAL(stateChanged(QLowEnergyService::ServiceState)), this,
             SLOT(KlingelballServiceStatechanged(QLowEnergyService::ServiceState)));
