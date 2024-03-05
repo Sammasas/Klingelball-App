@@ -690,7 +690,7 @@ void KlingelballUI::readBatteryStatus(QLowEnergyCharacteristic *c){
 }
 
 void KlingelballUI::gotBatteryStatus(int s){
-    ui->batteryStatusProgressbar->setValue(s);
+    s >= 100 ? ui->batteryStatusProgressbar->setValue(100) : ui->batteryStatusProgressbar->setValue(s);
 }
 
 void KlingelballUI::setUebertragenButtonTextandStyle(QString text, QString style){
