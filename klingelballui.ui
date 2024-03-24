@@ -112,7 +112,7 @@ QTabBar::tab::disabled{
        <enum>QTabWidget::Rounded</enum>
       </property>
       <property name="currentIndex">
-       <number>4</number>
+       <number>0</number>
       </property>
       <property name="iconSize">
        <size>
@@ -499,6 +499,44 @@ QTabBar::tab::disabled{
               <property name="verticalSpacing">
                <number>4</number>
               </property>
+              <item row="1" column="0">
+               <widget class="QLabel" name="Stillstehend_Ton_Freq_Label">
+                <property name="font">
+                 <font>
+                  <pointsize>20</pointsize>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="focusPolicy">
+                 <enum>Qt::NoFocus</enum>
+                </property>
+                <property name="accessibleName">
+                 <string>Stillstehend Tonhöhe Überschrift</string>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true"/>
+                </property>
+                <property name="text">
+                 <string>Stillstehend:</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignBottom|Qt::AlignHCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1" rowspan="3">
+               <widget class="Line" name="line_3">
+                <property name="frameShadow">
+                 <enum>QFrame::Plain</enum>
+                </property>
+                <property name="lineWidth">
+                 <number>2</number>
+                </property>
+                <property name="orientation">
+                 <enum>Qt::Vertical</enum>
+                </property>
+               </widget>
+              </item>
               <item row="2" column="0">
                <widget class="QPushButton" name="Stillstehend_Ton_Freq_erhoehen">
                 <property name="sizePolicy">
@@ -580,31 +618,6 @@ QTabBar::tab::disabled{
                 </property>
                 <property name="singleStep">
                  <number>5</number>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="0">
-               <widget class="QLabel" name="Stillstehend_Ton_Freq_Label">
-                <property name="font">
-                 <font>
-                  <pointsize>20</pointsize>
-                  <bold>true</bold>
-                 </font>
-                </property>
-                <property name="focusPolicy">
-                 <enum>Qt::NoFocus</enum>
-                </property>
-                <property name="accessibleName">
-                 <string>Stillstehend Tonhöhe Überschrift</string>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true"/>
-                </property>
-                <property name="text">
-                 <string>Stillstehend:</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignBottom|Qt::AlignHCenter</set>
                 </property>
                </widget>
               </item>
@@ -778,19 +791,6 @@ QTabBar::tab::disabled{
                 <property name="icon">
                  <iconset resource="UI-Resources.qrc">
                   <normaloff>:/Icons/Chevron_down_inverted.png</normaloff>:/Icons/Chevron_down_inverted.png</iconset>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="1" rowspan="3">
-               <widget class="Line" name="line_3">
-                <property name="frameShadow">
-                 <enum>QFrame::Plain</enum>
-                </property>
-                <property name="lineWidth">
-                 <number>2</number>
-                </property>
-                <property name="orientation">
-                 <enum>Qt::Vertical</enum>
                 </property>
                </widget>
               </item>
@@ -1243,7 +1243,7 @@ QTabBar::tab::disabled{
              </size>
             </property>
             <property name="accessibleName">
-             <string>Helligkeit um 5% erhöhen taste</string>
+             <string>Helligkeit um 5% erhöhen </string>
             </property>
             <property name="styleSheet">
              <string notr="true"/>
@@ -1333,7 +1333,7 @@ QTabBar::tab::disabled{
              </size>
             </property>
             <property name="accessibleName">
-             <string>Helligkeit um 5% verringern Taste</string>
+             <string>Helligkeit um 5% verringern</string>
             </property>
             <property name="text">
              <string/>
@@ -1621,42 +1621,6 @@ QRadioButton::indicator:unchecked{
            </property>
            <item>
             <layout class="QGridLayout" name="gridLayout_3">
-             <item row="1" column="1">
-              <widget class="QRadioButton" name="Bewegend_Farbe2">
-               <property name="accessibleName">
-                <string>Rot Bewegend Farbwahl</string>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">QRadioButton{
-	background-color: none;
-	margin-top: 10px;
-	margin-bottom: 10px;
-	margin-left: 10px;
-	margin-right: 10px;
-}
-QRadioButton::indicator{
-	background-color: red;
-	width: 40px;
-	height: 40px;
-	border: none;
-	border-radius: 20px;
-}
-
-QRadioButton::indicator:checked{
-        border: 4px solid black;
-}
-
-QRadioButton::indicator:unchecked{
-        border: 2px solid #868686;
-}
-
-</string>
-               </property>
-               <property name="text">
-                <string/>
-               </property>
-              </widget>
-             </item>
              <item row="0" column="0" colspan="5">
               <widget class="QLabel" name="Bewegend_Farbe_Label">
                <property name="accessibleName">
@@ -1664,42 +1628,6 @@ QRadioButton::indicator:unchecked{
                </property>
                <property name="text">
                 <string>Bewegend:</string>
-               </property>
-              </widget>
-             </item>
-             <item row="1" column="4">
-              <widget class="QRadioButton" name="Bewegend_Farbe5">
-               <property name="accessibleName">
-                <string>Gelb Bewegend Farbwahl</string>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">QRadioButton{
-	background-color: none;
-	margin-top: 10px;
-	margin-bottom: 10px;
-	margin-left: 10px;
-	margin-right: 10px;
-}
-
-QRadioButton::indicator{
-	background-color: yellow;
-	width: 40px;
-	height: 40px;
-	border: none;
-	border-radius: 20px;
-}
-
-QRadioButton::indicator:checked{
-        border: 4px solid black;
-}
-
-QRadioButton::indicator:unchecked{
-        border: 2px solid #868686;
-}
-</string>
-               </property>
-               <property name="text">
-                <string/>
                </property>
               </widget>
              </item>
@@ -1744,6 +1672,42 @@ QRadioButton::indicator:unchecked{
                </property>
                <property name="checked">
                 <bool>false</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="1">
+              <widget class="QRadioButton" name="Bewegend_Farbe2">
+               <property name="accessibleName">
+                <string>Rot Bewegend Farbwahl</string>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QRadioButton{
+	background-color: none;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+QRadioButton::indicator{
+	background-color: red;
+	width: 40px;
+	height: 40px;
+	border: none;
+	border-radius: 20px;
+}
+
+QRadioButton::indicator:checked{
+        border: 4px solid black;
+}
+
+QRadioButton::indicator:unchecked{
+        border: 2px solid #868686;
+}
+
+</string>
+               </property>
+               <property name="text">
+                <string/>
                </property>
               </widget>
              </item>
@@ -1812,6 +1776,42 @@ QRadioButton::indicator:unchecked{
         border: 2px solid #868686;
 }
 
+</string>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="4">
+              <widget class="QRadioButton" name="Bewegend_Farbe5">
+               <property name="accessibleName">
+                <string>Gelb Bewegend Farbwahl</string>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QRadioButton{
+	background-color: none;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+QRadioButton::indicator{
+	background-color: yellow;
+	width: 40px;
+	height: 40px;
+	border: none;
+	border-radius: 20px;
+}
+
+QRadioButton::indicator:checked{
+        border: 4px solid black;
+}
+
+QRadioButton::indicator:unchecked{
+        border: 2px solid #868686;
+}
 </string>
                </property>
                <property name="text">
@@ -2522,11 +2522,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
   <tabstop>Lautstaerke_erhoehen</tabstop>
   <tabstop>Lautstaerke_verringern</tabstop>
   <tabstop>Heilligkeit_erhoehen</tabstop>
-  <tabstop>Bewegend_Ton_Freq_erhoehen</tabstop>
   <tabstop>Heilligkeit_verringern</tabstop>
-  <tabstop>Bewegend_Farbe1</tabstop>
-  <tabstop>Bewegend_Farbe2</tabstop>
-  <tabstop>Bewegend_Farbe5</tabstop>
   <tabstop>Uebertragen2</tabstop>
   <tabstop>profil_from_currentsettings_button</tabstop>
   <tabstop>new_profile_button</tabstop>
@@ -2536,14 +2532,11 @@ li.checked::marker { content: &quot;\2612&quot;; }
   <tabstop>disconnectKlingelball</tabstop>
   <tabstop>OnOff_Button</tabstop>
   <tabstop>Uebtragen3</tabstop>
-  <tabstop>Bewegend_Ton_Freq_verringern</tabstop>
   <tabstop>Lightmode_checkBox</tabstop>
   <tabstop>Darkmode_checkBox</tabstop>
   <tabstop>new_profile_cancle_button</tabstop>
   <tabstop>delete_current_profile_button</tabstop>
   <tabstop>new_profile_lineEdit</tabstop>
-  <tabstop>Stillstehend_Ton_Freq_Verringern</tabstop>
-  <tabstop>Stillstehend_Ton_Freq_erhoehen</tabstop>
   <tabstop>Stillstehend_Beep_Freq_Label</tabstop>
   <tabstop>Stillstehend_Beep_Freq_erhoehen</tabstop>
   <tabstop>Stillstehend_Beep_Freq_verringern</tabstop>
