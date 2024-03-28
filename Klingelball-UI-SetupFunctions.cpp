@@ -90,8 +90,6 @@ void KlingelballUI::setup_UI(){
     ui->Sound_tabWidget->tabBar()->setIconSize(QSize(30* *fontScale, 30* *fontScale));
 
     ui->Erklaerung_textView->setTextInteractionFlags(Qt::LinksAccessibleByMouse);
-    //QScroller::grabGesture(, QScroller::LeftMouseButtonGesture);
-
 }
 
 float KlingelballUI::getfontScalefrompointSize(int pointSize){

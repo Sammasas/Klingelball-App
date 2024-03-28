@@ -25,6 +25,7 @@
         <file>ton-icon-light.png</file>
         <file>Ton-icon-red.png</file>
         <file>Logo_v2.png</file>
+        <file>KlingelballIcon1024.png</file>
     </qresource>
     <qresource prefix="/stylesheet">
         <file>lightmode.css</file>

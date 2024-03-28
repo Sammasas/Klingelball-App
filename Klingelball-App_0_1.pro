@@ -7,8 +7,8 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++17
 
-RC_ICONS = Logo_v2.ico
-ICON = Logo_v2.ico
+RC_ICONS = KlingelballIcon1024.png
+ICON = KlingelballIcon1024.png
 
 
 # You can make your code fail to compile if it uses deprecated APIs.
@@ -42,6 +42,10 @@ RESOURCES += \
     UI-Resources.qrc
 
 DISTFILES += \
+    Assets.xcassets \
+    Assets.xcassets/AppIcon.appiconset/Contents.json \
+    Assets.xcassets/AppIcon.appiconset/KlingelballIcon1024.png \
+    Assets.xcassets/Contents.json \
     Info.plist \
     android/AndroidManifest.xml \
     android/AndroidSettings.java \
@@ -89,4 +93,6 @@ ios{
     QMAKE_INFO_PLIST = Info.plist
     HEADERS += iOSSettings.h
     OBJECTIVE_SOURCES += iOSSettings.mm
+    QMAKE_ASSET_CATALOGS = $$PWD/Assets.xcassets
+    QMAKE_ASSET_CATALOGS_APP_ICON = "AppIcon"
 }
