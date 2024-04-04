@@ -3,6 +3,7 @@
 //Author: Samuel Zeillinger
 //Created On: 7 February 2024 21:13
 //Description: Java class to access android system settings
+//Note: This code was partially written with ChatGPT
 /**********************************************/
 
 package Klingelball;
