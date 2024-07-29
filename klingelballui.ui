@@ -151,7 +151,7 @@ QTabBar::tab::disabled{
        <attribute name="title">
         <string/>
        </attribute>
-       <layout class="QVBoxLayout" name="verticalLayout_3" stretch="0,0,0,0,0">
+       <layout class="QVBoxLayout" name="verticalLayout_3" stretch="0,0,0,0,0,0">
         <property name="sizeConstraint">
          <enum>QLayout::SetNoConstraint</enum>
         </property>
@@ -1137,6 +1137,22 @@ QTabBar::tab::disabled{
          </spacer>
         </item>
         <item>
+         <widget class="QPushButton" name="pause_button">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>50</height>
+           </size>
+          </property>
+          <property name="accessibleName">
+           <string>Pause taste</string>
+          </property>
+          <property name="text">
+           <string>Pause</string>
+          </property>
+         </widget>
+        </item>
+        <item>
          <widget class="QPushButton" name="uebertragen_button">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -1360,7 +1376,8 @@ QTabBar::tab::disabled{
          <widget class="QGroupBox" name="groupBox">
           <property name="styleSheet">
            <string notr="true">QGroupBox{
-	background-color: transparent;
+	background-color: transparent
+;
 
 }</string>
           </property>
@@ -1836,6 +1853,22 @@ QRadioButton::indicator:unchecked{
            </size>
           </property>
          </spacer>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pause_button2">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>50</height>
+           </size>
+          </property>
+          <property name="accessibleName">
+           <string>Pause taste</string>
+          </property>
+          <property name="text">
+           <string>Pause</string>
+          </property>
+         </widget>
         </item>
         <item>
          <widget class="QPushButton" name="Uebertragen2">
@@ -2777,6 +2810,22 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <hint type="destinationlabel">
      <x>236</x>
      <y>719</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pause_button2</sender>
+   <signal>clicked()</signal>
+   <receiver>pause_button</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>230</x>
+     <y>623</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>230</x>
+     <y>614</y>
     </hint>
    </hints>
   </connection>

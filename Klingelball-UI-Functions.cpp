@@ -365,3 +365,26 @@ void KlingelballUI::on_Bewegend_Beep_Freq_valueChanged(int arg1)
     Q_UNUSED(arg1);
 }
 
+void KlingelballUI::on_pause_button_clicked()
+{
+    if(ui->OnOff_Button->isChecked()){
+        ui->OnOff_Button->setChecked(false);
+
+        //Update text & Description
+        ui->pause_button->setText("Weiter");
+        ui->pause_button->setAccessibleName("Weiter Taste");
+
+        on_uebertragen_button_clicked();
+        
+    }else{
+            ui->OnOff_Button->setChecked(true);
+            ui->pause_button->setText("Pause");
+            ui->pause_button->setAccessibleName("Pause Taste");
+            on_uebertragen_button_clicked();
+    }
+    //Update button2 text
+    ui->pause_button2->setText(ui->pause_button->text());
+
+    //Update button2 Accessibilty description
+    ui->pause_button2->setAccessibleName(ui->pause_button->accessibleName());
+}

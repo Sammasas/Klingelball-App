@@ -125,6 +125,8 @@ private slots:
 
     void updateAccessibleDesciption();
 
+    void on_pause_button_clicked();
+
 Q_SIGNALS:
     void BatteryStatusRead(int);
 
