@@ -41,17 +41,14 @@ KlingelballUI::KlingelballUI(QWidget *parent)
     on_colorSchemeChanged(QGuiApplication::styleHints()->colorScheme());
 
 //Automatic accessibilty description updates
-    connect(ui->Heilligkeit, SIGNAL(valueChanged(int)), this, SLOT(updateAccessibleDesciption()));
+    connect(ui->Helligkeit, SIGNAL(valueChanged(int)), this, SLOT(updateAccessibleDesciption()));
     connect(ui->Lautstaerke, SIGNAL(valueChanged(int)), this, SLOT(updateAccessibleDesciption()));
     connect(ui->Stillstehend_Ton_Freq, SIGNAL(valueChanged(int)), this, SLOT(updateAccessibleDesciption()));
     connect(ui->Bewegend_Ton_Freq, SIGNAL(valueChanged(int)), this, SLOT(updateAccessibleDesciption()));
     connect(ui->Stillstehend_Beep_Freq, SIGNAL(valueChanged(int)), this, SLOT(updateAccessibleDesciption()));
     connect(ui->Bewegend_Beep_Freq, SIGNAL(valueChanged(int)), this, SLOT(updateAccessibleDesciption()));
 
-    settings = new QSettings("SSA", "Klingelball App");
-    int Settingslautstaerke = settings->value("Ton/Lautstaerke").toInt();
-    qWarning() << "LAutstaerke from settings: " << QString::number(Settingslautstaerke);
-    ui->Lautstaerke->setValue(Settingslautstaerke);
+
 
 }
 
@@ -69,7 +66,6 @@ void KlingelballUI::on_colorSchemeChanged(Qt::ColorScheme scheme){
 
 KlingelballUI::~KlingelballUI()
 {
-
     delete ui;
 }
 

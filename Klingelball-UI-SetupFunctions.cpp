@@ -68,7 +68,7 @@ void KlingelballUI::setup_UI(){
     ui->Stillstehend_Ton_Freq->setAccessibleName("Stillstehende Tonfrequenz"+ QString::number(ui->Stillstehend_Ton_Freq->value()) + "% Einstellbar");
     ui->Stillstehend_Beep_Freq->setAccessibleName("Bewegende Tonfrequenz"+ QString::number(ui->Bewegend_Ton_Freq->value()) + "% Einstellbar");
 
-    ui->Heilligkeit->setAccessibleName("Helligkeit" + QString::number(ui->Heilligkeit->value())+ "% Einstellbar");
+    ui->Helligkeit->setAccessibleName("Helligkeit" + QString::number(ui->Helligkeit->value())+ "% Einstellbar");
 
 
     /***********Setting Content Margins and Size ***/
@@ -90,6 +90,28 @@ void KlingelballUI::setup_UI(){
     ui->Sound_tabWidget->tabBar()->setIconSize(QSize(30* *fontScale, 30* *fontScale));
 
     ui->Erklaerung_textView->setTextInteractionFlags(Qt::LinksAccessibleByMouse);
+
+    //Set Values from saved Settings
+    settings = new QSettings("SSA", "Klingelball App");
+    ui->Lautstaerke->setValue(settings->value("Ton/Lautstaerke").toInt());
+
+    ui->Stillstehend_Beep_Freq->setValue(settings->value("Ton/Stillstehend_Beep_Freq").toInt());
+    ui->Bewegend_Beep_Freq->setValue(settings->value("Ton/Bewegend_Beep_Freq").toInt());
+
+    ui->Stillstehend_Ton_Freq->setValue(settings->value("Ton/Stillstehend_Ton_Freq").toInt());
+    ui->Bewegend_Ton_Freq->setValue(settings->value("Ton/Bewegend_Ton_Freq").toInt());
+
+    ui->Helligkeit->setValue(settings->value("Licht/Helligkeit").toInt());
+
+    if(settings->value("Licht/StillstehendFarbe").toInt() != 0){
+        stillstehendColorSelectionButtonGroup->button(settings->value("Licht/StillstehendFarbe").toInt())->setChecked(true);
+        stillstehendButtonGroupClicked(stillstehendColorSelectionButtonGroup->button(settings->value("Licht/StillstehendFarbe").toInt()));
+    }
+
+    if(settings->value("Licht/BewegendFarbe").toInt() != 0){
+        bewegendColorSelectionButtonGroup->button(settings->value("Licht/BewegendFarbe").toInt())->setChecked(true);
+        bewegendButtonGroupClicked(bewegendColorSelectionButtonGroup->button(settings->value("Licht/BewegendFarbe").toInt()));
+    }
 }
 
 float KlingelballUI::getfontScalefrompointSize(int pointSize){
@@ -128,7 +150,7 @@ void KlingelballUI::setup_spinbox()
     ui->Stillstehend_Beep_Freq->setFont(*dynamicSizeFont);
     ui->Bewegend_Beep_Freq->setFont(*dynamicSizeFont);
 
-    ui->Heilligkeit->setFont(*dynamicSizeFont);
+    ui->Helligkeit->setFont(*dynamicSizeFont);
 }
 
 void KlingelballUI::setup_fontAndroid(float fontScale){
@@ -170,7 +192,7 @@ void KlingelballUI::setup_buttons()
     ui->new_profile_button->setFont(*dynamicSizeFont);
     ui->new_profile_cancle_button->setFont(*dynamicSizeFont);
 
-    ui->Heilligkeit_erhoehen->setIconSize(QSize(ui->Lautstaerke_erhoehen->height()*iconSizeMultiplier, ui->Lautstaerke_erhoehen->height()));
+    ui->Helligkeit_erhoehen->setIconSize(QSize(ui->Lautstaerke_erhoehen->height()*iconSizeMultiplier, ui->Lautstaerke_erhoehen->height()));
     ui->Heilligkeit_verringern->setIconSize(QSize(ui->Lautstaerke_erhoehen->height()*iconSizeMultiplier, ui->Lautstaerke_erhoehen->height()));
 
 }

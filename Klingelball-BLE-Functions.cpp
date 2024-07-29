@@ -1,3 +1,4 @@
+
 /**********************************************/
 //Filename: Klingelball-BLE-Functions.cpp
 //Author: Samuel Zeillinger
@@ -118,7 +119,7 @@ void KlingelballUI::transmitSettings (){
             printMessage("TransmitGeneralLight");
             qDebug() <<"Case:" << QString::number(Setting::GeneralLight);
             m_service->writeCharacteristic(m_service->characteristics().at(0), generateBytearray(Setting::GeneralLight,
-                                                                                                 ui->Heilligkeit->value(),
+                                                                                                 ui->Helligkeit->value(),
                                                                                                  0, //TODO: Implement Blinking lights
                                                                                                  0),
                                            QLowEnergyService::WriteWithResponse);

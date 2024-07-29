@@ -1239,7 +1239,7 @@ QTabBar::tab::disabled{
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="Heilligkeit_erhoehen">
+           <widget class="QPushButton" name="Helligkeit_erhoehen">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
               <horstretch>0</horstretch>
@@ -1280,7 +1280,7 @@ QTabBar::tab::disabled{
            </widget>
           </item>
           <item>
-           <widget class="QSpinBox" name="Heilligkeit">
+           <widget class="QSpinBox" name="Helligkeit">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
               <horstretch>0</horstretch>
@@ -2560,7 +2560,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
   <tabstop>Lautstaerke</tabstop>
   <tabstop>Lautstaerke_erhoehen</tabstop>
   <tabstop>Lautstaerke_verringern</tabstop>
-  <tabstop>Heilligkeit_erhoehen</tabstop>
+  <tabstop>Helligkeit_erhoehen</tabstop>
   <tabstop>Heilligkeit_verringern</tabstop>
   <tabstop>Uebertragen2</tabstop>
   <tabstop>profil_from_currentsettings_button</tabstop>
@@ -2756,9 +2756,9 @@ li.checked::marker { content: &quot;\2612&quot;; }
    </hints>
   </connection>
   <connection>
-   <sender>Heilligkeit_erhoehen</sender>
+   <sender>Helligkeit_erhoehen</sender>
    <signal>clicked()</signal>
-   <receiver>Heilligkeit</receiver>
+   <receiver>Helligkeit</receiver>
    <slot>stepUp()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -2774,7 +2774,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
   <connection>
    <sender>Heilligkeit_verringern</sender>
    <signal>clicked()</signal>
-   <receiver>Heilligkeit</receiver>
+   <receiver>Helligkeit</receiver>
    <slot>stepDown()</slot>
    <hints>
     <hint type="sourcelabel">

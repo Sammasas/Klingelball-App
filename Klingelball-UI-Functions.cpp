@@ -349,7 +349,7 @@ void KlingelballUI::stillstehendButtonGroupClicked(QAbstractButton *button){
 
     }
 
-
+    settings->setValue("Licht/StillstehendFarbe", stillstehendButtonGroupSelectedID);
 
 
 }
@@ -376,24 +376,34 @@ void KlingelballUI::bewegendButtonGroupClicked(QAbstractButton *button){
         ui->BewegendColorSelectionGroupBox->setStyleSheet("QGroupBox{"
                                                          "background: " + BewegendSelectedColor().name() + ";}");
     }
+    settings->setValue("Licht/BewegendFarbe", bewegendButtonGroupSelectedID);
 }
 
 void KlingelballUI::updateAccessibleDesciption(){
     ui->Lautstaerke->setAccessibleName("Lautstärke" + QString::number(ui->Lautstaerke->value()) + "% Einstellbar");
+    settings->setValue("Ton/Lautstaerke", ui->Lautstaerke->value());
+
 
     ui->Stillstehend_Beep_Freq->setAccessibleName("Stillstehende Piepsrequenz"+ QString::number(ui->Stillstehend_Beep_Freq->value()) + "% Einstellbar");
     ui->Bewegend_Beep_Freq->setAccessibleName("Bewegende Piepsrequenz"+ QString::number(ui->Bewegend_Beep_Freq->value()) + "% Einstellbar");
+    settings->setValue("Ton/Stillstehend_Beep_Freq", ui->Stillstehend_Beep_Freq->value());
+    settings->setValue("Ton/Bewegend_Beep_Freq", ui->Bewegend_Beep_Freq->value());
+
 
     ui->Stillstehend_Ton_Freq->setAccessibleName("Stillstehende Tonfrequenz"+ QString::number(ui->Stillstehend_Ton_Freq->value()) + "% Einstellbar");
-    ui->Stillstehend_Beep_Freq->setAccessibleName("Bewegende Tonfrequenz"+ QString::number(ui->Bewegend_Ton_Freq->value()) + "% Einstellbar");
+    ui->Bewegend_Ton_Freq->setAccessibleName("Bewegende Tonfrequenz"+ QString::number(ui->Bewegend_Ton_Freq->value()) + "% Einstellbar");
+    settings->setValue("Ton/Stillstehend_Ton_Freq", ui->Stillstehend_Ton_Freq->value());
+    settings->setValue("Ton/Bewegend_Ton_Freq", ui->Bewegend_Ton_Freq->value());
 
-    ui->Heilligkeit->setAccessibleName("Helligkeit" + QString::number(ui->Heilligkeit->value())+ "% Einstellbar");
+    ui->Helligkeit->setAccessibleName("Helligkeit" + QString::number(ui->Helligkeit->value())+ "% Einstellbar");
+    settings->setValue("Licht/Helligkeit", ui->Helligkeit->value());
+
 }
 
 void KlingelballUI::on_Lautstaerke_valueChanged(int arg1)
 {
     ui->Lautstaerke->setAccessibleName("Lautstärke" + QString::number(arg1) + "% Einstellbar");
-    settings->setValue("Ton/Lautstaerke", ui->Lautstaerke->value());
+
 }
 
 
