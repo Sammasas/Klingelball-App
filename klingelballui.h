@@ -36,6 +36,7 @@
 #include <QFontDatabase>
 #include <QStyleHints>
 #include <QFontDialog>
+#include <QSettings>
 
 
 
@@ -239,7 +240,7 @@ private:
                                          "margin-left: 10px;"
                                          "margin-right: 10px;}"
                                          "QRadioButton::indicator:checked"
-                                     "{border: 4px solid white;}"
+                                     "{border: 2px solid white;}"
                                      "QRadioButton::indicator:unchecked{"
                                      "border: 2px solid #868686;}";
 
@@ -250,7 +251,7 @@ private:
                                           "margin-left: 10px;"
                                           "margin-right: 10px;} "
                                     "QRadioButton::indicator:checked"
-                                     "{border: 4px solid black;} "
+                                     "{border: 2px solid black;} "
                                      "QRadioButton::indicator:unchecked{"
                                      "border: 2px solid #868686;} ";
 
@@ -271,7 +272,7 @@ private:
                                  "border: 2px solid #868686;"
                                  "border-radius: 20px;} ";
     QString RadioButtonColor4 = "QRadioButton::indicator{"
-                                 "background-color: green;"
+                                 "background-color: rgb(0, 255, 0);"
                                  "width: 40px;height: 40px;"
                                  "border: 2px solid #868686;"
                                  "border-radius: 20px;} ";
@@ -283,6 +284,8 @@ private:
 
     void setUebertragenButtonTextandStyle(QString text, QString style);
     float *fontScale;
+
+    QSettings *settings;
 
 };
 #endif // KLINGELBALLUI_H

@@ -48,6 +48,11 @@ KlingelballUI::KlingelballUI(QWidget *parent)
     connect(ui->Stillstehend_Beep_Freq, SIGNAL(valueChanged(int)), this, SLOT(updateAccessibleDesciption()));
     connect(ui->Bewegend_Beep_Freq, SIGNAL(valueChanged(int)), this, SLOT(updateAccessibleDesciption()));
 
+    settings = new QSettings("SSA", "Klingelball App");
+    int Settingslautstaerke = settings->value("Ton/Lautstaerke").toInt();
+    qWarning() << "LAutstaerke from settings: " << QString::number(Settingslautstaerke);
+    ui->Lautstaerke->setValue(Settingslautstaerke);
+
 }
 
 void KlingelballUI::on_colorSchemeChanged(Qt::ColorScheme scheme){
@@ -64,6 +69,7 @@ void KlingelballUI::on_colorSchemeChanged(Qt::ColorScheme scheme){
 
 KlingelballUI::~KlingelballUI()
 {
+
     delete ui;
 }
 

@@ -33,6 +33,19 @@ void KlingelballUI::on_Lightmode_checkBox_clicked()
         ui->Stillstehend_Farbe4->setStyleSheet(RadioButtonCommonStyleLight + RadioButtonColor4);
         ui->Stillstehend_Farbe5->setStyleSheet(RadioButtonCommonStyleLight + RadioButtonColor5);
 
+        ui->Stillstehend_Farbe_label->setStyleSheet("QLabel{background: rgb(255, 255, 255);"
+                                                    "margin-top: 5px;"
+                                                    "margin-left: 5px;"
+                                                    "margin-right: 5px;"
+                                                    "border-radius: 6px;"
+                                                    "}");
+        ui->Bewegend_Farbe_Label->setStyleSheet("QLabel{background: rgb(255, 255, 255);"
+                                                 "margin-top: 5px;"
+                                                 "margin-left: 5px;"
+                                                 "margin-right: 5px;"
+                                                 "border-radius: 6px;"
+                                                 "}");
+
         setStyleSheet(styleSheet);
 
 
@@ -65,17 +78,30 @@ void KlingelballUI::on_Darkmode_checkBox_clicked()
         styleSheetFile.open(QFile::ReadOnly);
         QString styleSheet = QLatin1String(styleSheetFile.readAll());
 
-        ui->Bewegend_Farbe1->setStyleSheet(RadioButtonCommonStyleDark + RadioButtonColor1);
+        ui->Bewegend_Farbe1->setStyleSheet(RadioButtonCommonStyleLight + RadioButtonColor1);
         ui->Bewegend_Farbe2->setStyleSheet(RadioButtonCommonStyleDark + RadioButtonColor2);
         ui->Bewegend_Farbe3->setStyleSheet(RadioButtonCommonStyleDark + RadioButtonColor3);
         ui->Bewegend_Farbe4->setStyleSheet(RadioButtonCommonStyleDark + RadioButtonColor4);
-        ui->Bewegend_Farbe5->setStyleSheet(RadioButtonCommonStyleDark + RadioButtonColor5);
+        ui->Bewegend_Farbe5->setStyleSheet(RadioButtonCommonStyleLight + RadioButtonColor5);
 
-        ui->Stillstehend_Farbe1->setStyleSheet(RadioButtonCommonStyleDark + RadioButtonColor1);
+        ui->Stillstehend_Farbe1->setStyleSheet(RadioButtonCommonStyleLight + RadioButtonColor1);
         ui->Stillstehend_Farbe2->setStyleSheet(RadioButtonCommonStyleDark + RadioButtonColor2);
         ui->Stillstehend_Farbe3->setStyleSheet(RadioButtonCommonStyleDark + RadioButtonColor3);
         ui->Stillstehend_Farbe4->setStyleSheet(RadioButtonCommonStyleDark + RadioButtonColor4);
-        ui->Stillstehend_Farbe5->setStyleSheet(RadioButtonCommonStyleDark + RadioButtonColor5);
+        ui->Stillstehend_Farbe5->setStyleSheet(RadioButtonCommonStyleLight + RadioButtonColor5);
+
+        ui->Stillstehend_Farbe_label->setStyleSheet("QLabel{background: rgb(0, 0, 0);"
+                                                        "margin-top: 5px;"
+                                                        "margin-left: 5px;"
+                                                        "margin-right: 5px;"
+                                                        "border-radius: 6px;"
+                                                        "}");
+        ui->Bewegend_Farbe_Label->setStyleSheet("QLabel{background: rgb(0, 0, 0);"
+                                                 "margin-top: 5px;"
+                                                 "margin-left: 5px;"
+                                                 "margin-right: 5px;"
+                                                 "border-radius: 6px;"
+                                                 "}");
 
         setStyleSheet(styleSheet);
         ui->Sound_tabWidget->setStyleSheet("QTabWidget{\n	background-color: red;\n}\n\nQTabWidget::pane {\n  border: 2px solid white;\n  top:-2px; \n  background: solid white;\n	border-radius: 0px;\n} \n\nQTabBar{\n	border-top: 0px;\n}\n\nQTabBar::tab {\n padding-right: -10px; padding-left: 4px; background: rgb(230, 230, 230); \n  \n	padding: 15px;\n	margin-left: 0px;\n	margin-right: 0px;\n\n  \n} \n\nQTabBar::tab:unselected{\n	background: darkgrey;\n   top: 5px; \n	\n	border-radius: 0px;\n	border-bottom: 2px  solid white;\n	border-top: 1px solid lightgrey;\n	border-left: 1px solid lightgrey;\n	border-right: 1px solid lightgrey;\n	\n}\n\nQTabBar::tab:selected { \nborder: 2px solid white; \n  background: transparent; \n  margin-bottom: -2px; \nborder-bottom: 2px solid #e50616;\n}\n\nQTabBar::tab::disabled{\n    width: 0;\n    height: 0;\n    margin: 0;\n    padding: 0;\n    border: none;\n}");
@@ -308,13 +334,23 @@ void KlingelballUI::stillstehendButtonGroupClicked(QAbstractButton *button){
             stillstehendColorSelectionButtonGroup->setExclusive(true);
             stillstehendButtonGroupOneSelected = false;
             stillstehendButtonGroupSelectedID = 0;
+            ui->StillstehendColorSelectionGroupBox->setStyleSheet("QGroupBox{"
+                                                                  "background: transparent;}");
         }else{
             stillstehendButtonGroupSelectedID = stillstehendColorSelectionButtonGroup->id(button);
+            ui->StillstehendColorSelectionGroupBox->setStyleSheet("QGroupBox{"
+                                                                  "background: " + StillstehendSelectedColor().name() + ";}");
         }
     }else{
         stillstehendButtonGroupOneSelected = true;
         stillstehendButtonGroupSelectedID = stillstehendColorSelectionButtonGroup->id(button);
+        ui->StillstehendColorSelectionGroupBox->setStyleSheet("QGroupBox{"
+                                                              "background: " + StillstehendSelectedColor().name() + ";}");
+
     }
+
+
+
 
 }
 
@@ -327,12 +363,18 @@ void KlingelballUI::bewegendButtonGroupClicked(QAbstractButton *button){
             bewegendColorSelectionButtonGroup->setExclusive(true);
             bewegendButtonGroupOneSelected = false;
             bewegendButtonGroupSelectedID = 0;
+            ui->BewegendColorSelectionGroupBox->setStyleSheet("QGroupBox{"
+                                                                  "background: transparent;}");
         }else{
             bewegendButtonGroupSelectedID = bewegendColorSelectionButtonGroup->id(button);
+            ui->BewegendColorSelectionGroupBox->setStyleSheet("QGroupBox{"
+                                                                  "background: " + BewegendSelectedColor().name() + ";}");
         }
     }else{
         bewegendButtonGroupOneSelected = true;
         bewegendButtonGroupSelectedID = bewegendColorSelectionButtonGroup->id(button);
+        ui->BewegendColorSelectionGroupBox->setStyleSheet("QGroupBox{"
+                                                         "background: " + BewegendSelectedColor().name() + ";}");
     }
 }
 
@@ -351,6 +393,7 @@ void KlingelballUI::updateAccessibleDesciption(){
 void KlingelballUI::on_Lautstaerke_valueChanged(int arg1)
 {
     ui->Lautstaerke->setAccessibleName("Lautstärke" + QString::number(arg1) + "% Einstellbar");
+    settings->setValue("Ton/Lautstaerke", ui->Lautstaerke->value());
 }
 
 
