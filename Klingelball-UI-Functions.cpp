@@ -420,6 +420,8 @@ void KlingelballUI::on_Bewegend_Beep_Freq_valueChanged(int arg1)
 
 void KlingelballUI::on_pause_button_clicked()
 {
+    //On Off button does not affect this -> some cases have to press twice to start or stop depending on state
+    //TODO fix this
     if(ui->OnOff_Button->isChecked()){
         ui->OnOff_Button->setChecked(false);
 
@@ -427,13 +429,13 @@ void KlingelballUI::on_pause_button_clicked()
         ui->pause_button->setText("Weiter");
         ui->pause_button->setAccessibleName("Weiter Taste");
 
-        on_uebertragen_button_clicked();
+        on_transmitGeneralSettings();
         
     }else{
             ui->OnOff_Button->setChecked(true);
             ui->pause_button->setText("Pause");
             ui->pause_button->setAccessibleName("Pause Taste");
-            on_uebertragen_button_clicked();
+            on_transmitGeneralSettings();
     }
     //Update button2 text
     ui->pause_button2->setText(ui->pause_button->text());
@@ -441,3 +443,9 @@ void KlingelballUI::on_pause_button_clicked()
     //Update button2 Accessibilty description
     ui->pause_button2->setAccessibleName(ui->pause_button->accessibleName());
 }
+
+void KlingelballUI::on_pause_button_toggled(bool checked)
+{
+
+}
+

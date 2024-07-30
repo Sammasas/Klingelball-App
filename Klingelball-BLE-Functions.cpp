@@ -50,7 +50,7 @@ void KlingelballUI::setupBLE(){
 void KlingelballUI::on_uebertragen_button_clicked()
 {   
     //initializes transmittion and sets UI to show transmittion is aktive
-    if(remoteServiceDiscovered && KlingelballConnected && !m_service->characteristics().empty()){
+    /*if(remoteServiceDiscovered && KlingelballConnected && !m_service->characteristics().empty()){
         qDebug() << "writeCharacteristik";
         transmittionActive = true;
         ui->UIDeviceList->setStyleSheet("QListWidget::item::selected{"
@@ -63,11 +63,16 @@ void KlingelballUI::on_uebertragen_button_clicked()
     }else{
         qDebug() << "Klingelball not connected or no remoteservice discovered";
     }
-
+*/
+    transmitAllSettings();
 }
 
-void KlingelballUI::transmitSettings (){
-    switch(transmittionStatus){ //TODO: Timeout & Error doenst stop transmittion
+void KlingelballUI::transmitSettings (SettingTransmitStatus transStat){
+    if(!remoteServiceDiscovered || !KlingelballConnected || m_service->characteristics().empty()){
+        return;
+    }
+
+    switch(transStat){ //TODO: Timeout & Error doesnt stop transmittion
         case TransmittionDone:
             printMessage("TransmittionDone");
             transmittionActive = false;
@@ -75,8 +80,6 @@ void KlingelballUI::transmitSettings (){
                                             "background-color: #00aa00;}");
             setUebertragenButtonTextandStyle("Übertragung fertig!", "QPushButton{background-color: #e50616;}"
                                                   " QPushButton::pressed{Background: #5b5b5b; border-radius: 20px;}");
-
-            transmittionStatus = TransmitGeneralSettings;
             break;
 
         case TransmitGeneralSettings:
@@ -87,8 +90,7 @@ void KlingelballUI::transmitSettings (){
                                                                                              0,
                                                                                              0),
                                        QLowEnergyService::WriteWithResponse);
-
-            transmittionStatus = TransmitSoundFrequenzy;
+            readBatteryStatus(BatteryCharacteristic);
             break;
 
         case TransmitSoundFrequenzy:
@@ -99,8 +101,7 @@ void KlingelballUI::transmitSettings (){
                                                                                              ui->Stillstehend_Ton_Freq->value(),
                                                                                              ui->Bewegend_Ton_Freq->value()),
                                        QLowEnergyService::WriteWithResponse);
-
-            transmittionStatus = TransmitGeneralSound;
+            readBatteryStatus(BatteryCharacteristic);
             break;
 
         case TransmitGeneralSound:
@@ -111,8 +112,7 @@ void KlingelballUI::transmitSettings (){
                                                                                                  ui->Stillstehend_Beep_Freq->value(),
                                                                                                  ui->Bewegend_Beep_Freq->value()),
                                            QLowEnergyService::WriteWithResponse);
-
-            transmittionStatus = TransmitGeneralLight;
+            readBatteryStatus(BatteryCharacteristic);
             break;
 
         case TransmitGeneralLight:
@@ -123,8 +123,7 @@ void KlingelballUI::transmitSettings (){
                                                                                                  0, //TODO: Implement Blinking lights
                                                                                                  0),
                                            QLowEnergyService::WriteWithResponse);
-
-            transmittionStatus = TransmitLightColorStill;
+            readBatteryStatus(BatteryCharacteristic);
             break;
 
         case TransmitLightColorStill:
@@ -135,7 +134,7 @@ void KlingelballUI::transmitSettings (){
                                                                                                  StillstehendSelectedColor().green(),
                                                                                                  StillstehendSelectedColor().blue()),
                                            QLowEnergyService::WriteWithResponse);
-            transmittionStatus = TransmitLightColorMoving;
+            readBatteryStatus(BatteryCharacteristic);
             break;
 
         case TransmitLightColorMoving:
@@ -146,8 +145,6 @@ void KlingelballUI::transmitSettings (){
                                                                                                  BewegendSelectedColor().green(),
                                                                                                  BewegendSelectedColor().blue()),
                                            QLowEnergyService::WriteWithResponse);
-
-            transmittionStatus = TransmittionDone;
             readBatteryStatus(BatteryCharacteristic);
             break;
         case TransmittionError:
@@ -511,7 +508,7 @@ void KlingelballUI::deviceDisconnected(){
 void KlingelballUI::setupServiceDiscovery(){
     qDebug()<<"setupServiceDiscovery";
     for(int i = 0; i < m_controller->services().length(); i++){
-        qDebug()<< m_controller->services()[i];//TODO: [i] -> .at(i)
+        qDebug()<< m_controller->services().at(i);//TODO: [i] -> .at(i)
 
     }
 
@@ -576,9 +573,11 @@ void KlingelballUI::KlingelballServiceStatechanged(QLowEnergyService::ServiceSta
         ui->UIDeviceList->setStyleSheet("QListWidget::item::selected{"
                                         "background-color: #00aa00;}");
 
-        readBatteryStatus(BatteryCharacteristic);
+
 
         remoteServiceDiscovered = true;
+
+        transmitAllSettings();
         break;
 
     case QLowEnergyService::ServiceState::RemoteServiceDiscovering:
@@ -644,23 +643,23 @@ void KlingelballUI::KlingelballCharacteristicRead(QLowEnergyCharacteristic chara
             }
         }else
             qWarning() <<"Pruefziffer not valid";
-    }else if (characteristic.uuid() == m_service->characteristics()[0].uuid()){
+    }else if (characteristic.uuid() == m_service->characteristics().at(0).uuid()){
         //verify successfull transmittion
         qDebug() << "Reading data characteristic";
         switch(data[0]){
             case 1:
                 qDebug() << "Verfication successfull";
-                transmitSettings();
+                transmitSettings(SettingTransmitStatus::TransmittionDone);
                 break;
             case 2:
                 qDebug() << "Verfication failed";
                 transmittionStatus = TransmittionError;
-                transmitSettings();
+                transmitSettings(SettingTransmitStatus::TransmittionError);
                 break;
             default:
                 qDebug() << "Verfication failed";
                 transmittionStatus = TransmittionError;
-                transmitSettings();
+                transmitSettings(SettingTransmitStatus::TransmittionError);
                 break;
         }
     }
@@ -705,4 +704,14 @@ void KlingelballUI::setUebertragenButtonTextandStyle(QString text, QString style
    ui->uebertragen_button->setStyleSheet(style);
    ui->Uebertragen2->setStyleSheet(style);
    ui->Uebtragen3->setStyleSheet(style);
+}
+
+void KlingelballUI::transmitAllSettings(){
+    qDebug()<< "transmitAllSettings";
+    on_transmitGeneralSettings();
+    on_transmitSoundFrequenzy();
+    on_transmitGeneralSound();
+    on_transmitLightColorStill();
+    on_transmitLightColorMoving();
+    on_transmitGeneralLight();
 }

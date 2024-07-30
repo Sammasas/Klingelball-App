@@ -80,6 +80,19 @@ public slots:
     void KlingelballDescriptorWritten(QLowEnergyDescriptor descriptor, QByteArray data);
     void stillstehendButtonGroupClicked(QAbstractButton *button);
     void bewegendButtonGroupClicked(QAbstractButton *button);
+    
+    
+private:
+    enum SettingTransmitStatus{TransmitGeneralSettings,
+                 TransmitSoundFrequenzy,
+                 TransmitGeneralSound,
+                 TransmitLightColorStill,
+                 TransmitLightColorMoving,
+                 TransmitGeneralLight,
+                 TransmittionDone,
+                 TransmittionError};
+    SettingTransmitStatus transmittionStatus = TransmitGeneralSettings;
+
 
 
 private slots:
@@ -112,7 +125,7 @@ private slots:
 
     void on_UIDeviceList_currentRowChanged(int currentRow);
 
-    void transmitSettings();
+    void transmitSettings(SettingTransmitStatus transStat = TransmitGeneralSettings);
 
     void gotBatteryStatus(int s);
 
@@ -127,6 +140,17 @@ private slots:
     void updateAccessibleDesciption();
 
     void on_pause_button_clicked();
+
+    void on_pause_button_toggled(bool checked);
+
+    void on_transmitGeneralSettings(){transmitSettings(SettingTransmitStatus::TransmitGeneralSettings);};
+    void on_transmitSoundFrequenzy(){transmitSettings(SettingTransmitStatus::TransmitSoundFrequenzy);};
+    void on_transmitGeneralSound(){transmitSettings(SettingTransmitStatus::TransmitGeneralSound);};
+    void on_transmitLightColorStill(){transmitSettings(SettingTransmitStatus::TransmitLightColorStill);};
+    void on_transmitLightColorMoving(){transmitSettings(SettingTransmitStatus::TransmitLightColorMoving);};
+    void on_transmitGeneralLight(){transmitSettings(SettingTransmitStatus::TransmitGeneralLight);};
+
+
 
 Q_SIGNALS:
     void BatteryStatusRead(int);
@@ -191,6 +215,7 @@ private:
     QList<DeviceInfo *> *deviceList;
     DeviceInfo *ptrDevinfo;
 
+    void transmitAllSettings();
 
     enum Setting{GeneralSettings,
                  SoundFrequenzy,
@@ -199,15 +224,7 @@ private:
                  LightColorMoving,
                  GeneralLight};
 
-    enum SettingTransmitStatus{TransmitGeneralSettings,
-                 TransmitSoundFrequenzy,
-                 TransmitGeneralSound,
-                 TransmitLightColorStill,
-                 TransmitLightColorMoving,
-                 TransmitGeneralLight,
-                 TransmittionDone,
-                 TransmittionError};
-    SettingTransmitStatus transmittionStatus = TransmitGeneralSettings;
+    
 
     enum ConnectionStatus{Disconnected,
                          Connecting,
