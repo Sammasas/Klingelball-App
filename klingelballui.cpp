@@ -57,17 +57,17 @@ KlingelballUI::KlingelballUI(QWidget *parent)
     connect(ui->Bewegend_Beep_Freq, SIGNAL(valueChanged(int)), this, SLOT(on_transmitGeneralSound()));
     connect(ui->Helligkeit, SIGNAL(valueChanged(int)), this, SLOT(on_transmitGeneralLight()));
 
-    connect(ui->Stillstehend_Farbe1, SIGNAL(clicked(bool)), SLOT(on_transmitLightColorStill()));
-    connect(ui->Stillstehend_Farbe2, SIGNAL(clicked(bool)), SLOT(on_transmitLightColorStill()));
-    connect(ui->Stillstehend_Farbe3, SIGNAL(clicked(bool)), SLOT(on_transmitLightColorStill()));
-    connect(ui->Stillstehend_Farbe4, SIGNAL(clicked(bool)), SLOT(on_transmitLightColorStill()));
-    connect(ui->Stillstehend_Farbe5, SIGNAL(clicked(bool)), SLOT(on_transmitLightColorStill()));
+    connect(ui->Stillstehend_Farbe1, SIGNAL(toggled(bool)), SLOT(on_transmitLightColorStill()));
+    connect(ui->Stillstehend_Farbe2, SIGNAL(toggled(bool)), SLOT(on_transmitLightColorStill()));
+    connect(ui->Stillstehend_Farbe3, SIGNAL(toggled(bool)), SLOT(on_transmitLightColorStill()));
+    connect(ui->Stillstehend_Farbe4, SIGNAL(toggled(bool)), SLOT(on_transmitLightColorStill()));
+    connect(ui->Stillstehend_Farbe5, SIGNAL(toggled(bool)), SLOT(on_transmitLightColorStill()));
 
-    connect(ui->Bewegend_Farbe1, SIGNAL(clicked(bool)), SLOT(on_transmitLightColorMoving()));
-    connect(ui->Bewegend_Farbe2, SIGNAL(clicked(bool)), SLOT(on_transmitLightColorMoving()));
-    connect(ui->Bewegend_Farbe3, SIGNAL(clicked(bool)), SLOT(on_transmitLightColorMoving()));
-    connect(ui->Bewegend_Farbe4, SIGNAL(clicked(bool)), SLOT(on_transmitLightColorMoving()));
-    connect(ui->Bewegend_Farbe5, SIGNAL(clicked(bool)), SLOT(on_transmitLightColorMoving()));
+    connect(ui->Bewegend_Farbe1, SIGNAL(toggled(bool)), SLOT(on_transmitLightColorMoving()));
+    connect(ui->Bewegend_Farbe2, SIGNAL(toggled(bool)), SLOT(on_transmitLightColorMoving()));
+    connect(ui->Bewegend_Farbe3, SIGNAL(toggled(bool)), SLOT(on_transmitLightColorMoving()));
+    connect(ui->Bewegend_Farbe4, SIGNAL(toggled(bool)), SLOT(on_transmitLightColorMoving()));
+    connect(ui->Bewegend_Farbe5, SIGNAL(toggled(bool)), SLOT(on_transmitLightColorMoving()));
 
     ui->uebertragen_button->hide();
     ui->Uebertragen2->hide();
