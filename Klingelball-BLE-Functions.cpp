@@ -250,16 +250,6 @@ QColor KlingelballUI::BewegendSelectedColor(){
 
 void KlingelballUI::on_connectKlingelball_clicked()
 {
-    //Connects  to selected device
-    for (int i = 0; i < ui->UIDeviceList->count(); i++){
-        if(ui->UIDeviceList->item(i)->isSelected()){
-            m_deviceDiscoveryAgent->stop();
-            connectDevice(deviceList->at(i)->getDevice());
-        }else{
-              delete ui->UIDeviceList->takeItem(i);
-              deviceList->remove(i);
-            }
-    }
 
 }
 
@@ -270,7 +260,6 @@ void KlingelballUI::on_disconnectKlingelball_clicked()
         m_controller->disconnectFromDevice();
     }
 }
-
 
 void KlingelballUI::printMessage(QString message){
     ui->statusLabel->setText("Status: " + message);
@@ -346,6 +335,15 @@ void KlingelballUI::addDevice(const QBluetoothDeviceInfo &device){
             //Add device to deviceList and UI devicelist
             deviceList->append(new DeviceInfo{device});
             ui->UIDeviceList->addItem(device.name());
+            ui->UIDeviceList->update();
+            ui->Ball_Tab->update();
+            ui->Ball_Tab->repaint();
+            ui->tabWidget->update();
+            ui->tabWidget->repaint();
+
+            ui->UIDeviceList->hide();
+            ui->UIDeviceList->show();
+
         }
     }
 }
@@ -392,6 +390,8 @@ void KlingelballUI::ScanError(QBluetoothDeviceDiscoveryAgent::Error error){
 
 void KlingelballUI::connectDevice(const QBluetoothDeviceInfo *currentdevice){
     qDebug()<< "connectDevice";
+    ui->disconnectKlingelball->setDisabled(true);
+    ui->searchKlingelball->setDisabled(true);
     m_controller = QLowEnergyController::createCentral(*currentdevice, this);
 
     connect(m_controller, SIGNAL(serviceDiscovered(QBluetoothUuid)), this, SLOT(serviceDiscovered(QBluetoothUuid)));
@@ -476,7 +476,6 @@ void KlingelballUI::deviceConnected(){
     //Show widgets to controll connected device
     qDebug() << "device connected";
     KlingelballConnected = true;
-    ui->connectKlingelball->setVisible(false);
     ui->OnOff_Button->setVisible(true);
     ui->disconnectKlingelball->setVisible(true);
     ui->batteryStatusProgressbar->setVisible(true);
@@ -491,6 +490,7 @@ void KlingelballUI::deviceConnected(){
 void KlingelballUI::deviceDisconnected(){
     qDebug() << "device disconnected";
     delete m_controller;
+    qDebug() << "dev. disc. p1";
     delete m_service;
     KlingelballConnected = false;
     remoteServiceDiscovered = false;
@@ -503,6 +503,7 @@ void KlingelballUI::deviceDisconnected(){
     ui->UIDeviceList->setStyleSheet("QListWidget::item::selected{"
                                     "background-color: blue;}");
     setUebertragenButtonTextandStyle("Übertragen", "");
+    qDebug() << "dev. disc. p1";
 }
 
 void KlingelballUI::setupServiceDiscovery(){
@@ -578,6 +579,8 @@ void KlingelballUI::KlingelballServiceStatechanged(QLowEnergyService::ServiceSta
         remoteServiceDiscovered = true;
 
         transmitAllSettings();
+        ui->disconnectKlingelball->setDisabled(false);
+        ui->searchKlingelball->setDisabled(false);
         break;
 
     case QLowEnergyService::ServiceState::RemoteServiceDiscovering:
@@ -628,7 +631,7 @@ void KlingelballUI::KlingelballCharacteristicRead(QLowEnergyCharacteristic chara
         qDebug()<< QString::number(data[i]);
     }
     //Get battery status
-    if (characteristic.uuid() == QBluetoothUuid("4a78b8dd-a43d-46cf-9270-f6b750a717c8")){
+    if (characteristic.uuid() == *BatteryCharacteristicUUID){
         qDebug() << "Reading Battery charactersitic";
         if(data[0]%10 == generatePruefziffer(data)){
             switch(data[0]/10){
@@ -643,7 +646,7 @@ void KlingelballUI::KlingelballCharacteristicRead(QLowEnergyCharacteristic chara
             }
         }else
             qWarning() <<"Pruefziffer not valid";
-    }else if (characteristic.uuid() == m_service->characteristics().at(0).uuid()){
+    }else if (characteristic.uuid() == *DataCharacteristicUUID){
         //verify successfull transmittion
         qDebug() << "Reading data characteristic";
         switch(data[0]){
@@ -663,9 +666,6 @@ void KlingelballUI::KlingelballCharacteristicRead(QLowEnergyCharacteristic chara
                 break;
         }
     }
-
-
-
 }
 
 void KlingelballUI::KlingelballCharacteristicWritten(QLowEnergyCharacteristic characteristic, QByteArray data){
@@ -677,7 +677,7 @@ void KlingelballUI::KlingelballCharacteristicWritten(QLowEnergyCharacteristic ch
     printMessage("über. success!!");
 
     if (transmittionActive){
-        m_service->readCharacteristic(characteristic);
+        m_service->readCharacteristic(*DataCharacteristic);
     }
 }
 

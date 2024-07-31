@@ -101,3 +101,44 @@ angehnemeres geräusch (Musik)
 
 
 QSettingsclass!!!
+
+
+
+
+Klingelball nicht auswahlbar mit Voiceover
+"Akkustand" wird nicht vorgelesen
+
+Numberpad Funktion auch nicht 
+
+Mit numberpad eingeben -> voicdeover wird nicht geupdated
+
+Mit USB
+
+Prozent werden beim 
+
+Standarteinstellungen: 
+Lautstärke: 50%
+Tonhöhe stillstehend: 40% 
+Tonhöhe bewegend : 40% 
+
+Piepsen stillstehend: 30% 
+Piepsen bewegend: 30% 
+
+Helligkeit: 100% 
+Farbe: Grün 
+
+Unchecked whyyy (->AKtiviert/nicht aktiviert)
+
+Klingelball OE whyy -> soll bei letztem tab enden 
+
+Pause Weite-> Stopp Start
+
+Tabbar wird vorgelesen -> bei letztem Tab aufhören 
+
+Klingelball namen?
+ 
+
+
+
+
+

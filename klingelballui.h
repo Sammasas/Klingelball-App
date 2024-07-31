@@ -37,6 +37,7 @@
 #include <QStyleHints>
 #include <QFontDialog>
 #include <QSettings>
+#include <QListWidgetItem>
 
 
 
@@ -123,9 +124,7 @@ private slots:
 
     void on_OnOff_Button_toggled(bool checked);
 
-    void on_UIDeviceList_currentRowChanged(int currentRow);
-
-    void transmitSettings(SettingTransmitStatus transStat = TransmitGeneralSettings);
+    void transmitSettings(SettingTransmitStatus transStat);
 
     void gotBatteryStatus(int s);
 
@@ -150,7 +149,7 @@ private slots:
     void on_transmitLightColorMoving(){transmitSettings(SettingTransmitStatus::TransmitLightColorMoving);};
     void on_transmitGeneralLight(){transmitSettings(SettingTransmitStatus::TransmitGeneralLight);};
 
-
+    void on_UIDeviceList_itemClicked(QListWidgetItem *item);
 
 Q_SIGNALS:
     void BatteryStatusRead(int);

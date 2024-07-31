@@ -315,15 +315,12 @@ void KlingelballUI::on_OnOff_Button_toggled(bool checked)
     }
 }
 
-void KlingelballUI::on_UIDeviceList_currentRowChanged(int currentRow)
+void KlingelballUI::on_UIDeviceList_itemClicked(QListWidgetItem *item)
 {
-    if(!ui->connectKlingelball->isVisible()){
-        ui->connectKlingelball->setVisible(true);
-    }
-    if(currentRow == -1){
-        ui->connectKlingelball->setVisible(false);
-    }
+    m_deviceDiscoveryAgent->stop();
+    connectDevice(deviceList->at(ui->UIDeviceList->currentRow())->getDevice());
 }
+
 
 void KlingelballUI::stillstehendButtonGroupClicked(QAbstractButton *button){
     //Gets ID of selected color, unselects if selected color is pressed again (Not natively implemented)
@@ -338,15 +335,26 @@ void KlingelballUI::stillstehendButtonGroupClicked(QAbstractButton *button){
                                                                   "background: transparent;}");
         }else{
             stillstehendButtonGroupSelectedID = stillstehendColorSelectionButtonGroup->id(button);
-            ui->StillstehendColorSelectionGroupBox->setStyleSheet("QGroupBox{"
-                                                                  "background: " + StillstehendSelectedColor().name() + ";}");
+
+            qWarning() << "Stillstehend selected color name: " << StillstehendSelectedColor().name();
+            if(StillstehendSelectedColor().name() == "#ffffff" && ui->Lightmode_checkBox->checkState()){
+               ui->StillstehendColorSelectionGroupBox->setStyleSheet("QGroupBox{"
+                                                                      "background: #000000;}");
+            }else{
+                ui->StillstehendColorSelectionGroupBox->setStyleSheet("QGroupBox{"
+                                                                      "background: " + StillstehendSelectedColor().name() + ";}");
+            }
         }
     }else{
         stillstehendButtonGroupOneSelected = true;
         stillstehendButtonGroupSelectedID = stillstehendColorSelectionButtonGroup->id(button);
-        ui->StillstehendColorSelectionGroupBox->setStyleSheet("QGroupBox{"
-                                                              "background: " + StillstehendSelectedColor().name() + ";}");
-
+        if(StillstehendSelectedColor().name() == "#ffffff" && ui->Lightmode_checkBox->checkState()){
+            ui->StillstehendColorSelectionGroupBox->setStyleSheet("QGroupBox{"
+                                                                   "background: #000000;}");
+         }else{
+             ui->StillstehendColorSelectionGroupBox->setStyleSheet("QGroupBox{"
+                                                                   "background: " + StillstehendSelectedColor().name() + ";}");
+         }
     }
 
     settings->setValue("Licht/StillstehendFarbe", stillstehendButtonGroupSelectedID);
@@ -356,6 +364,7 @@ void KlingelballUI::stillstehendButtonGroupClicked(QAbstractButton *button){
 
 void KlingelballUI::bewegendButtonGroupClicked(QAbstractButton *button){
     //Gets ID of selected color, unselects if selected color is pressed again (Not natively implemented)
+    //TODO if white selected-> change background color when dark/light mode selected
     if(bewegendButtonGroupOneSelected){
         if(button->isChecked() && (bewegendColorSelectionButtonGroup->id(button) == bewegendButtonGroupSelectedID)){
             bewegendColorSelectionButtonGroup->setExclusive(false);
@@ -367,14 +376,25 @@ void KlingelballUI::bewegendButtonGroupClicked(QAbstractButton *button){
                                                                   "background: transparent;}");
         }else{
             bewegendButtonGroupSelectedID = bewegendColorSelectionButtonGroup->id(button);
-            ui->BewegendColorSelectionGroupBox->setStyleSheet("QGroupBox{"
-                                                                  "background: " + BewegendSelectedColor().name() + ";}");
+
+            if(BewegendSelectedColor().name() == "#ffffff" && ui->Lightmode_checkBox->checkState()){
+               ui->BewegendColorSelectionGroupBox->setStyleSheet("QGroupBox{"
+                                               "background: #000000;}");
+            }else{
+                ui->BewegendColorSelectionGroupBox->setStyleSheet("QGroupBox{"
+                                                                      "background: " + BewegendSelectedColor().name() + ";}");
+            }
         }
     }else{
         bewegendButtonGroupOneSelected = true;
         bewegendButtonGroupSelectedID = bewegendColorSelectionButtonGroup->id(button);
-        ui->BewegendColorSelectionGroupBox->setStyleSheet("QGroupBox{"
-                                                         "background: " + BewegendSelectedColor().name() + ";}");
+        if(BewegendSelectedColor().name() == "#ffffff" && ui->Lightmode_checkBox->checkState()){
+            ui->BewegendColorSelectionGroupBox->setStyleSheet("QGroupBox{"
+                                "background: #000000;}");
+        }else{
+            ui->BewegendColorSelectionGroupBox->setStyleSheet("QGroupBox{"
+                                                              "background: " + BewegendSelectedColor().name() + ";}");
+        }
     }
     settings->setValue("Licht/BewegendFarbe", bewegendButtonGroupSelectedID);
 }

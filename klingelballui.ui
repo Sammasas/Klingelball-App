@@ -112,7 +112,7 @@ QTabBar::tab::disabled{
        <enum>QTabWidget::Rounded</enum>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>3</number>
       </property>
       <property name="iconSize">
        <size>
@@ -1141,8 +1141,15 @@ QTabBar::tab::disabled{
           <property name="minimumSize">
            <size>
             <width>0</width>
-            <height>50</height>
+            <height>80</height>
            </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>.AppleSystemUIFont</family>
+            <pointsize>20</pointsize>
+            <bold>true</bold>
+           </font>
           </property>
           <property name="accessibleName">
            <string>Pause taste</string>
@@ -1874,8 +1881,14 @@ QRadioButton::indicator:unchecked{
           <property name="minimumSize">
            <size>
             <width>0</width>
-            <height>50</height>
+            <height>80</height>
            </size>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>20</pointsize>
+            <bold>true</bold>
+           </font>
           </property>
           <property name="accessibleName">
            <string>Pause taste</string>
