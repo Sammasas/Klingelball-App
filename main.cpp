@@ -28,6 +28,7 @@ int main(int argc, char *argv[])
         w.setStyleSheet(styleSheet);
     }
 
+    w.setAccessibleName("  ");
 
     return a.exec();
 }

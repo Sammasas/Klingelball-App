@@ -213,6 +213,7 @@ void KlingelballUI::on_searchKlingelball_clicked()
     }
 
     ui->UIDeviceList->clear();
+    ui->UIDeviceList->setAccessibleName("Verfügbare Klingelbälle Liste," + QString::number(ui->UIDeviceList->count()) + "verfügbar");
     startDeviceDiscovery();
 }
 
@@ -335,15 +336,14 @@ void KlingelballUI::addDevice(const QBluetoothDeviceInfo &device){
             //Add device to deviceList and UI devicelist
             deviceList->append(new DeviceInfo{device});
             ui->UIDeviceList->addItem(device.name());
-            ui->UIDeviceList->update();
-            ui->Ball_Tab->update();
-            ui->Ball_Tab->repaint();
-            ui->tabWidget->update();
-            ui->tabWidget->repaint();
 
+            ui->UIDeviceList->setDisabled(true);
             ui->UIDeviceList->hide();
             ui->UIDeviceList->show();
+            ui->UIDeviceList->setDisabled(false);
 
+            ui->UIDeviceList->setAccessibleName("Verfügbare Klingelbälle Liste," + QString::number(ui->UIDeviceList->count()) + "verfügbar");
+             
         }
     }
 }
@@ -427,6 +427,7 @@ void KlingelballUI::controllerError(QLowEnergyController::Error error){
             for(int i = 0; i < ui->UIDeviceList->count(); i++){
                 if(ui->UIDeviceList->takeItem(i)->text() == m_controller->remoteName()){
                     ui->UIDeviceList->removeItemWidget(ui->UIDeviceList->takeItem(i));
+                    ui->UIDeviceList->setAccessibleName("Verfügbare Klingelbälle Liste," + QString::number(ui->UIDeviceList->count()) + "verfügbar");
                 }
             }
             break;
@@ -490,20 +491,19 @@ void KlingelballUI::deviceConnected(){
 void KlingelballUI::deviceDisconnected(){
     qDebug() << "device disconnected";
     delete m_controller;
-    qDebug() << "dev. disc. p1";
     delete m_service;
     KlingelballConnected = false;
     remoteServiceDiscovered = false;
 
     //Hide all widgets to controll connected device and set UI to show device is disconnected
     ui->UIDeviceList->clear();
+    ui->UIDeviceList->setAccessibleName("Verfügbare Klingelbälle Liste," + QString::number(ui->UIDeviceList->count()) + "verfügbar");
     ui->OnOff_Button->setVisible(false);
     ui->disconnectKlingelball->setVisible(false);
     ui->batteryStatusProgressbar->setVisible(false);
     ui->UIDeviceList->setStyleSheet("QListWidget::item::selected{"
                                     "background-color: blue;}");
     setUebertragenButtonTextandStyle("Übertragen", "");
-    qDebug() << "dev. disc. p1";
 }
 
 void KlingelballUI::setupServiceDiscovery(){
@@ -579,6 +579,7 @@ void KlingelballUI::KlingelballServiceStatechanged(QLowEnergyService::ServiceSta
         remoteServiceDiscovered = true;
 
         transmitAllSettings();
+        ui->UIDeviceList->currentItem()->setText(ui->UIDeviceList->currentItem()->text() + "  verbunden");
         ui->disconnectKlingelball->setDisabled(false);
         ui->searchKlingelball->setDisabled(false);
         break;

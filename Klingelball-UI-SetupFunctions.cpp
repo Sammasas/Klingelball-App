@@ -77,7 +77,6 @@ void KlingelballUI::setup_UI(){
 
     ui->disconnectKlingelball->setVisible(false);
     ui->OnOff_Button->setVisible(false);
-    ui->connectKlingelball->setVisible(false);
     ui->batteryStatusProgressbar->setVisible(false);
     ui->ErrormessageLabel->setVisible(false);
     ui->ErrormessageLabelSecline->setVisible(false);

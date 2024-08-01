@@ -90,9 +90,9 @@ QTabBar::tab:selected {
 }
 
 QTabBar::tab:!selected {
-    color: black;
-    background: transparent;
-padding-right: -10px;
+	color: black;
+	background: transparent;
+	padding-right: -10px;
 	padding-left: 4px;
     
 }
@@ -112,7 +112,7 @@ QTabBar::tab::disabled{
        <enum>QTabWidget::Rounded</enum>
       </property>
       <property name="currentIndex">
-       <number>3</number>
+       <number>1</number>
       </property>
       <property name="iconSize">
        <size>
@@ -121,7 +121,7 @@ QTabBar::tab::disabled{
        </size>
       </property>
       <property name="elideMode">
-       <enum>Qt::ElideNone</enum>
+       <enum>Qt::ElideMiddle</enum>
       </property>
       <property name="usesScrollButtons">
        <bool>false</bool>
@@ -275,7 +275,7 @@ QTabBar::tab::disabled{
              <cursorShape>BlankCursor</cursorShape>
             </property>
             <property name="focusPolicy">
-             <enum>Qt::ClickFocus</enum>
+             <enum>Qt::NoFocus</enum>
             </property>
             <property name="accessibleName">
              <string>Lautstärke %</string>
@@ -454,7 +454,7 @@ QTabBar::tab::disabled{
            <enum>QTabWidget::North</enum>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>1</number>
           </property>
           <property name="elideMode">
            <enum>Qt::ElideMiddle</enum>
@@ -587,7 +587,7 @@ QTabBar::tab::disabled{
                  <cursorShape>BlankCursor</cursorShape>
                 </property>
                 <property name="focusPolicy">
-                 <enum>Qt::ClickFocus</enum>
+                 <enum>Qt::NoFocus</enum>
                 </property>
                 <property name="accessibleName">
                  <string>Stillstehende Frequenz %</string>
@@ -731,7 +731,7 @@ QTabBar::tab::disabled{
                  <bool>false</bool>
                 </property>
                 <property name="focusPolicy">
-                 <enum>Qt::ClickFocus</enum>
+                 <enum>Qt::NoFocus</enum>
                 </property>
                 <property name="accessibleName">
                  <string>Bewegende Tonfrequenz %</string>
@@ -897,7 +897,7 @@ QTabBar::tab::disabled{
                  <cursorShape>BlankCursor</cursorShape>
                 </property>
                 <property name="focusPolicy">
-                 <enum>Qt::ClickFocus</enum>
+                 <enum>Qt::NoFocus</enum>
                 </property>
                 <property name="accessibleName">
                  <string>Stillstehende Piepsrequenz %</string>
@@ -1155,7 +1155,7 @@ QTabBar::tab::disabled{
            <string>Pause taste</string>
           </property>
           <property name="text">
-           <string>Pause</string>
+           <string>Stopp</string>
           </property>
           <property name="checkable">
            <bool>true</bool>
@@ -1313,7 +1313,7 @@ QTabBar::tab::disabled{
              <cursorShape>BlankCursor</cursorShape>
             </property>
             <property name="focusPolicy">
-             <enum>Qt::ClickFocus</enum>
+             <enum>Qt::NoFocus</enum>
             </property>
             <property name="accessibleName">
              <string>Helligkeit %</string>
@@ -1894,7 +1894,7 @@ QRadioButton::indicator:unchecked{
            <string>Pause taste</string>
           </property>
           <property name="text">
-           <string>Pause</string>
+           <string>Stopp</string>
           </property>
          </widget>
         </item>
@@ -2232,27 +2232,6 @@ QRadioButton::indicator:unchecked{
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="connectKlingelball">
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>50</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <pointsize>18</pointsize>
-           </font>
-          </property>
-          <property name="accessibleName">
-           <string>Klingelball verbinden Taste</string>
-          </property>
-          <property name="text">
-           <string>Klingelball verbinden</string>
-          </property>
-         </widget>
-        </item>
-        <item>
          <widget class="QPushButton" name="disconnectKlingelball">
           <property name="minimumSize">
            <size>
@@ -2287,8 +2266,11 @@ QRadioButton::indicator:unchecked{
             <bold>false</bold>
            </font>
           </property>
+          <property name="accessibleName">
+           <string/>
+          </property>
           <property name="accessibleDescription">
-           <string>taste</string>
+           <string/>
           </property>
           <property name="styleSheet">
            <string notr="true">QPushButton:!checked{
@@ -2318,6 +2300,9 @@ QPushButton::checked{
            <font>
             <bold>true</bold>
            </font>
+          </property>
+          <property name="accessibleName">
+           <string>Akku Stand</string>
           </property>
           <property name="styleSheet">
            <string notr="true"/>
@@ -2595,7 +2580,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
   <tabstop>new_profile_button</tabstop>
   <tabstop>UIDeviceList</tabstop>
   <tabstop>searchKlingelball</tabstop>
-  <tabstop>connectKlingelball</tabstop>
   <tabstop>disconnectKlingelball</tabstop>
   <tabstop>OnOff_Button</tabstop>
   <tabstop>Uebtragen3</tabstop>

@@ -93,14 +93,18 @@ KlingelballUI::~KlingelballUI()
 }
 
 /*
- * Klingelball nicht auswahlbar mit Voiceover
-"Akkustand" wird nicht vorgelesen
+
+Verfügbare Klingelbälle vorlesen +++
+
+"Akkustand" wird nicht vorgelesen +++
+
+Klingelball in Liste statusupdate verbunden +++
+
+Anzahl verfügbarer Klingelbälle wird vorgelesen +++
 
 Numberpad Funktion auch nicht
 
 Mit numberpad eingeben -> voicdeover wird nicht geupdated
-
-Mit USB
 
 Prozent werden beim
 
@@ -115,11 +119,13 @@ Piepsen bewegend: 30%
 Helligkeit: 100%
 Farbe: Grün
 
-Unchecked whyyy (->AKtiviert/nicht aktiviert)
+Unchecked whyyy (->AKtiviert/nicht aktiviert) +++
 
-Klingelball OE whyy -> soll bei letztem tab enden
+Klingelball OE whyy +++
 
-Pause Weite-> Stopp Start
+soll bei letztem tab enden
+
+Pause Weite-> Stopp Start +++
 
 Tabbar wird vorgelesen -> bei letztem Tab aufhören
 
@@ -131,14 +137,6 @@ Klingelball namen
  *
  *
  */
-
-
-
-
-
-
-
-
 
 
 

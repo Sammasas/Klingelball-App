@@ -304,4 +304,6 @@ private:
     QSettings *settings;
 
 };
+
+
 #endif // KLINGELBALLUI_H

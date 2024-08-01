@@ -310,8 +310,10 @@ void KlingelballUI::on_OnOff_Button_toggled(bool checked)
 {
     if(checked){
         ui->OnOff_Button->setText("Ball: Ein");
+        ui->OnOff_Button->setAccessibleName("Ball: Ein aktiviert");
     }else{
         ui->OnOff_Button->setText("Ball: Aus");
+        ui->OnOff_Button->setAccessibleName("Ball: Aus nicht aktiviert");
     }
 }
 
@@ -440,21 +442,19 @@ void KlingelballUI::on_Bewegend_Beep_Freq_valueChanged(int arg1)
 
 void KlingelballUI::on_pause_button_clicked()
 {
-    //On Off button does not affect this -> some cases have to press twice to start or stop depending on state
-    //TODO fix this
     if(ui->OnOff_Button->isChecked()){
         ui->OnOff_Button->setChecked(false);
 
         //Update text & Description
-        ui->pause_button->setText("Weiter");
-        ui->pause_button->setAccessibleName("Weiter Taste");
+        ui->pause_button->setText("Start");
+        ui->pause_button->setAccessibleName("Start Taste");
 
         on_transmitGeneralSettings();
         
     }else{
             ui->OnOff_Button->setChecked(true);
-            ui->pause_button->setText("Pause");
-            ui->pause_button->setAccessibleName("Pause Taste");
+            ui->pause_button->setText("Stopp");
+            ui->pause_button->setAccessibleName("Stopp Taste");
             on_transmitGeneralSettings();
     }
     //Update button2 text
