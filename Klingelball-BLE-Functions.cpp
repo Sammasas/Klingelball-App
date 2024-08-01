@@ -1,4 +1,3 @@
-
 /**********************************************/
 //Filename: Klingelball-BLE-Functions.cpp
 //Author: Samuel Zeillinger
@@ -47,26 +46,6 @@ void KlingelballUI::setupBLE(){
     connect(this, SIGNAL(BatteryStatusRead(int)), this, SLOT(gotBatteryStatus(int)));
 }
 
-void KlingelballUI::on_uebertragen_button_clicked()
-{   
-    //initializes transmittion and sets UI to show transmittion is aktive
-    /*if(remoteServiceDiscovered && KlingelballConnected && !m_service->characteristics().empty()){
-        qDebug() << "writeCharacteristik";
-        transmittionActive = true;
-        ui->UIDeviceList->setStyleSheet("QListWidget::item::selected{"
-                                        "background-color: orange;}");
-        setUebertragenButtonTextandStyle("Übertrage...", "QPushButton{background-color: orange}"
-                                              "QPushButton::pressed{Background: #5b5b5b; border-radius: 20px;}");
-        transmittionStatus = TransmitGeneralSettings;
-        transmitSettings();
-
-    }else{
-        qDebug() << "Klingelball not connected or no remoteservice discovered";
-    }
-*/
-    transmitAllSettings();
-}
-
 void KlingelballUI::transmitSettings (SettingTransmitStatus transStat){
     if(!remoteServiceDiscovered || !KlingelballConnected || m_service->characteristics().empty()){
         return;
@@ -78,8 +57,6 @@ void KlingelballUI::transmitSettings (SettingTransmitStatus transStat){
             transmittionActive = false;
             ui->UIDeviceList->setStyleSheet("QListWidget::item::selected{"
                                             "background-color: #00aa00;}");
-            setUebertragenButtonTextandStyle("Übertragung fertig!", "QPushButton{background-color: #e50616;}"
-                                                  " QPushButton::pressed{Background: #5b5b5b; border-radius: 20px;}");
             break;
 
         case TransmitGeneralSettings:
@@ -152,9 +129,6 @@ void KlingelballUI::transmitSettings (SettingTransmitStatus transStat){
             transmittionActive = false;
             ui->UIDeviceList->setStyleSheet("QListWidget::item::selected{"
                                             "background-color: #e50616;}");
-            setUebertragenButtonTextandStyle("Übertragen Error!", "QPushButton{background-color: #e50616;}"
-                                                  " QPushButton::pressed{Background: #5b5b5b; border-radius: 20px;}");
-            printMessage("Übertragen Error");
 
             transmittionStatus = TransmitGeneralSettings;
             break;
@@ -249,12 +223,6 @@ QColor KlingelballUI::BewegendSelectedColor(){
         return StillstehendSelectedColor();
 }
 
-void KlingelballUI::on_connectKlingelball_clicked()
-{
-
-}
-
-
 void KlingelballUI::on_disconnectKlingelball_clicked()
 {
     if(KlingelballConnected){
@@ -263,13 +231,7 @@ void KlingelballUI::on_disconnectKlingelball_clicked()
 }
 
 void KlingelballUI::printMessage(QString message){
-    ui->statusLabel->setText("Status: " + message);
-    /*ui->ErrormessageLabel->setVisible(true);
-    ui->ErrormessageLabelSecline->setVisible(true);
-    ui->ErrormessageLabel->setText(message);
-    ui->ErrormessageLabelSecline->setText("Versichere dich, dass Bluetooth und ");
-    ui->ErrormessageLabel->adjustSize();
-    ui->ErrormessageLabelSecline->adjustSize();*/
+    
     qWarning() << message;
 
 }
@@ -503,7 +465,6 @@ void KlingelballUI::deviceDisconnected(){
     ui->batteryStatusProgressbar->setVisible(false);
     ui->UIDeviceList->setStyleSheet("QListWidget::item::selected{"
                                     "background-color: blue;}");
-    setUebertragenButtonTextandStyle("Übertragen", "");
 }
 
 void KlingelballUI::setupServiceDiscovery(){
@@ -574,12 +535,10 @@ void KlingelballUI::KlingelballServiceStatechanged(QLowEnergyService::ServiceSta
         ui->UIDeviceList->setStyleSheet("QListWidget::item::selected{"
                                         "background-color: #00aa00;}");
 
-
-
         remoteServiceDiscovered = true;
 
         transmitAllSettings();
-        ui->UIDeviceList->currentItem()->setText(ui->UIDeviceList->currentItem()->text() + "  verbunden");
+        ui->UIDeviceList->currentItem()->setText(ui->UIDeviceList->currentItem()->text() + " - verbunden");
         ui->disconnectKlingelball->setDisabled(false);
         ui->searchKlingelball->setDisabled(false);
         break;
@@ -695,16 +654,6 @@ void KlingelballUI::readBatteryStatus(QLowEnergyCharacteristic *c){
 
 void KlingelballUI::gotBatteryStatus(int s){
     s >= 100 ? ui->batteryStatusProgressbar->setValue(100) : ui->batteryStatusProgressbar->setValue(s);
-}
-
-void KlingelballUI::setUebertragenButtonTextandStyle(QString text, QString style){
-   ui->uebertragen_button->setText(text);
-   ui->Uebertragen2->setText(text);
-   ui->Uebtragen3->setText(text);
-
-   ui->uebertragen_button->setStyleSheet(style);
-   ui->Uebertragen2->setStyleSheet(style);
-   ui->Uebtragen3->setStyleSheet(style);
 }
 
 void KlingelballUI::transmitAllSettings(){

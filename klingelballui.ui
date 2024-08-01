@@ -45,6 +45,9 @@
       <property name="focusPolicy">
        <enum>Qt::NoFocus</enum>
       </property>
+      <property name="contextMenuPolicy">
+       <enum>Qt::DefaultContextMenu</enum>
+      </property>
       <property name="accessibleName">
        <string/>
       </property>
@@ -112,7 +115,7 @@ QTabBar::tab::disabled{
        <enum>QTabWidget::Rounded</enum>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>3</number>
       </property>
       <property name="iconSize">
        <size>
@@ -151,7 +154,7 @@ QTabBar::tab::disabled{
        <attribute name="title">
         <string/>
        </attribute>
-       <layout class="QVBoxLayout" name="verticalLayout_3" stretch="0,0,0,0,0,0">
+       <layout class="QVBoxLayout" name="verticalLayout_3" stretch="0,0,0,0,0">
         <property name="sizeConstraint">
          <enum>QLayout::SetNoConstraint</enum>
         </property>
@@ -275,7 +278,7 @@ QTabBar::tab::disabled{
              <cursorShape>BlankCursor</cursorShape>
             </property>
             <property name="focusPolicy">
-             <enum>Qt::NoFocus</enum>
+             <enum>Qt::ClickFocus</enum>
             </property>
             <property name="accessibleName">
              <string>Lautstärke %</string>
@@ -454,7 +457,7 @@ QTabBar::tab::disabled{
            <enum>QTabWidget::North</enum>
           </property>
           <property name="currentIndex">
-           <number>1</number>
+           <number>0</number>
           </property>
           <property name="elideMode">
            <enum>Qt::ElideMiddle</enum>
@@ -587,7 +590,7 @@ QTabBar::tab::disabled{
                  <cursorShape>BlankCursor</cursorShape>
                 </property>
                 <property name="focusPolicy">
-                 <enum>Qt::NoFocus</enum>
+                 <enum>Qt::ClickFocus</enum>
                 </property>
                 <property name="accessibleName">
                  <string>Stillstehende Frequenz %</string>
@@ -731,7 +734,7 @@ QTabBar::tab::disabled{
                  <bool>false</bool>
                 </property>
                 <property name="focusPolicy">
-                 <enum>Qt::NoFocus</enum>
+                 <enum>Qt::ClickFocus</enum>
                 </property>
                 <property name="accessibleName">
                  <string>Bewegende Tonfrequenz %</string>
@@ -897,7 +900,7 @@ QTabBar::tab::disabled{
                  <cursorShape>BlankCursor</cursorShape>
                 </property>
                 <property name="focusPolicy">
-                 <enum>Qt::NoFocus</enum>
+                 <enum>Qt::ClickFocus</enum>
                 </property>
                 <property name="accessibleName">
                  <string>Stillstehende Piepsrequenz %</string>
@@ -1162,37 +1165,6 @@ QTabBar::tab::disabled{
           </property>
           <property name="checked">
            <bool>false</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="uebertragen_button">
-          <property name="enabled">
-           <bool>false</bool>
-          </property>
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>80</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <pointsize>20</pointsize>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="accessibleName">
-           <string>Einstellungen übertragen taste</string>
-          </property>
-          <property name="text">
-           <string>Übertragen</string>
           </property>
          </widget>
         </item>
@@ -1898,31 +1870,6 @@ QRadioButton::indicator:unchecked{
           </property>
          </widget>
         </item>
-        <item>
-         <widget class="QPushButton" name="Uebertragen2">
-          <property name="enabled">
-           <bool>false</bool>
-          </property>
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>80</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <pointsize>20</pointsize>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="accessibleName">
-           <string>Einstellungen übertragen taste</string>
-          </property>
-          <property name="text">
-           <string>Übertragen</string>
-          </property>
-         </widget>
-        </item>
        </layout>
       </widget>
       <widget class="QWidget" name="Profile_Tab">
@@ -2199,18 +2146,6 @@ QRadioButton::indicator:unchecked{
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="statusLabel">
-          <property name="font">
-           <font>
-            <pointsize>14</pointsize>
-           </font>
-          </property>
-          <property name="text">
-           <string>Status:</string>
-          </property>
-         </widget>
-        </item>
-        <item>
          <widget class="QPushButton" name="searchKlingelball">
           <property name="minimumSize">
            <size>
@@ -2331,71 +2266,6 @@ QPushButton::checked{
           </property>
          </spacer>
         </item>
-        <item>
-         <widget class="QLabel" name="ErrormessageLabel">
-          <property name="styleSheet">
-           <string notr="true">QLabel{
-	background: white;
-	color:  red;
-	border-radius: 3px;
-}</string>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-          <property name="textFormat">
-           <enum>Qt::AutoText</enum>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="ErrormessageLabelSecline">
-          <property name="styleSheet">
-           <string notr="true">QLabel{
-	background: white;
-	color:  red;
-	border-radius: 3px;
-}</string>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="Uebtragen3">
-          <property name="enabled">
-           <bool>false</bool>
-          </property>
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>80</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <pointsize>20</pointsize>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="accessibleName">
-           <string>Einstellungen übertragen taste</string>
-          </property>
-          <property name="text">
-           <string>Übertragen</string>
-          </property>
-         </widget>
-        </item>
        </layout>
       </widget>
       <widget class="QWidget" name="Settings_Tab">
@@ -2454,6 +2324,19 @@ QPushButton::checked{
           </property>
           <property name="buddy">
            <cstring></cstring>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="checkBox">
+          <property name="font">
+           <font>
+            <pointsize>22</pointsize>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string>Automatisch</string>
           </property>
          </widget>
         </item>
@@ -2575,14 +2458,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
   <tabstop>Lautstaerke_verringern</tabstop>
   <tabstop>Helligkeit_erhoehen</tabstop>
   <tabstop>Heilligkeit_verringern</tabstop>
-  <tabstop>Uebertragen2</tabstop>
   <tabstop>profil_from_currentsettings_button</tabstop>
   <tabstop>new_profile_button</tabstop>
   <tabstop>UIDeviceList</tabstop>
   <tabstop>searchKlingelball</tabstop>
   <tabstop>disconnectKlingelball</tabstop>
   <tabstop>OnOff_Button</tabstop>
-  <tabstop>Uebtragen3</tabstop>
   <tabstop>Lightmode_checkBox</tabstop>
   <tabstop>Darkmode_checkBox</tabstop>
   <tabstop>new_profile_cancle_button</tabstop>
@@ -2600,7 +2481,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
   <tabstop>Stillstehend_Farbe3</tabstop>
   <tabstop>Stillstehend_Farbe5</tabstop>
   <tabstop>Sound_tabWidget</tabstop>
-  <tabstop>uebertragen_button</tabstop>
   <tabstop>scrollArea</tabstop>
  </tabstops>
  <resources>
@@ -2796,38 +2676,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <hint type="destinationlabel">
      <x>321</x>
      <y>144</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>Uebertragen2</sender>
-   <signal>clicked()</signal>
-   <receiver>uebertragen_button</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>236</x>
-     <y>719</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>236</x>
-     <y>719</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>Uebtragen3</sender>
-   <signal>clicked()</signal>
-   <receiver>uebertragen_button</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>236</x>
-     <y>719</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>236</x>
-     <y>719</y>
     </hint>
    </hints>
   </connection>

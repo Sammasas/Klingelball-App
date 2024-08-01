@@ -33,7 +33,6 @@ KlingelballUI::KlingelballUI(QWidget *parent)
     QScroller::grabGesture(ui->scrollArea, QScroller::LeftMouseButtonGesture );
 
     setupBLE();
-    ui->statusLabel->setVisible(false);
 
 
 //Automatic Dark/Lightmode detection
@@ -69,10 +68,6 @@ KlingelballUI::KlingelballUI(QWidget *parent)
     connect(ui->Bewegend_Farbe4, SIGNAL(toggled(bool)), SLOT(on_transmitLightColorMoving()));
     connect(ui->Bewegend_Farbe5, SIGNAL(toggled(bool)), SLOT(on_transmitLightColorMoving()));
 
-    ui->uebertragen_button->hide();
-    ui->Uebertragen2->hide();
-    ui->Uebtragen3->hide();
-
 }
 
 void KlingelballUI::on_colorSchemeChanged(Qt::ColorScheme scheme){
@@ -101,10 +96,6 @@ Verfügbare Klingelbälle vorlesen +++
 Klingelball in Liste statusupdate verbunden +++
 
 Anzahl verfügbarer Klingelbälle wird vorgelesen +++
-
-Numberpad Funktion auch nicht
-
-Mit numberpad eingeben -> voicdeover wird nicht geupdated
 
 Prozent werden beim
 

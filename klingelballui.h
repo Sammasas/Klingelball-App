@@ -17,6 +17,9 @@
 #include <QAudioFormat>
 #include <QAccessible>
 #include <QAccessibleActionInterface>
+#include <QAccessible>
+#include <QAccessibleWidget>
+#include <QAccessibleInterface>
 #include <QFile>
 #include "EinstellungsProfil.h"
 #include <QScroller>
@@ -110,17 +113,11 @@ private slots:
 
     void on_delete_current_profile_button_clicked();
 
-    void on_uebertragen_button_clicked();
-
     void on_searchKlingelball_clicked();
-
-    void on_connectKlingelball_clicked();
 
     void on_tabWidget_currentChanged(int index);
 
     void on_disconnectKlingelball_clicked();
-
-    //void on_pushButton_toggled(bool checked);
 
     void on_OnOff_Button_toggled(bool checked);
 
@@ -140,8 +137,6 @@ private slots:
 
     void on_pause_button_clicked();
 
-    void on_pause_button_toggled(bool checked);
-
     void on_transmitGeneralSettings(){transmitSettings(SettingTransmitStatus::TransmitGeneralSettings);};
     void on_transmitSoundFrequenzy(){transmitSettings(SettingTransmitStatus::TransmitSoundFrequenzy);};
     void on_transmitGeneralSound(){transmitSettings(SettingTransmitStatus::TransmitGeneralSound);};
@@ -156,6 +151,9 @@ Q_SIGNALS:
 
 
 private:
+
+    void printMessage(QString message);
+
     Ui::KlingelballUI *ui;
 
     bool transmit_profile = false;
@@ -190,8 +188,6 @@ private:
 
     QLowEnergyCharacteristic *DataCharacteristic;
     QBluetoothUuid *DataCharacteristicUUID;
-
-    void printMessage (QString message);
 
     QBluetoothDeviceDiscoveryAgent *m_deviceDiscoveryAgent;
     QLowEnergyController *m_controller;
@@ -297,13 +293,10 @@ private:
                                  "width: 40px;height: 40px;"
                                  "border: 2px solid #868686;"
                                  "border-radius: 20px;} ";
-
-    void setUebertragenButtonTextandStyle(QString text, QString style);
     float *fontScale;
 
     QSettings *settings;
 
 };
-
 
 #endif // KLINGELBALLUI_H

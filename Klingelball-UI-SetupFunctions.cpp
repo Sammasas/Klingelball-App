@@ -78,11 +78,7 @@ void KlingelballUI::setup_UI(){
     ui->disconnectKlingelball->setVisible(false);
     ui->OnOff_Button->setVisible(false);
     ui->batteryStatusProgressbar->setVisible(false);
-    ui->ErrormessageLabel->setVisible(false);
-    ui->ErrormessageLabelSecline->setVisible(false);
     ui->Sound_tabWidget->setAutoFillBackground(true);
-    ui->statusLabel->setVisible(false);
-
     ui->Sound_tabWidget->setFont(*SmallerdynamicSizeFont);
 
     ui->tabWidget->tabBar()->setIconSize(QSize(30* *fontScale, 30* *fontScale));
@@ -91,25 +87,43 @@ void KlingelballUI::setup_UI(){
     ui->Erklaerung_textView->setTextInteractionFlags(Qt::LinksAccessibleByMouse);
 
     //Set Values from saved Settings
+
     settings = new QSettings("SSA", "Klingelball App");
-    ui->Lautstaerke->setValue(settings->value("Ton/Lautstaerke").toInt());
+    if(!settings->contains("Ton/Lautstaerke")){
+        ui->Lautstaerke->setValue(50);
+        ui->Stillstehend_Ton_Freq->setValue(40);
+        ui->Bewegend_Ton_Freq->setValue(40);
+        ui->Stillstehend_Beep_Freq->setValue(30);
+        ui->Bewegend_Beep_Freq->setValue(30);
+        ui->Helligkeit->setValue(100);
 
-    ui->Stillstehend_Beep_Freq->setValue(settings->value("Ton/Stillstehend_Beep_Freq").toInt());
-    ui->Bewegend_Beep_Freq->setValue(settings->value("Ton/Bewegend_Beep_Freq").toInt());
+        stillstehendColorSelectionButtonGroup->button(4)->setChecked(true);
+        stillstehendButtonGroupClicked(stillstehendColorSelectionButtonGroup->button(4));
 
-    ui->Stillstehend_Ton_Freq->setValue(settings->value("Ton/Stillstehend_Ton_Freq").toInt());
-    ui->Bewegend_Ton_Freq->setValue(settings->value("Ton/Bewegend_Ton_Freq").toInt());
+        bewegendColorSelectionButtonGroup->button(4)->setChecked(true);
+        bewegendButtonGroupClicked(bewegendColorSelectionButtonGroup->button(4));
 
-    ui->Helligkeit->setValue(settings->value("Licht/Helligkeit").toInt());
+    }else{
 
-    if(settings->value("Licht/StillstehendFarbe").toInt() != 0){
-        stillstehendColorSelectionButtonGroup->button(settings->value("Licht/StillstehendFarbe").toInt())->setChecked(true);
-        stillstehendButtonGroupClicked(stillstehendColorSelectionButtonGroup->button(settings->value("Licht/StillstehendFarbe").toInt()));
-    }
+        ui->Lautstaerke->setValue(settings->value("Ton/Lautstaerke").toInt());
 
-    if(settings->value("Licht/BewegendFarbe").toInt() != 0){
-        bewegendColorSelectionButtonGroup->button(settings->value("Licht/BewegendFarbe").toInt())->setChecked(true);
-        bewegendButtonGroupClicked(bewegendColorSelectionButtonGroup->button(settings->value("Licht/BewegendFarbe").toInt()));
+        ui->Stillstehend_Beep_Freq->setValue(settings->value("Ton/Stillstehend_Beep_Freq").toInt());
+        ui->Bewegend_Beep_Freq->setValue(settings->value("Ton/Bewegend_Beep_Freq").toInt());
+
+        ui->Stillstehend_Ton_Freq->setValue(settings->value("Ton/Stillstehend_Ton_Freq").toInt());
+        ui->Bewegend_Ton_Freq->setValue(settings->value("Ton/Bewegend_Ton_Freq").toInt());
+
+        ui->Helligkeit->setValue(settings->value("Licht/Helligkeit").toInt());
+
+        if(settings->value("Licht/StillstehendFarbe").toInt() != 0){
+            stillstehendColorSelectionButtonGroup->button(settings->value("Licht/StillstehendFarbe").toInt())->setChecked(true);
+            stillstehendButtonGroupClicked(stillstehendColorSelectionButtonGroup->button(settings->value("Licht/StillstehendFarbe").toInt()));
+        }
+
+        if(settings->value("Licht/BewegendFarbe").toInt() != 0){
+            bewegendColorSelectionButtonGroup->button(settings->value("Licht/BewegendFarbe").toInt())->setChecked(true);
+            bewegendButtonGroupClicked(bewegendColorSelectionButtonGroup->button(settings->value("Licht/BewegendFarbe").toInt()));
+        }
     }
 }
 
@@ -165,10 +179,6 @@ void KlingelballUI::setup_fontiOS(int pointSize){
 
 void KlingelballUI::setup_buttons()
 {
-    ui->uebertragen_button->setFont(*dynamicSizeFont);
-    ui->Uebertragen2->setFont(*dynamicSizeFont);
-    ui->Uebtragen3->setFont(*dynamicSizeFont);
-
     float iconSizeMultiplier = 1.5;
 
     ui->Lautstaerke_erhoehen->setIconSize(QSize(ui->Lautstaerke_erhoehen->height()*iconSizeMultiplier, ui->Lautstaerke_erhoehen->height()));

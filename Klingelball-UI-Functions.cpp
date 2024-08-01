@@ -208,10 +208,7 @@ void KlingelballUI::set_transmit_profile(bool b)
 {
     //Not used in this version of the project (V1.0)
     this->transmit_profile = b;
-    if (b == false)
-        ui->uebertragen_button->setText("Übertragen");
-    else
-        ui->uebertragen_button->setText(("Profil übertragen"));
+    
 }
 
 void KlingelballUI::update_profile_transmittion_state()
@@ -463,9 +460,3 @@ void KlingelballUI::on_pause_button_clicked()
     //Update button2 Accessibilty description
     ui->pause_button2->setAccessibleName(ui->pause_button->accessibleName());
 }
-
-void KlingelballUI::on_pause_button_toggled(bool checked)
-{
-
-}
-
