@@ -41,6 +41,7 @@
 #include <QFontDialog>
 #include <QSettings>
 #include <QListWidgetItem>
+#include <QApplication>
 
 
 
@@ -145,6 +146,8 @@ private slots:
     void on_transmitGeneralLight(){transmitSettings(SettingTransmitStatus::TransmitGeneralLight);};
 
     void on_UIDeviceList_itemClicked(QListWidgetItem *item);
+
+    void on_buttonGroupToggled(QAbstractButton *button, bool checked);
 
 Q_SIGNALS:
     void BatteryStatusRead(int);
@@ -296,6 +299,10 @@ private:
     float *fontScale;
 
     QSettings *settings;
+
+
+
+
 
 };
 

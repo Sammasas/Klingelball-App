@@ -57,6 +57,8 @@ void KlingelballUI::setup_UI(){
     ui->tabWidget->tabBar()->setAccessibleTabName(3, "Einstellungen Tab 4 von 4");
 
 
+
+
     ui->Sound_tabWidget->tabBar()->setAccessibleTabName(0, "Tonhöheneinstellung Tab 1 von 2");
     ui->Sound_tabWidget->tabBar()->setAccessibleTabName(1, "Piepseinstellung Tab 2 von 2");
 
@@ -87,6 +89,9 @@ void KlingelballUI::setup_UI(){
     ui->Erklaerung_textView->setTextInteractionFlags(Qt::LinksAccessibleByMouse);
 
     //Set Values from saved Settings
+    connect(stillstehendColorSelectionButtonGroup, SIGNAL(buttonToggled(QAbstractButton*,bool)), this, SLOT(on_buttonGroupToggled(QAbstractButton*,bool)));
+    connect(bewegendColorSelectionButtonGroup, SIGNAL(buttonToggled(QAbstractButton*,bool)), this, SLOT(on_buttonGroupToggled(QAbstractButton*,bool)));
+
 
     settings = new QSettings("SSA", "Klingelball App");
     if(!settings->contains("Ton/Lautstaerke")){

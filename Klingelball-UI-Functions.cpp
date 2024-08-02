@@ -175,6 +175,7 @@ void KlingelballUI::on_new_profile_button_clicked()
 
 void KlingelballUI::change_profile_selection()
 {
+     //Not used in this version of the project (V1.0)
     foreach (EinstellungsProfil *profile, *Profile_list) {
         profile->setChecked(false);
     }
@@ -332,6 +333,10 @@ void KlingelballUI::stillstehendButtonGroupClicked(QAbstractButton *button){
             stillstehendButtonGroupSelectedID = 0;
             ui->StillstehendColorSelectionGroupBox->setStyleSheet("QGroupBox{"
                                                                   "background: transparent;}");
+
+
+
+
         }else{
             stillstehendButtonGroupSelectedID = stillstehendColorSelectionButtonGroup->id(button);
 
@@ -354,16 +359,18 @@ void KlingelballUI::stillstehendButtonGroupClicked(QAbstractButton *button){
              ui->StillstehendColorSelectionGroupBox->setStyleSheet("QGroupBox{"
                                                                    "background: " + StillstehendSelectedColor().name() + ";}");
          }
+
     }
 
     settings->setValue("Licht/StillstehendFarbe", stillstehendButtonGroupSelectedID);
+
+
 
 
 }
 
 void KlingelballUI::bewegendButtonGroupClicked(QAbstractButton *button){
     //Gets ID of selected color, unselects if selected color is pressed again (Not natively implemented)
-    //TODO if white selected-> change background color when dark/light mode selected
     if(bewegendButtonGroupOneSelected){
         if(button->isChecked() && (bewegendColorSelectionButtonGroup->id(button) == bewegendButtonGroupSelectedID)){
             bewegendColorSelectionButtonGroup->setExclusive(false);
@@ -417,6 +424,15 @@ void KlingelballUI::updateAccessibleDesciption(){
     ui->Helligkeit->setAccessibleName("Helligkeit" + QString::number(ui->Helligkeit->value())+ "% Einstellbar");
     settings->setValue("Licht/Helligkeit", ui->Helligkeit->value());
 
+}
+
+void KlingelballUI::on_buttonGroupToggled(QAbstractButton *button, bool checked){
+    if(checked){
+        button->setAccessibleName(button->accessibleName().replace("nicht", ""));
+
+    }else{
+        button->setAccessibleName(button->accessibleName().replace("aktiviert", "nicht aktiviert"));
+    }
 }
 
 void KlingelballUI::on_Lautstaerke_valueChanged(int arg1)

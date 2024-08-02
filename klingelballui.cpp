@@ -32,9 +32,6 @@ KlingelballUI::KlingelballUI(QWidget *parent)
     Profile_list = new QList<EinstellungsProfil *>;
     QScroller::grabGesture(ui->scrollArea, QScroller::LeftMouseButtonGesture );
 
-    setupBLE();
-
-
 //Automatic Dark/Lightmode detection
     connect(QGuiApplication::styleHints(), SIGNAL(colorSchemeChanged (Qt::ColorScheme)), this, SLOT(on_colorSchemeChanged(Qt::ColorScheme)));
     on_colorSchemeChanged(QGuiApplication::styleHints()->colorScheme());
@@ -46,6 +43,8 @@ KlingelballUI::KlingelballUI(QWidget *parent)
     connect(ui->Bewegend_Ton_Freq, SIGNAL(valueChanged(int)), this, SLOT(updateAccessibleDesciption()));
     connect(ui->Stillstehend_Beep_Freq, SIGNAL(valueChanged(int)), this, SLOT(updateAccessibleDesciption()));
     connect(ui->Bewegend_Beep_Freq, SIGNAL(valueChanged(int)), this, SLOT(updateAccessibleDesciption()));
+
+
 
 //Connect Settings to individual Transmittion
     connect(ui->OnOff_Button, SIGNAL(clicked(bool)), this, SLOT(on_transmitGeneralSettings()));
@@ -68,7 +67,10 @@ KlingelballUI::KlingelballUI(QWidget *parent)
     connect(ui->Bewegend_Farbe4, SIGNAL(toggled(bool)), SLOT(on_transmitLightColorMoving()));
     connect(ui->Bewegend_Farbe5, SIGNAL(toggled(bool)), SLOT(on_transmitLightColorMoving()));
 
+
 }
+
+
 
 void KlingelballUI::on_colorSchemeChanged(Qt::ColorScheme scheme){
     if(scheme == Qt::ColorScheme::Dark){
@@ -99,7 +101,7 @@ Anzahl verfügbarer Klingelbälle wird vorgelesen +++
 
 Prozent werden beim
 
-Standarteinstellungen:
+Standarteinstellungen: +++
 Lautstärke: 50%
 Tonhöhe stillstehend: 40%
 Tonhöhe bewegend : 40%
