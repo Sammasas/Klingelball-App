@@ -149,6 +149,8 @@ private slots:
 
     void on_buttonGroupToggled(QAbstractButton *button, bool checked);
 
+    void on_Automatic_checkBox_clicked();
+
 Q_SIGNALS:
     void BatteryStatusRead(int);
 
@@ -172,6 +174,7 @@ private:
     void setup_spinbox();
     void setup_lineedit();
     void setup_ButtonGroup();
+    void setup_Appearance();
 
     float getfontScalefrompointSize(int pointSize);
 
@@ -300,8 +303,18 @@ private:
 
     QSettings *settings;
 
+    enum Appearance{
+        automatically,
+        lightmode,
+        darkmode
+    };
+    Appearance appearance;
+    Appearance currentAppearance;
 
+    QButtonGroup *AppearanceButtonGroup;
 
+    void setDarkmode();
+    void setLightmode();
 
 
 };

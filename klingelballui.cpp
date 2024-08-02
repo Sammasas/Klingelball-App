@@ -17,6 +17,7 @@ KlingelballUI::KlingelballUI(QWidget *parent)
     ui->tabWidget->removeTab(2);
     setup_UI();
     setupBLE();
+    setup_Appearance();
 
 //Cycle through tabs to ensure proper resizing
     ui->tabWidget->setCurrentIndex(0);
@@ -32,9 +33,6 @@ KlingelballUI::KlingelballUI(QWidget *parent)
     Profile_list = new QList<EinstellungsProfil *>;
     QScroller::grabGesture(ui->scrollArea, QScroller::LeftMouseButtonGesture );
 
-//Automatic Dark/Lightmode detection
-    connect(QGuiApplication::styleHints(), SIGNAL(colorSchemeChanged (Qt::ColorScheme)), this, SLOT(on_colorSchemeChanged(Qt::ColorScheme)));
-    on_colorSchemeChanged(QGuiApplication::styleHints()->colorScheme());
 
 //Automatic accessibilty description updates
     connect(ui->Helligkeit, SIGNAL(valueChanged(int)), this, SLOT(updateAccessibleDesciption()));
@@ -73,14 +71,14 @@ KlingelballUI::KlingelballUI(QWidget *parent)
 
 
 void KlingelballUI::on_colorSchemeChanged(Qt::ColorScheme scheme){
-    if(scheme == Qt::ColorScheme::Dark){
-        ui->Darkmode_checkBox->setChecked(true);
-        ui->Lightmode_checkBox->setChecked(false);
-        on_Darkmode_checkBox_clicked();
-    }else if (scheme == Qt::ColorScheme::Light){
-        ui->Darkmode_checkBox->setChecked(false);
-        ui->Lightmode_checkBox->setChecked(true);
-        on_Lightmode_checkBox_clicked();
+    if(appearance == Appearance::automatically){
+        if(scheme == Qt::ColorScheme::Dark){
+            qDebug()<< "darkmode";
+            setDarkmode();
+        }else if (scheme == Qt::ColorScheme::Light){
+            qDebug()<< "lightmode";
+            setLightmode();
+        }
     }
 }
 
@@ -123,6 +121,8 @@ Pause Weite-> Stopp Start +++
 Tabbar wird vorgelesen -> bei letztem Tab aufhören
 
 Klingelball namen
+
+Pause taste -> accessibilty ändern
  *
  *
  *
@@ -130,6 +130,10 @@ Klingelball namen
  *
  *
  */
+
+
+
+
 
 
 

@@ -43,6 +43,8 @@ void KlingelballUI::setup_UI(){
     setup_spinbox();
     setup_lineedit();
     setup_ButtonGroup();
+
+
     ui->tabWidget->setFocusPolicy(Qt::NoFocus);
     ui->Settings_Tab->setFocusPolicy(Qt::NoFocus);
     ui->Profile_Tab->setFocusPolicy(Qt::NoFocus);
@@ -264,4 +266,43 @@ void KlingelballUI::setup_ButtonGroup(){
 
     connect(stillstehendColorSelectionButtonGroup, SIGNAL(buttonClicked(QAbstractButton*)), this, SLOT(stillstehendButtonGroupClicked(QAbstractButton*)));
     connect(bewegendColorSelectionButtonGroup, SIGNAL(buttonClicked(QAbstractButton*)), this, SLOT(bewegendButtonGroupClicked(QAbstractButton*)));
+
+    AppearanceButtonGroup = new QButtonGroup;
+    AppearanceButtonGroup->addButton(ui->Automatic_checkBox, 1);
+    AppearanceButtonGroup->addButton(ui->Darkmode_checkBox, 2);
+    AppearanceButtonGroup->addButton(ui->Lightmode_checkBox, 3);
+
+
+}
+
+void KlingelballUI::setup_Appearance(){
+    //Automatic Dark/Lightmode detection
+    connect(QGuiApplication::styleHints(), SIGNAL(colorSchemeChanged (Qt::ColorScheme)), this, SLOT(on_colorSchemeChanged(Qt::ColorScheme)));
+
+    if(settings->contains("Appearance")){
+        appearance = static_cast<Appearance>(settings->value("Appearance").toInt());
+    }else{
+        appearance = Appearance::automatically;
+    }
+
+    switch(appearance){
+    case automatically:
+        ui->Automatic_checkBox->setChecked(true);
+        on_colorSchemeChanged(QGuiApplication::styleHints()->colorScheme());
+        break;
+    case lightmode:
+        ui->Lightmode_checkBox->setChecked(true);
+        setLightmode();
+        break;
+    case darkmode:
+        ui->Darkmode_checkBox->setChecked(true);
+        setDarkmode();
+        break;
+    default:
+        ui->Automatic_checkBox->setChecked(true);
+        on_colorSchemeChanged(QGuiApplication::styleHints()->colorScheme());
+        break;
+
+    }
+
 }

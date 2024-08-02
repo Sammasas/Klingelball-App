@@ -115,7 +115,7 @@ QTabBar::tab::disabled{
        <enum>QTabWidget::Rounded</enum>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>4</number>
       </property>
       <property name="iconSize">
        <size>
@@ -1155,7 +1155,7 @@ QTabBar::tab::disabled{
            </font>
           </property>
           <property name="accessibleName">
-           <string>Pause taste</string>
+           <string>Stopp taste</string>
           </property>
           <property name="text">
            <string>Stopp</string>
@@ -1863,7 +1863,7 @@ QRadioButton::indicator:unchecked{
            </font>
           </property>
           <property name="accessibleName">
-           <string>Pause taste</string>
+           <string>Stopp taste</string>
           </property>
           <property name="text">
            <string>Stopp</string>
@@ -2328,7 +2328,7 @@ QPushButton::checked{
          </widget>
         </item>
         <item>
-         <widget class="QCheckBox" name="checkBox">
+         <widget class="QCheckBox" name="Automatic_checkBox">
           <property name="font">
            <font>
             <pointsize>22</pointsize>
@@ -2337,6 +2337,9 @@ QPushButton::checked{
           </property>
           <property name="text">
            <string>Automatisch</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
           </property>
          </widget>
         </item>
@@ -2358,7 +2361,7 @@ QPushButton::checked{
            </size>
           </property>
           <property name="checked">
-           <bool>true</bool>
+           <bool>false</bool>
           </property>
           <property name="tristate">
            <bool>false</bool>
