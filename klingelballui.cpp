@@ -18,13 +18,12 @@ KlingelballUI::KlingelballUI(QWidget *parent)
     translator = new QTranslator;
     qDebug() << "Opaterating System language" << QLocale::system().name();
 
-    /*if(QLocale::system().name() == "pl_AT"){
-        translatorEN->load(":/Translations/Klingelball_App_0_1_pl_PL.qm");
+    if(QLocale::system().name().contains("pl")){
+        translator->load(":/Translations/Klingelball_App_0_1_pl_PL.qm");
         qApp->installTranslator(translator);
-    }*/
-
-    translator->load(":/Translations/Klingelball_App_0_1_pl_PL.qm");
-    qApp->installTranslator(translator);
+    }
+        translator->load(":/Translations/Klingelball_App_0_1_pl_PL.qm");
+        qApp->installTranslator(translator);
 
 
 

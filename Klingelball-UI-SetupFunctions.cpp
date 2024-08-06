@@ -132,6 +132,9 @@ void KlingelballUI::setup_UI(){
             bewegendButtonGroupClicked(bewegendColorSelectionButtonGroup->button(settings->value("Licht/BewegendFarbe").toInt()));
         }
     }
+
+    QScroller::grabGesture(ui->Erklaerung_textView->viewport(), QScroller::LeftMouseButtonGesture);
+
 }
 
 float KlingelballUI::getfontScalefrompointSize(int pointSize){
