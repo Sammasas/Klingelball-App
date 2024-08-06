@@ -22,9 +22,6 @@ KlingelballUI::KlingelballUI(QWidget *parent)
         translator->load(":/Translations/Klingelball_App_0_1_pl_PL.qm");
         qApp->installTranslator(translator);
     }
-        translator->load(":/Translations/Klingelball_App_0_1_pl_PL.qm");
-        qApp->installTranslator(translator);
-
 
 
 //General Setup
