@@ -13,6 +13,23 @@ KlingelballUI::KlingelballUI(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::KlingelballUI)
 {
+//Translation
+
+    translator = new QTranslator;
+    qDebug() << "Opaterating System language" << QLocale::system().name();
+
+    /*if(QLocale::system().name() == "pl_AT"){
+        translatorEN->load(":/Translations/Klingelball_App_0_1_pl_PL.qm");
+        qApp->installTranslator(translator);
+    }*/
+
+    translator->load(":/Translations/Klingelball_App_0_1_pl_PL.qm");
+    qApp->installTranslator(translator);
+
+
+
+//General Setup
+
     ui->setupUi(this);
     ui->tabWidget->removeTab(2);
     setup_UI();
@@ -86,51 +103,6 @@ KlingelballUI::~KlingelballUI()
 {
     delete ui;
 }
-
-/*
-
-Verfügbare Klingelbälle vorlesen +++
-
-"Akkustand" wird nicht vorgelesen +++
-
-Klingelball in Liste statusupdate verbunden +++
-
-Anzahl verfügbarer Klingelbälle wird vorgelesen +++
-
-Prozent werden beim
-
-Standarteinstellungen: +++
-Lautstärke: 50%
-Tonhöhe stillstehend: 40%
-Tonhöhe bewegend : 40%
-
-Piepsen stillstehend: 30%
-Piepsen bewegend: 30%
-
-Helligkeit: 100%
-Farbe: Grün
-
-Unchecked whyyy (->AKtiviert/nicht aktiviert) +++
-
-Klingelball OE whyy +++
-
-soll bei letztem tab enden
-
-Pause Weite-> Stopp Start +++
-
-Tabbar wird vorgelesen -> bei letztem Tab aufhören
-
-Klingelball namen
-
-Pause taste -> accessibilty ändern
- *
- *
- *
- *
- *
- *
- */
-
 
 
 

@@ -319,11 +319,11 @@ void KlingelballUI::on_tabWidget_currentChanged(int index)
 void KlingelballUI::on_OnOff_Button_toggled(bool checked)
 {
     if(checked){
-        ui->OnOff_Button->setText("Ball: Ein");
-        ui->OnOff_Button->setAccessibleName("Ball: Ein aktiviert");
+        ui->OnOff_Button->setText(tr("Ball: Ein"));
+        ui->OnOff_Button->setAccessibleName(tr("Ball: Ein aktiviert"));
     }else{
-        ui->OnOff_Button->setText("Ball: Aus");
-        ui->OnOff_Button->setAccessibleName("Ball: Aus nicht aktiviert");
+        ui->OnOff_Button->setText(tr("Ball: Aus"));
+        ui->OnOff_Button->setAccessibleName(tr("Ball: Aus nicht aktiviert"));
     }
 }
 
@@ -418,38 +418,38 @@ void KlingelballUI::bewegendButtonGroupClicked(QAbstractButton *button){
 }
 
 void KlingelballUI::updateAccessibleDesciption(){
-    ui->Lautstaerke->setAccessibleName("Lautstärke" + QString::number(ui->Lautstaerke->value()) + "% Einstellbar");
+    ui->Lautstaerke->setAccessibleName(tr("Lautstärke") + QString::number(ui->Lautstaerke->value()) + tr("% Einstellbar"));
     settings->setValue("Ton/Lautstaerke", ui->Lautstaerke->value());
 
 
-    ui->Stillstehend_Beep_Freq->setAccessibleName("Stillstehende Piepsrequenz"+ QString::number(ui->Stillstehend_Beep_Freq->value()) + "% Einstellbar");
-    ui->Bewegend_Beep_Freq->setAccessibleName("Bewegende Piepsrequenz"+ QString::number(ui->Bewegend_Beep_Freq->value()) + "% Einstellbar");
+    ui->Stillstehend_Beep_Freq->setAccessibleName(tr("Stillstehende Piepsrequenz")+ QString::number(ui->Stillstehend_Beep_Freq->value()) + tr("% Einstellbar"));
+    ui->Bewegend_Beep_Freq->setAccessibleName(tr("Bewegende Piepsrequenz") + QString::number(ui->Bewegend_Beep_Freq->value()) + tr("% Einstellbar"));
     settings->setValue("Ton/Stillstehend_Beep_Freq", ui->Stillstehend_Beep_Freq->value());
     settings->setValue("Ton/Bewegend_Beep_Freq", ui->Bewegend_Beep_Freq->value());
 
 
-    ui->Stillstehend_Ton_Freq->setAccessibleName("Stillstehende Tonfrequenz"+ QString::number(ui->Stillstehend_Ton_Freq->value()) + "% Einstellbar");
-    ui->Bewegend_Ton_Freq->setAccessibleName("Bewegende Tonfrequenz"+ QString::number(ui->Bewegend_Ton_Freq->value()) + "% Einstellbar");
+    ui->Stillstehend_Ton_Freq->setAccessibleName(tr("Stillstehende Tonfrequenz") + QString::number(ui->Stillstehend_Ton_Freq->value()) + tr("% Einstellbar"));
+    ui->Bewegend_Ton_Freq->setAccessibleName(tr("Bewegende Tonfrequenz") + QString::number(ui->Bewegend_Ton_Freq->value()) + tr("% Einstellbar"));
     settings->setValue("Ton/Stillstehend_Ton_Freq", ui->Stillstehend_Ton_Freq->value());
     settings->setValue("Ton/Bewegend_Ton_Freq", ui->Bewegend_Ton_Freq->value());
 
-    ui->Helligkeit->setAccessibleName("Helligkeit" + QString::number(ui->Helligkeit->value())+ "% Einstellbar");
+    ui->Helligkeit->setAccessibleName(tr("Helligkeit") + QString::number(ui->Helligkeit->value())+ tr("% Einstellbar"));
     settings->setValue("Licht/Helligkeit", ui->Helligkeit->value());
 
 }
 
 void KlingelballUI::on_buttonGroupToggled(QAbstractButton *button, bool checked){
     if(checked){
-        button->setAccessibleName(button->accessibleName().replace("nicht", ""));
+        button->setAccessibleName(button->accessibleName().replace(tr("nicht"), ""));
 
     }else{
-        button->setAccessibleName(button->accessibleName().replace("aktiviert", "nicht aktiviert"));
+        button->setAccessibleName(button->accessibleName().replace(tr("aktiviert"), tr("nicht aktiviert")));
     }
 }
 
 void KlingelballUI::on_Lautstaerke_valueChanged(int arg1)
 {
-    ui->Lautstaerke->setAccessibleName("Lautstärke" + QString::number(arg1) + "% Einstellbar");
+    //ui->Lautstaerke->setAccessibleName("Lautstärke" + QString::number(arg1) + "% Einstellbar");
 
 }
 
@@ -471,15 +471,15 @@ void KlingelballUI::on_pause_button_clicked()
         ui->OnOff_Button->setChecked(false);
 
         //Update text & Description
-        ui->pause_button->setText("Start");
-        ui->pause_button->setAccessibleName("Start Taste");
+        ui->pause_button->setText(tr("Start"));
+        ui->pause_button->setAccessibleName(tr("Start Taste"));
 
         on_transmitGeneralSettings();
         
     }else{
             ui->OnOff_Button->setChecked(true);
-            ui->pause_button->setText("Stopp");
-            ui->pause_button->setAccessibleName("Stopp Taste");
+            ui->pause_button->setText(tr("Stopp"));
+            ui->pause_button->setAccessibleName(tr("Stopp Taste"));
             on_transmitGeneralSettings();
     }
     //Update button2 text

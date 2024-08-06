@@ -38,4 +38,8 @@
     <qresource prefix="/Font">
         <file>InterVariable.ttf</file>
     </qresource>
+    <qresource prefix="/Translations">
+        <file>Klingelball_App_0_1_en_001.qm</file>
+        <file>Klingelball_App_0_1_pl_PL.qm</file>
+    </qresource>
 </RCC>

@@ -187,7 +187,7 @@ void KlingelballUI::on_searchKlingelball_clicked()
     }
 
     ui->UIDeviceList->clear();
-    ui->UIDeviceList->setAccessibleName("Verfügbare Klingelbälle Liste," + QString::number(ui->UIDeviceList->count()) + "verfügbar");
+    ui->UIDeviceList->setAccessibleName(tr("Verfügbare Klingelbälle Liste,") + QString::number(ui->UIDeviceList->count()) + tr("verfügbar"));
     startDeviceDiscovery();
 }
 
@@ -304,7 +304,7 @@ void KlingelballUI::addDevice(const QBluetoothDeviceInfo &device){
             ui->UIDeviceList->show();
             ui->UIDeviceList->setDisabled(false);
 
-            ui->UIDeviceList->setAccessibleName("Verfügbare Klingelbälle Liste," + QString::number(ui->UIDeviceList->count()) + "verfügbar");
+            ui->UIDeviceList->setAccessibleName(tr("Verfügbare Klingelbälle Liste,") + QString::number(ui->UIDeviceList->count()) + tr("verfügbar"));
              
         }
     }
@@ -389,7 +389,7 @@ void KlingelballUI::controllerError(QLowEnergyController::Error error){
             for(int i = 0; i < ui->UIDeviceList->count(); i++){
                 if(ui->UIDeviceList->takeItem(i)->text() == m_controller->remoteName()){
                     ui->UIDeviceList->removeItemWidget(ui->UIDeviceList->takeItem(i));
-                    ui->UIDeviceList->setAccessibleName("Verfügbare Klingelbälle Liste," + QString::number(ui->UIDeviceList->count()) + "verfügbar");
+                    ui->UIDeviceList->setAccessibleName(tr("Verfügbare Klingelbälle Liste,") + QString::number(ui->UIDeviceList->count()) + tr("verfügbar"));
                 }
             }
             break;

@@ -42,6 +42,7 @@
 #include <QSettings>
 #include <QListWidgetItem>
 #include <QApplication>
+#include <QTranslator>
 
 
 
@@ -316,6 +317,7 @@ private:
     void setDarkmode();
     void setLightmode();
 
+    QTranslator *translator;
 
 };
 

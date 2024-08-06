@@ -53,26 +53,26 @@ void KlingelballUI::setup_UI(){
 
 
     /*********Setting accessible names **********/
-    ui->tabWidget->tabBar()->setAccessibleTabName(0, "Toneinstellungen Tab 1 von 4");
-    ui->tabWidget->tabBar()->setAccessibleTabName(1, "Lichteinstellungen Tab 2 von 4");
-    ui->tabWidget->tabBar()->setAccessibleTabName(2, "Ball verbinden Tab 3 von 4");
-    ui->tabWidget->tabBar()->setAccessibleTabName(3, "Einstellungen Tab 4 von 4");
+    ui->tabWidget->tabBar()->setAccessibleTabName(0, tr("Toneinstellungen Tab 1 von 4"));
+    ui->tabWidget->tabBar()->setAccessibleTabName(1, tr("Lichteinstellungen Tab 2 von 4"));
+    ui->tabWidget->tabBar()->setAccessibleTabName(2, tr("Ball verbinden Tab 3 von 4"));
+    ui->tabWidget->tabBar()->setAccessibleTabName(3, tr("Einstellungen Tab 4 von 4"));
 
 
 
 
-    ui->Sound_tabWidget->tabBar()->setAccessibleTabName(0, "Tonhöheneinstellung Tab 1 von 2");
-    ui->Sound_tabWidget->tabBar()->setAccessibleTabName(1, "Piepseinstellung Tab 2 von 2");
+    ui->Sound_tabWidget->tabBar()->setAccessibleTabName(0, tr("Tonhöheneinstellung Tab 1 von 2"));
+    ui->Sound_tabWidget->tabBar()->setAccessibleTabName(1, tr("Piepseinstellung Tab 2 von 2"));
 
-    ui->Lautstaerke->setAccessibleName("Lautstärke" + QString::number(ui->Lautstaerke->value()) + "% Einstellbar");
+    ui->Lautstaerke->setAccessibleName(tr("Lautstärke") + QString::number(ui->Lautstaerke->value()) + tr("% Einstellbar"));
 
-    ui->Stillstehend_Beep_Freq->setAccessibleName("Stillstehende Piepsrequenz"+ QString::number(ui->Stillstehend_Beep_Freq->value()) + "% Einstellbar");
-    ui->Bewegend_Beep_Freq->setAccessibleName("Bewegende Piepsrequenz"+ QString::number(ui->Bewegend_Beep_Freq->value()) + "% Einstellbar");
+    ui->Stillstehend_Beep_Freq->setAccessibleName(tr("Stillstehende Piepsrequenz")+ QString::number(ui->Stillstehend_Beep_Freq->value()) + tr("% Einstellbar"));
+    ui->Bewegend_Beep_Freq->setAccessibleName(tr("Bewegende Piepsrequenz")+ QString::number(ui->Bewegend_Beep_Freq->value()) + tr("% Einstellbar"));
 
-    ui->Stillstehend_Ton_Freq->setAccessibleName("Stillstehende Tonfrequenz"+ QString::number(ui->Stillstehend_Ton_Freq->value()) + "% Einstellbar");
-    ui->Stillstehend_Beep_Freq->setAccessibleName("Bewegende Tonfrequenz"+ QString::number(ui->Bewegend_Ton_Freq->value()) + "% Einstellbar");
+    ui->Stillstehend_Ton_Freq->setAccessibleName(tr("Stillstehende Tonfrequenz")+ QString::number(ui->Stillstehend_Ton_Freq->value()) + tr("% Einstellbar"));
+    ui->Stillstehend_Beep_Freq->setAccessibleName(tr("Bewegende Tonfrequenz")+ QString::number(ui->Bewegend_Ton_Freq->value()) + tr("% Einstellbar"));
 
-    ui->Helligkeit->setAccessibleName("Helligkeit" + QString::number(ui->Helligkeit->value())+ "% Einstellbar");
+    ui->Helligkeit->setAccessibleName(tr("Helligkeit") + QString::number(ui->Helligkeit->value())+ tr("% Einstellbar"));
 
 
     /***********Setting Content Margins and Size ***/
