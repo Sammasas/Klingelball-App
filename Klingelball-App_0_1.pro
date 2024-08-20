@@ -10,6 +10,10 @@ CONFIG += c++17
 RC_ICONS = KlingelballIcon1024.png
 ICON = KlingelballIcon1024.png
 
+TRANSLATIONS += Klingelball_App_0_1_en_001.ts \
+    Klingelball_App_0_1_pl_PL.ts
+
+
 
 # You can make your code fail to compile if it uses deprecated APIs.
 # In order to do so, uncomment the following line.
@@ -46,6 +50,7 @@ DISTFILES += \
     Assets.xcassets/AppIcon.appiconset/Contents.json \
     Assets.xcassets/AppIcon.appiconset/KlingelballIcon1024.png \
     Assets.xcassets/Contents.json \
+    Datenschutzerklaerung.html \
     Info.plist \
     android/AndroidManifest.xml \
     android/AndroidSettings.java \

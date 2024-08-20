@@ -9,93 +9,131 @@
 #include "klingelballui.h"
 #include "ui_klingelballui.h"
 
+void KlingelballUI::on_Automatic_checkBox_clicked()
+{
+    qDebug()<<"automatic chekcbox clicked";
+    appearance = Appearance::automatically;
+    settings->setValue("Appearance", Appearance::automatically);
+    on_colorSchemeChanged(QGuiApplication::styleHints()->colorScheme());
+}
 
 void KlingelballUI::on_Lightmode_checkBox_clicked()
 {
-    if(ui->Lightmode_checkBox->isChecked()){
-        ui->Lightmode_checkBox->setDisabled(true);
-        ui->Darkmode_checkBox->setDisabled(false);
-        ui->Darkmode_checkBox->setCheckState(Qt::Unchecked);
-
-        QFile styleSheetFile(":/stylesheet/lightmode.css");
-        styleSheetFile.open(QFile::ReadOnly);
-        QString styleSheet = QLatin1String(styleSheetFile.readAll());
-
-        ui->Bewegend_Farbe1->setStyleSheet(RadioButtonCommonStyleLight + RadioButtonColor1);
-        ui->Bewegend_Farbe2->setStyleSheet(RadioButtonCommonStyleLight + RadioButtonColor2);
-        ui->Bewegend_Farbe3->setStyleSheet(RadioButtonCommonStyleLight + RadioButtonColor3);
-        ui->Bewegend_Farbe4->setStyleSheet(RadioButtonCommonStyleLight + RadioButtonColor4);
-        ui->Bewegend_Farbe5->setStyleSheet(RadioButtonCommonStyleLight + RadioButtonColor5);
-
-        ui->Stillstehend_Farbe1->setStyleSheet(RadioButtonCommonStyleLight + RadioButtonColor1);
-        ui->Stillstehend_Farbe2->setStyleSheet(RadioButtonCommonStyleLight + RadioButtonColor2);
-        ui->Stillstehend_Farbe3->setStyleSheet(RadioButtonCommonStyleLight + RadioButtonColor3);
-        ui->Stillstehend_Farbe4->setStyleSheet(RadioButtonCommonStyleLight + RadioButtonColor4);
-        ui->Stillstehend_Farbe5->setStyleSheet(RadioButtonCommonStyleLight + RadioButtonColor5);
-
-        setStyleSheet(styleSheet);
-
-
-        ui->Sound_tabWidget->setStyleSheet("QTabWidget{\n	background-color: red;\n}\n\nQTabWidget::pane {\n  border: 2px solid black;\n  top:-2px; \n  background: solid black;\n	border-radius: 0px;\n} \n\nQTabBar{\n	border-top: 0px;\n}\n\nQTabBar::tab {\n  padding-right: -10px; padding-left: 4px; background: rgb(230, 230, 230); \n  \n	padding: 15px;\n	margin-left: 0px;\n	margin-right: 0px;\n\n  \n} \n\nQTabBar::tab:unselected{\n	background: darkgrey;\n   top: 5px; \n	\n	border-radius: 0px;\n	border-bottom: 2px  solid black;\n	border-top: 1px solid lightgrey;\n	border-left: 1px solid lightgrey;\n	border-right: 1px solid lightgrey;\n	\n}\n\nQTabBar::tab:selected { \nborder: 2px solid black; \n  background: transparent; \n  margin-bottom: -2px; \nborder-bottom: 2px solid #e50616;\n}\n\nQTabBar::tab::disabled{\n    width: 0;\n    height: 0;\n    margin: 0;\n    padding: 0;\n    border: none;\n}");
-        ui->tabWidget->setStyleSheet("\n\nQTabBar::tab{\n   padding-right: -10px; padding-left: 4px; margin-left: 10px;\n    margin-right: 10px;\n    margin-bottom: 5px;\n    margin-top: 10px;\n\n    /*padding-left: 5px;\n    padding-right: 5px;*/\n\n}\n\nQTabWidget::tab-bar {\n    alignment: center;\n	\n\n}\n\nQTabBar{\nborder-top: 2px solid black;\n    alignment: center;\n\n}\n\nQTabBar::tab:selected {\n    color: #e50616;\n    background: transparent;\n    border-bottom: 2px solid #e50616;\n\n}\n\nQTabBar::tab:!selected {\n    color: black;\n    background: transparent;\n    \n}\n\nQTabBar::tab::disabled{\n    width: 0;\n    height: 0;\n    margin: 0;\n    padding: 0;\n    border: none;\n}");
-
-
-        ui->line->setStyleSheet("color: black;");
-        ui->line_2->setStyleSheet("color: black;");
-        ui->line_3->setStyleSheet("color: black;");
-
-        ui->tabWidget->setTabIcon(0, QIcon(":/Icons/lautstarke_dark.png"));
-        ui->tabWidget->setTabIcon(1, QIcon(":/Icons/light_icon_light.png"));
-        ui->tabWidget->setTabIcon(2, QIcon(":/Icons/Ball_icon.png"));
-        ui->tabWidget->setTabIcon(3, QIcon(":/Icons/settings_icon_176440.png"));
-
-        on_tabWidget_currentChanged(ui->tabWidget->currentIndex());
-    }
+    appearance = Appearance::lightmode;
+    settings->setValue("Appearance", Appearance::lightmode);
+    setLightmode();
 }
 
 
 void KlingelballUI::on_Darkmode_checkBox_clicked()
 {
-    if(ui->Darkmode_checkBox->isChecked()){
-        ui->Darkmode_checkBox->setDisabled(true);
-        ui->Lightmode_checkBox->setDisabled(false);
-        ui->Lightmode_checkBox->setCheckState(Qt::Unchecked);
-
-        QFile styleSheetFile(":/stylesheet/darkmode.css");
-        styleSheetFile.open(QFile::ReadOnly);
-        QString styleSheet = QLatin1String(styleSheetFile.readAll());
-
-        ui->Bewegend_Farbe1->setStyleSheet(RadioButtonCommonStyleDark + RadioButtonColor1);
-        ui->Bewegend_Farbe2->setStyleSheet(RadioButtonCommonStyleDark + RadioButtonColor2);
-        ui->Bewegend_Farbe3->setStyleSheet(RadioButtonCommonStyleDark + RadioButtonColor3);
-        ui->Bewegend_Farbe4->setStyleSheet(RadioButtonCommonStyleDark + RadioButtonColor4);
-        ui->Bewegend_Farbe5->setStyleSheet(RadioButtonCommonStyleDark + RadioButtonColor5);
-
-        ui->Stillstehend_Farbe1->setStyleSheet(RadioButtonCommonStyleDark + RadioButtonColor1);
-        ui->Stillstehend_Farbe2->setStyleSheet(RadioButtonCommonStyleDark + RadioButtonColor2);
-        ui->Stillstehend_Farbe3->setStyleSheet(RadioButtonCommonStyleDark + RadioButtonColor3);
-        ui->Stillstehend_Farbe4->setStyleSheet(RadioButtonCommonStyleDark + RadioButtonColor4);
-        ui->Stillstehend_Farbe5->setStyleSheet(RadioButtonCommonStyleDark + RadioButtonColor5);
-
-        setStyleSheet(styleSheet);
-        ui->Sound_tabWidget->setStyleSheet("QTabWidget{\n	background-color: red;\n}\n\nQTabWidget::pane {\n  border: 2px solid white;\n  top:-2px; \n  background: solid white;\n	border-radius: 0px;\n} \n\nQTabBar{\n	border-top: 0px;\n}\n\nQTabBar::tab {\n padding-right: -10px; padding-left: 4px; background: rgb(230, 230, 230); \n  \n	padding: 15px;\n	margin-left: 0px;\n	margin-right: 0px;\n\n  \n} \n\nQTabBar::tab:unselected{\n	background: darkgrey;\n   top: 5px; \n	\n	border-radius: 0px;\n	border-bottom: 2px  solid white;\n	border-top: 1px solid lightgrey;\n	border-left: 1px solid lightgrey;\n	border-right: 1px solid lightgrey;\n	\n}\n\nQTabBar::tab:selected { \nborder: 2px solid white; \n  background: transparent; \n  margin-bottom: -2px; \nborder-bottom: 2px solid #e50616;\n}\n\nQTabBar::tab::disabled{\n    width: 0;\n    height: 0;\n    margin: 0;\n    padding: 0;\n    border: none;\n}");
-        ui->tabWidget->setStyleSheet("\n\nQTabBar::tab{\n   padding-right: -10px; padding-left: 4px; margin-left: 10px;\n    margin-right: 10px;\n    margin-bottom: 5px;\n    margin-top: 10px;\n\n    /*padding-left: 5px;\n    padding-right: 5px;*/\n\n}\n\nQTabWidget::tab-bar {\n    alignment: center;\n	\n\n}\n\nQTabBar{\nborder-top: 2px solid white;\n    alignment: center;\n\n}\n\nQTabBar::tab:selected {\n    color: #e50616;\n    background: transparent;\n    border-bottom: 2px solid #e50616;\n\n}\n\nQTabBar::tab:!selected {\n    color: black;\n    background: transparent;\n    \n}\n\nQTabBar::tab::disabled{\n    width: 0;\n    height: 0;\n    margin: 0;\n    padding: 0;\n    border: none;\n}");
-        ui->Erklaerung_textView->setStyleSheet("QTextBrowser{"
-                                               "background-color: white;"
-                                               "}");
-
-        ui->line->setStyleSheet("color: white;");
-        ui->line_2->setStyleSheet("color: white;");
-        ui->line_3->setStyleSheet("color: white;");
-
-        ui->tabWidget->setTabIcon(0, QIcon(":/Icons/lautstarke_light.png"));
-        ui->tabWidget->setTabIcon(1, QIcon(":/Icons/light_icon_dark.png"));
-        ui->tabWidget->setTabIcon(2, QIcon(":/Icons/Ball_icon_inverted.png"));
-        ui->tabWidget->setTabIcon(3, QIcon(":/Icons/settingsIcon_inverted.png"));
-
-        on_tabWidget_currentChanged(ui->tabWidget->currentIndex());
-    }
+    appearance = Appearance::darkmode;
+    settings->setValue("Appearance", Appearance::darkmode);
+    setDarkmode();
 }
+
+
+void KlingelballUI::setDarkmode(){
+    currentAppearance = Appearance::darkmode;
+    QFile styleSheetFile(":/stylesheet/darkmode.css");
+    styleSheetFile.open(QFile::ReadOnly);
+    QString styleSheet = QLatin1String(styleSheetFile.readAll());
+
+    ui->Bewegend_Farbe1->setStyleSheet(RadioButtonCommonStyleLight + RadioButtonColor1);
+    ui->Bewegend_Farbe2->setStyleSheet(RadioButtonCommonStyleDark + RadioButtonColor2);
+    ui->Bewegend_Farbe3->setStyleSheet(RadioButtonCommonStyleDark + RadioButtonColor3);
+    ui->Bewegend_Farbe4->setStyleSheet(RadioButtonCommonStyleDark + RadioButtonColor4);
+    ui->Bewegend_Farbe5->setStyleSheet(RadioButtonCommonStyleLight + RadioButtonColor5);
+
+    ui->Stillstehend_Farbe1->setStyleSheet(RadioButtonCommonStyleLight + RadioButtonColor1);
+    ui->Stillstehend_Farbe2->setStyleSheet(RadioButtonCommonStyleDark + RadioButtonColor2);
+    ui->Stillstehend_Farbe3->setStyleSheet(RadioButtonCommonStyleDark + RadioButtonColor3);
+    ui->Stillstehend_Farbe4->setStyleSheet(RadioButtonCommonStyleDark + RadioButtonColor4);
+    ui->Stillstehend_Farbe5->setStyleSheet(RadioButtonCommonStyleLight + RadioButtonColor5);
+
+    ui->Stillstehend_Farbe_label->setStyleSheet("QLabel{background: rgb(0, 0, 0);"
+                                                "margin-top: 5px;"
+                                                "margin-left: 5px;"
+                                                "margin-right: 5px;"
+                                                "border-radius: 6px;"
+                                                "}");
+    ui->Bewegend_Farbe_Label->setStyleSheet("QLabel{background: rgb(0, 0, 0);"
+                                            "margin-top: 5px;"
+                                            "margin-left: 5px;"
+                                            "margin-right: 5px;"
+                                            "border-radius: 6px;"
+                                            "}");
+
+    setStyleSheet(styleSheet);
+    ui->Sound_tabWidget->setStyleSheet("QTabWidget{\n	background-color: red;\n}\n\nQTabWidget::pane {\n  border: 2px solid white;\n  top:-2px; \n  background: solid white;\n	border-radius: 0px;\n} \n\nQTabBar{\n	border-top: 0px;\n}\n\nQTabBar::tab {\n padding-right: -10px; padding-left: 4px; background: rgb(230, 230, 230); \n  \n	padding: 15px;\n	margin-left: 0px;\n	margin-right: 0px;\n\n  \n} \n\nQTabBar::tab:unselected{\n	background: darkgrey;\n   top: 5px; \n	\n	border-radius: 0px;\n	border-bottom: 2px  solid white;\n	border-top: 1px solid lightgrey;\n	border-left: 1px solid lightgrey;\n	border-right: 1px solid lightgrey;\n	\n}\n\nQTabBar::tab:selected { \nborder: 2px solid white; \n  background: transparent; \n  margin-bottom: -2px; \nborder-bottom: 2px solid #e50616;\n}\n\nQTabBar::tab::disabled{\n    width: 0;\n    height: 0;\n    margin: 0;\n    padding: 0;\n    border: none;\n}");
+    ui->tabWidget->setStyleSheet("\n\nQTabBar::tab{\n   padding-right: -10px; padding-left: 4px; margin-left: 10px;\n    margin-right: 10px;\n    margin-bottom: 5px;\n    margin-top: 10px;\n\n    /*padding-left: 5px;\n    padding-right: 5px;*/\n\n}\n\nQTabWidget::tab-bar {\n    alignment: center;\n	\n\n}\n\nQTabBar{\nborder-top: 2px solid white;\n    alignment: center;\n\n}\n\nQTabBar::tab:selected {\n    color: #e50616;\n    background: transparent;\n    border-bottom: 2px solid #e50616;\n\n}\n\nQTabBar::tab:!selected {\n    color: black;\n    background: transparent;\n    \n}\n\nQTabBar::tab::disabled{\n    width: 0;\n    height: 0;\n    margin: 0;\n    padding: 0;\n    border: none;\n}");
+    ui->Erklaerung_textView->setStyleSheet("QTextBrowser{"
+                                           "background-color: white;"
+                                           "}");
+
+    ui->line->setStyleSheet("color: white;");
+    ui->line_2->setStyleSheet("color: white;");
+    ui->line_3->setStyleSheet("color: white;");
+
+    ui->tabWidget->setTabIcon(0, QIcon(":/Icons/lautstarke_light.png"));
+    ui->tabWidget->setTabIcon(1, QIcon(":/Icons/light_icon_dark.png"));
+    ui->tabWidget->setTabIcon(2, QIcon(":/Icons/Ball_icon_inverted.png"));
+    ui->tabWidget->setTabIcon(3, QIcon(":/Icons/settingsIcon_inverted.png"));
+
+    on_tabWidget_currentChanged(ui->tabWidget->currentIndex());
+
+}
+
+void KlingelballUI::setLightmode(){
+    currentAppearance = Appearance::lightmode;
+    QFile styleSheetFile(":/stylesheet/lightmode.css");
+    styleSheetFile.open(QFile::ReadOnly);
+    QString styleSheet = QLatin1String(styleSheetFile.readAll());
+
+    ui->Bewegend_Farbe1->setStyleSheet(RadioButtonCommonStyleLight + RadioButtonColor1);
+    ui->Bewegend_Farbe2->setStyleSheet(RadioButtonCommonStyleLight + RadioButtonColor2);
+    ui->Bewegend_Farbe3->setStyleSheet(RadioButtonCommonStyleLight + RadioButtonColor3);
+    ui->Bewegend_Farbe4->setStyleSheet(RadioButtonCommonStyleLight + RadioButtonColor4);
+    ui->Bewegend_Farbe5->setStyleSheet(RadioButtonCommonStyleLight + RadioButtonColor5);
+
+    ui->Stillstehend_Farbe1->setStyleSheet(RadioButtonCommonStyleLight + RadioButtonColor1);
+    ui->Stillstehend_Farbe2->setStyleSheet(RadioButtonCommonStyleLight + RadioButtonColor2);
+    ui->Stillstehend_Farbe3->setStyleSheet(RadioButtonCommonStyleLight + RadioButtonColor3);
+    ui->Stillstehend_Farbe4->setStyleSheet(RadioButtonCommonStyleLight + RadioButtonColor4);
+    ui->Stillstehend_Farbe5->setStyleSheet(RadioButtonCommonStyleLight + RadioButtonColor5);
+
+    ui->Stillstehend_Farbe_label->setStyleSheet("QLabel{background: rgb(255, 255, 255);"
+                                                "margin-top: 5px;"
+                                                "margin-left: 5px;"
+                                                "margin-right: 5px;"
+                                                "border-radius: 6px;"
+                                                "}");
+    ui->Bewegend_Farbe_Label->setStyleSheet("QLabel{background: rgb(255, 255, 255);"
+                                            "margin-top: 5px;"
+                                            "margin-left: 5px;"
+                                            "margin-right: 5px;"
+                                            "border-radius: 6px;"
+                                            "}");
+
+    setStyleSheet(styleSheet);
+
+
+    ui->Sound_tabWidget->setStyleSheet("QTabWidget{\n	background-color: red;\n}\n\nQTabWidget::pane {\n  border: 2px solid black;\n  top:-2px; \n  background: solid black;\n	border-radius: 0px;\n} \n\nQTabBar{\n	border-top: 0px;\n}\n\nQTabBar::tab {\n  padding-right: -10px; padding-left: 4px; background: rgb(230, 230, 230); \n  \n	padding: 15px;\n	margin-left: 0px;\n	margin-right: 0px;\n\n  \n} \n\nQTabBar::tab:unselected{\n	background: darkgrey;\n   top: 5px; \n	\n	border-radius: 0px;\n	border-bottom: 2px  solid black;\n	border-top: 1px solid lightgrey;\n	border-left: 1px solid lightgrey;\n	border-right: 1px solid lightgrey;\n	\n}\n\nQTabBar::tab:selected { \nborder: 2px solid black; \n  background: transparent; \n  margin-bottom: -2px; \nborder-bottom: 2px solid #e50616;\n}\n\nQTabBar::tab::disabled{\n    width: 0;\n    height: 0;\n    margin: 0;\n    padding: 0;\n    border: none;\n}");
+    ui->tabWidget->setStyleSheet("\n\nQTabBar::tab{\n   padding-right: -10px; padding-left: 4px; margin-left: 10px;\n    margin-right: 10px;\n    margin-bottom: 5px;\n    margin-top: 10px;\n\n    /*padding-left: 5px;\n    padding-right: 5px;*/\n\n}\n\nQTabWidget::tab-bar {\n    alignment: center;\n	\n\n}\n\nQTabBar{\nborder-top: 2px solid black;\n    alignment: center;\n\n}\n\nQTabBar::tab:selected {\n    color: #e50616;\n    background: transparent;\n    border-bottom: 2px solid #e50616;\n\n}\n\nQTabBar::tab:!selected {\n    color: black;\n    background: transparent;\n    \n}\n\nQTabBar::tab::disabled{\n    width: 0;\n    height: 0;\n    margin: 0;\n    padding: 0;\n    border: none;\n}");
+
+
+    ui->line->setStyleSheet("color: black;");
+    ui->line_2->setStyleSheet("color: black;");
+    ui->line_3->setStyleSheet("color: black;");
+
+    ui->tabWidget->setTabIcon(0, QIcon(":/Icons/lautstarke_dark.png"));
+    ui->tabWidget->setTabIcon(1, QIcon(":/Icons/light_icon_light.png"));
+    ui->tabWidget->setTabIcon(2, QIcon(":/Icons/Ball_icon.png"));
+    ui->tabWidget->setTabIcon(3, QIcon(":/Icons/settings_icon_176440.png"));
+
+    on_tabWidget_currentChanged(ui->tabWidget->currentIndex());
+}
+
 
 void KlingelballUI::create_Profile_visualisation(EinstellungsProfil *profil){
 //Not used in this version of the project (V1.0)
@@ -149,6 +187,7 @@ void KlingelballUI::on_new_profile_button_clicked()
 
 void KlingelballUI::change_profile_selection()
 {
+     //Not used in this version of the project (V1.0)
     foreach (EinstellungsProfil *profile, *Profile_list) {
         profile->setChecked(false);
     }
@@ -182,10 +221,7 @@ void KlingelballUI::set_transmit_profile(bool b)
 {
     //Not used in this version of the project (V1.0)
     this->transmit_profile = b;
-    if (b == false)
-        ui->uebertragen_button->setText("Übertragen");
-    else
-        ui->uebertragen_button->setText(("Profil übertragen"));
+    
 }
 
 void KlingelballUI::update_profile_transmittion_state()
@@ -206,7 +242,7 @@ void KlingelballUI::update_profile_transmittion_state()
 void KlingelballUI::on_tabWidget_currentChanged(int index)
 {
 //change icon according to color scheme
-    if(ui->Darkmode_checkBox->isChecked()){
+    if(currentAppearance == Appearance::darkmode){
         switch(index){
         case 0:
             ui->tabWidget->setTabIcon(0, QIcon(":/Icons/lautstarke_red.png"));
@@ -239,7 +275,7 @@ void KlingelballUI::on_tabWidget_currentChanged(int index)
             ui->tabWidget->setTabIcon(3, QIcon(":/Icons/settings_icon_red.png"));
             break;
         }
-    }else if (ui->Lightmode_checkBox->isChecked()){
+    }else if (currentAppearance == Appearance::lightmode){
         switch(index){
         case 0:
             ui->tabWidget->setTabIcon(0, QIcon(":/Icons/lautstarke_red.png"));
@@ -283,21 +319,20 @@ void KlingelballUI::on_tabWidget_currentChanged(int index)
 void KlingelballUI::on_OnOff_Button_toggled(bool checked)
 {
     if(checked){
-        ui->OnOff_Button->setText("Ball: Ein");
+        ui->OnOff_Button->setText(tr("Ball: Ein"));
+        ui->OnOff_Button->setAccessibleName(tr("Ball: Ein aktiviert"));
     }else{
-        ui->OnOff_Button->setText("Ball: Aus");
+        ui->OnOff_Button->setText(tr("Ball: Aus"));
+        ui->OnOff_Button->setAccessibleName(tr("Ball: Aus nicht aktiviert"));
     }
 }
 
-void KlingelballUI::on_UIDeviceList_currentRowChanged(int currentRow)
+void KlingelballUI::on_UIDeviceList_itemClicked(QListWidgetItem *item)
 {
-    if(!ui->connectKlingelball->isVisible()){
-        ui->connectKlingelball->setVisible(true);
-    }
-    if(currentRow == -1){
-        ui->connectKlingelball->setVisible(false);
-    }
+    m_deviceDiscoveryAgent->stop();
+    connectDevice(deviceList->at(ui->UIDeviceList->currentRow())->getDevice());
 }
+
 
 void KlingelballUI::stillstehendButtonGroupClicked(QAbstractButton *button){
     //Gets ID of selected color, unselects if selected color is pressed again (Not natively implemented)
@@ -308,13 +343,41 @@ void KlingelballUI::stillstehendButtonGroupClicked(QAbstractButton *button){
             stillstehendColorSelectionButtonGroup->setExclusive(true);
             stillstehendButtonGroupOneSelected = false;
             stillstehendButtonGroupSelectedID = 0;
+            ui->StillstehendColorSelectionGroupBox->setStyleSheet("QGroupBox{"
+                                                                  "background: transparent;}");
+
+
+
+
         }else{
             stillstehendButtonGroupSelectedID = stillstehendColorSelectionButtonGroup->id(button);
+
+            qWarning() << "Stillstehend selected color name: " << StillstehendSelectedColor().name();
+            if(StillstehendSelectedColor().name() == "#ffffff" && (appearance == Appearance::lightmode)){
+               ui->StillstehendColorSelectionGroupBox->setStyleSheet("QGroupBox{"
+                                                                      "background: #000000;}");
+            }else{
+                ui->StillstehendColorSelectionGroupBox->setStyleSheet("QGroupBox{"
+                                                                      "background: " + StillstehendSelectedColor().name() + ";}");
+            }
         }
     }else{
         stillstehendButtonGroupOneSelected = true;
         stillstehendButtonGroupSelectedID = stillstehendColorSelectionButtonGroup->id(button);
+        if(StillstehendSelectedColor().name() == "#ffffff" && (appearance == Appearance::lightmode)){
+            ui->StillstehendColorSelectionGroupBox->setStyleSheet("QGroupBox{"
+                                                                   "background: #000000;}");
+         }else{
+             ui->StillstehendColorSelectionGroupBox->setStyleSheet("QGroupBox{"
+                                                                   "background: " + StillstehendSelectedColor().name() + ";}");
+         }
+
     }
+
+    settings->setValue("Licht/StillstehendFarbe", stillstehendButtonGroupSelectedID);
+
+
+
 
 }
 
@@ -327,30 +390,67 @@ void KlingelballUI::bewegendButtonGroupClicked(QAbstractButton *button){
             bewegendColorSelectionButtonGroup->setExclusive(true);
             bewegendButtonGroupOneSelected = false;
             bewegendButtonGroupSelectedID = 0;
+            ui->BewegendColorSelectionGroupBox->setStyleSheet("QGroupBox{"
+                                                                  "background: transparent;}");
         }else{
             bewegendButtonGroupSelectedID = bewegendColorSelectionButtonGroup->id(button);
+
+            if(BewegendSelectedColor().name() == "#ffffff" && (appearance == Appearance::lightmode)){
+               ui->BewegendColorSelectionGroupBox->setStyleSheet("QGroupBox{"
+                                               "background: #000000;}");
+            }else{
+                ui->BewegendColorSelectionGroupBox->setStyleSheet("QGroupBox{"
+                                                                      "background: " + BewegendSelectedColor().name() + ";}");
+            }
         }
     }else{
         bewegendButtonGroupOneSelected = true;
         bewegendButtonGroupSelectedID = bewegendColorSelectionButtonGroup->id(button);
+        if(BewegendSelectedColor().name() == "#ffffff" && (appearance == Appearance::lightmode)){
+            ui->BewegendColorSelectionGroupBox->setStyleSheet("QGroupBox{"
+                                "background: #000000;}");
+        }else{
+            ui->BewegendColorSelectionGroupBox->setStyleSheet("QGroupBox{"
+                                                              "background: " + BewegendSelectedColor().name() + ";}");
+        }
     }
+    settings->setValue("Licht/BewegendFarbe", bewegendButtonGroupSelectedID);
 }
 
 void KlingelballUI::updateAccessibleDesciption(){
-    ui->Lautstaerke->setAccessibleName("Lautstärke" + QString::number(ui->Lautstaerke->value()) + "% Einstellbar");
+    ui->Lautstaerke->setAccessibleName(tr("Lautstärke") + QString::number(ui->Lautstaerke->value()) + tr("% Einstellbar"));
+    settings->setValue("Ton/Lautstaerke", ui->Lautstaerke->value());
 
-    ui->Stillstehend_Beep_Freq->setAccessibleName("Stillstehende Piepsrequenz"+ QString::number(ui->Stillstehend_Beep_Freq->value()) + "% Einstellbar");
-    ui->Bewegend_Beep_Freq->setAccessibleName("Bewegende Piepsrequenz"+ QString::number(ui->Bewegend_Beep_Freq->value()) + "% Einstellbar");
 
-    ui->Stillstehend_Ton_Freq->setAccessibleName("Stillstehende Tonfrequenz"+ QString::number(ui->Stillstehend_Ton_Freq->value()) + "% Einstellbar");
-    ui->Stillstehend_Beep_Freq->setAccessibleName("Bewegende Tonfrequenz"+ QString::number(ui->Bewegend_Ton_Freq->value()) + "% Einstellbar");
+    ui->Stillstehend_Beep_Freq->setAccessibleName(tr("Stillstehende Piepsrequenz")+ QString::number(ui->Stillstehend_Beep_Freq->value()) + tr("% Einstellbar"));
+    ui->Bewegend_Beep_Freq->setAccessibleName(tr("Bewegende Piepsrequenz") + QString::number(ui->Bewegend_Beep_Freq->value()) + tr("% Einstellbar"));
+    settings->setValue("Ton/Stillstehend_Beep_Freq", ui->Stillstehend_Beep_Freq->value());
+    settings->setValue("Ton/Bewegend_Beep_Freq", ui->Bewegend_Beep_Freq->value());
 
-    ui->Heilligkeit->setAccessibleName("Helligkeit" + QString::number(ui->Heilligkeit->value())+ "% Einstellbar");
+
+    ui->Stillstehend_Ton_Freq->setAccessibleName(tr("Stillstehende Tonfrequenz") + QString::number(ui->Stillstehend_Ton_Freq->value()) + tr("% Einstellbar"));
+    ui->Bewegend_Ton_Freq->setAccessibleName(tr("Bewegende Tonfrequenz") + QString::number(ui->Bewegend_Ton_Freq->value()) + tr("% Einstellbar"));
+    settings->setValue("Ton/Stillstehend_Ton_Freq", ui->Stillstehend_Ton_Freq->value());
+    settings->setValue("Ton/Bewegend_Ton_Freq", ui->Bewegend_Ton_Freq->value());
+
+    ui->Helligkeit->setAccessibleName(tr("Helligkeit") + QString::number(ui->Helligkeit->value())+ tr("% Einstellbar"));
+    settings->setValue("Licht/Helligkeit", ui->Helligkeit->value());
+
+}
+
+void KlingelballUI::on_buttonGroupToggled(QAbstractButton *button, bool checked){
+    if(checked){
+        button->setAccessibleName(button->accessibleName().replace(tr("nicht"), ""));
+
+    }else{
+        button->setAccessibleName(button->accessibleName().replace(tr("aktiviert"), tr("nicht aktiviert")));
+    }
 }
 
 void KlingelballUI::on_Lautstaerke_valueChanged(int arg1)
 {
-    ui->Lautstaerke->setAccessibleName("Lautstärke" + QString::number(arg1) + "% Einstellbar");
+    //ui->Lautstaerke->setAccessibleName("Lautstärke" + QString::number(arg1) + "% Einstellbar");
+
 }
 
 
@@ -365,3 +465,49 @@ void KlingelballUI::on_Bewegend_Beep_Freq_valueChanged(int arg1)
     Q_UNUSED(arg1);
 }
 
+void KlingelballUI::on_pause_button_clicked()
+{
+    if(ui->OnOff_Button->isChecked()){
+        ui->OnOff_Button->setChecked(false);
+
+        //Update text & Description
+        ui->pause_button->setText(tr("Start"));
+        ui->pause_button->setAccessibleName(tr("Start Taste"));
+
+        on_transmitGeneralSettings();
+
+    }else{
+        ui->OnOff_Button->setChecked(true);
+        ui->pause_button->setText(tr("Stopp"));
+        ui->pause_button->setAccessibleName(tr("Stopp Taste"));
+        on_transmitGeneralSettings();
+    }
+    //Update button2 text
+    ui->pause_button2->setText(ui->pause_button->text());
+
+    //Update button2 Accessibilty description
+    ui->pause_button2->setAccessibleName(ui->pause_button->accessibleName());
+}
+
+
+void KlingelballUI::on_pause_button_toggled(bool checked)
+{
+    if(!ui->OnOff_Button->isChecked()){
+
+        //Update text & Description
+        ui->pause_button->setText(tr("Start"));
+        ui->pause_button->setAccessibleName(tr("Start Taste"));
+
+        on_transmitGeneralSettings();
+
+    }else{
+        ui->pause_button->setText(tr("Stopp"));
+        ui->pause_button->setAccessibleName(tr("Stopp Taste"));
+        on_transmitGeneralSettings();
+    }
+    //Update button2 text
+    ui->pause_button2->setText(ui->pause_button->text());
+
+    //Update button2 Accessibilty description
+    ui->pause_button2->setAccessibleName(ui->pause_button->accessibleName());
+}

@@ -43,6 +43,8 @@ void KlingelballUI::setup_UI(){
     setup_spinbox();
     setup_lineedit();
     setup_ButtonGroup();
+
+
     ui->tabWidget->setFocusPolicy(Qt::NoFocus);
     ui->Settings_Tab->setFocusPolicy(Qt::NoFocus);
     ui->Profile_Tab->setFocusPolicy(Qt::NoFocus);
@@ -51,24 +53,26 @@ void KlingelballUI::setup_UI(){
 
 
     /*********Setting accessible names **********/
-    ui->tabWidget->tabBar()->setAccessibleTabName(0, "Toneinstellungen Tab 1 von 4");
-    ui->tabWidget->tabBar()->setAccessibleTabName(1, "Lichteinstellungen Tab 2 von 4");
-    ui->tabWidget->tabBar()->setAccessibleTabName(2, "Ball verbinden Tab 3 von 4");
-    ui->tabWidget->tabBar()->setAccessibleTabName(3, "Einstellungen Tab 4 von 4");
+    ui->tabWidget->tabBar()->setAccessibleTabName(0, tr("Toneinstellungen Tab 1 von 4"));
+    ui->tabWidget->tabBar()->setAccessibleTabName(1, tr("Lichteinstellungen Tab 2 von 4"));
+    ui->tabWidget->tabBar()->setAccessibleTabName(2, tr("Ball verbinden Tab 3 von 4"));
+    ui->tabWidget->tabBar()->setAccessibleTabName(3, tr("Einstellungen Tab 4 von 4"));
 
 
-    ui->Sound_tabWidget->tabBar()->setAccessibleTabName(0, "Tonhöheneinstellung Tab 1 von 2");
-    ui->Sound_tabWidget->tabBar()->setAccessibleTabName(1, "Piepseinstellung Tab 2 von 2");
 
-    ui->Lautstaerke->setAccessibleName("Lautstärke" + QString::number(ui->Lautstaerke->value()) + "% Einstellbar");
 
-    ui->Stillstehend_Beep_Freq->setAccessibleName("Stillstehende Piepsrequenz"+ QString::number(ui->Stillstehend_Beep_Freq->value()) + "% Einstellbar");
-    ui->Bewegend_Beep_Freq->setAccessibleName("Bewegende Piepsrequenz"+ QString::number(ui->Bewegend_Beep_Freq->value()) + "% Einstellbar");
+    ui->Sound_tabWidget->tabBar()->setAccessibleTabName(0, tr("Tonhöheneinstellung Tab 1 von 2"));
+    ui->Sound_tabWidget->tabBar()->setAccessibleTabName(1, tr("Piepseinstellung Tab 2 von 2"));
 
-    ui->Stillstehend_Ton_Freq->setAccessibleName("Stillstehende Tonfrequenz"+ QString::number(ui->Stillstehend_Ton_Freq->value()) + "% Einstellbar");
-    ui->Stillstehend_Beep_Freq->setAccessibleName("Bewegende Tonfrequenz"+ QString::number(ui->Bewegend_Ton_Freq->value()) + "% Einstellbar");
+    ui->Lautstaerke->setAccessibleName(tr("Lautstärke") + QString::number(ui->Lautstaerke->value()) + tr("% Einstellbar"));
 
-    ui->Heilligkeit->setAccessibleName("Helligkeit" + QString::number(ui->Heilligkeit->value())+ "% Einstellbar");
+    ui->Stillstehend_Beep_Freq->setAccessibleName(tr("Stillstehende Piepsrequenz")+ QString::number(ui->Stillstehend_Beep_Freq->value()) + tr("% Einstellbar"));
+    ui->Bewegend_Beep_Freq->setAccessibleName(tr("Bewegende Piepsrequenz")+ QString::number(ui->Bewegend_Beep_Freq->value()) + tr("% Einstellbar"));
+
+    ui->Stillstehend_Ton_Freq->setAccessibleName(tr("Stillstehende Tonfrequenz")+ QString::number(ui->Stillstehend_Ton_Freq->value()) + tr("% Einstellbar"));
+    ui->Stillstehend_Beep_Freq->setAccessibleName(tr("Bewegende Tonfrequenz")+ QString::number(ui->Bewegend_Ton_Freq->value()) + tr("% Einstellbar"));
+
+    ui->Helligkeit->setAccessibleName(tr("Helligkeit") + QString::number(ui->Helligkeit->value())+ tr("% Einstellbar"));
 
 
     /***********Setting Content Margins and Size ***/
@@ -77,19 +81,60 @@ void KlingelballUI::setup_UI(){
 
     ui->disconnectKlingelball->setVisible(false);
     ui->OnOff_Button->setVisible(false);
-    ui->connectKlingelball->setVisible(false);
     ui->batteryStatusProgressbar->setVisible(false);
-    ui->ErrormessageLabel->setVisible(false);
-    ui->ErrormessageLabelSecline->setVisible(false);
     ui->Sound_tabWidget->setAutoFillBackground(true);
-    ui->statusLabel->setVisible(false);
-
     ui->Sound_tabWidget->setFont(*SmallerdynamicSizeFont);
 
     ui->tabWidget->tabBar()->setIconSize(QSize(30* *fontScale, 30* *fontScale));
     ui->Sound_tabWidget->tabBar()->setIconSize(QSize(30* *fontScale, 30* *fontScale));
 
     ui->Erklaerung_textView->setTextInteractionFlags(Qt::LinksAccessibleByMouse);
+
+    //Set Values from saved Settings
+    connect(stillstehendColorSelectionButtonGroup, SIGNAL(buttonToggled(QAbstractButton*,bool)), this, SLOT(on_buttonGroupToggled(QAbstractButton*,bool)));
+    connect(bewegendColorSelectionButtonGroup, SIGNAL(buttonToggled(QAbstractButton*,bool)), this, SLOT(on_buttonGroupToggled(QAbstractButton*,bool)));
+
+
+    settings = new QSettings("SSA", "Klingelball App");
+    if(!settings->contains("Ton/Lautstaerke")){
+        ui->Lautstaerke->setValue(50);
+        ui->Stillstehend_Ton_Freq->setValue(40);
+        ui->Bewegend_Ton_Freq->setValue(40);
+        ui->Stillstehend_Beep_Freq->setValue(30);
+        ui->Bewegend_Beep_Freq->setValue(30);
+        ui->Helligkeit->setValue(100);
+
+        stillstehendColorSelectionButtonGroup->button(4)->setChecked(true);
+        stillstehendButtonGroupClicked(stillstehendColorSelectionButtonGroup->button(4));
+
+        bewegendColorSelectionButtonGroup->button(4)->setChecked(true);
+        bewegendButtonGroupClicked(bewegendColorSelectionButtonGroup->button(4));
+
+    }else{
+
+        ui->Lautstaerke->setValue(settings->value("Ton/Lautstaerke").toInt());
+
+        ui->Stillstehend_Beep_Freq->setValue(settings->value("Ton/Stillstehend_Beep_Freq").toInt());
+        ui->Bewegend_Beep_Freq->setValue(settings->value("Ton/Bewegend_Beep_Freq").toInt());
+
+        ui->Stillstehend_Ton_Freq->setValue(settings->value("Ton/Stillstehend_Ton_Freq").toInt());
+        ui->Bewegend_Ton_Freq->setValue(settings->value("Ton/Bewegend_Ton_Freq").toInt());
+
+        ui->Helligkeit->setValue(settings->value("Licht/Helligkeit").toInt());
+
+        if(settings->value("Licht/StillstehendFarbe").toInt() != 0){
+            stillstehendColorSelectionButtonGroup->button(settings->value("Licht/StillstehendFarbe").toInt())->setChecked(true);
+            stillstehendButtonGroupClicked(stillstehendColorSelectionButtonGroup->button(settings->value("Licht/StillstehendFarbe").toInt()));
+        }
+
+        if(settings->value("Licht/BewegendFarbe").toInt() != 0){
+            bewegendColorSelectionButtonGroup->button(settings->value("Licht/BewegendFarbe").toInt())->setChecked(true);
+            bewegendButtonGroupClicked(bewegendColorSelectionButtonGroup->button(settings->value("Licht/BewegendFarbe").toInt()));
+        }
+    }
+
+    QScroller::grabGesture(ui->Erklaerung_textView->viewport(), QScroller::LeftMouseButtonGesture);
+
 }
 
 float KlingelballUI::getfontScalefrompointSize(int pointSize){
@@ -128,7 +173,7 @@ void KlingelballUI::setup_spinbox()
     ui->Stillstehend_Beep_Freq->setFont(*dynamicSizeFont);
     ui->Bewegend_Beep_Freq->setFont(*dynamicSizeFont);
 
-    ui->Heilligkeit->setFont(*dynamicSizeFont);
+    ui->Helligkeit->setFont(*dynamicSizeFont);
 }
 
 void KlingelballUI::setup_fontAndroid(float fontScale){
@@ -144,10 +189,6 @@ void KlingelballUI::setup_fontiOS(int pointSize){
 
 void KlingelballUI::setup_buttons()
 {
-    ui->uebertragen_button->setFont(*dynamicSizeFont);
-    ui->Uebertragen2->setFont(*dynamicSizeFont);
-    ui->Uebtragen3->setFont(*dynamicSizeFont);
-
     float iconSizeMultiplier = 1.5;
 
     ui->Lautstaerke_erhoehen->setIconSize(QSize(ui->Lautstaerke_erhoehen->height()*iconSizeMultiplier, ui->Lautstaerke_erhoehen->height()));
@@ -170,7 +211,7 @@ void KlingelballUI::setup_buttons()
     ui->new_profile_button->setFont(*dynamicSizeFont);
     ui->new_profile_cancle_button->setFont(*dynamicSizeFont);
 
-    ui->Heilligkeit_erhoehen->setIconSize(QSize(ui->Lautstaerke_erhoehen->height()*iconSizeMultiplier, ui->Lautstaerke_erhoehen->height()));
+    ui->Helligkeit_erhoehen->setIconSize(QSize(ui->Lautstaerke_erhoehen->height()*iconSizeMultiplier, ui->Lautstaerke_erhoehen->height()));
     ui->Heilligkeit_verringern->setIconSize(QSize(ui->Lautstaerke_erhoehen->height()*iconSizeMultiplier, ui->Lautstaerke_erhoehen->height()));
 
 }
@@ -228,4 +269,43 @@ void KlingelballUI::setup_ButtonGroup(){
 
     connect(stillstehendColorSelectionButtonGroup, SIGNAL(buttonClicked(QAbstractButton*)), this, SLOT(stillstehendButtonGroupClicked(QAbstractButton*)));
     connect(bewegendColorSelectionButtonGroup, SIGNAL(buttonClicked(QAbstractButton*)), this, SLOT(bewegendButtonGroupClicked(QAbstractButton*)));
+
+    AppearanceButtonGroup = new QButtonGroup;
+    AppearanceButtonGroup->addButton(ui->Automatic_checkBox, 1);
+    AppearanceButtonGroup->addButton(ui->Darkmode_checkBox, 2);
+    AppearanceButtonGroup->addButton(ui->Lightmode_checkBox, 3);
+
+
+}
+
+void KlingelballUI::setup_Appearance(){
+    //Automatic Dark/Lightmode detection
+    connect(QGuiApplication::styleHints(), SIGNAL(colorSchemeChanged (Qt::ColorScheme)), this, SLOT(on_colorSchemeChanged(Qt::ColorScheme)));
+
+    if(settings->contains("Appearance")){
+        appearance = static_cast<Appearance>(settings->value("Appearance").toInt());
+    }else{
+        appearance = Appearance::automatically;
+    }
+
+    switch(appearance){
+    case automatically:
+        ui->Automatic_checkBox->setChecked(true);
+        on_colorSchemeChanged(QGuiApplication::styleHints()->colorScheme());
+        break;
+    case lightmode:
+        ui->Lightmode_checkBox->setChecked(true);
+        setLightmode();
+        break;
+    case darkmode:
+        ui->Darkmode_checkBox->setChecked(true);
+        setDarkmode();
+        break;
+    default:
+        ui->Automatic_checkBox->setChecked(true);
+        on_colorSchemeChanged(QGuiApplication::styleHints()->colorScheme());
+        break;
+
+    }
+
 }

@@ -17,6 +17,9 @@
 #include <QAudioFormat>
 #include <QAccessible>
 #include <QAccessibleActionInterface>
+#include <QAccessible>
+#include <QAccessibleWidget>
+#include <QAccessibleInterface>
 #include <QFile>
 #include "EinstellungsProfil.h"
 #include <QScroller>
@@ -36,6 +39,10 @@
 #include <QFontDatabase>
 #include <QStyleHints>
 #include <QFontDialog>
+#include <QSettings>
+#include <QListWidgetItem>
+#include <QApplication>
+#include <QTranslator>
 
 
 
@@ -79,6 +86,19 @@ public slots:
     void KlingelballDescriptorWritten(QLowEnergyDescriptor descriptor, QByteArray data);
     void stillstehendButtonGroupClicked(QAbstractButton *button);
     void bewegendButtonGroupClicked(QAbstractButton *button);
+    
+    
+private:
+    enum SettingTransmitStatus{TransmitGeneralSettings,
+                 TransmitSoundFrequenzy,
+                 TransmitGeneralSound,
+                 TransmitLightColorStill,
+                 TransmitLightColorMoving,
+                 TransmitGeneralLight,
+                 TransmittionDone,
+                 TransmittionError};
+    SettingTransmitStatus transmittionStatus = TransmitGeneralSettings;
+
 
 
 private slots:
@@ -95,23 +115,15 @@ private slots:
 
     void on_delete_current_profile_button_clicked();
 
-    void on_uebertragen_button_clicked();
-
     void on_searchKlingelball_clicked();
-
-    void on_connectKlingelball_clicked();
 
     void on_tabWidget_currentChanged(int index);
 
     void on_disconnectKlingelball_clicked();
 
-    //void on_pushButton_toggled(bool checked);
-
     void on_OnOff_Button_toggled(bool checked);
 
-    void on_UIDeviceList_currentRowChanged(int currentRow);
-
-    void transmitSettings();
+    void transmitSettings(SettingTransmitStatus transStat);
 
     void gotBatteryStatus(int s);
 
@@ -125,11 +137,31 @@ private slots:
 
     void updateAccessibleDesciption();
 
+    void on_pause_button_clicked();
+
+    void on_transmitGeneralSettings(){transmitSettings(SettingTransmitStatus::TransmitGeneralSettings);};
+    void on_transmitSoundFrequenzy(){transmitSettings(SettingTransmitStatus::TransmitSoundFrequenzy);};
+    void on_transmitGeneralSound(){transmitSettings(SettingTransmitStatus::TransmitGeneralSound);};
+    void on_transmitLightColorStill(){transmitSettings(SettingTransmitStatus::TransmitLightColorStill);};
+    void on_transmitLightColorMoving(){transmitSettings(SettingTransmitStatus::TransmitLightColorMoving);};
+    void on_transmitGeneralLight(){transmitSettings(SettingTransmitStatus::TransmitGeneralLight);};
+
+    void on_UIDeviceList_itemClicked(QListWidgetItem *item);
+
+    void on_buttonGroupToggled(QAbstractButton *button, bool checked);
+
+    void on_Automatic_checkBox_clicked();
+
+    void on_pause_button_toggled(bool checked);
+
 Q_SIGNALS:
     void BatteryStatusRead(int);
 
 
 private:
+
+    void printMessage(QString message);
+
     Ui::KlingelballUI *ui;
 
     bool transmit_profile = false;
@@ -145,6 +177,7 @@ private:
     void setup_spinbox();
     void setup_lineedit();
     void setup_ButtonGroup();
+    void setup_Appearance();
 
     float getfontScalefrompointSize(int pointSize);
 
@@ -164,8 +197,6 @@ private:
 
     QLowEnergyCharacteristic *DataCharacteristic;
     QBluetoothUuid *DataCharacteristicUUID;
-
-    void printMessage (QString message);
 
     QBluetoothDeviceDiscoveryAgent *m_deviceDiscoveryAgent;
     QLowEnergyController *m_controller;
@@ -188,6 +219,7 @@ private:
     QList<DeviceInfo *> *deviceList;
     DeviceInfo *ptrDevinfo;
 
+    void transmitAllSettings();
 
     enum Setting{GeneralSettings,
                  SoundFrequenzy,
@@ -196,15 +228,7 @@ private:
                  LightColorMoving,
                  GeneralLight};
 
-    enum SettingTransmitStatus{TransmitGeneralSettings,
-                 TransmitSoundFrequenzy,
-                 TransmitGeneralSound,
-                 TransmitLightColorStill,
-                 TransmitLightColorMoving,
-                 TransmitGeneralLight,
-                 TransmittionDone,
-                 TransmittionError};
-    SettingTransmitStatus transmittionStatus = TransmitGeneralSettings;
+    
 
     enum ConnectionStatus{Disconnected,
                          Connecting,
@@ -237,7 +261,7 @@ private:
                                          "margin-left: 10px;"
                                          "margin-right: 10px;}"
                                          "QRadioButton::indicator:checked"
-                                     "{border: 4px solid white;}"
+                                     "{border: 2px solid white;}"
                                      "QRadioButton::indicator:unchecked{"
                                      "border: 2px solid #868686;}";
 
@@ -248,7 +272,7 @@ private:
                                           "margin-left: 10px;"
                                           "margin-right: 10px;} "
                                     "QRadioButton::indicator:checked"
-                                     "{border: 4px solid black;} "
+                                     "{border: 2px solid black;} "
                                      "QRadioButton::indicator:unchecked{"
                                      "border: 2px solid #868686;} ";
 
@@ -269,7 +293,7 @@ private:
                                  "border: 2px solid #868686;"
                                  "border-radius: 20px;} ";
     QString RadioButtonColor4 = "QRadioButton::indicator{"
-                                 "background-color: green;"
+                                 "background-color: rgb(0, 255, 0);"
                                  "width: 40px;height: 40px;"
                                  "border: 2px solid #868686;"
                                  "border-radius: 20px;} ";
@@ -278,9 +302,25 @@ private:
                                  "width: 40px;height: 40px;"
                                  "border: 2px solid #868686;"
                                  "border-radius: 20px;} ";
-
-    void setUebertragenButtonTextandStyle(QString text, QString style);
     float *fontScale;
 
+    QSettings *settings;
+
+    enum Appearance{
+        automatically,
+        lightmode,
+        darkmode
+    };
+    Appearance appearance;
+    Appearance currentAppearance;
+
+    QButtonGroup *AppearanceButtonGroup;
+
+    void setDarkmode();
+    void setLightmode();
+
+    QTranslator *translator;
+
 };
+
 #endif // KLINGELBALLUI_H
