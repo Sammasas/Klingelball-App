@@ -50,6 +50,7 @@ DISTFILES += \
     Assets.xcassets/AppIcon.appiconset/Contents.json \
     Assets.xcassets/AppIcon.appiconset/KlingelballIcon1024.png \
     Assets.xcassets/Contents.json \
+    Datenschutzerklaerung.html \
     Info.plist \
     android/AndroidManifest.xml \
     android/AndroidSettings.java \
