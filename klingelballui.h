@@ -152,6 +152,8 @@ private slots:
 
     void on_Automatic_checkBox_clicked();
 
+    void on_pause_button_toggled(bool checked);
+
 Q_SIGNALS:
     void BatteryStatusRead(int);
 

@@ -115,7 +115,7 @@ QTabBar::tab::disabled{
        <enum>QTabWidget::TabShape::Rounded</enum>
       </property>
       <property name="currentIndex">
-       <number>4</number>
+       <number>0</number>
       </property>
       <property name="iconSize">
        <size>
@@ -1868,6 +1868,9 @@ QRadioButton::indicator:unchecked{
           <property name="text">
            <string>Stopp</string>
           </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
          </widget>
         </item>
        </layout>
@@ -2708,22 +2711,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
    <sender>OnOff_Button</sender>
    <signal>toggled(bool)</signal>
    <receiver>pause_button</receiver>
-   <slot>toggle()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>230</x>
-     <y>433</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>230</x>
-     <y>614</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>OnOff_Button</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>pause_button2</receiver>
    <slot>toggle()</slot>
    <hints>
     <hint type="sourcelabel">

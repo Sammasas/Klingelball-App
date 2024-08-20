@@ -441,7 +441,7 @@ void KlingelballUI::deviceConnected(){
     KlingelballConnected = true;
     ui->OnOff_Button->setVisible(true);
     ui->disconnectKlingelball->setVisible(true);
-    ui->batteryStatusProgressbar->setVisible(true);
+
 
     //Discover services from connected device and set UI to show discovery is active
     ui->UIDeviceList->setStyleSheet("QListWidget::item::selected{"
@@ -538,6 +538,7 @@ void KlingelballUI::KlingelballServiceStatechanged(QLowEnergyService::ServiceSta
         remoteServiceDiscovered = true;
 
         transmitAllSettings();
+
         ui->UIDeviceList->currentItem()->setText(ui->UIDeviceList->currentItem()->text() + " - verbunden");
         ui->disconnectKlingelball->setDisabled(false);
         ui->searchKlingelball->setDisabled(false);
@@ -653,7 +654,17 @@ void KlingelballUI::readBatteryStatus(QLowEnergyCharacteristic *c){
 }
 
 void KlingelballUI::gotBatteryStatus(int s){
-    s >= 100 ? ui->batteryStatusProgressbar->setValue(100) : ui->batteryStatusProgressbar->setValue(s);
+    qWarning() << "Batterystand:" << QString::number(s);
+   if (s == -1){
+        qWarning() << "batteryStatus noshow";
+        ui->batteryStatusProgressbar->hide();
+    }else{
+        ui->batteryStatusProgressbar->show();
+        qWarning() << "battery status show!!";
+        s >= 100 ? ui->batteryStatusProgressbar->setValue(100) : ui->batteryStatusProgressbar->setValue(s);
+    }
+
+
 }
 
 void KlingelballUI::transmitAllSettings(){

@@ -475,12 +475,35 @@ void KlingelballUI::on_pause_button_clicked()
         ui->pause_button->setAccessibleName(tr("Start Taste"));
 
         on_transmitGeneralSettings();
-        
+
     }else{
-            ui->OnOff_Button->setChecked(true);
-            ui->pause_button->setText(tr("Stopp"));
-            ui->pause_button->setAccessibleName(tr("Stopp Taste"));
-            on_transmitGeneralSettings();
+        ui->OnOff_Button->setChecked(true);
+        ui->pause_button->setText(tr("Stopp"));
+        ui->pause_button->setAccessibleName(tr("Stopp Taste"));
+        on_transmitGeneralSettings();
+    }
+    //Update button2 text
+    ui->pause_button2->setText(ui->pause_button->text());
+
+    //Update button2 Accessibilty description
+    ui->pause_button2->setAccessibleName(ui->pause_button->accessibleName());
+}
+
+
+void KlingelballUI::on_pause_button_toggled(bool checked)
+{
+    if(!ui->OnOff_Button->isChecked()){
+
+        //Update text & Description
+        ui->pause_button->setText(tr("Start"));
+        ui->pause_button->setAccessibleName(tr("Start Taste"));
+
+        on_transmitGeneralSettings();
+
+    }else{
+        ui->pause_button->setText(tr("Stopp"));
+        ui->pause_button->setAccessibleName(tr("Stopp Taste"));
+        on_transmitGeneralSettings();
     }
     //Update button2 text
     ui->pause_button2->setText(ui->pause_button->text());
