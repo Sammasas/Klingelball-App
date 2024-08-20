@@ -50,7 +50,6 @@ DISTFILES += \
     Assets.xcassets/AppIcon.appiconset/Contents.json \
     Assets.xcassets/AppIcon.appiconset/KlingelballIcon1024.png \
     Assets.xcassets/Contents.json \
-    Datenschutzerklaerung.html \
     Info.plist \
     android/AndroidManifest.xml \
     android/AndroidSettings.java \
@@ -68,7 +67,8 @@ DISTFILES += \
     android/res/drawable-xxxhdpi/icon.png \
     android/res/values/libs.xml \
     android/res/xml/qtprovider_paths.xml \
-    android/src/Klingelball/AndroidSettings.java
+    android/src/Klingelball/AndroidSettings.java \
+    index.html
 
 contains(ANDROID_TARGET_ARCH,x86_64) {
     ANDROID_PACKAGE_SOURCE_DIR = \
