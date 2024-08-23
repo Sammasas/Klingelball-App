@@ -96,6 +96,7 @@ void KlingelballUI::setup_UI(){
 
 
     settings = new QSettings("SSA", "Klingelball App");
+    //Standartwerte
     if(!settings->contains("Ton/Lautstaerke")){
         ui->Lautstaerke->setValue(50);
         ui->Stillstehend_Ton_Freq->setValue(40);

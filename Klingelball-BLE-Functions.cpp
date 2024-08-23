@@ -655,7 +655,7 @@ void KlingelballUI::readBatteryStatus(QLowEnergyCharacteristic *c){
 
 void KlingelballUI::gotBatteryStatus(int s){
     qWarning() << "Batterystand:" << QString::number(s);
-   if (s == -1){
+   if (s == -1 || s == 255){
         qWarning() << "batteryStatus noshow";
         ui->batteryStatusProgressbar->hide();
     }else{
