@@ -12,9 +12,13 @@
 
 int main(int argc, char *argv[])
 {
+    qDebug() << "main enter";
     QApplication a(argc, argv);
+    qDebug() << "main app";
     KlingelballUI w;
+    qDebug() << "main init";
     w.show();
+    qDebug() << "main show";
 
     w.setAccessibleName("  ");
 

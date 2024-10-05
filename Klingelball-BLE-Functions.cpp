@@ -13,6 +13,9 @@
 void KlingelballUI::setupBLE(){
 
     deviceList = new QList<DeviceInfo *>;
+    messageBoxNoKLingelballfound = new QMessageBox();
+    searchCountdown = new QTimer();
+    connect(searchCountdown, SIGNAL(timeout()), this, SLOT(updateSearchCountDown()));
 
 //Powers on Bluetooth on Android devices
 #ifdef Q_OS_ANDROID
@@ -182,6 +185,7 @@ char KlingelballUI::generatePruefziffer(QByteArray a){
 void KlingelballUI::on_searchKlingelball_clicked()
 {
     //starts new search for device, disconnects from connected device
+
     if(KlingelballConnected){
         m_controller->disconnectFromDevice();
     }
@@ -289,7 +293,7 @@ void KlingelballUI::startDeviceDiscovery(){
         ui->searchKlingelball->setStyleSheet("QPushButton{"
                                              "background-color: orange;}");
     }
-   //TODO: if bluetooth isnt on message
+    startCountDown();
 }
 
 void KlingelballUI::addDevice(const QBluetoothDeviceInfo &device){
@@ -311,8 +315,16 @@ void KlingelballUI::addDevice(const QBluetoothDeviceInfo &device){
 }
 
 void KlingelballUI::ScanFinished(){
+    stopCountDown();
     ui->searchKlingelball->setStyleSheet("QPushButton{"
                                          "background-color: #e50616;}");
+
+    if(deviceList->isEmpty()){
+        messageBoxNoKLingelballfound->setText(tr("            Kein Klingelball gefunden!     \n "
+                                              "Versichere dich, dass Standort und Bluetooth aktiviert sind"));
+        messageBoxNoKLingelballfound->exec();
+    }
+
     printMessage("Scan finished");
 
 }
@@ -347,7 +359,6 @@ void KlingelballUI::ScanError(QBluetoothDeviceDiscoveryAgent::Error error){
         printMessage("Unknown Error");
         break;
     }
-
 }
 
 void KlingelballUI::connectDevice(const QBluetoothDeviceInfo *currentdevice){
@@ -675,4 +686,31 @@ void KlingelballUI::transmitAllSettings(){
     on_transmitLightColorStill();
     on_transmitLightColorMoving();
     on_transmitGeneralLight();
+}
+
+void KlingelballUI::startCountDown(){
+    if(!countDownRunning){
+        countDownTime = 15;
+        ui->searchKlingelball->setText(ui->searchKlingelball->text() + " - 15");
+        countDownRunning = true;
+        searchCountdown->start(1000);
+    }
+}
+
+void KlingelballUI::stopCountDown(){
+    searchCountdown->stop();
+    countDownRunning = false;
+    ui->searchKlingelball->setText(ui->searchKlingelball->text().replace(" - " + QString::number(countDownTime), ""));
+}
+
+void KlingelballUI::updateSearchCountDown(){
+    if (countDownRunning){
+        countDownTime--;
+        if(countDownTime == 0){
+            stopCountDown();
+        }else if (countDownTime >= 1){
+            ui->searchKlingelball->setText(ui->searchKlingelball->text().replace(QString::number(countDownTime+1), QString::number(countDownTime)));
+            searchCountdown->start(1000);
+        }
+    }
 }

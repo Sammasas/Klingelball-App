@@ -43,7 +43,7 @@
 #include <QListWidgetItem>
 #include <QApplication>
 #include <QTranslator>
-
+#include <QMessageBox>
 
 
 #ifdef Q_OS_ANDROID
@@ -153,6 +153,8 @@ private slots:
     void on_Automatic_checkBox_clicked();
 
     void on_pause_button_toggled(bool checked);
+
+    void updateSearchCountDown();
 
 Q_SIGNALS:
     void BatteryStatusRead(int);
@@ -320,6 +322,13 @@ private:
     void setLightmode();
 
     QTranslator *translator;
+
+    QMessageBox *messageBoxNoKLingelballfound;
+    QTimer *searchCountdown;
+    void startCountDown();
+    void stopCountDown();
+    int countDownTime = 0;
+    bool countDownRunning = false;
 
 };
 

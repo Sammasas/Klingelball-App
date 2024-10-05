@@ -28,6 +28,7 @@ KlingelballUI::KlingelballUI(QWidget *parent)
 
     ui->setupUi(this);
     ui->tabWidget->removeTab(2);
+    ui->searchKlingelball->hide();
     setup_UI();
     setupBLE();
     setup_Appearance();
