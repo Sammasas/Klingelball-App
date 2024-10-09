@@ -329,7 +329,6 @@ void KlingelballUI::on_OnOff_Button_toggled(bool checked)
 
 void KlingelballUI::on_UIDeviceList_itemClicked(QListWidgetItem *item)
 {
-    stopCountDown();
     m_deviceDiscoveryAgent->stop();
     connectDevice(deviceList->at(ui->UIDeviceList->currentRow())->getDevice());
 }

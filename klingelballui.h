@@ -8,6 +8,7 @@
 #ifndef KLINGELBALLUI_H
 #define KLINGELBALLUI_H
 
+#include <stdint.h>
 #include <QMainWindow>
 #include <QSoundEffect>
 #include "QSize"

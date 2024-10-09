@@ -13,9 +13,9 @@
 void KlingelballUI::setupBLE(){
 
     deviceList = new QList<DeviceInfo *>;
-    messageBoxNoKLingelballfound = new QMessageBox();
-    searchCountdown = new QTimer();
-    connect(searchCountdown, SIGNAL(timeout()), this, SLOT(updateSearchCountDown()));
+   //messageBoxNoKLingelballfound = new QMessageBox();
+   // searchCountdown = new QTimer();
+    //connect(searchCountdown, SIGNAL(timeout()), this, SLOT(updateSearchCountDown()));
 
 //Powers on Bluetooth on Android devices
 #ifdef Q_OS_ANDROID
@@ -47,6 +47,49 @@ void KlingelballUI::setupBLE(){
             this, &KlingelballUI::ScanFinished);
 
     connect(this, SIGNAL(BatteryStatusRead(int)), this, SLOT(gotBatteryStatus(int)));
+
+    //get permission from user to use Bluetooth
+#if QT_CONFIG(permissions)
+    //! [permissions]
+    QBluetoothPermission permission{};
+    permission.setCommunicationModes(QBluetoothPermission::Access);
+
+
+    switch (qApp->checkPermission(permission)) {
+    case Qt::PermissionStatus::Undetermined:
+        qApp->requestPermission(permission, this, &KlingelballUI::startDeviceDiscovery);
+        printMessage("request permission");
+        return;
+    case Qt::PermissionStatus::Denied:
+        printMessage("Ble permission denied");
+        return;
+    case Qt::PermissionStatus::Granted:
+        printMessage("permission granted");
+        break; // proceed to search
+    }
+
+    //Get permission to use location (Android Bluetooth only works with location turned on)
+#ifdef Q_OS_ANDROID
+    QLocationPermission Locationpermission {};
+    Locationpermission.setAvailability(QLocationPermission::WhenInUse);
+    switch (qApp->checkPermission(Locationpermission)) {
+    case Qt::PermissionStatus::Undetermined:
+        qApp->requestPermission(Locationpermission, this, &KlingelballUI::startDeviceDiscovery);
+        printMessage("request permission");
+        return;
+    case Qt::PermissionStatus::Denied:
+        printMessage("Location permission denied");
+        return;
+    case Qt::PermissionStatus::Granted:
+        printMessage("permission granted");
+        if(Locationpermission.availability())
+            break; // proceed to search
+    }
+#endif
+    //! [permissions]
+#endif // QT_CONFIG(permissions)
+
+
 }
 
 void KlingelballUI::transmitSettings (SettingTransmitStatus transStat){
@@ -185,7 +228,7 @@ char KlingelballUI::generatePruefziffer(QByteArray a){
 void KlingelballUI::on_searchKlingelball_clicked()
 {
     //starts new search for device, disconnects from connected device
-
+    /*
     if(KlingelballConnected){
         m_controller->disconnectFromDevice();
     }
@@ -193,6 +236,7 @@ void KlingelballUI::on_searchKlingelball_clicked()
     ui->UIDeviceList->clear();
     ui->UIDeviceList->setAccessibleName(tr("Verfügbare Klingelbälle Liste,") + QString::number(ui->UIDeviceList->count()) + tr("verfügbar"));
     startDeviceDiscovery();
+*/
 }
 
 QColor KlingelballUI::StillstehendSelectedColor(){
@@ -205,6 +249,7 @@ QColor KlingelballUI::StillstehendSelectedColor(){
         return QColor(0, 0, 255);
     if(ui->Stillstehend_Farbe4->isChecked())
         return QColor(0, 255, 0);
+
     if(ui->Stillstehend_Farbe5->isChecked())
         return QColor(255, 255, 0);
     else
@@ -242,58 +287,22 @@ void KlingelballUI::printMessage(QString message){
 
 void KlingelballUI::startDeviceDiscovery(){
 
-    //get permission from user to use Bluetooth
-#if QT_CONFIG(permissions)
-    //! [permissions]
-    QBluetoothPermission permission{};
-    permission.setCommunicationModes(QBluetoothPermission::Access);
-
-
-    switch (qApp->checkPermission(permission)) {
-    case Qt::PermissionStatus::Undetermined:
-        qApp->requestPermission(permission, this, &KlingelballUI::startDeviceDiscovery);
-        printMessage("request permission");
-        return;
-    case Qt::PermissionStatus::Denied:
-        printMessage("Ble permission denied");
-        return;
-    case Qt::PermissionStatus::Granted:
-        printMessage("permission granted");
-        break; // proceed to search
-    }
-
-    //Get permission to use location (Android Bluetooth only works with location turned on)
-#ifdef Q_OS_ANDROID
-    QLocationPermission Locationpermission {};
-    Locationpermission.setAvailability(QLocationPermission::WhenInUse);
-    switch (qApp->checkPermission(Locationpermission)) {
-    case Qt::PermissionStatus::Undetermined:
-        qApp->requestPermission(Locationpermission, this, &KlingelballUI::startDeviceDiscovery);
-        printMessage("request permission");
-        return;
-    case Qt::PermissionStatus::Denied:
-        printMessage("Location permission denied");
-        return;
-    case Qt::PermissionStatus::Granted:
-        printMessage("permission granted");
-        if(Locationpermission.availability())
-            break; // proceed to search
-    }
-#endif
-    //! [permissions]
-#endif // QT_CONFIG(permissions)
 
     //start device discovery and set UI to show if search is active or failed
-    m_deviceDiscoveryAgent->start(QBluetoothDeviceDiscoveryAgent::LowEnergyMethod);
+    if(!KlingelballConnected){
+        ui->UIDeviceList->clear();
+        m_deviceDiscoveryAgent->start(QBluetoothDeviceDiscoveryAgent::LowEnergyMethod);
+    }
+
     if(!m_deviceDiscoveryAgent->isActive()){
         qWarning()<< "discovery failed!";
-        ui->searchKlingelball->setStyleSheet("QPushButton{"
-                                             "background-color: #e50616;}");
+        /*ui->searchKlingelball->setStyleSheet("QPushButton{"
+                                             "background-color: #e50616;}");*/
     }else{
-        ui->searchKlingelball->setStyleSheet("QPushButton{"
-                                             "background-color: orange;}");
+        /*ui->searchKlingelball->setStyleSheet("QPushButton{"
+                                             "background-color: orange;}");*/
     }
-    startCountDown();
+    //startCountDown();
 }
 
 void KlingelballUI::addDevice(const QBluetoothDeviceInfo &device){
@@ -315,18 +324,18 @@ void KlingelballUI::addDevice(const QBluetoothDeviceInfo &device){
 }
 
 void KlingelballUI::ScanFinished(){
-    stopCountDown();
-    ui->searchKlingelball->setStyleSheet("QPushButton{"
-                                         "background-color: #e50616;}");
+    //stopCountDown();
+    /*ui->searchKlingelball->setStyleSheet("QPushButton{"
+                                         "background-color: #e50616;}");*/
 
-    if(deviceList->isEmpty()){
-        messageBoxNoKLingelballfound->setText(tr("            Kein Klingelball gefunden!     \n "
-                                              "Versichere dich, dass Standort und Bluetooth aktiviert sind"));
-        messageBoxNoKLingelballfound->exec();
-    }
+    /*if(deviceList->isEmpty()){
+        //messageBoxNoKLingelballfound->setText(tr("            Kein Klingelball gefunden!     \n "
+        //                                      "Versichere dich, dass Standort und Bluetooth aktiviert sind"));
+        //messageBoxNoKLingelballfound->exec();
+    }*/
 
     printMessage("Scan finished");
-
+    startDeviceDiscovery();
 }
 void KlingelballUI::ScanError(QBluetoothDeviceDiscoveryAgent::Error error){
     switch(error){
@@ -364,7 +373,7 @@ void KlingelballUI::ScanError(QBluetoothDeviceDiscoveryAgent::Error error){
 void KlingelballUI::connectDevice(const QBluetoothDeviceInfo *currentdevice){
     qDebug()<< "connectDevice";
     ui->disconnectKlingelball->setDisabled(true);
-    ui->searchKlingelball->setDisabled(true);
+    //ui->searchKlingelball->setDisabled(true);
     m_controller = QLowEnergyController::createCentral(*currentdevice, this);
 
     connect(m_controller, SIGNAL(serviceDiscovered(QBluetoothUuid)), this, SLOT(serviceDiscovered(QBluetoothUuid)));
@@ -476,12 +485,17 @@ void KlingelballUI::deviceDisconnected(){
     ui->batteryStatusProgressbar->setVisible(false);
     ui->UIDeviceList->setStyleSheet("QListWidget::item::selected{"
                                     "background-color: blue;}");
+
+
+    ui->UIDeviceList->setAccessibleName(tr("Verfügbare Klingelbälle Liste,") + QString::number(ui->UIDeviceList->count()) + tr("verfügbar"));
+    qWarning() <<"startiting Device discovery again";
+    startDeviceDiscovery();
 }
 
 void KlingelballUI::setupServiceDiscovery(){
     qDebug()<<"setupServiceDiscovery";
     for(int i = 0; i < m_controller->services().length(); i++){
-        qDebug()<< m_controller->services().at(i);//TODO: [i] -> .at(i)
+        qDebug()<< m_controller->services().at(i);
 
     }
 
@@ -552,7 +566,7 @@ void KlingelballUI::KlingelballServiceStatechanged(QLowEnergyService::ServiceSta
 
         ui->UIDeviceList->currentItem()->setText(ui->UIDeviceList->currentItem()->text() + " - verbunden");
         ui->disconnectKlingelball->setDisabled(false);
-        ui->searchKlingelball->setDisabled(false);
+        //ui->searchKlingelball->setDisabled(false);
         break;
 
     case QLowEnergyService::ServiceState::RemoteServiceDiscovering:
@@ -689,21 +703,22 @@ void KlingelballUI::transmitAllSettings(){
 }
 
 void KlingelballUI::startCountDown(){
-    if(!countDownRunning){
+    /*if(!countDownRunning){
         countDownTime = 15;
         ui->searchKlingelball->setText(ui->searchKlingelball->text() + " - 15");
         countDownRunning = true;
         searchCountdown->start(1000);
-    }
+    }*/
 }
 
 void KlingelballUI::stopCountDown(){
-    searchCountdown->stop();
+    /*searchCountdown->stop();
     countDownRunning = false;
     ui->searchKlingelball->setText(ui->searchKlingelball->text().replace(" - " + QString::number(countDownTime), ""));
+    */
 }
 
-void KlingelballUI::updateSearchCountDown(){
+void KlingelballUI::updateSearchCountDown(){/*
     if (countDownRunning){
         countDownTime--;
         if(countDownTime == 0){
@@ -712,5 +727,5 @@ void KlingelballUI::updateSearchCountDown(){
             ui->searchKlingelball->setText(ui->searchKlingelball->text().replace(QString::number(countDownTime+1), QString::number(countDownTime)));
             searchCountdown->start(1000);
         }
-    }
+    }*/
 }
