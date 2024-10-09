@@ -43,8 +43,8 @@ void KlingelballUI::setupBLE(){
     connect(m_deviceDiscoveryAgent, &QBluetoothDeviceDiscoveryAgent::finished,
             this, &KlingelballUI::ScanFinished);
 
-    connect(m_deviceDiscoveryAgent, &QBluetoothDeviceDiscoveryAgent::canceled,
-            this, &KlingelballUI::ScanFinished);
+    //connect(m_deviceDiscoveryAgent, &QBluetoothDeviceDiscoveryAgent::canceled,
+      //      this, &KlingelballUI::ScanFinished);
 
     connect(this, SIGNAL(BatteryStatusRead(int)), this, SLOT(gotBatteryStatus(int)));
 
@@ -93,6 +93,7 @@ void KlingelballUI::setupBLE(){
 }
 
 void KlingelballUI::transmitSettings (SettingTransmitStatus transStat){
+
     if(!remoteServiceDiscovered || !KlingelballConnected || m_service->characteristics().empty()){
         return;
     }
@@ -291,6 +292,7 @@ void KlingelballUI::startDeviceDiscovery(){
     //start device discovery and set UI to show if search is active or failed
     if(!KlingelballConnected){
         ui->UIDeviceList->clear();
+        deviceList->clear();
         m_deviceDiscoveryAgent->start(QBluetoothDeviceDiscoveryAgent::LowEnergyMethod);
     }
 
@@ -381,6 +383,7 @@ void KlingelballUI::connectDevice(const QBluetoothDeviceInfo *currentdevice){
     connect(m_controller, SIGNAL(connected()), this, SLOT(deviceConnected()));
     connect(m_controller, SIGNAL(errorOccurred(QLowEnergyController::Error)), this, SLOT(controllerError(QLowEnergyController::Error)));
     connect(m_controller, SIGNAL(disconnected()), this, SLOT(deviceDisconnected()));
+
 
 
     m_controller->connectToDevice();

@@ -171,8 +171,8 @@ public:
         font.setPointSize(27);
         font.setBold(true);
         tabWidget->setFont(font);
-        tabWidget->setFocusPolicy(Qt::NoFocus);
-        tabWidget->setContextMenuPolicy(Qt::NoContextMenu);
+        tabWidget->setFocusPolicy(Qt::FocusPolicy::NoFocus);
+        tabWidget->setContextMenuPolicy(Qt::ContextMenuPolicy::NoContextMenu);
         tabWidget->setStyleSheet(QString::fromUtf8("\n"
 "\n"
 "QTabBar::tab{\n"
@@ -225,10 +225,10 @@ public:
 "    padding: 0;\n"
 "    border: none;\n"
 "}"));
-        tabWidget->setTabPosition(QTabWidget::South);
-        tabWidget->setTabShape(QTabWidget::Rounded);
+        tabWidget->setTabPosition(QTabWidget::TabPosition::South);
+        tabWidget->setTabShape(QTabWidget::TabShape::Rounded);
         tabWidget->setIconSize(QSize(30, 30));
-        tabWidget->setElideMode(Qt::ElideLeft);
+        tabWidget->setElideMode(Qt::TextElideMode::ElideLeft);
         tabWidget->setUsesScrollButtons(false);
         tabWidget->setDocumentMode(true);
         tabWidget->setTabsClosable(false);
@@ -237,7 +237,7 @@ public:
         Sound_Tab->setObjectName("Sound_Tab");
         verticalLayout_3 = new QVBoxLayout(Sound_Tab);
         verticalLayout_3->setObjectName("verticalLayout_3");
-        verticalLayout_3->setSizeConstraint(QLayout::SetDefaultConstraint);
+        verticalLayout_3->setSizeConstraint(QLayout::SizeConstraint::SetDefaultConstraint);
         verticalLayout_3->setContentsMargins(10, -1, 10, -1);
         Volume_Layout = new QVBoxLayout();
         Volume_Layout->setSpacing(4);
@@ -255,7 +255,7 @@ public:
         font1.setPointSize(20);
         font1.setBold(false);
         Lautstaerke_Label->setFont(font1);
-        Lautstaerke_Label->setTextInteractionFlags(Qt::NoTextInteraction);
+        Lautstaerke_Label->setTextInteractionFlags(Qt::TextInteractionFlag::NoTextInteraction);
 
         Volume_Layout->addWidget(Lautstaerke_Label);
 
@@ -268,8 +268,8 @@ public:
         Lautstaerke_erhoehen->setSizePolicy(sizePolicy2);
         Lautstaerke_erhoehen->setMinimumSize(QSize(0, 40));
         Lautstaerke_erhoehen->setMaximumSize(QSize(16777215, 60));
-        Lautstaerke_erhoehen->setFocusPolicy(Qt::NoFocus);
-        Lautstaerke_erhoehen->setContextMenuPolicy(Qt::NoContextMenu);
+        Lautstaerke_erhoehen->setFocusPolicy(Qt::FocusPolicy::NoFocus);
+        Lautstaerke_erhoehen->setContextMenuPolicy(Qt::ContextMenuPolicy::NoContextMenu);
         Lautstaerke_erhoehen->setStyleSheet(QString::fromUtf8(""));
         QIcon icon;
         icon.addFile(QString::fromUtf8(":/Icons/Chevron_Up_inverted.png"), QSize(), QIcon::Mode::Normal, QIcon::State::Off);
@@ -292,11 +292,11 @@ public:
         font2.setBold(true);
         Lautstaerke->setFont(font2);
         Lautstaerke->setCursor(QCursor(Qt::CursorShape::BlankCursor));
-        Lautstaerke->setFocusPolicy(Qt::NoFocus);
+        Lautstaerke->setFocusPolicy(Qt::FocusPolicy::NoFocus);
         Lautstaerke->setFrame(false);
-        Lautstaerke->setAlignment(Qt::AlignCenter);
+        Lautstaerke->setAlignment(Qt::AlignmentFlag::AlignCenter);
         Lautstaerke->setReadOnly(false);
-        Lautstaerke->setButtonSymbols(QAbstractSpinBox::NoButtons);
+        Lautstaerke->setButtonSymbols(QAbstractSpinBox::ButtonSymbols::NoButtons);
         Lautstaerke->setKeyboardTracking(false);
         Lautstaerke->setMaximum(100);
         Lautstaerke->setSingleStep(5);
@@ -309,7 +309,7 @@ public:
         Lautstaerke_verringern->setSizePolicy(sizePolicy2);
         Lautstaerke_verringern->setMinimumSize(QSize(0, 40));
         Lautstaerke_verringern->setMaximumSize(QSize(16777215, 60));
-        Lautstaerke_verringern->setFocusPolicy(Qt::NoFocus);
+        Lautstaerke_verringern->setFocusPolicy(Qt::FocusPolicy::NoFocus);
         QIcon icon1;
         icon1.addFile(QString::fromUtf8(":/Icons/Chevron_down_inverted.png"), QSize(), QIcon::Mode::Normal, QIcon::State::Off);
         Lautstaerke_verringern->setIcon(icon1);
@@ -341,7 +341,7 @@ public:
         font3.setPointSize(16);
         font3.setBold(true);
         Sound_tabWidget->setFont(font3);
-        Sound_tabWidget->setFocusPolicy(Qt::NoFocus);
+        Sound_tabWidget->setFocusPolicy(Qt::FocusPolicy::NoFocus);
         Sound_tabWidget->setAutoFillBackground(false);
         Sound_tabWidget->setStyleSheet(QString::fromUtf8("QTabWidget{\n"
 "	background-color: red;\n"
@@ -394,8 +394,8 @@ public:
 "    padding: 0;\n"
 "    border: none;\n"
 "}"));
-        Sound_tabWidget->setTabPosition(QTabWidget::North);
-        Sound_tabWidget->setElideMode(Qt::ElideLeft);
+        Sound_tabWidget->setTabPosition(QTabWidget::TabPosition::North);
+        Sound_tabWidget->setElideMode(Qt::TextElideMode::ElideLeft);
         Sound_tabWidget->setTabsClosable(false);
         Sound_tabWidget->setTabBarAutoHide(false);
         Ton_tab = new QWidget();
@@ -408,13 +408,13 @@ public:
         verticalLayout_5->setObjectName("verticalLayout_5");
         Ton_Layout = new QGridLayout();
         Ton_Layout->setObjectName("Ton_Layout");
-        Ton_Layout->setSizeConstraint(QLayout::SetDefaultConstraint);
+        Ton_Layout->setSizeConstraint(QLayout::SizeConstraint::SetDefaultConstraint);
         Ton_Layout->setHorizontalSpacing(20);
         Ton_Layout->setVerticalSpacing(4);
         Stillstehend_Ton_Freq_Label = new QLabel(Ton_tab);
         Stillstehend_Ton_Freq_Label->setObjectName("Stillstehend_Ton_Freq_Label");
         Stillstehend_Ton_Freq_Label->setFont(font2);
-        Stillstehend_Ton_Freq_Label->setFocusPolicy(Qt::NoFocus);
+        Stillstehend_Ton_Freq_Label->setFocusPolicy(Qt::FocusPolicy::NoFocus);
         Stillstehend_Ton_Freq_Label->setStyleSheet(QString::fromUtf8(""));
 
         Ton_Layout->addWidget(Stillstehend_Ton_Freq_Label, 1, 0, 1, 1);
@@ -443,12 +443,12 @@ public:
         Stillstehend_Ton_Freq->setSizePolicy(sizePolicy);
         Stillstehend_Ton_Freq->setFont(font2);
         Stillstehend_Ton_Freq->setCursor(QCursor(Qt::CursorShape::BlankCursor));
-        Stillstehend_Ton_Freq->setFocusPolicy(Qt::NoFocus);
+        Stillstehend_Ton_Freq->setFocusPolicy(Qt::FocusPolicy::NoFocus);
         Stillstehend_Ton_Freq->setWrapping(false);
         Stillstehend_Ton_Freq->setFrame(false);
-        Stillstehend_Ton_Freq->setAlignment(Qt::AlignCenter);
+        Stillstehend_Ton_Freq->setAlignment(Qt::AlignmentFlag::AlignCenter);
         Stillstehend_Ton_Freq->setReadOnly(false);
-        Stillstehend_Ton_Freq->setButtonSymbols(QAbstractSpinBox::NoButtons);
+        Stillstehend_Ton_Freq->setButtonSymbols(QAbstractSpinBox::ButtonSymbols::NoButtons);
         Stillstehend_Ton_Freq->setKeyboardTracking(false);
         Stillstehend_Ton_Freq->setMaximum(100);
         Stillstehend_Ton_Freq->setSingleStep(5);
@@ -490,11 +490,11 @@ public:
         Bewegend_Ton_Freq->setFont(font2);
         Bewegend_Ton_Freq->setCursor(QCursor(Qt::CursorShape::BlankCursor));
         Bewegend_Ton_Freq->setMouseTracking(false);
-        Bewegend_Ton_Freq->setFocusPolicy(Qt::NoFocus);
+        Bewegend_Ton_Freq->setFocusPolicy(Qt::FocusPolicy::NoFocus);
         Bewegend_Ton_Freq->setFrame(false);
-        Bewegend_Ton_Freq->setAlignment(Qt::AlignCenter);
+        Bewegend_Ton_Freq->setAlignment(Qt::AlignmentFlag::AlignCenter);
         Bewegend_Ton_Freq->setReadOnly(false);
-        Bewegend_Ton_Freq->setButtonSymbols(QAbstractSpinBox::NoButtons);
+        Bewegend_Ton_Freq->setButtonSymbols(QAbstractSpinBox::ButtonSymbols::NoButtons);
         Bewegend_Ton_Freq->setKeyboardTracking(false);
         Bewegend_Ton_Freq->setSuffix(QString::fromUtf8("%"));
         Bewegend_Ton_Freq->setMaximum(100);
@@ -527,7 +527,7 @@ public:
         verticalLayout_8->setObjectName("verticalLayout_8");
         Beep_Layout = new QGridLayout();
         Beep_Layout->setObjectName("Beep_Layout");
-        Beep_Layout->setSizeConstraint(QLayout::SetDefaultConstraint);
+        Beep_Layout->setSizeConstraint(QLayout::SizeConstraint::SetDefaultConstraint);
         Beep_Layout->setHorizontalSpacing(20);
         Beep_Layout->setVerticalSpacing(4);
         Bewegend_Beep_Freq_verringern = new QPushButton(Beep_tab);
@@ -546,7 +546,7 @@ public:
         Bewegend_Beep_Freq_Label = new QLabel(Beep_tab);
         Bewegend_Beep_Freq_Label->setObjectName("Bewegend_Beep_Freq_Label");
         Bewegend_Beep_Freq_Label->setFont(font2);
-        Bewegend_Beep_Freq_Label->setFocusPolicy(Qt::NoFocus);
+        Bewegend_Beep_Freq_Label->setFocusPolicy(Qt::FocusPolicy::NoFocus);
         Bewegend_Beep_Freq_Label->setAutoFillBackground(false);
 
         Beep_Layout->addWidget(Bewegend_Beep_Freq_Label, 1, 2, 1, 1);
@@ -574,7 +574,7 @@ public:
         Stillstehend_Beep_Freq_Label = new QLabel(Beep_tab);
         Stillstehend_Beep_Freq_Label->setObjectName("Stillstehend_Beep_Freq_Label");
         Stillstehend_Beep_Freq_Label->setFont(font2);
-        Stillstehend_Beep_Freq_Label->setFocusPolicy(Qt::NoFocus);
+        Stillstehend_Beep_Freq_Label->setFocusPolicy(Qt::FocusPolicy::NoFocus);
 
         Beep_Layout->addWidget(Stillstehend_Beep_Freq_Label, 1, 0, 1, 1);
 
@@ -588,11 +588,11 @@ public:
         Bewegend_Beep_Freq->setFont(font2);
         Bewegend_Beep_Freq->setCursor(QCursor(Qt::CursorShape::BlankCursor));
         Bewegend_Beep_Freq->setMouseTracking(false);
-        Bewegend_Beep_Freq->setFocusPolicy(Qt::NoFocus);
+        Bewegend_Beep_Freq->setFocusPolicy(Qt::FocusPolicy::NoFocus);
         Bewegend_Beep_Freq->setFrame(false);
-        Bewegend_Beep_Freq->setAlignment(Qt::AlignCenter);
+        Bewegend_Beep_Freq->setAlignment(Qt::AlignmentFlag::AlignCenter);
         Bewegend_Beep_Freq->setReadOnly(false);
-        Bewegend_Beep_Freq->setButtonSymbols(QAbstractSpinBox::NoButtons);
+        Bewegend_Beep_Freq->setButtonSymbols(QAbstractSpinBox::ButtonSymbols::NoButtons);
         Bewegend_Beep_Freq->setKeyboardTracking(false);
         Bewegend_Beep_Freq->setSuffix(QString::fromUtf8("%"));
         Bewegend_Beep_Freq->setMaximum(100);
@@ -606,12 +606,12 @@ public:
         Stillstehend_Beep_Freq->setSizePolicy(sizePolicy);
         Stillstehend_Beep_Freq->setFont(font2);
         Stillstehend_Beep_Freq->setCursor(QCursor(Qt::CursorShape::BlankCursor));
-        Stillstehend_Beep_Freq->setFocusPolicy(Qt::NoFocus);
+        Stillstehend_Beep_Freq->setFocusPolicy(Qt::FocusPolicy::NoFocus);
         Stillstehend_Beep_Freq->setWrapping(false);
         Stillstehend_Beep_Freq->setFrame(false);
-        Stillstehend_Beep_Freq->setAlignment(Qt::AlignCenter);
+        Stillstehend_Beep_Freq->setAlignment(Qt::AlignmentFlag::AlignCenter);
         Stillstehend_Beep_Freq->setReadOnly(false);
-        Stillstehend_Beep_Freq->setButtonSymbols(QAbstractSpinBox::NoButtons);
+        Stillstehend_Beep_Freq->setButtonSymbols(QAbstractSpinBox::ButtonSymbols::NoButtons);
         Stillstehend_Beep_Freq->setKeyboardTracking(false);
         Stillstehend_Beep_Freq->setMaximum(100);
         Stillstehend_Beep_Freq->setSingleStep(5);
@@ -685,7 +685,7 @@ public:
         sizePolicy1.setHeightForWidth(Heilligkeit_Label->sizePolicy().hasHeightForWidth());
         Heilligkeit_Label->setSizePolicy(sizePolicy1);
         Heilligkeit_Label->setFont(font1);
-        Heilligkeit_Label->setTextInteractionFlags(Qt::NoTextInteraction);
+        Heilligkeit_Label->setTextInteractionFlags(Qt::TextInteractionFlag::NoTextInteraction);
 
         Helligkeit_Layout->addWidget(Heilligkeit_Label);
 
@@ -707,11 +707,11 @@ public:
         Helligkeit->setSizePolicy(sizePolicy3);
         Helligkeit->setFont(font2);
         Helligkeit->setCursor(QCursor(Qt::CursorShape::BlankCursor));
-        Helligkeit->setFocusPolicy(Qt::NoFocus);
+        Helligkeit->setFocusPolicy(Qt::FocusPolicy::NoFocus);
         Helligkeit->setFrame(false);
-        Helligkeit->setAlignment(Qt::AlignCenter);
+        Helligkeit->setAlignment(Qt::AlignmentFlag::AlignCenter);
         Helligkeit->setReadOnly(false);
-        Helligkeit->setButtonSymbols(QAbstractSpinBox::NoButtons);
+        Helligkeit->setButtonSymbols(QAbstractSpinBox::ButtonSymbols::NoButtons);
         Helligkeit->setKeyboardTracking(false);
         Helligkeit->setMaximum(100);
         Helligkeit->setSingleStep(5);
@@ -1117,7 +1117,7 @@ public:
         Profile_Tab->setEnabled(false);
         sizePolicy5.setHeightForWidth(Profile_Tab->sizePolicy().hasHeightForWidth());
         Profile_Tab->setSizePolicy(sizePolicy5);
-        Profile_Tab->setContextMenuPolicy(Qt::NoContextMenu);
+        Profile_Tab->setContextMenuPolicy(Qt::ContextMenuPolicy::NoContextMenu);
         verticalLayout_4 = new QVBoxLayout(Profile_Tab);
         verticalLayout_4->setObjectName("verticalLayout_4");
         verticalLayout_4->setContentsMargins(10, -1, 10, -1);
@@ -1129,12 +1129,12 @@ public:
         gridLayout->setObjectName("gridLayout");
         scrollArea = new QScrollArea(Profil_page);
         scrollArea->setObjectName("scrollArea");
-        scrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
-        scrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+        scrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarPolicy::ScrollBarAsNeeded);
+        scrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarPolicy::ScrollBarAsNeeded);
         scrollArea->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName("scrollAreaWidgetContents");
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 428, 586));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 416, 560));
         gridLayout_2 = new QGridLayout(scrollAreaWidgetContents);
         gridLayout_2->setObjectName("gridLayout_2");
         verticalSpacer_4 = new QSpacerItem(20, 40, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
@@ -1326,7 +1326,7 @@ public:
         font10.setBold(true);
         Aussehen_label->setFont(font10);
         Aussehen_label->setStyleSheet(QString::fromUtf8(""));
-        Aussehen_label->setFrameShape(QFrame::NoFrame);
+        Aussehen_label->setFrameShape(QFrame::Shape::NoFrame);
         Aussehen_label->setWordWrap(false);
         Aussehen_label->setIndent(-1);
 
@@ -1362,12 +1362,12 @@ public:
 
         Erklaerung_textView = new QTextBrowser(Settings_Tab);
         Erklaerung_textView->setObjectName("Erklaerung_textView");
-        Erklaerung_textView->setFocusPolicy(Qt::NoFocus);
+        Erklaerung_textView->setFocusPolicy(Qt::FocusPolicy::NoFocus);
         Erklaerung_textView->setStyleSheet(QString::fromUtf8("QTextBrowser{\n"
 "	background-color: white;\n"
 "}"));
-        Erklaerung_textView->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
-        Erklaerung_textView->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+        Erklaerung_textView->setVerticalScrollBarPolicy(Qt::ScrollBarPolicy::ScrollBarAsNeeded);
+        Erklaerung_textView->setHorizontalScrollBarPolicy(Qt::ScrollBarPolicy::ScrollBarAsNeeded);
         Erklaerung_textView->setOpenExternalLinks(true);
 
         verticalLayout_10->addWidget(Erklaerung_textView);
@@ -1423,20 +1423,20 @@ public:
         retranslateUi(KlingelballUI);
         QObject::connect(Stillstehend_Ton_Freq_Verringern, &QPushButton::clicked, Stillstehend_Ton_Freq, qOverload<>(&QSpinBox::stepDown));
         QObject::connect(Bewegend_Ton_Freq_verringern, &QPushButton::clicked, Bewegend_Ton_Freq, qOverload<>(&QSpinBox::stepDown));
-        QObject::connect(Lautstaerke_erhoehen, &QPushButton::clicked, Lautstaerke, qOverload<>(&QSpinBox::stepUp));
         QObject::connect(Bewegend_Ton_Freq_erhoehen, &QPushButton::clicked, Bewegend_Ton_Freq, qOverload<>(&QSpinBox::stepUp));
-        QObject::connect(Lautstaerke_verringern, &QPushButton::clicked, Lautstaerke, qOverload<>(&QSpinBox::stepDown));
         QObject::connect(Stillstehend_Ton_Freq_erhoehen, &QPushButton::clicked, Stillstehend_Ton_Freq, qOverload<>(&QSpinBox::stepUp));
         QObject::connect(Stillstehend_Beep_Freq_erhoehen, &QPushButton::clicked, Stillstehend_Beep_Freq, qOverload<>(&QSpinBox::stepUp));
         QObject::connect(Stillstehend_Beep_Freq_verringern, &QPushButton::clicked, Stillstehend_Beep_Freq, qOverload<>(&QSpinBox::stepDown));
         QObject::connect(Bewegend_Beep_Freq_erhoehen, &QPushButton::clicked, Bewegend_Beep_Freq, qOverload<>(&QSpinBox::stepUp));
         QObject::connect(Bewegend_Beep_Freq_verringern, &QPushButton::clicked, Bewegend_Beep_Freq, qOverload<>(&QSpinBox::stepDown));
-        QObject::connect(Helligkeit_erhoehen, &QPushButton::clicked, Helligkeit, qOverload<>(&QSpinBox::stepUp));
-        QObject::connect(Heilligkeit_verringern, &QPushButton::clicked, Helligkeit, qOverload<>(&QSpinBox::stepDown));
         QObject::connect(pause_button2, &QPushButton::clicked, pause_button, qOverload<>(&QPushButton::click));
         QObject::connect(OnOff_Button, &QPushButton::toggled, pause_button, qOverload<>(&QPushButton::toggle));
+        QObject::connect(Lautstaerke_erhoehen, &QPushButton::clicked, Lautstaerke, qOverload<>(&QSpinBox::stepUp));
+        QObject::connect(Lautstaerke_verringern, &QPushButton::clicked, Lautstaerke, qOverload<>(&QSpinBox::stepDown));
+        QObject::connect(Helligkeit_erhoehen, &QPushButton::clicked, Helligkeit, qOverload<>(&QSpinBox::stepUp));
+        QObject::connect(Heilligkeit_verringern, &QPushButton::clicked, Helligkeit, qOverload<>(&QSpinBox::stepDown));
 
-        tabWidget->setCurrentIndex(3);
+        tabWidget->setCurrentIndex(0);
         Sound_tabWidget->setCurrentIndex(1);
         stackedWidget->setCurrentIndex(0);
         UIDeviceList->setCurrentRow(-1);
@@ -1699,32 +1699,32 @@ public:
 "hr { height: 1px; border-width: 0; }\n"
 "li.unchecked::marker { content: \"\\2610\"; }\n"
 "li.checked::marker { content: \"\\2612\"; }\n"
-"</style></head><body style=\" font-family:'Segoe UI'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:37px; margin-bottom:37px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:transparent;\"><a name=\"WACViewPanel_ClipboardElement\"></a><span style=\" font-family:'Times New Roman','Times New Roman_EmbeddedFont','Times New Roman_MSFontService','serif'; font-size:18pt; font-weight:700; color:#000000;\">E</span><span style=\" font-family:'Times New Roman','Times New Roman_EmbeddedFont','Times New Roman_MSFontService','serif'; font-size:18pt; font-weight:700; c"
-                        "olor:#000000;\">rkl\303\244rung zur Barrierefreiheit</span><span style=\" font-family:'Times New Roman','Times New Roman_EmbeddedFont','Times New Roman_MSFontService','serif'; font-size:18pt; color:#000000;\">\302\240</span></p>\n"
+"</style></head><body style=\" font-family:'.AppleSystemUIFont'; font-size:13pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:37px; margin-bottom:37px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:transparent;\"><a name=\"WACViewPanel_ClipboardElement\"></a><span style=\" font-family:'Times New Roman','Times New Roman_EmbeddedFont','Times New Roman_MSFontService','serif'; font-size:18pt; font-weight:700; color:#000000;\">E</span><span style=\" font-family:'Times New Roman','Times New Roman_EmbeddedFont','Times New Roman_MSFontService','serif'; font-size:18pt; font-we"
+                        "ight:700; color:#000000;\">rkl\303\244rung zur Barrierefreiheit</span><span style=\" font-family:'Times New Roman','Times New Roman_EmbeddedFont','Times New Roman_MSFontService','serif'; font-size:18pt; color:#000000;\">\302\240</span></p>\n"
 "<p style=\" margin-top:37px; margin-bottom:37px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:transparent;\"><span style=\" font-family:'Times New Roman','Times New Roman_EmbeddedFont','Times New Roman_MSFontService','serif'; font-size:12pt; color:#000000;\">Die Universit\303\244t Wien ist bem\303\274ht, ihre mobile Anwendung im Einklang mit dem Bundesgesetz \303\274ber den barrierefreien Zugang zu Websites und mobilen Anwendungen des Bundes (Web-Zug\303\244nglichkeits-Gesetz \342\200\223 WZG) BGBl. I. Nr. 59/2019 idgF, barrierefrei zug\303\244nglich zu machen.\302\240</span></p>\n"
-"<p style=\" margin-top:37px; margin-bottom:37px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:transparent;\"><spa"
-                        "n style=\" font-family:'Times New Roman','Times New Roman_EmbeddedFont','Times New Roman_MSFontService','serif'; font-size:12pt; color:#000000;\">Diese Erkl\303\244rung zur Barrierefreiheit gilt f\303\274r die mobile Anwendung </span><span style=\" font-family:'Times New Roman','Times New Roman_EmbeddedFont','Times New Roman_MSFontService','serif'; font-size:12pt; color:#000000; background-color:transparent;\">Klingelball.</span><span style=\" font-family:'Times New Roman','Times New Roman_EmbeddedFont','Times New Roman_MSFontService','serif'; font-size:12pt; color:#000000;\">\302\240</span></p>\n"
-"<p style=\" margin-top:37px; margin-bottom:37px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:transparent;\"><span style=\" font-family:'Times New Roman','Times New Roman_EmbeddedFont','Times New Roman_MSFontService','serif'; font-size:13.5pt; font-weight:700; color:#000000;\">Stand der Vereinbarkeit mit den Anforderungen</span><span style=\" font-family:'Times New Roman'"
-                        ",'Times New Roman_EmbeddedFont','Times New Roman_MSFontService','serif'; font-size:13.5pt; color:#000000;\">\302\240</span></p>\n"
-"<p style=\" margin-top:37px; margin-bottom:37px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:transparent;\"><span style=\" font-family:'Times New Roman','Times New Roman_EmbeddedFont','Times New Roman_MSFontService','serif'; font-size:12pt; color:#000000;\">Diese mobile Anwendung</span><span style=\" font-family:'Times New Roman','Times New Roman_EmbeddedFont','Times New Roman_MSFontService','serif'; font-size:12pt; font-style:italic; color:#000000;\"> ist</span><span style=\" font-family:'Times New Roman','Times New Roman_EmbeddedFont','Times New Roman_MSFontService','serif'; font-size:12pt; color:#000000;\"> mit der Konformit\303\244tsstufe AA der \342\200\236Richtlinien f\303\274r barrierefreie Webinhalte \342\200\223 WCAG 2.1\342\200\234 beziehungsweise mit dem geltenden Europ\303\244ischen Standard EN 301 549 V3.2.1 (2021-03) nach "
-                        "der Richtlinie (EU) 2016/2102 des Europ\303\244ischen Parlaments und des Rates vollst\303\244ndig vereinbar. \302\240</span></p>\n"
+"<p style=\" margin-top:37px; margin-bottom:37px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:transpar"
+                        "ent;\"><span style=\" font-family:'Times New Roman','Times New Roman_EmbeddedFont','Times New Roman_MSFontService','serif'; font-size:12pt; color:#000000;\">Diese Erkl\303\244rung zur Barrierefreiheit gilt f\303\274r die mobile Anwendung </span><span style=\" font-family:'Times New Roman','Times New Roman_EmbeddedFont','Times New Roman_MSFontService','serif'; font-size:12pt; color:#000000; background-color:transparent;\">Klingelball.</span><span style=\" font-family:'Times New Roman','Times New Roman_EmbeddedFont','Times New Roman_MSFontService','serif'; font-size:12pt; color:#000000;\">\302\240</span></p>\n"
+"<p style=\" margin-top:37px; margin-bottom:37px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:transparent;\"><span style=\" font-family:'Times New Roman','Times New Roman_EmbeddedFont','Times New Roman_MSFontService','serif'; font-size:13.5pt; font-weight:700; color:#000000;\">Stand der Vereinbarkeit mit den Anforderungen</span><span style=\" font-family:'Times"
+                        " New Roman','Times New Roman_EmbeddedFont','Times New Roman_MSFontService','serif'; font-size:13.5pt; color:#000000;\">\302\240</span></p>\n"
+"<p style=\" margin-top:37px; margin-bottom:37px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:transparent;\"><span style=\" font-family:'Times New Roman','Times New Roman_EmbeddedFont','Times New Roman_MSFontService','serif'; font-size:12pt; color:#000000;\">Diese mobile Anwendung</span><span style=\" font-family:'Times New Roman','Times New Roman_EmbeddedFont','Times New Roman_MSFontService','serif'; font-size:12pt; font-style:italic; color:#000000;\"> ist</span><span style=\" font-family:'Times New Roman','Times New Roman_EmbeddedFont','Times New Roman_MSFontService','serif'; font-size:12pt; color:#000000;\"> mit der Konformit\303\244tsstufe AA der \342\200\236Richtlinien f\303\274r barrierefreie Webinhalte \342\200\223 WCAG 2.1\342\200\234 beziehungsweise mit dem geltenden Europ\303\244ischen Standard EN 301 549 V3.2.1 (202"
+                        "1-03) nach der Richtlinie (EU) 2016/2102 des Europ\303\244ischen Parlaments und des Rates vollst\303\244ndig vereinbar. \302\240</span></p>\n"
 "<p style=\" margin-top:37px; margin-bottom:37px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:transparent;\"><span style=\" font-family:'Times New Roman','Times New Roman_EmbeddedFont','Times New Roman_MSFontService','serif'; font-size:13.5pt; font-weight:700; color:#000000;\">Erstellung der Erkl\303\244rung zur Barrierefreiheit</span><span style=\" font-family:'Times New Roman','Times New Roman_EmbeddedFont','Times New Roman_MSFontService','serif'; font-size:13.5pt; color:#000000;\">\302\240</span></p>\n"
-"<p style=\" margin-top:37px; margin-bottom:37px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:transparent;\"><span style=\" font-family:'Times New Roman','Times New Roman_EmbeddedFont','Times New Roman_MSFontService','serif'; font-size:12pt; color:#000000;\">Diese Erkl\303\244rung wurde am "
-                        "26. Februar 2024 erstellt.\302\240</span></p>\n"
+"<p style=\" margin-top:37px; margin-bottom:37px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:transparent;\"><span style=\" font-family:'Times New Roman','Times New Roman_EmbeddedFont','Times New Roman_MSFontService','serif'; font-size:12pt; color:#000000;\">Diese Erkl\303\244run"
+                        "g wurde am 26. Februar 2024 erstellt.\302\240</span></p>\n"
 "<p style=\" margin-top:37px; margin-bottom:37px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:transparent;\"><span style=\" font-family:'Times New Roman','Times New Roman_EmbeddedFont','Times New Roman_MSFontService','serif'; font-size:12pt; color:#000000;\">Die Erkl\303\244rung wurde auf Grundlage einer von einer der Universit\303\244t Wien durchgef\303\274hrten Selbstbewertung erstellt.\302\240</span></p>\n"
 "<p style=\" margin-top:37px; margin-bottom:37px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:transparent;\"><span style=\" font-family:'Times New Roman','Times New Roman_EmbeddedFont','Times New Roman_MSFontService','serif'; font-size:12pt; color:#000000;\">Diese Erkl\303\244rung wurde zuletzt am 26. Februar 2024 \303\274berpr\303\274ft.\302\240</span></p>\n"
-"<p style=\" margin-top:37px; margin-bottom:37px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text"
-                        "-indent:0px; background-color:transparent;\"><span style=\" font-family:'Times New Roman','Times New Roman_EmbeddedFont','Times New Roman_MSFontService','serif'; font-size:13.5pt; font-weight:700; color:#000000;\">Feedback und Kontaktangaben</span><span style=\" font-family:'Times New Roman','Times New Roman_EmbeddedFont','Times New Roman_MSFontService','serif'; font-size:13.5pt; color:#000000;\">\302\240</span></p>\n"
-"<p style=\" margin-top:37px; margin-bottom:37px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:transparent;\"><span style=\" font-family:'Times New Roman','Times New Roman_EmbeddedFont','Times New Roman_MSFontService','serif'; font-size:12pt; color:#000000;\">Sie k\303\266nnen M\303\244ngel in Bezug auf die Einhaltung der Barrierefreiheitsanforderungen unter </span><a href=\"mailto:smart.isw@univie.ac.at\"><span style=\" font-family:'Times New Roman','Times New Roman_EmbeddedFont','Times New Roman_MSFontService','serif'; font-size:12pt; text-decoration"
-                        ": underline; color:#0000ff;\">smart.isw@univie.ac.at</span></a><span style=\" font-family:'Times New Roman','Times New Roman_EmbeddedFont','Times New Roman_MSFontService','serif'; font-size:12pt; color:#000000;\"> bekanntgeben.\302\240</span></p>\n"
+"<p style=\" margin-top:37px; margin-bottom:37px; margin-left:0px; margin-right:0px; -qt-block-ind"
+                        "ent:0; text-indent:0px; background-color:transparent;\"><span style=\" font-family:'Times New Roman','Times New Roman_EmbeddedFont','Times New Roman_MSFontService','serif'; font-size:13.5pt; font-weight:700; color:#000000;\">Feedback und Kontaktangaben</span><span style=\" font-family:'Times New Roman','Times New Roman_EmbeddedFont','Times New Roman_MSFontService','serif'; font-size:13.5pt; color:#000000;\">\302\240</span></p>\n"
+"<p style=\" margin-top:37px; margin-bottom:37px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:transparent;\"><span style=\" font-family:'Times New Roman','Times New Roman_EmbeddedFont','Times New Roman_MSFontService','serif'; font-size:12pt; color:#000000;\">Sie k\303\266nnen M\303\244ngel in Bezug auf die Einhaltung der Barrierefreiheitsanforderungen unter </span><a href=\"mailto:smart.isw@univie.ac.at\"><span style=\" font-family:'Times New Roman','Times New Roman_EmbeddedFont','Times New Roman_MSFontService','serif'; font-size:12pt; text"
+                        "-decoration: underline; color:#0000ff;\">smart.isw@univie.ac.at</span></a><span style=\" font-family:'Times New Roman','Times New Roman_EmbeddedFont','Times New Roman_MSFontService','serif'; font-size:12pt; color:#000000;\"> bekanntgeben.\302\240</span></p>\n"
 "<p style=\" margin-top:37px; margin-bottom:37px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:transparent;\"><span style=\" font-family:'Times New Roman','Times New Roman_EmbeddedFont','Times New Roman_MSFontService','serif'; font-size:13.5pt; font-weight:700; color:#000000;\">Durchsetzungsverfahren</span><span style=\" font-family:'Times New Roman','Times New Roman_EmbeddedFont','Times New Roman_MSFontService','serif'; font-size:13.5pt; color:#000000;\">\302\240</span></p>\n"
-"<p style=\" margin-top:37px; margin-bottom:37px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:transparent;\"><span style=\" font-family:'Times New Roman','Times New Roman_EmbeddedFont','Times New Roman_M"
-                        "SFontService','serif'; font-size:12pt; color:#000000;\">Bei nicht zufriedenstellenden Antworten aus oben genannter Kontaktm\303\266glichkeit k\303\266nnen Sie sich mittels Beschwerde an die Beschwerdestelle der \303\226sterreichische Forschungsf\303\266rderungsgesellschaft mit beschr\303\244nkter Haftung (FFG) wenden. Die FFG nimmt \303\274ber das </span><a href=\"https://www.ffg.at/form/kontaktformular-beschwerdestelle\"><span style=\" font-family:'Times New Roman','Times New Roman_EmbeddedFont','Times New Roman_MSFontService','serif'; font-size:12pt; text-decoration: underline; color:#0000ff;\">Kontaktformular der Beschwerdestelle</span></a><span style=\" font-family:'Times New Roman','Times New Roman_EmbeddedFont','Times New Roman_MSFontService','serif'; font-size:12pt; color:#000000;\"> Beschwerden auf elektronischem Weg entgegen.\302\240</span></p>\n"
-"<p style=\" margin-top:37px; margin-bottom:37px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:transparent;\"><s"
-                        "pan style=\" font-family:'Times New Roman','Times New Roman_EmbeddedFont','Times New Roman_MSFontService','serif'; font-size:12pt; color:#000000;\">Die Beschwerden werden von der FFG dahingehend gepr\303\274ft, ob sie sich auf Verst\303\266\303\237e gegen die Vorgaben des Web-Zug\303\244nglichkeits-Gesetzes, insbesondere M\303\244ngel bei der Einhaltung der Barrierefreiheitsanforderungen, durch den Bund oder einer ihm zuordenbaren Einrichtung beziehen.\302\240</span></p>\n"
-"<p style=\" margin-top:37px; margin-bottom:37px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:transparent;\"><span style=\" font-family:'Times New Roman','Times New Roman_EmbeddedFont','Times New Roman_MSFontService','serif'; font-size:12pt; color:#000000;\">Sofern die Beschwerde berechtigt ist, hat die FFG dem Bund oder den betroffenen Rechtstr\303\244gern Handlungsempfehlungen auszusprechen und Ma\303\237nahmen vorzuschlagen, die der Beseitigung der vorliegenden M\303\244ngel dienen.\302\240</s"
-                        "pan></p>\n"
+"<p style=\" margin-top:37px; margin-bottom:37px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:transparent;\"><span style=\" font-family:'Times New Roman','Times New Roman_EmbeddedFont','Times "
+                        "New Roman_MSFontService','serif'; font-size:12pt; color:#000000;\">Bei nicht zufriedenstellenden Antworten aus oben genannter Kontaktm\303\266glichkeit k\303\266nnen Sie sich mittels Beschwerde an die Beschwerdestelle der \303\226sterreichische Forschungsf\303\266rderungsgesellschaft mit beschr\303\244nkter Haftung (FFG) wenden. Die FFG nimmt \303\274ber das </span><a href=\"https://www.ffg.at/form/kontaktformular-beschwerdestelle\"><span style=\" font-family:'Times New Roman','Times New Roman_EmbeddedFont','Times New Roman_MSFontService','serif'; font-size:12pt; text-decoration: underline; color:#0000ff;\">Kontaktformular der Beschwerdestelle</span></a><span style=\" font-family:'Times New Roman','Times New Roman_EmbeddedFont','Times New Roman_MSFontService','serif'; font-size:12pt; color:#000000;\"> Beschwerden auf elektronischem Weg entgegen.\302\240</span></p>\n"
+"<p style=\" margin-top:37px; margin-bottom:37px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:transp"
+                        "arent;\"><span style=\" font-family:'Times New Roman','Times New Roman_EmbeddedFont','Times New Roman_MSFontService','serif'; font-size:12pt; color:#000000;\">Die Beschwerden werden von der FFG dahingehend gepr\303\274ft, ob sie sich auf Verst\303\266\303\237e gegen die Vorgaben des Web-Zug\303\244nglichkeits-Gesetzes, insbesondere M\303\244ngel bei der Einhaltung der Barrierefreiheitsanforderungen, durch den Bund oder einer ihm zuordenbaren Einrichtung beziehen.\302\240</span></p>\n"
+"<p style=\" margin-top:37px; margin-bottom:37px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:transparent;\"><span style=\" font-family:'Times New Roman','Times New Roman_EmbeddedFont','Times New Roman_MSFontService','serif'; font-size:12pt; color:#000000;\">Sofern die Beschwerde berechtigt ist, hat die FFG dem Bund oder den betroffenen Rechtstr\303\244gern Handlungsempfehlungen auszusprechen und Ma\303\237nahmen vorzuschlagen, die der Beseitigung der vorliegenden M\303\244ngel dienen."
+                        "\302\240</span></p>\n"
 "<p style=\" margin-top:37px; margin-bottom:37px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:transparent;\"><a href=\"https://www.ffg.at/barrierefreiheit/beschwerdestelle\"><span style=\" font-family:'Times New Roman','Times New Roman_EmbeddedFont','Times New Roman_MSFontService','serif'; font-size:12pt; text-decoration: underline; color:#0000ff;\">Weitere Informationen zum Beschwerdeverfahren</span></a><span style=\" font-family:'Times New Roman','Times New Roman_EmbeddedFont','Times New Roman_MSFontService','serif'; font-size:12pt; color:#000000;\">\302\240</span></p>\n"
 "<p style=\" margin-top:0px; margin-bottom:11px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:transparent;\"><span style=\" font-family:'Calibri','Calibri_EmbeddedFont','Calibri_MSFontService','sans-serif'; font-size:11pt; color:#000000;\">\302\240</span></p></body></html>", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(Settings_Tab), QString());

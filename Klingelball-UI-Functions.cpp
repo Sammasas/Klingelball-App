@@ -329,7 +329,9 @@ void KlingelballUI::on_OnOff_Button_toggled(bool checked)
 
 void KlingelballUI::on_UIDeviceList_itemClicked(QListWidgetItem *item)
 {
-    m_deviceDiscoveryAgent->stop();
+    qWarning()<< "DeviceListindex:" << QString::number(deviceList->count());
+    qWarning()<<"UiListindex"<<QString::number(ui->UIDeviceList->currentRow());
+     m_deviceDiscoveryAgent->stop();
     connectDevice(deviceList->at(ui->UIDeviceList->currentRow())->getDevice());
 }
 
@@ -450,6 +452,9 @@ void KlingelballUI::on_buttonGroupToggled(QAbstractButton *button, bool checked)
 void KlingelballUI::on_Lautstaerke_valueChanged(int arg1)
 {
     //ui->Lautstaerke->setAccessibleName("Lautstärke" + QString::number(arg1) + "% Einstellbar");
+    ui->Lautstaerke_erhoehen->repaint();
+    ui->Lautstaerke_verringern->repaint();
+    qApp->processEvents();
 
 }
 

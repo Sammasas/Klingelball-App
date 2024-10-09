@@ -79,6 +79,11 @@ KlingelballUI::KlingelballUI(QWidget *parent)
     connect(ui->Bewegend_Farbe4, SIGNAL(toggled(bool)), SLOT(on_transmitLightColorMoving()));
     connect(ui->Bewegend_Farbe5, SIGNAL(toggled(bool)), SLOT(on_transmitLightColorMoving()));
 
+    connect(ui->Lautstaerke_erhoehen, &QPushButton:clicked(), ui->Lautstaerke_erhoehen, &QPushButton:clearFocus());
+    connect(ui->Lautstaerke_verringern, &QPushButton:clicked(), ui->Lautstaerke_verringern, &QPushButton:clearFocus());
+    connect(ui->Lautstaerke_erhoehen, &QPushButton:clicked(), ui->Lautstaerke_erhoehen, &QPushButton:u);
+    //connect(ui->Lautstaerke_erhoehen, &QPushButton:clicked(), ui->Lautstaerke_erhoehen, &QPushButton:clearFocus());
+
     if(KlingelballConnected){
         m_controller->disconnectFromDevice();
     }
