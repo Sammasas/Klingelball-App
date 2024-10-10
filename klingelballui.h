@@ -154,6 +154,8 @@ private slots:
 
     void on_pause_button_toggled(bool checked);
 
+    void on_Helligkeit_valueChanged(int arg1);
+
 Q_SIGNALS:
     void BatteryStatusRead(int);
 

@@ -450,6 +450,10 @@ void KlingelballUI::on_buttonGroupToggled(QAbstractButton *button, bool checked)
 void KlingelballUI::on_Lautstaerke_valueChanged(int arg1)
 {
     //ui->Lautstaerke->setAccessibleName("Lautstärke" + QString::number(arg1) + "% Einstellbar");
+    ui->Lautstaerke_erhoehen->hide();
+    ui->Lautstaerke_erhoehen->show();
+    ui->Lautstaerke_verringern->hide();
+    ui->Lautstaerke_verringern->show();
 
 }
 

@@ -32,9 +32,9 @@
     </message>
     <message>
         <location filename="klingelballui.ui" line="302"/>
-        <location filename="klingelballui.ui" line="611"/>
-        <location filename="klingelballui.ui" line="921"/>
-        <location filename="klingelballui.ui" line="1300"/>
+        <location filename="klingelballui.ui" line="605"/>
+        <location filename="klingelballui.ui" line="909"/>
+        <location filename="klingelballui.ui" line="1295"/>
         <source>%</source>
         <translation>%</translation>
     </message>
@@ -65,334 +65,339 @@
     </message>
     <message>
         <location filename="klingelballui.ui" line="517"/>
-        <location filename="klingelballui.ui" line="840"/>
-        <location filename="klingelballui.ui" line="1591"/>
+        <location filename="klingelballui.ui" line="831"/>
+        <location filename="klingelballui.ui" line="1586"/>
         <source>Stillstehend:</source>
         <translation>Stationary:</translation>
     </message>
     <message>
-        <location filename="klingelballui.ui" line="558"/>
+        <location filename="klingelballui.ui" line="552"/>
         <source>Stillstehende Tonfrequenz um 5% erhöhen Taste</source>
         <translation>Increase stationary tone frequency by 5% Button</translation>
     </message>
     <message>
-        <location filename="klingelballui.ui" line="590"/>
+        <location filename="klingelballui.ui" line="584"/>
         <source>Stillstehende Frequenz %</source>
         <translation>Stationary Frequency %</translation>
     </message>
     <message>
-        <location filename="klingelballui.ui" line="642"/>
+        <location filename="klingelballui.ui" line="636"/>
         <source>StillstehendeTonfrequenz um 5% verringern Taste</source>
         <translation>Decrease stationary volume by 5% button</translation>
     </message>
     <message>
-        <location filename="klingelballui.ui" line="668"/>
+        <location filename="klingelballui.ui" line="662"/>
         <source>Bewegend Tonhöhe Überschrift</source>
         <translation>Moving Pitch Heading</translation>
     </message>
     <message>
-        <location filename="klingelballui.ui" line="671"/>
-        <location filename="klingelballui.ui" line="981"/>
-        <location filename="klingelballui.ui" line="1632"/>
+        <location filename="klingelballui.ui" line="665"/>
+        <location filename="klingelballui.ui" line="969"/>
+        <location filename="klingelballui.ui" line="1627"/>
         <source>Bewegend:</source>
         <translation>Moving:</translation>
     </message>
     <message>
-        <location filename="klingelballui.ui" line="699"/>
+        <location filename="klingelballui.ui" line="690"/>
         <source>Bewegende Tonfrequenz um 5% erhöhen Taste</source>
         <translation>Increase moving pitch by 5% button</translation>
     </message>
     <message>
-        <location filename="klingelballui.ui" line="734"/>
+        <location filename="klingelballui.ui" line="725"/>
         <source>Bewegende Tonfrequenz %</source>
         <translation>Moving pitch %</translation>
     </message>
     <message>
-        <location filename="klingelballui.ui" line="783"/>
+        <location filename="klingelballui.ui" line="774"/>
         <source>Bewegende Tonfrequenz um 5% verringern Taste</source>
         <translation>Decrease moving pitch by 5%</translation>
     </message>
     <message>
-        <location filename="klingelballui.ui" line="811"/>
+        <location filename="klingelballui.ui" line="802"/>
         <source>Piepsen</source>
         <translation>Beeping</translation>
     </message>
     <message>
-        <location filename="klingelballui.ui" line="837"/>
+        <location filename="klingelballui.ui" line="828"/>
         <source>Stillstehend Piepsen Überschrift</source>
         <translation>Stationary pitch heading</translation>
     </message>
     <message>
-        <location filename="klingelballui.ui" line="868"/>
+        <location filename="klingelballui.ui" line="856"/>
         <source>Stillstehende Piepsfrequenz um 5% erhöhen Taste</source>
         <translation>Increase stationary Beepfrenquenzy by 5%</translation>
     </message>
     <message>
-        <location filename="klingelballui.ui" line="900"/>
+        <location filename="klingelballui.ui" line="888"/>
         <source>Stillstehende Piepsrequenz %</source>
         <translation>Stationary Beepfrequenzy %</translation>
     </message>
     <message>
-        <location filename="klingelballui.ui" line="952"/>
+        <location filename="klingelballui.ui" line="940"/>
         <source>Stillstehende Piepsrequenz um 5% verringern Taste</source>
         <translation>Increase stationary Beepfrequenzy by 5%</translation>
     </message>
     <message>
-        <location filename="klingelballui.ui" line="975"/>
+        <location filename="klingelballui.ui" line="963"/>
         <source>Bewegend Piepsen Überschrift</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="klingelballui.ui" line="1009"/>
+        <location filename="klingelballui.ui" line="994"/>
         <source>Bewegende Piepsfrequenz um 5% erhöhen Taste</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="klingelballui.ui" line="1044"/>
+        <location filename="klingelballui.ui" line="1029"/>
         <source>Bewegende Piepsfrequenz %</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="klingelballui.ui" line="1093"/>
+        <location filename="klingelballui.ui" line="1078"/>
         <source>Bewegende Piepsfrequenz um 5% verringern Taste</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="klingelballui.ui" line="1152"/>
-        <location filename="klingelballui.ui" line="1857"/>
+        <location filename="klingelballui.ui" line="1147"/>
+        <location filename="klingelballui.ui" line="1865"/>
         <source>Stopp taste</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="klingelballui.ui" line="1155"/>
-        <location filename="klingelballui.ui" line="1860"/>
-        <location filename="Klingelball-UI-Functions.cpp" line="481"/>
-        <location filename="Klingelball-UI-Functions.cpp" line="504"/>
+        <location filename="klingelballui.ui" line="1150"/>
+        <location filename="klingelballui.ui" line="1868"/>
+        <location filename="Klingelball-UI-Functions.cpp" line="485"/>
+        <location filename="Klingelball-UI-Functions.cpp" line="508"/>
         <source>Stopp</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="klingelballui.ui" line="1210"/>
+        <location filename="klingelballui.ui" line="1205"/>
         <source>Helligkeit Überschrift</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="klingelballui.ui" line="1213"/>
+        <location filename="klingelballui.ui" line="1208"/>
         <location filename="Klingelball-UI-Functions.cpp" line="436"/>
         <location filename="Klingelball-UI-SetupFunctions.cpp" line="75"/>
         <source>Helligkeit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="klingelballui.ui" line="1241"/>
+        <location filename="klingelballui.ui" line="1236"/>
         <source>Helligkeit um 5% erhöhen </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="klingelballui.ui" line="1282"/>
+        <location filename="klingelballui.ui" line="1277"/>
         <source>Helligkeit %</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="klingelballui.ui" line="1331"/>
+        <location filename="klingelballui.ui" line="1326"/>
         <source>Helligkeit um 5% verringern</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="klingelballui.ui" line="1347"/>
+        <location filename="klingelballui.ui" line="1342"/>
         <source>Farbauswahl Überschrift</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="klingelballui.ui" line="1350"/>
+        <location filename="klingelballui.ui" line="1345"/>
         <source>Farbe:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="klingelballui.ui" line="1383"/>
+        <location filename="klingelballui.ui" line="1378"/>
         <source>Weiß Stillstehend Farbwahl nicht aktiviert</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="klingelballui.ui" line="1425"/>
+        <location filename="klingelballui.ui" line="1420"/>
         <source>Rot Stillstehend Farbwahl nicht aktiviert</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="klingelballui.ui" line="1461"/>
+        <location filename="klingelballui.ui" line="1456"/>
         <source>Grün Stillstehend Farbwahl nicht aktiviert</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="klingelballui.ui" line="1498"/>
+        <location filename="klingelballui.ui" line="1493"/>
         <source>Blau Stillstehend Farbwahl nicht aktiviert</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="klingelballui.ui" line="1537"/>
+        <location filename="klingelballui.ui" line="1532"/>
         <source>Gelb Stillstehend Farbwahl nicht aktiviert</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="klingelballui.ui" line="1580"/>
+        <location filename="klingelballui.ui" line="1575"/>
         <source>Stillstehend Farbauswahl Überschrift</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="klingelballui.ui" line="1629"/>
+        <location filename="klingelballui.ui" line="1624"/>
         <source>Bewegend Farbauswahl Überschrift</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="klingelballui.ui" line="1639"/>
+        <location filename="klingelballui.ui" line="1634"/>
         <source>Weiß Bewegend Farbwahl nicht aktiviert</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="klingelballui.ui" line="1683"/>
+        <location filename="klingelballui.ui" line="1678"/>
         <source>Rot Bewegend Farbwahl nicht aktiviert</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="klingelballui.ui" line="1719"/>
+        <location filename="klingelballui.ui" line="1714"/>
         <source>Grün Bewegend Farbwahl nicht aktiviert</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="klingelballui.ui" line="1755"/>
+        <location filename="klingelballui.ui" line="1750"/>
         <source>Blau Bewegend Farbwahl nicht aktiviert</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="klingelballui.ui" line="1791"/>
+        <location filename="klingelballui.ui" line="1786"/>
         <source>Gelb Bewegend Farbwahl nicht aktiviert</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="klingelballui.ui" line="1883"/>
+        <location filename="klingelballui.ui" line="1891"/>
         <source>Profile</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="klingelballui.ui" line="1952"/>
+        <location filename="klingelballui.ui" line="1960"/>
         <source>Neues Profil aus aktuellen Einstellungen</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="klingelballui.ui" line="1977"/>
+        <location filename="klingelballui.ui" line="1985"/>
         <source>Ausgewähltes Profil löschen</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="klingelballui.ui" line="2010"/>
+        <location filename="klingelballui.ui" line="2018"/>
         <source>Profil-Name:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="klingelballui.ui" line="2022"/>
+        <location filename="klingelballui.ui" line="2030"/>
         <source>Profilname eingabe</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="klingelballui.ui" line="2034"/>
+        <location filename="klingelballui.ui" line="2042"/>
         <source>Neues Profil erstellen</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="klingelballui.ui" line="2046"/>
+        <location filename="klingelballui.ui" line="2054"/>
         <source>Lautstärke: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="klingelballui.ui" line="2058"/>
+        <location filename="klingelballui.ui" line="2066"/>
         <source>Frequenz-Bewegend:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="klingelballui.ui" line="2070"/>
+        <location filename="klingelballui.ui" line="2078"/>
         <source>Frequenz-Stillstehend: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="klingelballui.ui" line="2090"/>
+        <location filename="klingelballui.ui" line="2098"/>
         <source>Abbrechen</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="klingelballui.ui" line="2132"/>
+        <location filename="klingelballui.ui" line="2140"/>
         <source>Verfügbare Klingelbälle Liste</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="klingelballui.ui" line="2153"/>
+        <location filename="klingelballui.ui" line="2150"/>
+        <source>Hier werden alle verfügbaren Klingelbälle angezeigt. Stelle sicher, dass Bluetooth und Standort für die App aktiviert ist. </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="klingelballui.ui" line="2171"/>
         <source>Klingelball suchen Taste</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="klingelballui.ui" line="2156"/>
+        <location filename="klingelballui.ui" line="2174"/>
         <source>Klingelball suchen</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="klingelballui.ui" line="2174"/>
+        <location filename="klingelballui.ui" line="2192"/>
         <source>Klingelball trennen taste</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="klingelballui.ui" line="2177"/>
+        <location filename="klingelballui.ui" line="2195"/>
         <source>Klingelball trennen</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="klingelballui.ui" line="2213"/>
+        <location filename="klingelballui.ui" line="2231"/>
         <location filename="Klingelball-UI-Functions.cpp" line="322"/>
         <source>Ball: Ein</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="klingelballui.ui" line="2231"/>
+        <location filename="klingelballui.ui" line="2249"/>
         <source>Akku Stand</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="klingelballui.ui" line="2243"/>
+        <location filename="klingelballui.ui" line="2261"/>
         <source>Akkustand: %p%</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="klingelballui.ui" line="2299"/>
+        <location filename="klingelballui.ui" line="2317"/>
         <source>Aussehen Überschrift</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="klingelballui.ui" line="2308"/>
+        <location filename="klingelballui.ui" line="2326"/>
         <source>Aussehen:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="klingelballui.ui" line="2330"/>
+        <location filename="klingelballui.ui" line="2348"/>
         <source>Automatisch</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="klingelballui.ui" line="2346"/>
+        <location filename="klingelballui.ui" line="2364"/>
         <source>Heller Modus</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="klingelballui.ui" line="2371"/>
+        <location filename="klingelballui.ui" line="2389"/>
         <source>Dunkler Modus</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="klingelballui.ui" line="2404"/>
+        <location filename="klingelballui.ui" line="2422"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 hr { height: 1px; border-width: 0; }
 li.unchecked::marker { content: &quot;\2610&quot;; }
 li.checked::marker { content: &quot;\2612&quot;; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Segoe UI&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;.AppleSystemUIFont&apos;; font-size:13pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:37px; margin-bottom:37px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:transparent;&quot;&gt;&lt;a name=&quot;WACViewPanel_ClipboardElement&quot;&gt;&lt;/a&gt;&lt;span style=&quot; font-family:&apos;Times New Roman&apos;,&apos;Times New Roman_EmbeddedFont&apos;,&apos;Times New Roman_MSFontService&apos;,&apos;serif&apos;; font-size:18pt; font-weight:700; color:#000000;&quot;&gt;E&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Times New Roman&apos;,&apos;Times New Roman_EmbeddedFont&apos;,&apos;Times New Roman_MSFontService&apos;,&apos;serif&apos;; font-size:18pt; font-weight:700; color:#000000;&quot;&gt;rklärung zur Barrierefreiheit&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Times New Roman&apos;,&apos;Times New Roman_EmbeddedFont&apos;,&apos;Times New Roman_MSFontService&apos;,&apos;serif&apos;; font-size:18pt; color:#000000;&quot;&gt;&#xa0;&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:37px; margin-bottom:37px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:transparent;&quot;&gt;&lt;span style=&quot; font-family:&apos;Times New Roman&apos;,&apos;Times New Roman_EmbeddedFont&apos;,&apos;Times New Roman_MSFontService&apos;,&apos;serif&apos;; font-size:12pt; color:#000000;&quot;&gt;Die Universität Wien ist bemüht, ihre mobile Anwendung im Einklang mit dem Bundesgesetz über den barrierefreien Zugang zu Websites und mobilen Anwendungen des Bundes (Web-Zugänglichkeits-Gesetz – WZG) BGBl. I. Nr. 59/2019 idgF, barrierefrei zugänglich zu machen.&#xa0;&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:37px; margin-bottom:37px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:transparent;&quot;&gt;&lt;span style=&quot; font-family:&apos;Times New Roman&apos;,&apos;Times New Roman_EmbeddedFont&apos;,&apos;Times New Roman_MSFontService&apos;,&apos;serif&apos;; font-size:12pt; color:#000000;&quot;&gt;Diese Erklärung zur Barrierefreiheit gilt für die mobile Anwendung &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Times New Roman&apos;,&apos;Times New Roman_EmbeddedFont&apos;,&apos;Times New Roman_MSFontService&apos;,&apos;serif&apos;; font-size:12pt; color:#000000; background-color:transparent;&quot;&gt;Klingelball.&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Times New Roman&apos;,&apos;Times New Roman_EmbeddedFont&apos;,&apos;Times New Roman_MSFontService&apos;,&apos;serif&apos;; font-size:12pt; color:#000000;&quot;&gt;&#xa0;&lt;/span&gt;&lt;/p&gt;
@@ -413,28 +418,18 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="klingelballui.ui" line="2443"/>
-        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-hr { height: 1px; border-width: 0; }
-li.unchecked::marker { content: &quot;\2610&quot;; }
-li.checked::marker { content: &quot;\2612&quot;; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Segoe UI&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Die Klingelball App speichert und verarbeitet keine Daten von Benutzer:innen. Der Standort wird nur für die Funktionalität von &amp;quot;Bluetooth Low Energy&amp;quot;  angefragt. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Klingelball-BLE-Functions.cpp" line="190"/>
-        <location filename="Klingelball-BLE-Functions.cpp" line="307"/>
+        <location filename="Klingelball-BLE-Functions.cpp" line="309"/>
         <location filename="Klingelball-BLE-Functions.cpp" line="392"/>
+        <location filename="Klingelball-BLE-Functions.cpp" line="468"/>
+        <location filename="klingelballui.cpp" line="87"/>
         <source>Verfügbare Klingelbälle Liste,</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Klingelball-BLE-Functions.cpp" line="190"/>
-        <location filename="Klingelball-BLE-Functions.cpp" line="307"/>
+        <location filename="Klingelball-BLE-Functions.cpp" line="309"/>
         <location filename="Klingelball-BLE-Functions.cpp" line="392"/>
+        <location filename="Klingelball-BLE-Functions.cpp" line="468"/>
+        <location filename="klingelballui.cpp" line="87"/>
         <source>verfügbar</source>
         <translation type="unfinished"></translation>
     </message>
@@ -509,20 +504,20 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Klingelball-UI-Functions.cpp" line="474"/>
-        <location filename="Klingelball-UI-Functions.cpp" line="498"/>
+        <location filename="Klingelball-UI-Functions.cpp" line="478"/>
+        <location filename="Klingelball-UI-Functions.cpp" line="502"/>
         <source>Start</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Klingelball-UI-Functions.cpp" line="475"/>
-        <location filename="Klingelball-UI-Functions.cpp" line="499"/>
+        <location filename="Klingelball-UI-Functions.cpp" line="479"/>
+        <location filename="Klingelball-UI-Functions.cpp" line="503"/>
         <source>Start Taste</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Klingelball-UI-Functions.cpp" line="482"/>
-        <location filename="Klingelball-UI-Functions.cpp" line="505"/>
+        <location filename="Klingelball-UI-Functions.cpp" line="486"/>
+        <location filename="Klingelball-UI-Functions.cpp" line="509"/>
         <source>Stopp Taste</source>
         <translation type="unfinished"></translation>
     </message>

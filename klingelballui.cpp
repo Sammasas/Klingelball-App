@@ -116,3 +116,13 @@ KlingelballUI::~KlingelballUI()
 
 
 
+
+void KlingelballUI::on_Helligkeit_valueChanged(int arg1)
+{
+    ui->Helligkeit_erhoehen->hide();
+    ui->Helligkeit_erhoehen->show();
+    ui->Heilligkeit_verringern->hide();
+    ui->Heilligkeit_verringern->show();
+
+}
+
