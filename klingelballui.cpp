@@ -28,6 +28,7 @@ KlingelballUI::KlingelballUI(QWidget *parent)
 
     ui->setupUi(this);
     ui->tabWidget->removeTab(2);
+    ui->searchKlingelball->hide();
     setup_UI();
     setupBLE();
     setup_Appearance();
@@ -78,7 +79,13 @@ KlingelballUI::KlingelballUI(QWidget *parent)
     connect(ui->Bewegend_Farbe4, SIGNAL(toggled(bool)), SLOT(on_transmitLightColorMoving()));
     connect(ui->Bewegend_Farbe5, SIGNAL(toggled(bool)), SLOT(on_transmitLightColorMoving()));
 
+    if(KlingelballConnected){
+        m_controller->disconnectFromDevice();
+    }
 
+    ui->UIDeviceList->clear();
+    ui->UIDeviceList->setAccessibleName(tr("Verfügbare Klingelbälle Liste,") + QString::number(ui->UIDeviceList->count()) + tr("verfügbar"));
+    startDeviceDiscovery();
 }
 
 
