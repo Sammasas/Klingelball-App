@@ -115,7 +115,7 @@ QTabBar::tab::disabled{
        <enum>QTabWidget::TabShape::Rounded</enum>
       </property>
       <property name="currentIndex">
-       <number>3</number>
+       <number>4</number>
       </property>
       <property name="iconSize">
        <size>
@@ -2447,7 +2447,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
 &lt;p style=&quot; margin-top:37px; margin-bottom:37px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:transparent;&quot;&gt;&lt;span style=&quot; font-family:'Times New Roman','Times New Roman_EmbeddedFont','Times New Roman_MSFontService','serif'; font-size:12pt; color:#000000;&quot;&gt;Die Beschwerden werden von der FFG dahingehend geprüft, ob sie sich auf Verstöße gegen die Vorgaben des Web-Zugänglichkeits-Gesetzes, insbesondere Mängel bei der Einhaltung der Barrierefreiheitsanforderungen, durch den Bund oder einer ihm zuordenbaren Einrichtung beziehen. &lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:37px; margin-bottom:37px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:transparent;&quot;&gt;&lt;span style=&quot; font-family:'Times New Roman','Times New Roman_EmbeddedFont','Times New Roman_MSFontService','serif'; font-size:12pt; color:#000000;&quot;&gt;Sofern die Beschwerde berechtigt ist, hat die FFG dem Bund oder den betroffenen Rechtsträgern Handlungsempfehlungen auszusprechen und Maßnahmen vorzuschlagen, die der Beseitigung der vorliegenden Mängel dienen. &lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:37px; margin-bottom:37px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:transparent;&quot;&gt;&lt;a href=&quot;https://www.ffg.at/barrierefreiheit/beschwerdestelle&quot;&gt;&lt;span style=&quot; font-family:'Times New Roman','Times New Roman_EmbeddedFont','Times New Roman_MSFontService','serif'; font-size:12pt; text-decoration: underline; color:#0000ff;&quot;&gt;Weitere Informationen zum Beschwerdeverfahren&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-family:'Times New Roman','Times New Roman_EmbeddedFont','Times New Roman_MSFontService','serif'; font-size:12pt; color:#000000;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:11px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:transparent;&quot;&gt;&lt;span style=&quot; font-family:'Calibri','Calibri_EmbeddedFont','Calibri_MSFontService','sans-serif'; font-size:11pt; color:#000000;&quot;&gt; &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;p style=&quot; margin-top:0px; margin-bottom:11px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:transparent;&quot;&gt;&lt;span style=&quot; font-family:'Calibri','Calibri_EmbeddedFont','Calibri_MSFontService','sans-serif'; font-size:11pt; color:#000000;&quot;&gt;This app was developed by Samuel Zeillinger in cooperation with University of Vienna &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="openExternalLinks">
            <bool>true</bool>
@@ -2463,19 +2463,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
            <size>
             <width>20</width>
             <height>40</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item>
-         <spacer name="verticalSpacer_10">
-          <property name="orientation">
-           <enum>Qt::Orientation::Vertical</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>20</width>
-            <height>0</height>
            </size>
           </property>
          </spacer>
