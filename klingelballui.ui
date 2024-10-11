@@ -43,10 +43,10 @@
        </font>
       </property>
       <property name="focusPolicy">
-       <enum>Qt::FocusPolicy::NoFocus</enum>
+       <enum>Qt::NoFocus</enum>
       </property>
       <property name="contextMenuPolicy">
-       <enum>Qt::ContextMenuPolicy::NoContextMenu</enum>
+       <enum>Qt::NoContextMenu</enum>
       </property>
       <property name="accessibleName">
        <string/>
@@ -109,10 +109,10 @@ QTabBar::tab::disabled{
 }</string>
       </property>
       <property name="tabPosition">
-       <enum>QTabWidget::TabPosition::South</enum>
+       <enum>QTabWidget::South</enum>
       </property>
       <property name="tabShape">
-       <enum>QTabWidget::TabShape::Rounded</enum>
+       <enum>QTabWidget::Rounded</enum>
       </property>
       <property name="currentIndex">
        <number>4</number>
@@ -124,7 +124,7 @@ QTabBar::tab::disabled{
        </size>
       </property>
       <property name="elideMode">
-       <enum>Qt::TextElideMode::ElideLeft</enum>
+       <enum>Qt::ElideLeft</enum>
       </property>
       <property name="usesScrollButtons">
        <bool>false</bool>
@@ -156,7 +156,7 @@ QTabBar::tab::disabled{
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_3" stretch="0,0,0,0,0,0">
         <property name="sizeConstraint">
-         <enum>QLayout::SizeConstraint::SetDefaultConstraint</enum>
+         <enum>QLayout::SetDefaultConstraint</enum>
         </property>
         <property name="leftMargin">
          <number>10</number>
@@ -197,7 +197,7 @@ QTabBar::tab::disabled{
              <string>Lautstärke</string>
             </property>
             <property name="textInteractionFlags">
-             <set>Qt::TextInteractionFlag::NoTextInteraction</set>
+             <set>Qt::NoTextInteraction</set>
             </property>
            </widget>
           </item>
@@ -222,10 +222,10 @@ QTabBar::tab::disabled{
              </size>
             </property>
             <property name="focusPolicy">
-             <enum>Qt::FocusPolicy::NoFocus</enum>
+             <enum>Qt::NoFocus</enum>
             </property>
             <property name="contextMenuPolicy">
-             <enum>Qt::ContextMenuPolicy::NoContextMenu</enum>
+             <enum>Qt::NoContextMenu</enum>
             </property>
             <property name="accessibleName">
              <string>Lautstärke um 5% erhöhen Taste</string>
@@ -275,7 +275,7 @@ QTabBar::tab::disabled{
              <cursorShape>BlankCursor</cursorShape>
             </property>
             <property name="focusPolicy">
-             <enum>Qt::FocusPolicy::NoFocus</enum>
+             <enum>Qt::NoFocus</enum>
             </property>
             <property name="accessibleName">
              <string>Lautstärke %</string>
@@ -287,13 +287,13 @@ QTabBar::tab::disabled{
              <bool>false</bool>
             </property>
             <property name="alignment">
-             <set>Qt::AlignmentFlag::AlignCenter</set>
+             <set>Qt::AlignCenter</set>
             </property>
             <property name="readOnly">
              <bool>false</bool>
             </property>
             <property name="buttonSymbols">
-             <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+             <enum>QAbstractSpinBox::NoButtons</enum>
             </property>
             <property name="keyboardTracking">
              <bool>false</bool>
@@ -330,7 +330,7 @@ QTabBar::tab::disabled{
              </size>
             </property>
             <property name="focusPolicy">
-             <enum>Qt::FocusPolicy::NoFocus</enum>
+             <enum>Qt::NoFocus</enum>
             </property>
             <property name="accessibleName">
              <string>Lautstärke um 5% verringern Taste</string>
@@ -358,7 +358,7 @@ QTabBar::tab::disabled{
            <number>3</number>
           </property>
           <property name="orientation">
-           <enum>Qt::Orientation::Vertical</enum>
+           <enum>Qt::Vertical</enum>
           </property>
          </widget>
         </item>
@@ -383,7 +383,7 @@ QTabBar::tab::disabled{
            </font>
           </property>
           <property name="focusPolicy">
-           <enum>Qt::FocusPolicy::NoFocus</enum>
+           <enum>Qt::NoFocus</enum>
           </property>
           <property name="accessibleName">
            <string>Frequenzeinstellungen</string>
@@ -448,13 +448,13 @@ QTabBar::tab::disabled{
 }</string>
           </property>
           <property name="tabPosition">
-           <enum>QTabWidget::TabPosition::North</enum>
+           <enum>QTabWidget::North</enum>
           </property>
           <property name="currentIndex">
-           <number>1</number>
+           <number>0</number>
           </property>
           <property name="elideMode">
-           <enum>Qt::TextElideMode::ElideLeft</enum>
+           <enum>Qt::ElideLeft</enum>
           </property>
           <property name="tabsClosable">
            <bool>false</bool>
@@ -488,7 +488,7 @@ QTabBar::tab::disabled{
             <item>
              <layout class="QGridLayout" name="Ton_Layout" rowstretch="0,0,0,0,0" columnstretch="0,0,0">
               <property name="sizeConstraint">
-               <enum>QLayout::SizeConstraint::SetDefaultConstraint</enum>
+               <enum>QLayout::SetDefaultConstraint</enum>
               </property>
               <property name="horizontalSpacing">
                <number>20</number>
@@ -505,7 +505,7 @@ QTabBar::tab::disabled{
                  </font>
                 </property>
                 <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::NoFocus</enum>
+                 <enum>Qt::NoFocus</enum>
                 </property>
                 <property name="accessibleName">
                  <string>Stillstehend Tonhöhe Überschrift</string>
@@ -524,7 +524,7 @@ QTabBar::tab::disabled{
                  <number>2</number>
                 </property>
                 <property name="orientation">
-                 <enum>Qt::Orientation::Vertical</enum>
+                 <enum>Qt::Vertical</enum>
                 </property>
                </widget>
               </item>
@@ -578,7 +578,7 @@ QTabBar::tab::disabled{
                  <cursorShape>BlankCursor</cursorShape>
                 </property>
                 <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::NoFocus</enum>
+                 <enum>Qt::NoFocus</enum>
                 </property>
                 <property name="accessibleName">
                  <string>Stillstehende Frequenz %</string>
@@ -590,13 +590,13 @@ QTabBar::tab::disabled{
                  <bool>false</bool>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                 <set>Qt::AlignCenter</set>
                 </property>
                 <property name="readOnly">
                  <bool>false</bool>
                 </property>
                 <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+                 <enum>QAbstractSpinBox::NoButtons</enum>
                 </property>
                 <property name="keyboardTracking">
                  <bool>false</bool>
@@ -719,7 +719,7 @@ QTabBar::tab::disabled{
                  <bool>false</bool>
                 </property>
                 <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::NoFocus</enum>
+                 <enum>Qt::NoFocus</enum>
                 </property>
                 <property name="accessibleName">
                  <string>Bewegende Tonfrequenz %</string>
@@ -728,13 +728,13 @@ QTabBar::tab::disabled{
                  <bool>false</bool>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                 <set>Qt::AlignCenter</set>
                 </property>
                 <property name="readOnly">
                  <bool>false</bool>
                 </property>
                 <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+                 <enum>QAbstractSpinBox::NoButtons</enum>
                 </property>
                 <property name="keyboardTracking">
                  <bool>false</bool>
@@ -805,7 +805,7 @@ QTabBar::tab::disabled{
             <item>
              <layout class="QGridLayout" name="Beep_Layout" rowstretch="0,0,0,0,0" columnstretch="0,0,0">
               <property name="sizeConstraint">
-               <enum>QLayout::SizeConstraint::SetDefaultConstraint</enum>
+               <enum>QLayout::SetDefaultConstraint</enum>
               </property>
               <property name="horizontalSpacing">
                <number>20</number>
@@ -822,7 +822,7 @@ QTabBar::tab::disabled{
                  </font>
                 </property>
                 <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::NoFocus</enum>
+                 <enum>Qt::NoFocus</enum>
                 </property>
                 <property name="accessibleName">
                  <string>Stillstehend Piepsen Überschrift</string>
@@ -882,7 +882,7 @@ QTabBar::tab::disabled{
                  <cursorShape>BlankCursor</cursorShape>
                 </property>
                 <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::NoFocus</enum>
+                 <enum>Qt::NoFocus</enum>
                 </property>
                 <property name="accessibleName">
                  <string>Stillstehende Piepsrequenz %</string>
@@ -894,13 +894,13 @@ QTabBar::tab::disabled{
                  <bool>false</bool>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                 <set>Qt::AlignCenter</set>
                 </property>
                 <property name="readOnly">
                  <bool>false</bool>
                 </property>
                 <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+                 <enum>QAbstractSpinBox::NoButtons</enum>
                 </property>
                 <property name="keyboardTracking">
                  <bool>false</bool>
@@ -957,7 +957,7 @@ QTabBar::tab::disabled{
                  </font>
                 </property>
                 <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::NoFocus</enum>
+                 <enum>Qt::NoFocus</enum>
                 </property>
                 <property name="accessibleName">
                  <string>Bewegend Piepsen Überschrift</string>
@@ -1023,7 +1023,7 @@ QTabBar::tab::disabled{
                  <bool>false</bool>
                 </property>
                 <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::NoFocus</enum>
+                 <enum>Qt::NoFocus</enum>
                 </property>
                 <property name="accessibleName">
                  <string>Bewegende Piepsfrequenz %</string>
@@ -1032,13 +1032,13 @@ QTabBar::tab::disabled{
                  <bool>false</bool>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                 <set>Qt::AlignCenter</set>
                 </property>
                 <property name="readOnly">
                  <bool>false</bool>
                 </property>
                 <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+                 <enum>QAbstractSpinBox::NoButtons</enum>
                 </property>
                 <property name="keyboardTracking">
                  <bool>false</bool>
@@ -1092,7 +1092,7 @@ QTabBar::tab::disabled{
                  <number>2</number>
                 </property>
                 <property name="orientation">
-                 <enum>Qt::Orientation::Vertical</enum>
+                 <enum>Qt::Vertical</enum>
                 </property>
                </widget>
               </item>
@@ -1103,27 +1103,24 @@ QTabBar::tab::disabled{
          </widget>
         </item>
         <item>
-         <spacer name="verticalSpacer_5">
-          <property name="orientation">
-           <enum>Qt::Orientation::Vertical</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>20</width>
-            <height>0</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item>
          <spacer name="verticalSpacer_8">
           <property name="orientation">
-           <enum>Qt::Orientation::Vertical</enum>
+           <enum>Qt::Vertical</enum>
           </property>
           <property name="sizeHint" stdset="0">
            <size>
             <width>20</width>
             <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <spacer name="verticalSpacer_5">
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>0</height>
            </size>
           </property>
          </spacer>
@@ -1208,7 +1205,7 @@ QTabBar::tab::disabled{
              <string>Helligkeit</string>
             </property>
             <property name="textInteractionFlags">
-             <set>Qt::TextInteractionFlag::NoTextInteraction</set>
+             <set>Qt::NoTextInteraction</set>
             </property>
            </widget>
           </item>
@@ -1271,7 +1268,7 @@ QTabBar::tab::disabled{
              <cursorShape>BlankCursor</cursorShape>
             </property>
             <property name="focusPolicy">
-             <enum>Qt::FocusPolicy::NoFocus</enum>
+             <enum>Qt::NoFocus</enum>
             </property>
             <property name="accessibleName">
              <string>Helligkeit %</string>
@@ -1280,13 +1277,13 @@ QTabBar::tab::disabled{
              <bool>false</bool>
             </property>
             <property name="alignment">
-             <set>Qt::AlignmentFlag::AlignCenter</set>
+             <set>Qt::AlignCenter</set>
             </property>
             <property name="readOnly">
              <bool>false</bool>
             </property>
             <property name="buttonSymbols">
-             <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+             <enum>QAbstractSpinBox::NoButtons</enum>
             </property>
             <property name="keyboardTracking">
              <bool>false</bool>
@@ -1823,9 +1820,6 @@ QRadioButton::indicator:unchecked{
         </item>
         <item>
          <spacer name="verticalSpacer_6">
-          <property name="orientation">
-           <enum>Qt::Orientation::Vertical</enum>
-          </property>
           <property name="sizeHint" stdset="0">
            <size>
             <width>20</width>
@@ -1837,7 +1831,7 @@ QRadioButton::indicator:unchecked{
         <item>
          <spacer name="verticalSpacer_9">
           <property name="orientation">
-           <enum>Qt::Orientation::Vertical</enum>
+           <enum>Qt::Vertical</enum>
           </property>
           <property name="sizeHint" stdset="0">
            <size>
@@ -1885,7 +1879,7 @@ QRadioButton::indicator:unchecked{
         </sizepolicy>
        </property>
        <property name="contextMenuPolicy">
-        <enum>Qt::ContextMenuPolicy::NoContextMenu</enum>
+        <enum>Qt::NoContextMenu</enum>
        </property>
        <attribute name="title">
         <string>Profile</string>
@@ -1907,10 +1901,10 @@ QRadioButton::indicator:unchecked{
             <item row="0" column="0">
              <widget class="QScrollArea" name="scrollArea">
               <property name="verticalScrollBarPolicy">
-               <enum>Qt::ScrollBarPolicy::ScrollBarAsNeeded</enum>
+               <enum>Qt::ScrollBarAsNeeded</enum>
               </property>
               <property name="horizontalScrollBarPolicy">
-               <enum>Qt::ScrollBarPolicy::ScrollBarAsNeeded</enum>
+               <enum>Qt::ScrollBarAsNeeded</enum>
               </property>
               <property name="widgetResizable">
                <bool>true</bool>
@@ -1920,16 +1914,13 @@ QRadioButton::indicator:unchecked{
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>416</width>
-                 <height>560</height>
+                 <width>428</width>
+                 <height>586</height>
                 </rect>
                </property>
                <layout class="QGridLayout" name="gridLayout_2">
                 <item row="0" column="0">
                  <spacer name="verticalSpacer_4">
-                  <property name="orientation">
-                   <enum>Qt::Orientation::Vertical</enum>
-                  </property>
                   <property name="sizeHint" stdset="0">
                    <size>
                     <width>20</width>
@@ -1995,9 +1986,6 @@ QRadioButton::indicator:unchecked{
            <layout class="QVBoxLayout" name="verticalLayout_7">
             <item>
              <spacer name="verticalSpacer_3">
-              <property name="orientation">
-               <enum>Qt::Orientation::Vertical</enum>
-              </property>
               <property name="sizeHint" stdset="0">
                <size>
                 <width>20</width>
@@ -2081,9 +2069,6 @@ QRadioButton::indicator:unchecked{
             </item>
             <item>
              <spacer name="verticalSpacer_2">
-              <property name="orientation">
-               <enum>Qt::Orientation::Vertical</enum>
-              </property>
               <property name="sizeHint" stdset="0">
                <size>
                 <width>20</width>
@@ -2270,12 +2255,12 @@ QPushButton::checked{
         <item>
          <spacer name="verticalSpacer">
           <property name="orientation">
-           <enum>Qt::Orientation::Vertical</enum>
+           <enum>Qt::Vertical</enum>
           </property>
           <property name="sizeHint" stdset="0">
            <size>
             <width>20</width>
-            <height>0</height>
+            <height>40</height>
            </size>
           </property>
          </spacer>
@@ -2325,7 +2310,7 @@ QPushButton::checked{
            <string notr="true"/>
           </property>
           <property name="frameShape">
-           <enum>QFrame::Shape::NoFrame</enum>
+           <enum>QFrame::NoFrame</enum>
           </property>
           <property name="text">
            <string>Aussehen:</string>
@@ -2410,7 +2395,7 @@ QPushButton::checked{
         <item>
          <widget class="QTextBrowser" name="Erklaerung_textView">
           <property name="focusPolicy">
-           <enum>Qt::FocusPolicy::NoFocus</enum>
+           <enum>Qt::NoFocus</enum>
           </property>
           <property name="styleSheet">
            <string notr="true">QTextBrowser{
@@ -2418,10 +2403,10 @@ QPushButton::checked{
 }</string>
           </property>
           <property name="verticalScrollBarPolicy">
-           <enum>Qt::ScrollBarPolicy::ScrollBarAsNeeded</enum>
+           <enum>Qt::ScrollBarAsNeeded</enum>
           </property>
           <property name="horizontalScrollBarPolicy">
-           <enum>Qt::ScrollBarPolicy::ScrollBarAsNeeded</enum>
+           <enum>Qt::ScrollBarAsNeeded</enum>
           </property>
           <property name="html">
            <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
@@ -2430,7 +2415,7 @@ p, li { white-space: pre-wrap; }
 hr { height: 1px; border-width: 0; }
 li.unchecked::marker { content: &quot;\2610&quot;; }
 li.checked::marker { content: &quot;\2612&quot;; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'.AppleSystemUIFont'; font-size:13pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Segoe UI'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:37px; margin-bottom:37px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:transparent;&quot;&gt;&lt;a name=&quot;WACViewPanel_ClipboardElement&quot;&gt;&lt;/a&gt;&lt;span style=&quot; font-family:'Times New Roman','Times New Roman_EmbeddedFont','Times New Roman_MSFontService','serif'; font-size:18pt; font-weight:700; color:#000000;&quot;&gt;E&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman','Times New Roman_EmbeddedFont','Times New Roman_MSFontService','serif'; font-size:18pt; font-weight:700; color:#000000;&quot;&gt;rklärung zur Barrierefreiheit&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman','Times New Roman_EmbeddedFont','Times New Roman_MSFontService','serif'; font-size:18pt; color:#000000;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:37px; margin-bottom:37px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:transparent;&quot;&gt;&lt;span style=&quot; font-family:'Times New Roman','Times New Roman_EmbeddedFont','Times New Roman_MSFontService','serif'; font-size:12pt; color:#000000;&quot;&gt;Die Universität Wien ist bemüht, ihre mobile Anwendung im Einklang mit dem Bundesgesetz über den barrierefreien Zugang zu Websites und mobilen Anwendungen des Bundes (Web-Zugänglichkeits-Gesetz – WZG) BGBl. I. Nr. 59/2019 idgF, barrierefrei zugänglich zu machen. &lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:37px; margin-bottom:37px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:transparent;&quot;&gt;&lt;span style=&quot; font-family:'Times New Roman','Times New Roman_EmbeddedFont','Times New Roman_MSFontService','serif'; font-size:12pt; color:#000000;&quot;&gt;Diese Erklärung zur Barrierefreiheit gilt für die mobile Anwendung &lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman','Times New Roman_EmbeddedFont','Times New Roman_MSFontService','serif'; font-size:12pt; color:#000000; background-color:transparent;&quot;&gt;Klingelball.&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman','Times New Roman_EmbeddedFont','Times New Roman_MSFontService','serif'; font-size:12pt; color:#000000;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
@@ -2457,7 +2442,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <item>
          <spacer name="verticalSpacer_7">
           <property name="orientation">
-           <enum>Qt::Orientation::Vertical</enum>
+           <enum>Qt::Vertical</enum>
           </property>
           <property name="sizeHint" stdset="0">
            <size>
